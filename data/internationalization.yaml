@@ -1,0 +1,107 @@
+---
+glb:
+  App Name: ""
+  Missing App Text Translation: ""
+  Missing Word Translation: ""
+  Etymology: ""
+  Also See List: ""
+  Also See Sentence: ""
+  Word Link: ""
+  Search Placeholder: ""
+  Word Not Found Title: ""
+  Word Not Found Explaination: ""
+  Entry for: ""
+  Entries for: ""
+eng:
+  App Name: Globasa Dictionary
+  Missing App Text Translation: '[Missing App Text Translation]'
+  Missing Word Translation: '[Missing Word Translation]'
+  Etymology: 'Etymology: %1$s'
+  Also See List: 'Also see:'
+  Also See Sentence: Also see %1$s.
+  Word Link: word link
+  Search Placeholder: Search word in English or Globasa
+  Word Not Found Title: Word Not Found
+  Word Not Found Explaination: "The word \u2018%1$s\u2019 was not found in the %2$s
+    word list."
+  Entry for: "Entry for \u2018%1$s\u2019:"
+  Entries for: "Entries for \u2018%1$s\u2019:"
+epo:
+  App Name: ""
+  Missing App Text Translation: ""
+  Missing Word Translation: ""
+  Etymology: 'Etimologio: %1$s'
+  Also See List: "Anka\u016D vidu:"
+  Also See Sentence: "Anka\u016D vidu %1$s."
+  Word Link: vortoligilo
+  Search Placeholder: ""
+  Word Not Found Title: Vorto ne trovita
+  Word Not Found Explaination: ""
+  Entry for: ""
+  Entries for: ""
+fra:
+  App Name: ""
+  Missing App Text Translation: ""
+  Missing Word Translation: ""
+  Etymology: ""
+  Also See List: ""
+  Also See Sentence: ""
+  Word Link: ""
+  Search Placeholder: ""
+  Word Not Found Title: ""
+  Word Not Found Explaination: ""
+  Entry for: ""
+  Entries for: ""
+rus:
+  App Name: ""
+  Missing App Text Translation: ""
+  Missing Word Translation: ""
+  Etymology: ""
+  Also See List: ""
+  Also See Sentence: ""
+  Word Link: ""
+  Search Placeholder: ""
+  Word Not Found Title: ""
+  Word Not Found Explaination: ""
+  Entry for: ""
+  Entries for: ""
+spa:
+  App Name: ""
+  Missing App Text Translation: ""
+  Missing Word Translation: ""
+  Etymology: ""
+  Also See List: ""
+  Also See Sentence: ""
+  Word Link: ""
+  Search Placeholder: ""
+  Word Not Found Title: ""
+  Word Not Found Explaination: ""
+  Entry for: ""
+  Entries for: ""
+zho:
+  App Name: ""
+  Missing App Text Translation: ""
+  Missing Word Translation: ""
+  Etymology: ""
+  Also See List: ""
+  Also See Sentence: ""
+  Word Link: ""
+  Search Placeholder: ""
+  Word Not Found Title: ""
+  Word Not Found Explaination: ""
+  Entry for: ""
+  Entries for: ""
+nld:
+  App Name: Globasa-woordenboek
+  Missing App Text Translation: ""
+  Missing Word Translation: ""
+  Etymology: 'Etimologie: %1$s'
+  Also See List: 'Zie ook:'
+  Also See Sentence: Zie ook %1$s.
+  Word Link: woordlink
+  Search Placeholder: ""
+  Word Not Found Title: Woord niet gevonden
+  Word Not Found Explaination: ""
+  Entry for: ""
+  Entries for: ""
+...
