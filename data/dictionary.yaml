@@ -102,7 +102,7 @@ glb:
     Word: aci
     Category: root
     Part Of Speech: n/v
-    DefinitionEng: <em>n</em> deed, action; <em>v</em> act
+    DefinitionEng: <em>n</em> action; <em>v</em> act (take action)
     DefinitionFra: ""
     DefinitionRus: ""
     DefinitionSpa: ""
@@ -1667,8 +1667,8 @@ glb:
   ban:
     Word: ban
     Category: root
-    Part Of Speech: ""
-    DefinitionEng: det some, certain [see <a href="https://www.globasa.net/correlatives">Correlatives</a>]
+    Part Of Speech: det
+    DefinitionEng: <em>det</em> some, certain [see <a href="https://www.globasa.net/correlatives">Correlatives</a>]
     DefinitionFra: ""
     DefinitionRus: ""
     DefinitionSpa: ""
