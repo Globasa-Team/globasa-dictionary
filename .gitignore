@@ -1,0 +1,8 @@
+# Ignore web server error logs
+# error_log
+
+# Ignore backups
+backup
+backups
+backup/
+backups/
