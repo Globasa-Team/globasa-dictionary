@@ -54,6 +54,14 @@ $wordLists['zho'] = $naturalWordList['Zho'];
 yaml_emit_file("/home/jsnowban/public_html/demo/globasa-dictionary/data/dictionary.yaml", $wordLists);
 // echo "</pre>\n\n<p>Done, I hope.</p>";
 
+$fp = fopen('/home/jsnowban/public_html/demo/globasa-dictionary/data/dictionary.json', 'w');
+fwrite($fp, json_encode($wordLists));
+fclose($fp);
+
+$fp = fopen('/home/jsnowban/public_html/demo/globasa-dictionary/data/dictionary.js', 'w');
+fwrite($fp, "var dictionary = ".json_encode($wordLists));
+fclose($fp);
+
 
 
 

@@ -22,7 +22,7 @@
             font-size: x-large;
 }
 
-#header h1, #header .icon, #header .inner {
+#header h1, #header .icon, #header .inner, #header a, #header strong {
     color: black;
 }
 

@@ -5,9 +5,9 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
-	<head>
+	<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 		<title><?php echo $app->page->title; ?></title>
-		<meta charset="utf-8" />
+		
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="<?php echo $app->templateUri; ?>assets/css/main.css" />
 		<link rel="stylesheet" href="<?php echo $app->templateUri; ?>assets/css/globasa.css" />
@@ -60,6 +60,7 @@
 				<ul class="copyright">
 					<li>C0 <a href="http://www.globasa.net/">Globasa</a></li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li><li>A <a href="http://www.partialsolution.ca/">Partial Solution</a></li>
 				</ul>
+				<?php echo (microtime(true)-$app->startTime); ?>
 			</section>
 
 		<!-- Scripts -->

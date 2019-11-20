@@ -13,10 +13,16 @@ class Word
     
     private $app;
     
-    public function get()
+    public function get($match = null)
     {
+        if(is_null($match) || $this->word==$match) {
+            $displayAttribute = "";
+        }
+        else if (!is_null($match)) {
+            $displayAttribute = 'style="display: none;"';
+        }
         $result ='
-            <div id="'.$this->word.'" class="dictionaryEntry" data-search="'.implode(' ', $this->searchText).'">
+            <div id="'.$this->word.'" class="dictionaryEntry" data-search="'.implode(' ', $this->searchText).'" '.$displayAttribute.'>
             <h1>'.$this->word.'</h1>
             <p class="definition">'.$this->definition.'</p>
             <p class="etymology">'.sprintf($this->app->getTrans('Etymology'),$this->etymology).'</p>
@@ -26,9 +32,16 @@ class Word
                 <p class="alsosee">'.$this->app->getTrans('Also See List').'</p>'.
                 $this->relatedWords;
         }
+        if (isset($this->app->page->options['full'])) {
+            $result .= '<div style="text-align: left; color: black">';
+            foreach($this->wordSource as $key=>$data) {
+                $result .= '<p><strong style="color: black">'.$key . '</strong>: '. $data. "</p>";
+            }
+            $result .= '</div>';
+        }
         $result .=
             '<p class="postWord">
-            '.$this->app->makeLink($this->word, '<span class="icon solid fa-link"></span> '.$this->app->getTrans('Word Link')).'
+            '.$this->app->makeLink('word/'.$this->word, '<span class="icon solid fa-link"></span> '.$this->app->getTrans('Word Link')).'
             </p>
             </div>
             ';
@@ -73,7 +86,12 @@ class Word
             
             $result ='<ul>';
             foreach($listItems as $item) {
-                $result .= '<li>'.$this->app->makeLink($item) .': '.$this->app->dictionary['glb'][$item]['Definition'.$this->app->langCap].'</li>';
+                if(isset($this->app->dictionary['glb'])&&isset($this->app->dictionary['glb'][$item])) {
+                    $result .= '<li>'.$this->app->makeLink($item) .': '.$this->app->dictionary['glb'][$item]['Definition'.$this->app->langCap].'</li>';
+                } else {
+                    $result .= '<li>'.$this->app->makeLink($item) .': *ERROR*</li>';
+                    
+                }
             }
             $result .='</ul>';
         }

@@ -1,7 +1,7 @@
 ---
 glb:
   App Name: ""
-  Missing App Text Translation: ""
+  Missing Interface Text Translation: ""
   Missing Word Translation: ""
   Etymology: ""
   Also See List: ""
@@ -9,52 +9,54 @@ glb:
   Word Link: ""
   Search Placeholder: ""
   Word Not Found Title: ""
-  Word Not Found Explaination: ""
+  Word Not Found Explanation: ""
   Entry for: ""
   Entries for: ""
 eng:
   App Name: Globasa Dictionary
-  Missing App Text Translation: '[Missing App Text Translation]'
-  Missing Word Translation: '[Missing Word Translation]'
+  Missing Interface Text Translation: '[Missing Translation]'
+  Missing Word Translation: '[Missing Dictionary Translation]'
   Etymology: 'Etymology: %1$s'
   Also See List: 'Also see:'
   Also See Sentence: Also see %1$s.
   Word Link: word link
   Search Placeholder: Search word in English or Globasa
   Word Not Found Title: Word Not Found
-  Word Not Found Explaination: "The word \u2018%1$s\u2019 was not found in the %2$s
+  Word Not Found Explanation: "The word \u2018%1$s\u2019 was not found in the English
     word list."
   Entry for: "Entry for \u2018%1$s\u2019:"
   Entries for: "Entries for \u2018%1$s\u2019:"
 epo:
-  App Name: ""
-  Missing App Text Translation: ""
-  Missing Word Translation: ""
+  App Name: Vortaro de Globasa
+  Missing Interface Text Translation: "[Teksto ankora\u016D ne tradukita]"
+  Missing Word Translation: "[Vorto ankora\u016D ne tradukita]"
   Etymology: 'Etimologio: %1$s'
   Also See List: "Anka\u016D vidu:"
   Also See Sentence: "Anka\u016D vidu %1$s."
   Word Link: vortoligilo
-  Search Placeholder: ""
+  Search Placeholder: "Ser\u0109u vorton en Esperanto a\u016D Globasa"
   Word Not Found Title: Vorto ne trovita
-  Word Not Found Explaination: ""
-  Entry for: ""
-  Entries for: ""
+  Word Not Found Explanation: "La vorto \u2018%1$s\u2019 ne estis trovita en la Esperanta
+    vortolisto."
+  Entry for: "Ero por \u2018%1$s\u2019:"
+  Entries for: "Eroj por \u2018%1$s\u2019:"
 fra:
-  App Name: ""
-  Missing App Text Translation: ""
-  Missing Word Translation: ""
-  Etymology: ""
-  Also See List: ""
-  Also See Sentence: ""
-  Word Link: ""
-  Search Placeholder: ""
-  Word Not Found Title: ""
-  Word Not Found Explaination: ""
-  Entry for: ""
-  Entries for: ""
+  App Name: Dictionnaire de Globasa
+  Missing Interface Text Translation: '[Texte encore non traduit]'
+  Missing Word Translation: '[Mot encore non traduit]'
+  Etymology: "\xC9tymologie : %1$s"
+  Also See List: 'Voir aussi :'
+  Also See Sentence: Voir aussi %1$s.
+  Word Link: lien du mot
+  Search Placeholder: "Rechercher un mot en fran\xE7ais ou en Globasa"
+  Word Not Found Title: "Mot non trouv\xE9"
+  Word Not Found Explanation: "Le mot \u2018%1$s\u2019 n'a pas \xE9t\xE9 trouv\xE9
+    dans la liste de mots fran\xE7ais."
+  Entry for: "Entr\xE9e pour \u2018%1$s\u2019 :"
+  Entries for: "Entr\xE9es pour \u2018%1$s\u2019 :"
 rus:
   App Name: ""
-  Missing App Text Translation: ""
+  Missing Interface Text Translation: ""
   Missing Word Translation: ""
   Etymology: ""
   Also See List: ""
@@ -62,25 +64,26 @@ rus:
   Word Link: ""
   Search Placeholder: ""
   Word Not Found Title: ""
-  Word Not Found Explaination: ""
+  Word Not Found Explanation: ""
   Entry for: ""
   Entries for: ""
 spa:
   App Name: Diccionario de Globasa
-  Missing App Text Translation: ""
-  Missing Word Translation: ""
-  Etymology: ""
-  Also See List: ""
-  Also See Sentence: ""
-  Word Link: ""
-  Search Placeholder: ""
-  Word Not Found Title: ""
-  Word Not Found Explaination: ""
-  Entry for: ""
-  Entries for: ""
+  Missing Interface Text Translation: "[Texto a\xFAn sin traducir]"
+  Missing Word Translation: "[Palabra a\xFAn sin traducir]"
+  Etymology: "Etimolog\xEDa: %1$s"
+  Also See List: "V\xE9ase tambi\xE9n:"
+  Also See Sentence: "V\xE9ase tambi\xE9n %1$s."
+  Word Link: enlace de palabra
+  Search Placeholder: "Buscar palabra en espa\xF1ol o Globasa "
+  Word Not Found Title: Esta palabra no aparece en el diccionario.
+  Word Not Found Explanation: "La palabra \u2018%1$s\u2019 no aparece en la lista
+    de palabras en espa\xF1ol."
+  Entry for: "Entrada para \u2018%1$s\u2019:"
+  Entries for: "Entradas para \u2018%1$s\u2019:"
 zho:
   App Name: ""
-  Missing App Text Translation: ""
+  Missing Interface Text Translation: ""
   Missing Word Translation: ""
   Etymology: ""
   Also See List: ""
@@ -88,20 +91,49 @@ zho:
   Word Link: ""
   Search Placeholder: ""
   Word Not Found Title: ""
-  Word Not Found Explaination: ""
+  Word Not Found Explanation: ""
   Entry for: ""
   Entries for: ""
 nld:
   App Name: Globasa-woordenboek
-  Missing App Text Translation: ""
-  Missing Word Translation: ""
+  Missing Interface Text Translation: '[Ontbrekende vertaling]'
+  Missing Word Translation: '[Ontbrekende woordenboekvertaling]'
   Etymology: 'Etimologie: %1$s'
   Also See List: 'Zie ook:'
   Also See Sentence: Zie ook %1$s.
   Word Link: woordlink
-  Search Placeholder: ""
+  Search Placeholder: Een woord zoeken in het Nederlands of Globasa
   Word Not Found Title: Woord niet gevonden
-  Word Not Found Explaination: ""
-  Entry for: ""
-  Entries for: ""
+  Word Not Found Explanation: "Het woord \u2018%1$s\u2019 was niet gevonden in de
+    %2$s woordenlijst."
+  Entry for: "Resultaat voor \u2018%1$s\u2019:"
+  Entries for: "Resultaten voor \u2018%1$s\u2019:"
+fry:
+  App Name: Globasa-wurdboek
+  Missing Interface Text Translation: '[Untbrekkende oersetting]'
+  Missing Word Translation: '[Untbrekkende wurdboekoersetting]'
+  Etymology: 'Etimology: %1$s'
+  Also See List: 'Sjoch ek:'
+  Also See Sentence: Sjoch ek %1$s.
+  Word Link: wurdkeppeling
+  Search Placeholder: In wurd sykje yn it Frysk of Globasa
+  Word Not Found Title: "Wurd net f\xFBn"
+  Word Not Found Explanation: "It wurd \u2018%1$s\u2019 wie net f\xFBn yn de %2$s
+    wurdlist."
+  Entry for: "Resultaat foar \u2018%1$s\u2019:"
+  Entries for: "Resultaten foar \u2018%1$s\u2019:"
+por:
+  App Name: "Dicion\xE1rio de Globasa"
+  Missing Interface Text Translation: "[Texto sem tradu\xE7\xE3o]"
+  Missing Word Translation: "[Palavra sem tradu\xE7\xE3o]"
+  Etymology: 'Etimologia: %1$s'
+  Also See List: "Veja tamb\xE9m:"
+  Also See Sentence: "Veja tamb\xE9m %1$s"
+  Word Link: link da palavra
+  Search Placeholder: "Buscar palavra em portugu\xEAs ou em Globasa"
+  Word Not Found Title: "Palavra n\xE3o encontrada"
+  Word Not Found Explanation: "A palavra '%1$s' n\xE3o foi encontrada na lista de
+    palavras em portugu\xEAs"
+  Entry for: 'Verbete para ''%1$s'':'
+  Entries for: 'Verbetes para ''%1$s'':'
 ...

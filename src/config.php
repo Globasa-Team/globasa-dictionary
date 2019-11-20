@@ -4,9 +4,10 @@ namespace GlobasaDictionary;
 /* Source files */
 include_once './src/App.php';
 include_once './src/request.php';
-include_once './src/Word.php';
-include_once './src/WordList.php';
-
+include_once './models/Word.php';
+include_once './models/WordList.php';
+include_once './controllers/ToolController.php';
+include_once './controllers/WordListController.php';
 
 /* App config */
 $app = new GlobasaApp();

@@ -31,15 +31,16 @@ class WordList {
         }
     }
     
-    public function get() {
-        $result = "";
+    public function get($word = null) {
+        $result = '<div id="exactMatch"></div>';
+        
         foreach($this->list as $wordIndex=>$entry) {
             // var_dump($entry->get());
             if (is_a($entry, 'GlobasaDictionary\Word')) {
                 if ($this->listLang != "glb") {
                     $result .='<h1>'.sprintf($this->app->getTrans('Entry for'),$wordIndex,$this->listLang).'</h1>';
                 }
-                $result .= $entry->get();
+                $result .= $entry->get($word);
             }
             else {
                 if ($this->listLang != "glb") {

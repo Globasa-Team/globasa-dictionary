@@ -14,4 +14,13 @@ function filterDL() {
       listing[i].style.display = "none";
     }
   }
+  
+  // Find exact match
+  
+  // if $('#'+filter exists) {
+        // Copy
+            // var $match = $('#'+filter).clone;
+            // $('#exactMatch').html(match);
+  // }
+  }
 }

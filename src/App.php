@@ -2,11 +2,19 @@
 namespace GlobasaDictionary;
 
 class GlobasaApp {
-    public $siteUri, $siteName, $template, $lang, $langCap, $defaultLang, $defaultLangCap, $auxLang, $auxLangCap, $templateFolder, $templatePath, $templateUri, $dictionaryFile, $languagesFile, $internationalizationFile, $dictionary, $languages, $trans;
+    public $siteUri, $siteName, $template, $lang, $langCap, $defaultLang, $defaultLangCap, $auxLang, $auxLangCap, $templateFolder, $templatePath, $templateUri, $dictionaryFile, $languagesFile, $internationalizationFile, $dictionary, $languages, $trans, $startTime;
+    
+    function __construct() {
+        $this->startTime = microtime(true);
+    }
     
     public function setLang($lang) {
         $this->lang = $lang;
         $this->langCap = ucfirst($lang);
+    }
+    
+    public function setPageTitle($title) {
+        $this->page->title = $title . ' - ' . $this->siteName;
     }
     
     public function getTrans($textId) {
