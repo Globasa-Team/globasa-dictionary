@@ -1,4 +1,4 @@
-# FreeWorldDict
+# Worldland Dict
 
 An open source multilingual dictionary designed for worldlangs, written in PHP.
 
