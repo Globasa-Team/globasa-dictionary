@@ -1,3 +1,4 @@
+AddType application/x-httpd-php71 .php
 # FallbackResource /index.php
 
 RewriteEngine On

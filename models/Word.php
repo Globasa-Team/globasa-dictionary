@@ -41,7 +41,7 @@ class Word
         }
         $result .=
             '<p class="postWord">
-            '.$this->app->makeLink('word/'.$this->word, '<span class="icon solid fa-link"></span> '.$this->app->getTrans('Word Link')).'
+            '.$this->app->makeLink('leksi/'.$this->word, '<span class="icon solid fa-link"></span> '.$this->app->getTrans('Word Link')).'
             </p>
             </div>
             ';
@@ -62,7 +62,7 @@ class Word
         }
         $result .=
             '<p class="postWord">
-            '.$this->app->makeLink($this->word, '<span class="icon solid fa-link"></span> '.$this->app->getTrans('Word Link')).'
+            '.$this->app->makeLink('cel-ruke/'.$this->word, '<span class="icon solid fa-link"></span> '.$this->app->getTrans('Word Link')).'
             </p>
             </div>
             ';
@@ -87,9 +87,9 @@ class Word
             $result ='<ul>';
             foreach($listItems as $item) {
                 if(isset($this->app->dictionary['glb'])&&isset($this->app->dictionary['glb'][$item])) {
-                    $result .= '<li>'.$this->app->makeLink($item) .': '.$this->app->dictionary['glb'][$item]['Definition'.$this->app->langCap].'</li>';
+                    $result .= '<li>'.$this->app->makeLink('leksi/'.$item, $item) .': '.$this->app->dictionary['glb'][$item]['Definition'.$this->app->langCap].'</li>';
                 } else {
-                    $result .= '<li>'.$this->app->makeLink($item) .': *ERROR*</li>';
+                    $result .= '<li>'.$this->app->makeLink('leksi/'.$item, $item) .': *ERROR*</li>';
                     
                 }
             }

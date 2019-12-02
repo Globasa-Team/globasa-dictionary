@@ -3,15 +3,20 @@ namespace GlobasaDictionary;
 
 class WordListController
 {
-    public static function getWordList($app, $listLang) {
-        $list = new WordList($app, $listLang);
-        $app->setPageTitle('Word list');
-        return $list->get();
-    }
+    // public static function getWordList($app, $listLang) {
+    //     $list = new WordList($app, $listLang);
+    //     $app->setPageTitle('Word list');
+    //     return $list->get();
+    // }
     
-    public static function getWord($app, $listLang, $word) {
+    public static function getWord($app, $listLang, $word=null) {
         $list = new WordList($app, $listLang);
-        $app->setPageTitle($word.' definition');
+        if (is_null($word)) {
+            $app->setPageTitle('Word list');
+        }
+        else {
+            $app->setPageTitle($word.' definition');
+        }
         return $list->get($word);
         
     }

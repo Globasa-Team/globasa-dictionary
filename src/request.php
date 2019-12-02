@@ -30,9 +30,9 @@ function processRequest($app, $appOld = null)
     
     // Let's get to the content!
     $app->setLang('eng');
-    $app->request = 'words';
-    $app->option = "";
-    $app->argument = "";
+    $app->request = 'leksi';
+    $app->option = null;
+    $app->argument = null;
     
     if ($requestSize >= 1) {
         $app->setLang($app->page->path[$requestSkip]);
@@ -48,30 +48,26 @@ function processRequest($app, $appOld = null)
     }
     
     if ($requestSize <= 1) {
-        header("Location: ".$app->siteUri.$app->lang.'/words');
+        header("Location: ".$app->siteUri.$app->lang.'/leksi');
         exit();
     }
     
     
     switch ($app->request) {
-        case 'word':
-            $app->page->content .= WordListController::getWord($app, 'glb', $app->option);
-            include_once($app->templatePath.'index.php');
-            break;
             
-        case 'tool':
+        case 'tule':
             $app->page->content .= ToolController::run($app, $app->option, $app->argument);
             include_once($app->templatePath.'index.php');
             break;
             
-        case 'reverse':
+        case 'cel-ruke':
             $app->page->content .= WordListController::getWord($app, $app->lang, $app->option);
             include_once($app->templatePath.'index.php');
             break;
             
-        case 'words':
+        case 'leksi':
         default:
-            $app->page->content .= WordListController::getWordList($app, 'glb');
+            $app->page->content .= WordListController::getWord($app, 'glb', $app->option);
             include_once($app->templatePath.'index.php');
             break;
     }

@@ -34,7 +34,7 @@
 			
 		<!-- Header -->
 			<section id="searchSection">
-				<div class="inner">
+				<div id="searchDiv" class="inner">
 					<input type="text" id="search" onkeyup="filterDL()" placeholder="<?php echo $app->getTrans('Search Placeholder');?>">
 				</div>
 			</section>
