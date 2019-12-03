@@ -1,5 +1,5 @@
 <?php
-namespace GlobasaDictionary;
+namespace WorldlangDict;
 
 /**
  * Calls the appropriate function based on the url.

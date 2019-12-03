@@ -1,5 +1,5 @@
 <?php
-namespace GlobasaDictionary;
+namespace WorldlangDict;
 
 // A Globasa Word
 class Word

@@ -1,18 +1,31 @@
 <?php
-namespace GlobasaDictionary;
+namespace WorldlangDict;
 
-class GlobasaApp {
+class WorldlangDictConfig {
     public $siteUri, $siteName, $template, $lang, $langCap, $defaultLang, $defaultLangCap, $auxLang, $auxLangCap, $templateFolder, $templatePath, $templateUri, $dictionaryFile, $languagesFile, $internationalizationFile, $dictionary, $languages, $trans, $startTime;
     
     function __construct() {
         $this->startTime = microtime(true);
     }
     
-    public function setLang($lang) {
-        $this->lang = $lang;
+    public function setLang($lang, $aux=null) {
+        $this->lang = strtolower($lang);
         $this->langCap = ucfirst($lang);
+        if (!is_null($aux)) {
+            $this->defaultLang = strtolower($aux);
+            $this->defaultLangCap = ucfirst($aux);
+        }
     }
     
+    public function setTemplate($name, $folder=null) {
+        $this->template = $name;
+        if (!is_null($folder)) {
+            $this->templatesFolder = $folder;
+        }
+        
+        $this->templatePath = "./".$this->templatesFolder.'/'.$this->template.'/';
+        $this->templateUri = $this->siteUri.$this->templatesFolder.'/'.$this->template.'/';
+    }
     public function setPageTitle($title) {
         $this->page->title = $title . ' - ' . $this->siteName;
     }

@@ -1,5 +1,5 @@
 <?php
-namespace GlobasaDictionary;
+namespace WorldlangDict;
 
 class WordListController
 {

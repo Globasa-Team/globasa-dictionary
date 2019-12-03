@@ -1,5 +1,5 @@
 <?php
-namespace GlobasaDictionary;
+namespace WorldlangDict;
 
 /**
  * Calls the appropriate function based on the url.
@@ -78,9 +78,7 @@ function processOptions($app)
     foreach ($app->page->options as $option=>$value) {
         switch ($option) {
             case 'template':
-                $app->template = $value;
-                $app->templatePath = "./".$app->templatesFolder.'/'.$app->template.'/';
-                $app->templateUri = $app->siteUri.$app->templatesFolder.'/'.$app->template.'/';
+                $app->setTemplate($value);
             case 'full':
                 
         }

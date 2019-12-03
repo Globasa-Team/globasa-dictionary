@@ -1,5 +1,5 @@
 <?php
-namespace GlobasaDictionary;
+namespace WorldlangDict;
 
 class WordList {
     private $app, $listLang, $list;
@@ -36,7 +36,7 @@ class WordList {
         
         foreach($this->list as $wordIndex=>$entry) {
             // var_dump($entry->get());
-            if (is_a($entry, 'GlobasaDictionary\Word')) {
+            if (is_a($entry, 'WorldlangDict\Word')) {
                 if ($this->listLang != "glb") {
                     $result .='<h1>'.sprintf($this->app->getTrans('Entry for'),$wordIndex,$this->listLang).'</h1>';
                 }
