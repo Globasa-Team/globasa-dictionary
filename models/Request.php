@@ -31,8 +31,8 @@ class Request
         $requestSize = $requestSize-$requestSkip;
         
         // Let's get to the request content!
-        $this->lang ='eng';
-        $this->controller = 'words';
+        $this->lang = $app->lang;
+        $this->controller = 'leksi';
         $this->arguments = null;
         
         if ($requestSize >= 1) {

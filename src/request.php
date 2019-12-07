@@ -47,30 +47,33 @@ function processRequest($app, $appOld = null)
         }
     }
     
+    $request = new Request($app);
+    
     if ($requestSize <= 1) {
-        header("Location: ".$app->siteUri.$app->lang.'/leksi');
-        exit();
+        WorldlangDictUtils::redirect($app, $request->controller);
     }
     
     
-    switch ($app->request) {
+    switch ($request->controller) {
             
         case 'tule':
             $app->page->content .= ToolController::run($app, $app->option, $app->argument);
-            include_once($app->templatePath.'index.php');
             break;
             
         case 'cel-ruke':
             $app->page->content .= WordListController::getWord($app, $app->lang, $app->option);
-            include_once($app->templatePath.'index.php');
+            break;
+        
+        case 'search':
+            $app->page->content .= SearchController::search($app, $request);
             break;
             
         case 'leksi':
         default:
             $app->page->content .= WordListController::getWord($app, 'glb', $app->option);
-            include_once($app->templatePath.'index.php');
             break;
     }
+    include_once($app->templatePath.'index.php');
 }
 
 function processOptions($app)
