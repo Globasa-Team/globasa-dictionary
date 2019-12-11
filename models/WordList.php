@@ -11,7 +11,7 @@ class WordList {
         foreach($this->app->dictionary[$lang] as $word=>$wordData) {
             if ($lang == 'glb')
             {
-                $this->list[$word] = new Word($app, $wordData);
+                $this->list[strtolower($word)] = new Word($app, $wordData);
             }
             else
             {
@@ -31,7 +31,24 @@ class WordList {
         }
     }
     
+    
     public function get($word = null) {
+        $result = '';
+        if ($this->listLang == 'glb') {
+            $result .= $this->list[$word]->get();
+        }
+        else {
+            if ($this->listLang != "glb") {
+                $result .='<strong>'.sprintf($this->app->getTrans('Entries for'),$word,$this->listLang).'</strong>';
+            }
+            foreach ($this->list[$word] as $subEntry) {
+                $result .= $subEntry->getReverse();
+            }
+        }
+        return $result;
+    }
+    
+    public function getOld($word = null) {
         $result = '<div id="exactMatch"></div>';
         
         foreach($this->list as $wordIndex=>$entry) {

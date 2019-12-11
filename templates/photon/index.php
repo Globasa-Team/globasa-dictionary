@@ -1,3 +1,6 @@
+<?php
+namespace WorldlangDict;
+?>
 <!DOCTYPE HTML>
 <!--
 	Photon by HTML5 UP
@@ -33,9 +36,12 @@
 			</section>
 			
 		<!-- Header -->
-			<section id="searchSection">
-				<div id="searchDiv" class="inner">
-					<input type="text" id="search" onkeyup="filterDL()" placeholder="<?php echo $app->getTrans('Search Placeholder');?>">
+			<section id="search">
+				<div class="inner">
+				    <form action="<?php echo WorldlangDictUtils::makeUri($app, "search"); ?>" method="get">
+					    <input type="text" name="term" placeholder="<?php echo $app->getTrans('Search Placeholder');?>" />
+				        <input type="submit" value="Search" />
+				    </form>
 				</div>
 			</section>
 			
