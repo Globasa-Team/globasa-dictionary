@@ -86,8 +86,15 @@ ul {
     color: black;
 }
 
+#search input[type="text"] {
+    width: 74%;
+}
+
 #search input[type="submit"] {
-    width: 49%;
+    width: 25%;
+    padding-left: 1em;
+    padding-right: 1em;
+    text-align: center;
     height: 2.75em !important;
     border-color: black !important;
     display: inline-block;

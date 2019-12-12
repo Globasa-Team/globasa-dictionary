@@ -53,10 +53,10 @@ class SearchController {
                     $result .= '<h3 style="color: black">Globasa language results</h3><ul>';
                     
                     if ($glbMatch) {
-                        $result .= '<li>'.WorldlangDictUtils::makeLink($config, 'leksi/'.urlencode($term)) . ' Exact Match</li>';
+                        $result .= '<li>'.WorldlangDictUtils::makeLink($config, 'leksi/'.urlencode($term), $word) . ' Exact Match<br/>'.$glb[$word]['Definition'.$config->langCap].'</li>';
                     }
                     foreach ($partialMatchesGlb as $word) {
-                        $result .= '<li>'.WorldlangDictUtils::makeLink($config, 'leksi/'.urlencode($word)).'</li>';
+                        $result .= '<li>'.WorldlangDictUtils::makeLink($config, 'leksi/'.urlencode($word), $word).'<br/>'.$glb[$word]['Definition'.$config->langCap].'</li>';
                     }
                     $result .= '</ul>';
                 }
@@ -64,10 +64,10 @@ class SearchController {
                     $result .= '<h3 style="color: black">Lang/English language results</h3><ul>';
                     
                     if ($langMatch) {
-                        $result .= '<li>'.WorldlangDictUtils::makeLink($config, 'cel-ruke/'.urlencode($term)) . ' Exact Match</li>';
+                        $result .= '<li>'.WorldlangDictUtils::makeLink($config, 'cel-ruke/'.urlencode($term), $word) . ' Exact Match'.'<br/>'.$glb[$lang[$word]]['Definition'.$config->langCap].'</li>';
                     }
                     foreach ($partialMatchesLang as $word) {
-                        $result .= '<li>'.WorldlangDictUtils::makeLink($config, 'cel-ruke/'.urlencode($word)).'</li>';
+                        $result .= '<li>'.WorldlangDictUtils::makeLink($config, 'cel-ruke/'.urlencode($word), $word).'<br/>'.$glb[$lang[$word]]['Definition'.$config->langCap].'</li>';
                     }
                     $result .= '</ul>';
                     

@@ -32,7 +32,7 @@ class Request
         
         // Let's get to the request content!
         $this->lang = $app->lang;
-        $this->controller = 'leksi';
+        $this->controller = 'index';
         $this->arguments = null;
         
         if ($requestSize >= 1) {

@@ -30,7 +30,7 @@ function processRequest($app, $appOld = null)
     
     // Let's get to the content!
     $app->setLang('eng');
-    $app->request = 'leksi';
+    $app->request = 'index';
     $app->option = null;
     $app->argument = null;
     
@@ -49,10 +49,6 @@ function processRequest($app, $appOld = null)
     
     $request = new Request($app);
     
-    if ($requestSize <= 1) {
-        WorldlangDictUtils::redirect($app, $request->controller);
-    }
-    
     
     switch ($request->controller) {
             
@@ -69,8 +65,11 @@ function processRequest($app, $appOld = null)
             break;
             
         case 'leksi':
-        default:
             $app->page->content .= WordListController::getWord($app, 'glb', $app->option);
+            break;
+            
+        default:
+            $app->page->content .= IndexController::home($app);
             break;
     }
     include_once($app->templatePath.'index.php');

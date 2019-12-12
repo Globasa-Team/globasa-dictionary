@@ -7,23 +7,33 @@ class ToolController {
     // {
         
     // }
-    public static function run($app, $tool, $argument=null){
+    public static function run($config, $tool, $argument=null){
         switch($tool) {
             case 'homonym-terminator':
-                return ToolController::homonymTerminator($app, $argument);
+                return ToolController::homonymTerminator($config, $argument);
                 break;
             case 'minimal-pair-detector':
-                return ToolController::minimalPairDetector($app, $argument);
+                return ToolController::minimalPairDetector($config, $argument);
             default:
-                die('no option set');
+                return "<h1>Tools</h1>
+                    <ul>
+                        <li>".WorldlangDictUtils::makeLink($config, 'tule/homonym-terminator', 'Find homonyns')."</li>
+                        <li>".WorldlangDictUtils::makeLink($config, 'tule/minimal-pair-detector', 'Find minimal pairings')."</li>
+                    </ul>";
         }
     }
     
-    public static function minimalPairDetector($app, $checkWord = null)
+    public static function minimalPairDetector($config, $checkWord = null)
     {
-        
-        $result = "<h1>Find minimal pairings</h1>";
-        $words = array_keys($app->dictionary['glb']);
+        $result = '';
+        $result .= "<h1>Find minimal pairings</h1>";
+        $result .= '
+            <form action='.WorldlangDictUtils::makeUri($config, 'tule/minimal-pair-detector').' method="get">
+                <input type="text" placeholder="Enter new word" />
+                <input type="submit" value="Find pairs" />
+            </form>
+        ';
+        $words = array_keys($config->dictionary['glb']);
         
         $numWords = sizeof($words);
         

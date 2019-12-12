@@ -41,8 +41,15 @@ class WordList {
             if ($this->listLang != "glb") {
                 $result .='<strong>'.sprintf($this->app->getTrans('Entries for'),$word,$this->listLang).'</strong>';
             }
-            foreach ($this->list[$word] as $subEntry) {
-                $result .= $subEntry->getReverse();
+            if (is_a($this->list[$word], 'WorldlangDict\Word')) {
+                // Single word
+                $result .= $this->list[$word]->getReverse();
+            } else {
+                // Array
+                foreach ($this->list[$word] as $subEntry) {
+                    // $result .= "Something /$word/";
+                    $result .= $subEntry->getReverse();
+                }
             }
         }
         return $result;

@@ -7,7 +7,7 @@ class WorldlangDictUtils
         return $config->siteUri.$config->lang.'/'.$controller;
     }
     
-    public static function redirect ($config, $controller) {
+    public static function redirect ($config, $controller="") {
         header('Location: '.WorldlangDictUtils::makeUri($config, $controller));
         die();
     }
