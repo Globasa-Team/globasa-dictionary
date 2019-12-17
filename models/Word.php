@@ -15,17 +15,16 @@ class Word
     
     public function get($match = null)
     {
-        if(is_null($match) || $this->word==$match) {
+        if (is_null($match) || $this->word==$match) {
             $displayAttribute = "";
-        }
-        else if (!is_null($match)) {
+        } elseif (!is_null($match)) {
             $displayAttribute = 'style="display: none;"';
         }
         $result ='
             <div id="'.$this->word.'" class="dictionaryEntry" data-search="'.implode(' ', $this->searchText).'" '.$displayAttribute.'>
             <h1>'.$this->word.'</h1>
             <p class="definition">'.$this->definition.'</p>
-            <p class="etymology">'.sprintf($this->app->getTrans('Etymology'),$this->etymology).'</p>
+            <p class="etymology">'.sprintf($this->app->getTrans('Etymology'), $this->etymology).'</p>
             ';
         if (!empty($this->relatedWords)) {
             $result .= '
@@ -34,7 +33,7 @@ class Word
         }
         if (isset($this->app->page->options['full'])) {
             $result .= '<div style="text-align: left; color: black">';
-            foreach($this->wordSource as $key=>$data) {
+            foreach ($this->wordSource as $key=>$data) {
                 $result .= '<p><strong style="color: black">'.$key . '</strong>: '. $data. "</p>";
             }
             $result .= '</div>';
@@ -53,7 +52,7 @@ class Word
         $result ='
             <div class="dictionaryEntry" data-search="'.implode(' ', $this->searchText).'">
             <p class="definition">'.$this->word.': '.$this->definition.'</p>
-            <p class="etymology">'.sprintf($this->app->getTrans('Etymology'),$this->etymology).'</p>
+            <p class="etymology">'.sprintf($this->app->getTrans('Etymology'), $this->etymology).'</p>
             ';
         if (!empty($this->relatedWords)) {
             $result .= '
@@ -69,7 +68,7 @@ class Word
         return $result;
     }
     
-    function __construct($app, $word)
+    public function __construct($app, $word)
     {
         $this->app = $app;
         $this->wordSource = $word;
@@ -81,21 +80,19 @@ class Word
         $this->searchText[] = $this->word;
     }
     
-    private function makeRelatedWordsUl($listItems) {
+    private function makeRelatedWordsUl($listItems)
+    {
         if ($listItems !== null && sizeof($listItems) > 0) {
-            
             $result ='<ul>';
-            foreach($listItems as $item) {
-                if(isset($this->app->dictionary['glb'])&&isset($this->app->dictionary['glb'][$item])) {
+            foreach ($listItems as $item) {
+                if (isset($this->app->dictionary['glb'])&&isset($this->app->dictionary['glb'][$item])) {
                     $result .= '<li>'.$this->app->makeLink('leksi/'.$item, $item) .': '.$this->app->dictionary['glb'][$item]['Definition'.$this->app->langCap].'</li>';
                 } else {
                     $result .= '<li>'.$this->app->makeLink('leksi/'.$item, $item) .': *ERROR*</li>';
-                    
                 }
             }
             $result .='</ul>';
-        }
-        else {
+        } else {
             $result = "";
         }
         return $result;
@@ -109,8 +106,7 @@ class Word
             $result = "";
             if (!empty($word[$part.$this->app->defaultLangCap])) {
                 $result = $word[$part.$this->app->defaultLangCap];
-            }
-            elseif (!empty($word[$part.$this->app->auxLangCap])) {
+            } elseif (!empty($word[$part.$this->app->auxLangCap])) {
                 $result = $word[$part.$this->app->auxLangCap];
             }
             return $this->app->getTrans('Missing Word Translation').$result;
@@ -119,17 +115,14 @@ class Word
     
     private function processEntryList($words)
     {
-        if(!empty($words) > 0) {
+        if (!empty($words) > 0) {
             $words = explode(";", $words);
             foreach ($words as $index=>$word) {
                 $words[$index] = trim($word);
             }
             return $words;
-        }
-        else
-        {
+        } else {
             return null;
         }
     }
-    
 }

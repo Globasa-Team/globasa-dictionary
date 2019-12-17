@@ -9,16 +9,15 @@ class WordListController
     //     return $list->get();
     // }
     
-    public static function getWord($config, $listLang, $word=null) {
+    public static function getWord($config, $listLang, $word=null)
+    {
         $list = new WordList($config, $listLang);
         if (is_null($word)) {
             $config->setPageTitle('Word list');
             return 'Coming soon: random word and other special links.';
-        }
-        else {
+        } else {
             $config->setPageTitle($word.' definition');
             return $list->get($word);
         }
-        
     }
 }

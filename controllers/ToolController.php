@@ -1,14 +1,16 @@
 <?php
 namespace WorldlangDict;
 
-class ToolController {
+class ToolController
+{
     
     // public function __construct(&$app, $option)
     // {
         
     // }
-    public static function run($config, $tool, $argument=null){
-        switch($tool) {
+    public static function run($config, $tool, $argument=null)
+    {
+        switch ($tool) {
             case 'homonym-terminator':
                 return ToolController::homonymTerminator($config, $argument);
                 break;
@@ -38,8 +40,8 @@ class ToolController {
         $numWords = sizeof($words);
         
         if (empty($checkWord)) {
-            for($i = 0; $i < $numWords; $i++) {
-                for($j = $i+1; $j < $numWords; $j++) {
+            for ($i = 0; $i < $numWords; $i++) {
+                for ($j = $i+1; $j < $numWords; $j++) {
                     $distance = levenshtein($words[$i], $words[$j]);
                     // var_dump($app->dictionary['glb'][$i]);
                     if ($distance == 2) {
@@ -50,9 +52,8 @@ class ToolController {
                     }
                 }
             }
-            
         } else {
-            for($i = 0; $i < $numWords; $i++) {
+            for ($i = 0; $i < $numWords; $i++) {
                 $distance = levenshtein($checkWord, $words[$i]);
                 // var_dump($app->dictionary['glb'][$i]);
                 if ($distance == 2) {
@@ -62,7 +63,6 @@ class ToolController {
                     $d1 .= '<li>'.$distance.' with '. $words[$i].'</li>';
                 }
             }
-            
         }
         $result.="<h2>Pairs with a difference of 1:</h2>
                     <ul>".$d1."</ul>
@@ -77,8 +77,8 @@ class ToolController {
         $result .= '<form action="/globasa-dictionary/eng/tool/homonym-terminator" method="post"><input placeholder="New root" /><input type="submit" /></form>';
         // var_dump($_REQUEST);
         // var_dump($_SERVER);
-        foreach($app->dictionary['glb'] as $word=>$entry) {
-            if($entry['Category']=='root') {
+        foreach ($app->dictionary['glb'] as $word=>$entry) {
+            if ($entry['Category']=='root') {
                 $root[]=$word;
                 $genList[$word][] = 'From word list';
             } elseif ($entry['Category']=='affix' && $word[0]=='-') {
@@ -88,7 +88,7 @@ class ToolController {
             }
         }
         
-        if(!empty($newRoot)) {
+        if (!empty($newRoot)) {
             $root = [$newRoot];
         }
         
@@ -107,22 +107,19 @@ class ToolController {
                 // if (isset($app->dictionary['glb'][$genWord])) echo "!";
                 $genList[$genWord][] = "$currentPrefix-$currentRoot";
             }
-            
         }
         $result .="<p>Generated ".sizeof($genList).' words.</p>';
         $result .= '<h3 style="color:black">Possibly conflicting words generated</h3>';
         ksort($genList);
-        foreach($genList as $genWord=>$genRoots)
-        {
+        foreach ($genList as $genWord=>$genRoots) {
             if (sizeof($genRoots)>1) {
                 if (isset($app->dictionary['glb'][$genWord])) {
                     $definition = '</br>'.$app->dictionary['glb'][$genWord][DefinitionEng];
-                }
-                else {
+                } else {
                     $definition = "";
                 }
                 $result .= '<li><span style="font-weight: bold; font-size: larger;">'.$genWord."</span><br />".
-                    "conflicting roots: ". implode($genRoots, ', ').$definition."</li>";             
+                    "conflicting roots: ". implode($genRoots, ', ').$definition."</li>";
             }
         }
         $result = "<ul>".$result."</ul>";

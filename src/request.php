@@ -81,6 +81,7 @@ function processOptions($app)
         switch ($option) {
             case 'template':
                 $app->setTemplate($value);
+                // no break
             case 'full':
                 
         }

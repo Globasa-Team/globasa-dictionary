@@ -6,11 +6,16 @@ namespace WorldlangDict;
  */
 class Request
 {
-    public $lang, $controller, $options, $arguments, $incomplete;
-    private $path, $linkQuery;
+    public $lang;
+    public $controller;
+    public $options;
+    public $arguments;
+    public $incomplete;
+    private $path;
+    private $linkQuery;
     
-    function __construct($app) {
-        
+    public function __construct($app)
+    {
         $parsedUrl = parse_url(strtolower($_SERVER['REQUEST_URI']));
         $this->path = explode('/', $parsedUrl['path']);
         
@@ -49,12 +54,10 @@ class Request
         
         if ($requestSize <= 1) {
             $this->incomplete = true;
-            // header("Location: ".$app->siteUri.$app->lang.'/words');
+        // header("Location: ".$app->siteUri.$app->lang.'/words');
             // exit();
-        }
-        else {
+        } else {
             $this->incomplete = false;
         }
-    
     }
 }

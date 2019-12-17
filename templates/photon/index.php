@@ -1,5 +1,6 @@
 <?php
 namespace WorldlangDict;
+
 ?>
 <!DOCTYPE HTML>
 <!--
@@ -66,7 +67,7 @@ namespace WorldlangDict;
 				<ul class="copyright">
 					<li>C0 <a href="http://www.globasa.net/">Globasa</a></li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li><li>A <a href="http://www.partialsolution.ca/">Partial Solution</a></li>
 				</ul>
-				<?php echo (microtime(true)-$app->startTime); ?>
+				<?php echo(microtime(true)-$app->startTime); ?>
 			</section>
 
 		<!-- Scripts -->

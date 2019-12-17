@@ -1,13 +1,15 @@
 <?php
 namespace WorldlangDict;
 
-class SearchController {
+class SearchController
+{
     
     // public function __construct(&$app, $option)
     // {
         
     // }
-    public static function search($config, $request) {
+    public static function search($config, $request)
+    {
         $result = "";
         $glb = $config->dictionary['glb'];
         $lang = $config->dictionary[$request->lang];
@@ -25,11 +27,9 @@ class SearchController {
                 // if found, send to one or the other. If both, ask.
                 if ($glbMatch && !$langMatch) {
                     WorldlangDictUtils::redirect($config, 'leksi/'.urlencode($term));
-                }
-                else if (!$glbMatch && $langMatch) {
+                } elseif (!$glbMatch && $langMatch) {
                     WorldlangDictUtils::redirect($config, 'cel-ruke/'.urlencode($term));
-                }
-                else if ($glbMatch && $langMatch) {
+                } elseif ($glbMatch && $langMatch) {
                     $fullMatches = $term.', '.$langMatch;
                 }
                 
@@ -49,7 +49,7 @@ class SearchController {
                 }
                 
                 // if found, Ask what they want.
-                if(sizeof($partialMatchesGlb) || $glbMatch) {
+                if (sizeof($partialMatchesGlb) || $glbMatch) {
                     $result .= '<h3 style="color: black">Globasa language results</h3><ul>';
                     
                     if ($glbMatch) {
@@ -60,7 +60,7 @@ class SearchController {
                     }
                     $result .= '</ul>';
                 }
-                if(sizeof($partialMatchesGlb) || sizeof($partialMatchesLang) || $glbMatch || $langMatch) {
+                if (sizeof($partialMatchesGlb) || sizeof($partialMatchesLang) || $glbMatch || $langMatch) {
                     $result .= '<h3 style="color: black">Lang/English language results</h3><ul>';
                     
                     if ($langMatch) {
@@ -70,25 +70,19 @@ class SearchController {
                         $result .= '<li>'.WorldlangDictUtils::makeLink($config, 'cel-ruke/'.urlencode($word), $word).'<br/>'.$glb[$lang[$word]]['Definition'.$config->langCap].'</li>';
                     }
                     $result .= '</ul>';
-                    
-                }
-                else {
+                } else {
                     // Otherwise, say nothing was found.
                     $result .= 'No matches found!';
                 }
-            }
-            else {
+            } else {
                 // redirect to main page
                 WorldlangDictUtils::redirect($config);
             }
-            
-        }
-        else {
+        } else {
             // redirect to main page
             WorldlangDictUtils::redirect($config);
         }
         
         return $result;
     }
-    
 }

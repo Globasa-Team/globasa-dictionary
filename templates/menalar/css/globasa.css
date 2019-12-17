@@ -1,25 +1,67 @@
-    body {
-        font-size: x-large;
-        font-family: 'Roboto', sans-serif;
-    }
-    dl {
-      width: 100%;
-      max-width: 800px;
-      margin: 0 auto 0 auto;
-    }
-    h1#header {
-      text-align: center;
-    }
-    h1, h2, h3, dt {
-      font-family: 'Oswald', sans-serif;
-    }
-    dt {
-      font-size: 150%;
-    }
-    p.definition {
-      font-size: 120%;
-      font-weight: bold;
-    }
-    p.etymology {
-      font-style: italic;
-    }
+body {
+    font-size: x-large;
+    font-family: 'Andika', sans-serif;
+    padding-top: 200px;
+}
+
+/* site content */
+#siteContent {
+    max-width: 500px;
+    margin: auto;
+}
+
+
+
+/* site header */
+#siteHeader {
+    background-color: #ccc;
+    position: absolute;
+    top: 0px;
+    text-align: center;
+    width: 100%;
+}
+
+#langSelect {
+    font-size: x-small;
+    text-decoration: none;
+    margin: 0;
+}
+
+#siteHeader h1 {
+    margin: 0;
+}
+
+
+/* site footer */
+#siteFooter {
+    background-color: #ccc;
+    width: 100%;
+    position: fixed;
+    bottom: 0px;
+    font-size: small;
+}
+
+
+/* Old */
+
+dl {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto 0 auto;
+}
+h1#header {
+  text-align: center;
+}
+h1, h2, h3, dt {
+  /*font-family: 'Oswald', sans-serif;*/
+}
+dt {
+  font-size: 150%;
+}
+p.definition {
+  font-size: 120%;
+  font-weight: bold;
+}
+p.etymology {
+  font-style: italic;
+}

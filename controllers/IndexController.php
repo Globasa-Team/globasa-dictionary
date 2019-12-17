@@ -3,7 +3,8 @@ namespace WorldlangDict;
 
 class IndexController
 {
-    public static function home($config) {
+    public static function home($config)
+    {
         $result = '';
         
         $result .= '<strong>Random word</strong>';
