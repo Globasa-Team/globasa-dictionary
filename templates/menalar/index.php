@@ -37,8 +37,8 @@
 				<h1><span class="fa fa-book fa-lg"></span> <?php echo $app->getTrans('App Name'); ?></h1>
 			    <form action="<?php /* echo WorldlangDictUtils::makeUri($app, "search"); */ ?>" method="get">
 				    <input type="text" name="term" placeholder="<?php echo $app->getTrans('Search Placeholder');?>" />
-			        <input type="submit" name="glbSearch" value="Globasa Search" />
-			        <input type="submit" name="langSearch" value="English Search" />
+			        <input type="submit" name="gSearch" value="Globasa Search" />
+			        <input type="submit" name="lSearch" value="English Search" />
 			    </form>
 			</div>
 		</section>

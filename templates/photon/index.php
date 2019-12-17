@@ -41,7 +41,10 @@ namespace WorldlangDict;
 				<div class="inner">
 				    <form action="<?php echo WorldlangDictUtils::makeUri($app, "search"); ?>" method="get">
 					    <input type="text" name="term" placeholder="<?php echo $app->getTrans('Search Placeholder');?>" />
-				        <input type="submit" value="Search" />
+				        <!--<input type="submit" value="Search" />-->
+				        <br/>
+    			        <input type="submit" name="gsearch" value="Globasa Search" />
+			            <input type="submit" name="lsearch" value="English Search" />
 				    </form>
 				</div>
 			</section>

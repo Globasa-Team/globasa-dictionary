@@ -14,7 +14,7 @@ class WordListController
         $list = new WordList($config, $listLang);
         if (is_null($word)) {
             $config->setPageTitle('Word list');
-            return 'Coming soon: random word and other special links.';
+            return WordController::randomWord($config);
         } else {
             $config->setPageTitle($word.' definition');
             return $list->get($word);
