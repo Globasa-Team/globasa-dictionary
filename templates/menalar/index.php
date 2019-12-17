@@ -15,7 +15,7 @@
   <link rel="stylesheet" href="<?php echo $app->templateUri; ?>css/main.css">
   <link rel="stylesheet" href="<?php echo $app->templateUri; ?>css/globasa.css">
   <link href="https://fonts.googleapis.com/css?family=Andika&display=swap" rel="stylesheet">
-  
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" integrity="sha256-gsmEoJAws/Kd3CjuOQzLie5Q3yshhvmo7YNtBG7aaEY=" crossorigin="anonymous">
   <meta name="theme-color" content="#fafafa">
 </head>
 
@@ -34,7 +34,7 @@
 			        <?php echo $app->makeLink($app->request, 'русский', 'rus'); ?>
 			        <?php echo $app->makeLink($app->request, '中文', 'zho'); ?>
 			    </div>
-				<h1><span class="icon solid fa-book"></span> <?php echo $app->getTrans('App Name'); ?></h1>
+				<h1><span class="fa fa-book fa-lg"></span> <?php echo $app->getTrans('App Name'); ?></h1>
 			    <form action="<?php /* echo WorldlangDictUtils::makeUri($app, "search"); */ ?>" method="get">
 				    <input type="text" name="term" placeholder="<?php echo $app->getTrans('Search Placeholder');?>" />
 			        <input type="submit" name="glbSearch" value="Globasa Search" />
