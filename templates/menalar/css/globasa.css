@@ -2,6 +2,7 @@ body {
     font-size: x-large;
     font-family: 'Andika', sans-serif;
     padding-top: 200px;
+    min-height: 100%;
 }
 
 /* site content */
@@ -14,11 +15,18 @@ body {
 
 /* site header */
 #siteHeader {
-    background-color: #ccc;
-    position: absolute;
+    background-color: #008400;
+    background: radial-gradient(circle, rgba(0,132,0,1) 61%, rgba(0,80,0,1) 100%);
+    color: white;
+    position: fixed;
     top: 0px;
     text-align: center;
     width: 100%;
+    padding-bottom: 3px;
+}
+
+#siteHeader a:link, #siteHeader a:visited, #siteFooter a:link, #siteFooter a:visited {
+    color: #ddd;
 }
 
 #langSelect {
@@ -34,11 +42,14 @@ body {
 
 /* site footer */
 #siteFooter {
-    background-color: #ccc;
+    background-color: #004FB0;
+    background: radial-gradient(circle, rgba(0,79,176,1) 61%, rgba(1,38,83,1) 100%);
+    color: white;
     width: 100%;
-    position: fixed;
+    position: absolute;
     bottom: 0px;
     font-size: small;
+    padding-top: 3px;
 }
 
 
