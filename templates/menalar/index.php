@@ -25,22 +25,24 @@
   <![endif]-->
 		<!-- Header -->
 		<section id="siteHeader">
-			    <div id="langSelect">
-			        <?php echo $app->makeLink($app->request, 'English', 'eng'); ?>
-			        <?php echo $app->makeLink($app->request, 'Esperanto', 'epo'); ?>
-			        <?php echo $app->makeLink($app->request, 'français', 'fra'); ?>
-			        <?php echo $app->makeLink($app->request, 'globasa', 'glb'); ?>
-			        <?php echo $app->makeLink($app->request, 'español', 'spa'); ?>
-			        <?php echo $app->makeLink($app->request, 'русский', 'rus'); ?>
-			        <?php echo $app->makeLink($app->request, '中文', 'zho'); ?>
-			    </div>
-				<h1><span class="fa fa-book fa-lg"></span> <?php echo $app->getTrans('App Name'); ?></h1>
-			    <form action="<?php /* echo WorldlangDictUtils::makeUri($app, "search"); */ ?>" method="get">
-				    <input type="text" name="term" placeholder="<?php echo $app->getTrans('Search Placeholder');?>" />
-			        <input type="submit" name="gSearch" value="Globasa Search" />
-			        <input type="submit" name="lSearch" value="English Search" />
-			    </form>
-			</div>
+    	    <div id="langSelect">
+    	        <?php echo $app->makeLink($app->request, 'English', 'eng'); ?>
+    	        <?php echo $app->makeLink($app->request, 'Esperanto', 'epo'); ?>
+    	        <?php echo $app->makeLink($app->request, 'français', 'fra'); ?>
+    	        <?php echo $app->makeLink($app->request, 'globasa', 'glb'); ?>
+    	        <?php echo $app->makeLink($app->request, 'español', 'spa'); ?>
+    	        <?php echo $app->makeLink($app->request, 'русский', 'rus'); ?>
+    	        <?php echo $app->makeLink($app->request, '中文', 'zho'); ?>
+    	    </div>
+    		<h1><span class="fa fa-book fa-lg"></span> <?php echo $app->getTrans('App Name'); ?></h1>
+    	    <form action="<?php /* echo WorldlangDictUtils::makeUri($app, "search"); */ ?>" method="get">
+    		    <input type="text" name="term" placeholder="<?php echo $app->getTrans('Search Placeholder');?>" />
+    	        <input type="submit" name="gSearch" value="Globasa Search" />
+    	        <input type="submit" name="lSearch" value="English Search" />
+    	    </form>
+            <?php echo $app->makeLink('', 'Random Word'); ?> &ndash;
+            <?php echo $app->makeLink('menalar', 'All Words'); ?> &ndash;
+            <?php echo $app->makeLink('tule', 'Tools'); ?>
 		</section>
 			
         <section id="siteContent">
@@ -49,17 +51,26 @@
         </section>
         
         <section id="siteFooter">
-            <ul>
-                <li>Globasa</li>
-                <li>Github</li>
-                <li>Report a problem</li>
-                <li>API</li>
-            </ul>
-            <ul>
-                <li>C0 Globasa.net</li>
-                <li>A Partial Solution</li>
-                <li>Github</li>
-            </ul>
+            <div>
+                <a href="http://www.globasa.net/">Globasa</a> |
+                <a href="https://github.com/ShawnPConroy/WorldlangDict">GitHub</a> |
+                <a href="">Report a problem (coming soon)</a> |
+                <a href="http://api.globasa.net/">API</a>
+            </div>
+            <div>
+                C0 Globasa.net. A <a href="http://www.partialsolution.ca/">Partial Solution</a>.
+            </div>
+            <!--<ul>-->
+            <!--    <li>Globasa</li>-->
+            <!--    <li>Github</li>-->
+            <!--    <li>Report a problem</li>-->
+            <!--    <li>API</li>-->
+            <!--</ul>-->
+            <!--<ul>-->
+            <!--    <li>C0 Globasa.net</li>-->
+            <!--    <li>A Partial Solution</li>-->
+            <!--    <li>Github</li>-->
+            <!--</ul>-->
         </section>
 
 

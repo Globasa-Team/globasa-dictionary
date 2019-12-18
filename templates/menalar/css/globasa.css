@@ -15,18 +15,21 @@ body {
 
 /* site header */
 #siteHeader {
-    background-color: #008400;
-    background: radial-gradient(circle, rgba(0,132,0,1) 61%, rgba(0,80,0,1) 100%);
-    color: white;
+    /*background-color: #008400; flag green*/
+    background: rgb(200,244,200);
+    background: radial-gradient(circle, rgba(200,244,200,1) 60%, rgba(153,203,153,1) 100%);
+    color: black;
     position: fixed;
     top: 0px;
     text-align: center;
     width: 100%;
-    padding-bottom: 3px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-bottom: solid 1px #ccc;
 }
 
 #siteHeader a:link, #siteHeader a:visited, #siteFooter a:link, #siteFooter a:visited {
-    color: #ddd;
+    color: #333;
 }
 
 #langSelect {
@@ -42,16 +45,31 @@ body {
 
 /* site footer */
 #siteFooter {
-    background-color: #004FB0;
-    background: radial-gradient(circle, rgba(0,79,176,1) 61%, rgba(1,38,83,1) 100%);
-    color: white;
+    /*background-color: #004FB0; Flag blue*/
+    background: rgb(200,222,249);
+    background: radial-gradient(circle, rgba(200,222,249,1) 60%, rgba(150,167,187,1) 100%);
+    color: black;
     width: 100%;
     position: absolute;
     bottom: 0px;
     font-size: small;
-    padding-top: 3px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-top: solid 1px #ccc;
+    text-align: center;
 }
 
+#siteFooter ul {
+    /*display: inline-block;*/
+}
+
+#siteFooter li {
+    display: inline-block;
+    list-style-type: none;
+    padding: inherit 5em inherit 5em;
+    margin: inherit 5em inherit 5em;
+    background: #ccc;
+}
 
 /* Old */
 
