@@ -29,7 +29,7 @@ class WordList
     }
     
     
-    public function get($word = null)
+    public function getNew($word = null)
     {
         $result = '';
         if ($this->listLang == 'glb') {
@@ -52,7 +52,7 @@ class WordList
         return $result;
     }
     
-    public function getOld($word = null)
+    public function get($word = null)
     {
         $result = '<div id="exactMatch"></div>';
         

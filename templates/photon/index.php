@@ -33,6 +33,10 @@ namespace WorldlangDict;
 				        <?php echo $app->makeLink($app->request, '中文', 'zho'); ?>
 				    </div>
 					<span class="icon solid fa-book"></span> <?php echo $app->getTrans('App Name'); ?><br/>
+				        <?php echo $app->makeLink('', 'Random Word'); ?> &ndash;
+				        <?php echo $app->makeLink('menalar', 'All Words'); ?> &ndash;
+				        <?php echo $app->makeLink('tule', 'Tools'); ?>
+					
 				</div>
 			</section>
 			

@@ -65,7 +65,12 @@ function processRequest($app, $appOld = null)
             break;
             
         case 'leksi':
-            $app->page->content .= WordListController::getWord($app, 'glb', $app->option);
+            $word = isset($request->arguments[0]) ? $request->arguments[0] : null;
+            $app->page->content .= WordController::getWord($app, 'glb', $word);
+            break;
+            
+        case 'menalar':
+            $app->page->content .= WordListController::getWordList($app, 'glb', $app->option);
             break;
             
         default:

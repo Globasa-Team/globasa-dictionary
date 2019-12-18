@@ -15,11 +15,11 @@ class Word
     
     public function get($match = null)
     {
-        if (is_null($match) || $this->word==$match) {
-            $displayAttribute = "";
-        } elseif (!is_null($match)) {
-            $displayAttribute = 'style="display: none;"';
-        }
+        // if (is_null($match) || $this->word==$match) {
+        //     $displayAttribute = "";
+        // } elseif (!is_null($match)) {
+        //     $displayAttribute = 'style="display: none;"';
+        // }
         $result ='
             <div id="'.$this->word.'" class="dictionaryEntry" data-search="'.implode(' ', $this->searchText).'" '.$displayAttribute.'>
             <h1>'.$this->word.'</h1>
@@ -73,7 +73,7 @@ class Word
         $this->app = $app;
         $this->wordSource = $word;
         $this->word = $word['Word'];
-        $this->definition = $this->processEntryPart($word, 'Definition');
+        $this->definition = $this->processEntryPart($word, 'Translation');
         $this->etymology = $this->processEntryPart($word, 'Etymology');
         $this->relatedWords = $this->makeRelatedWordsUl($this->processEntryList($word['RelatedWordsGlb']));
         $this->searchText = $this->processEntryList($word[$app->langCap]);
@@ -86,7 +86,7 @@ class Word
             $result ='<ul>';
             foreach ($listItems as $item) {
                 if (isset($this->app->dictionary['glb'])&&isset($this->app->dictionary['glb'][$item])) {
-                    $result .= '<li>'.$this->app->makeLink('leksi/'.$item, $item) .': '.$this->app->dictionary['glb'][$item]['Definition'.$this->app->langCap].'</li>';
+                    $result .= '<li>'.$this->app->makeLink('leksi/'.$item, $item) .': '.$this->app->dictionary['glb'][$item]['Translation'.$this->app->langCap].'</li>';
                 } else {
                     $result .= '<li>'.$this->app->makeLink('leksi/'.$item, $item) .': *ERROR*</li>';
                 }
