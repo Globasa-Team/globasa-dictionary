@@ -57,7 +57,7 @@ function processRequest($app, $appOld = null)
             break;
             
         case 'cel-ruke':
-            $app->page->content .= WordListController::getWord($app, $app->lang, $app->option);
+            $app->page->content .= WordController::getReverseWord($app, $app->lang, $app->option);
             break;
         
         case 'search':
@@ -66,7 +66,7 @@ function processRequest($app, $appOld = null)
             
         case 'leksi':
             $word = isset($request->arguments[0]) ? $request->arguments[0] : null;
-            $app->page->content .= WordController::getWord($app, 'glb', $word);
+            $app->page->content .= WordController::getWord($app, $word);
             break;
             
         case 'menalar':
