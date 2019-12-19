@@ -23,10 +23,15 @@ class WordController {
             $config->setPageTitle('Word list');
             return WordController::randomWord($config);
         } else {
+            $result = "";
             if (isset($config->dictionary[$lang][$term])) {
-                $word = new Word($config, $config->dictionary['glb'][$config->dictionary[$lang][$term]]);
+                $matches = explode(", ", $config->dictionary[$lang][$term]);
+                foreach ($matches as $curMatch) {
+                    $word = new Word($config, $config->dictionary['glb'][$curMatch]);
+                    $result .= $word->get($word);
+                }
                 $config->setPageTitle($term.': English to Globasa');
-                return $word->get($word);
+                return $result;
             }
         }
     }
