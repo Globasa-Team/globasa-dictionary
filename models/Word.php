@@ -38,9 +38,10 @@ class Word
             }
             $result .= '</div>';
         }
+            // '.$this->app->makeLink('leksi/'.$this->word, '<span class="icon solid fa-link"></span> '.$this->app->getTrans('Word Link')).'
         $result .=
             '<p class="postWord">
-            '.$this->app->makeLink('leksi/'.$this->word, '<span class="icon solid fa-link"></span> '.$this->app->getTrans('Word Link')).'
+            '.$this->app->makeLink('leksi/'.$this->word, '<span class="fa fa-link"></span> '.$this->app->getTrans('Word Link')).'
             </p>
             </div>
             ';

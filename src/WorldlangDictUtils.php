@@ -5,7 +5,7 @@ class WorldlangDictUtils
 {
     public static function makeUri($config, $controller)
     {
-        return $config->siteUri.$config->lang.'/'.$controller;
+        return $config->siteUri.$config->lang.'/'.$controller.$request->linkQuery;
     }
     
     public static function redirect($config, $controller="")
@@ -19,6 +19,6 @@ class WorldlangDictUtils
         if ($text == null) {
             $text = $controller;
         }
-        return '<a href="'. WorldlangDictUtils::makeUri($config, $controller).$request->linkQuery.'">'.$text.'</a>';
+        return '<a href="'. WorldlangDictUtils::makeUri($config, $controller).'">'.$text.'</a>';
     }
 }
