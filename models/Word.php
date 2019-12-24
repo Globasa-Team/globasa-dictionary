@@ -21,8 +21,11 @@ class Word
         //     $displayAttribute = 'style="display: none;"';
         // }
         $result ='
-            <div id="'.$this->word.'" class="dictionaryEntry" data-search="'.implode(' ', $this->searchText).'" '.$displayAttribute.'>
-            <h1>'.$this->word.'</h1>
+            <div id="'.$this->word.'" class="dictionaryEntry w3-card" data-search="'.implode(' ', $this->searchText).'" '.$displayAttribute.'>
+            <header class="w3-container w3-green">
+                <h2 id="entryTerm">'.$this->word.'</h2>
+            </header>
+            <div class="w3-container">
             <p class="definition">'.$this->definition.'</p>
             <p class="etymology">'.sprintf($this->app->getTrans('Etymology'), $this->etymology).'</p>
             ';
@@ -31,6 +34,7 @@ class Word
                 <p class="alsosee">'.$this->app->getTrans('Also See List').'</p>'.
                 $this->relatedWords;
         }
+        $result .= '</div>';
         if (isset($this->app->page->options['full'])) {
             $result .= '<div style="text-align: left; color: black">';
             foreach ($this->wordSource as $key=>$data) {
@@ -40,9 +44,9 @@ class Word
         }
             // '.$this->app->makeLink('leksi/'.$this->word, '<span class="icon solid fa-link"></span> '.$this->app->getTrans('Word Link')).'
         $result .=
-            '<p class="postWord">
+            '<footer class="w3-container w3-pale-green">
             '.$this->app->makeLink('leksi/'.$this->word, '<span class="fa fa-link"></span> '.$this->app->getTrans('Word Link')).'
-            </p>
+            </footer>
             </div>
             ';
         return $result;
@@ -51,8 +55,11 @@ class Word
     public function getReverse()
     {
         $result ='
-            <div class="dictionaryEntry" data-search="'.implode(' ', $this->searchText).'">
+            <div class="dictionaryEntry" class="w3-card" data-search="'.implode(' ', $this->searchText).'">
+            <header class="w3-container w3-blue">
+            <div class="w3-container">
             <p class="definition">'.$this->word.': '.$this->definition.'</p>
+            </div>
             <p class="etymology">'.sprintf($this->app->getTrans('Etymology'), $this->etymology).'</p>
             ';
         if (!empty($this->relatedWords)) {
@@ -61,9 +68,12 @@ class Word
                 $this->relatedWords;
         }
         $result .=
-            '<p class="postWord">
+            '</div>
+            <footer class="w3-container pale-green">
+            <p class="postWord">
             '.$this->app->makeLink('cel-ruke/'.$this->word, '<span class="icon solid fa-link"></span> '.$this->app->getTrans('Word Link')).'
             </p>
+            </footer>
             </div>
             ';
         return $result;

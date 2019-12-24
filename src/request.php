@@ -69,7 +69,7 @@ function processRequest($app, $appOld = null)
             $app->page->content .= WordController::getWord($app, $word);
             break;
             
-        case 'menalar':
+        case 'leksilar':
             $app->page->content .= WordListController::getWordList($app, 'glb', $app->option);
             break;
             

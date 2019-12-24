@@ -37,7 +37,7 @@ class WordController {
     }
     
     public static function randomWord($config) {
-        $result = '<strong>Random word</strong>';
+        $result = '<h1>Random word</h1>';
         $wordIndex = array_rand($config->dictionary['glb']);
         $word = new Word($config, $config->dictionary['glb'][$wordIndex]);
         $result .= $word->get();
