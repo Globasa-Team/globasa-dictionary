@@ -16,8 +16,8 @@ namespace WorldlangDict;?>
   <link rel="stylesheet" href="<?php echo $config->templateUri; ?>css/normalize.css">
   <link rel="stylesheet" href="<?php echo $config->templateUri; ?>css/main.css">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <link rel="stylesheet" href="<?php echo $config->templateUri; ?>css/globasa.css">
-  <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans|Arimo|Public+Sans|Libre+Franklin|Philosopher|Proza+Libre|Public+Sans|Rosario|Sarabun|Source+Sans+Pro|Amiri|Crimson+Pro|GFS+Neohellenic|Literata|Livvic|Merriweather|Muli|Overlock|Sansita|Spectral|Volkhov|Imprima&display=swap" rel="stylesheet"> 
+  <link rel="stylesheet" href="<?php echo $app->templateUri; ?>css/globasa.css">
+  <link href="https://fonts.googleapis.com/css?family=Literata|Merriweather&display=swap" rel="stylesheet"> 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" integrity="sha256-gsmEoJAws/Kd3CjuOQzLie5Q3yshhvmo7YNtBG7aaEY=" crossorigin="anonymous">
   <meta name="theme-color" content="#fafafa">
 </head>
@@ -63,41 +63,7 @@ namespace WorldlangDict;?>
             C0 <a href="http://www.globasa.net">Globasa.net</a>. A <a href="http://www.partialsolution.ca/">Partial Solution</a>.
         </div>
     </div>
-    <button class="w3-bar-item w3-button w3-small" onclick="setFont('Libre Franklin')">sans: Libre Franklin</button>
-    <!--<button class="w3-bar-item w3-button w3-small" onclick="setFont('Sarabun')">sans: Sarabun</button>-->
-    <!--<button class="w3-bar-item w3-button w3-small" onclick="setFont('Alegreya Sans')">sans: Alegreya Sans</button>-->
-    <button class="w3-bar-item w3-button w3-small" onclick="setFont('Source Sans Pro')">sans: Source Sans Pro</button>
-    <button class="w3-bar-item w3-button w3-small" onclick="setFont('Public Sans')">sans: Public Sans</button>
-    <button class="w3-bar-item w3-button w3-small" onclick="setFont('Proza Libre')">sans: Proza Libre (G)</button>
-    <button class="w3-bar-item w3-button w3-small" onclick="setFont('Rosario')">sans: Rosario</button>
-    <button class="w3-bar-item w3-button w3-small" onclick="setFont('Arimo')">sans: Arimo</button>
-    <button class="w3-bar-item w3-button w3-small" onclick="setFont('Philosopher')">sans: Philosopher</button>
-    <!--<button class="w3-bar-item w3-button w3-small" onclick="setFont('Amiri')">serif: Amiri</button>-->
-    <button class="w3-bar-item w3-button w3-small" onclick="setFont('Crimson Pro')">serif: Crimson Pro</button>
-    <!--<button class="w3-bar-item w3-button w3-small" onclick="setFont('GFS Neohellenic')">serif: GFS+Neohellenic</button>-->
-    <button class="w3-bar-item w3-button w3-small" onclick="setFont('Literata')">serif: Literata</button>
-    <button class="w3-bar-item w3-button w3-small" onclick="setFont('Volkhov')">serif: Volkhov</button>
-    <button class="w3-bar-item w3-button w3-small" onclick="setFont('Volkhov')">serif: Merriweather</button>
-    <button class="w3-bar-item w3-button w3-small" onclick="setFont('Imprima')">cool: Imprima</button>
-    <button class="w3-bar-item w3-button w3-small" onclick="setFont('Livvic')">cool: Livvic</button>
-    <button class="w3-bar-item w3-button w3-small" onclick="setFont('Muli')">cool: Muli</button>
-    <button class="w3-bar-item w3-button w3-small" onclick="setFont('Overlock')">cool: Overlock</button>
-    <button class="w3-bar-item w3-button w3-small" onclick="setFont('Sansita')">cool: Sansita</button>
-    <!--<button class="w3-bar-item w3-button w3-small" onclick="setFont('Spectral')">cool: Spectral</button>-->
-    <!--<button class="w3-bar-item w3-button w3-small" onclick="setFont('Andika')">Font: Andika</button>-->
-    <!--<button class="w3-bar-item w3-button w3-small" onclick="setFont('Cabin')">Font: Cabin</button>-->
-    <!--<button class="w3-bar-item w3-button w3-small" onclick="setFont('Hi Melody')">Font: Hi Melody</button>-->
-    <!--<button class="w3-bar-item w3-button w3-small" onclick="setFont('Megrim')">Font: Megrim</button>-->
-    <!--<button class="w3-bar-item w3-button w3-small" onclick="setFont('Montserrat')">Font: Montserrat</button>-->
-    <!--<button class="w3-bar-item w3-button w3-small" onclick="setFont('Noto Sans')">Font: Noto Sans</button>-->
-    <!--<button class="w3-bar-item w3-button w3-small" onclick="setFont('Quicksand')">Font: Quicksand</button>-->
-    <!--<button class="w3-bar-item w3-button w3-small" onclick="setFont('Raleway')">Font: Raleway</button>-->
-    <!--<button class="w3-bar-item w3-button w3-small" onclick="setFont('Roboto')">Font: Roboto</button>-->
-    <!--<button class="w3-bar-item w3-button w3-small" onclick="setFont('Volkhov')">Font: Volkhov</button>-->
-    <!--<button class="w3-bar-item w3-button w3-small" onclick="setFont('Oswald')">Font: Oswald</button>-->
-    <!--<button class="w3-bar-item w3-button w3-small" onclick="setFonts('Oswald','Roboto')">Combo: Oswald/Roboto</button>-->
-    <!--<button class="w3-bar-item w3-button w3-small" onclick="setFonts('Volkhov','Noto Sans')">Combo: Volkhov/Noto Sans</button>-->
-    <!--<button class="w3-bar-item w3-button w3-small" onclick="setFonts('Andika','Montserrat')">Combo: Andika/Montserrat</button>-->
+    
 </div>
 
 <div id="main">
@@ -131,16 +97,6 @@ function w3_close() {
   document.getElementById("openNav").style.display = "inline-block";
 }
 
-function setFont(newFont) {
-    setFonts(newFont, newFont);
-    // document.getElementById("htmlBody").style.fontFamily = newFont;
-}
-
-function setFonts(headerFont, bodyFont) {
-    document.getElementById("appTitle").style.fontFamily = headerFont;
-    document.getElementById("entryTerm").style.fontFamily = headerFont;
-    document.getElementById("htmlBody").style.fontFamily = bodyFont;
-}
 
 </script>
 
