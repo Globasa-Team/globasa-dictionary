@@ -8,10 +8,10 @@ class WorldlangDictConfig
     public $template;
     public $lang;
     public $langCap;
-    public $defaultLang;
-    public $defaultLangCap;
     public $auxLang;
     public $auxLangCap;
+    public $worldlang;
+    public $worldlangCap;
     public $templateFolder;
     public $templatePath;
     public $templateUri;
@@ -33,9 +33,14 @@ class WorldlangDictConfig
         $this->lang = strtolower($lang);
         $this->langCap = ucfirst($lang);
         if (!is_null($aux)) {
-            $this->defaultLang = strtolower($aux);
-            $this->defaultLangCap = ucfirst($aux);
+            $this->auxLang = strtolower($aux);
+            $this->auxLangCap = ucfirst($aux);
         }
+    }
+    
+    public function setWorldlang($lang) {
+        $this->worldlang = strtolower($lang);
+        $this->worldlangCap = ucfirst($lang);
     }
     
     public function setTemplate($name, $folder=null)
@@ -47,10 +52,6 @@ class WorldlangDictConfig
         
         $this->templatePath = "./".$this->templatesFolder.'/'.$this->template.'/';
         $this->templateUri = $this->siteUri.$this->templatesFolder.'/'.$this->template.'/';
-    }
-    public function setPageTitle($title)
-    {
-        $this->page->title = $title . ' - ' . $this->siteName;
     }
     
     public function getTrans($textId)
@@ -83,19 +84,6 @@ class WorldlangDictConfig
         return $this->dictionary[$this->defaultLang][$word];
     }
     
-    public function INeedThisForSomeReason()
-    {
-        // does not work this is returing an array and prepending a string. Algorithm is good.
-        if (isset($this->dictionary[$this->lang][$word])) {
-            return $this->dictionary[$this->lang][$word];
-        } else {
-            if (isset($this->dictionary[$this->defaultLang][$word])) {
-                return $this->getTrans('Missing Translation').$this->dictionary[$this->defaultLang][$word];
-            } else {
-                return $this->getTrans('Missing Translation').$this->dictionary[$this->auxLang][$word];
-            }
-        }
-    }
     
     public function makeLink($request, $text=null, $lang=null)
     {

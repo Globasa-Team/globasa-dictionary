@@ -4,44 +4,26 @@ namespace WorldlangDict;
 class ToolController
 {
     
-    // public function __construct(&$app, $option)
-    // {
-        
-    // }
-    public static function run($config, $tool, $argument=null)
+    public static function run($config, $request, &$page)
     {
-        switch ($tool) {
+        switch ($request->arguments[0]) {
             case 'homonym-terminator':
-                return ToolController::homonymTerminator($config, $argument);
+                ToolController::homonymTerminator($config, $request->argument[1], $page);
                 break;
             case 'minimal-pair-detector':
-                return ToolController::minimalPairDetector($config, $argument);
+                ToolController::minimalPairDetector($config, $argument, $page);
+                break;
             default:
-                return '<h1>Tools</h1>
-                        
-                        <div class="w3-card">
-                            <header class="w3-container w3-green">
-                                <h2><a href="'.WorldlangDictUtils::makeUri($config, 'tule/homonym-terminator').'">Find homonyms</a></h2>
-                            </header>
-                            <div class="w3-container"><p>Find words that are too similar to suggested new words. Used when proposing a new Globasa word.</p>
-                        </div>
-                        
-                        <div class="w3-card">
-                            <header class="w3-container w3-green">
-                                <h2><a href="'.WorldlangDictUtils::makeUri($config, 'tule/minimal-pair-detector').'">Find minimal pairings</a></h2>
-                            </header>
-                            <div class="w3-container"><p>Find words that are too similar to a suggested new word by changing or adding a letter. Used when proposing a new Globasa word.</p>
-                            </div>
-                        </div>
-                    ';
+                ToolView::toolList($config, $page);
+                break;
         }
     }
     
-    public static function minimalPairDetector($config, $checkWord = null)
+    public static function minimalPairDetector($config, $checkWord = null, &$page)
     {
-        $result = '';
-        $result .= "<h1>Find minimal pairings</h1>";
-        $result .= '
+        $page->content = '';
+        $page->content .= "<h1>Find minimal pairings</h1>";
+        $page->content .= '
             <form action='.WorldlangDictUtils::makeUri($config, 'tule/minimal-pair-detector').' method="get">
                 <input type="text" placeholder="Enter new word" />
                 <input type="submit" value="Find pairs" />
@@ -76,20 +58,19 @@ class ToolController
                 }
             }
         }
-        $result.="<h2>Pairs with a difference of 1:</h2>
+        $page->content .="<h2>Pairs with a difference of 1:</h2>
                     <ul>".$d1."</ul>
                     <h2>Pairs with a difference of 2:</h2>
                     <ul>".$d2."</ul>";
-        return $result;
     }
     
-    public static function homonymTerminator($app, $newRoot = null)
+    public static function homonymTerminator($config, $newRoot = null, &$page)
     {
-        $result = "<h1>Find Homonyns</h1>";
-        $result .= '<form action="/globasa-dictionary/eng/tool/homonym-terminator" method="post"><input placeholder="New root" /><input type="submit" /></form>';
+        $page->content .= "<h1>Find Homonyns</h1>";
+        $page->content .= '<form action="/globasa-dictionary/eng/tool/homonym-terminator" method="post"><input placeholder="New root" /><input type="submit" /></form>';
         // var_dump($_REQUEST);
         // var_dump($_SERVER);
-        foreach ($app->dictionary['glb'] as $word=>$entry) {
+        foreach ($config->dictionary['glb'] as $word=>$entry) {
             if ($entry['Category']=='root') {
                 $root[]=$word;
                 $genList[$word][] = 'From word list';
@@ -104,7 +85,7 @@ class ToolController
             $root = [$newRoot];
         }
         
-        $result.= '<p>Found '.sizeof($root).' root, '.sizeof($prefix).' prefixes and '.sizeof($suffix).' suffixes</p>';
+        $page->content.= '<p>Found '.sizeof($root).' root, '.sizeof($prefix).' prefixes and '.sizeof($suffix).' suffixes</p>';
         foreach ($root as $currentRoot) {
             // echo "<h1>".$currentRoot."</h1>";
             foreach ($suffix as $currentSuffix) {
@@ -120,21 +101,20 @@ class ToolController
                 $genList[$genWord][] = "$currentPrefix-$currentRoot";
             }
         }
-        $result .="<p>Generated ".sizeof($genList).' words.</p>';
-        $result .= '<h3 style="color:black">Possibly conflicting words generated</h3>';
+        $page->content .="<p>Generated ".sizeof($genList).' words.</p>';
+        $page->content .= '<h3 style="color:black">Possibly conflicting words generated</h3> <ul>';
         ksort($genList);
         foreach ($genList as $genWord=>$genRoots) {
             if (sizeof($genRoots)>1) {
-                if (isset($app->dictionary['glb'][$genWord])) {
-                    $definition = '</br>'.$app->dictionary['glb'][$genWord][DefinitionEng];
+                if (isset($config->dictionary['glb'][$genWord])) {
+                    $definition = '</br>'.$config->dictionary['glb'][$genWord][DefinitionEng];
                 } else {
                     $definition = "";
                 }
-                $result .= '<li><span style="font-weight: bold; font-size: larger;">'.$genWord."</span><br />".
+                $page->content .= '<li><span style="font-weight: bold; font-size: larger;">'.$genWord."</span><br />".
                     "conflicting roots: ". implode($genRoots, ', ').$definition."</li>";
             }
         }
-        $result = "<ul>".$result."</ul>";
-        return $result;
+        $page->content .= "</ul>";
     }
 }

@@ -5,7 +5,7 @@ namespace WorldlangDict;?>
 
 <head>
   <meta charset="utf-8">
-  <title><?php echo $app->page->title; ?>Menalar</title>
+  <title><?php echo $page->title; ?></title>
   <meta name="description" content="">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -13,10 +13,10 @@ namespace WorldlangDict;?>
   <link rel="apple-touch-icon" href="icon.png">
   <!-- Place favicon.ico in the root directory -->
 
-  <link rel="stylesheet" href="<?php echo $app->templateUri; ?>css/normalize.css">
-  <link rel="stylesheet" href="<?php echo $app->templateUri; ?>css/main.css">
+  <link rel="stylesheet" href="<?php echo $config->templateUri; ?>css/normalize.css">
+  <link rel="stylesheet" href="<?php echo $config->templateUri; ?>css/main.css">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <link rel="stylesheet" href="<?php echo $app->templateUri; ?>css/globasa.css">
+  <link rel="stylesheet" href="<?php echo $config->templateUri; ?>css/globasa.css">
   <link href="https://fonts.googleapis.com/css?family=Alegreya+Sans|Arimo|Public+Sans|Libre+Franklin|Philosopher|Proza+Libre|Public+Sans|Rosario|Sarabun|Source+Sans+Pro|Amiri|Crimson+Pro|GFS+Neohellenic|Literata|Livvic|Merriweather|Muli|Overlock|Sansita|Spectral|Volkhov|Imprima&display=swap" rel="stylesheet"> 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" integrity="sha256-gsmEoJAws/Kd3CjuOQzLie5Q3yshhvmo7YNtBG7aaEY=" crossorigin="anonymous">
   <meta name="theme-color" content="#fafafa">
@@ -31,25 +31,25 @@ namespace WorldlangDict;?>
 <div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="display:none" id="mySidebar">
     <button class="w3-bar-item w3-button w3-large" onclick="w3_close()">Close &times;</button>
   
-    <form action="<?php echo WorldlangDictUtils::makeUri($app, "search"); ?>" method="get">
-        <input type="text" name="term" placeholder="<?php echo $app->getTrans('Search Placeholder');?>" class="w3-input w3-border" />
+    <form action="<?php echo WorldlangDictUtils::makeUri($config, "search"); ?>" method="get">
+        <input type="text" name="term" placeholder="<?php echo $config->getTrans('Search Placeholder');?>" class="w3-input w3-border" />
         <input type="submit" name="gSearch" value="Globasa Search" class="w3-btn w3-blue" />
         <input type="submit" name="lSearch" value="English Search" class="w3-btn w3-blue" />
     </form>
     <hr />
-    <a href="<?php echo WorldlangDictUtils::makeUri($app, ''); ?>" class="w3-bar-item w3-button"><span class="fa fa-random"></span> Random Word</a>
-    <a href="<?php echo WorldlangDictUtils::makeUri($app, 'leksilar'); ?>" class="w3-bar-item w3-button"><span class="fa fa-list"></span> All Words</a>
-    <a href="<?php echo WorldlangDictUtils::makeUri($app, 'tule'); ?>" class="w3-bar-item w3-button"><span class="fa fa-briefcase"></span> Tools</a>
+    <a href="<?php echo WorldlangDictUtils::makeUri($config, ''); ?>" class="w3-bar-item w3-button"><span class="fa fa-random"></span> Random Word</a>
+    <a href="<?php echo WorldlangDictUtils::makeUri($config, 'leksilar'); ?>" class="w3-bar-item w3-button"><span class="fa fa-list"></span> All Words</a>
+    <a href="<?php echo WorldlangDictUtils::makeUri($config, 'tule'); ?>" class="w3-bar-item w3-button"><span class="fa fa-briefcase"></span> Tools</a>
     <div class="w3-dropdown-hover">
         <button class="w3-button"><span class="fa fa-language"></span> Language</button>
         <div class="w3-dropdown-content w3-bar-block">
-            <a href="<?php echo WorldlangDictUtils::makeUri($app, 'eng'); ?>" class="w3-bar-item w3-button"><span class="fa fa-random"></span> English</a>
-            <a href="<?php echo WorldlangDictUtils::makeUri($app, 'epo'); ?>" class="w3-bar-item w3-button"><span class="fa fa-random"></span> Esperanto</a>
-            <a href="<?php echo WorldlangDictUtils::makeUri($app, 'fra'); ?>" class="w3-bar-item w3-button"><span class="fa fa-random"></span> français</a>
-            <a href="<?php echo WorldlangDictUtils::makeUri($app, 'glb'); ?>" class="w3-bar-item w3-button"><span class="fa fa-random"></span> globasa</a>
-            <a href="<?php echo WorldlangDictUtils::makeUri($app, 'spa'); ?>" class="w3-bar-item w3-button"><span class="fa fa-random"></span> español</a>
-            <a href="<?php echo WorldlangDictUtils::makeUri($app, 'rus'); ?>" class="w3-bar-item w3-button"><span class="fa fa-random"></span> русский</a>
-            <a href="<?php echo WorldlangDictUtils::makeUri($app, 'zho'); ?>" class="w3-bar-item w3-button"><span class="fa fa-random"></span> 中文</a>
+            <a href="<?php echo WorldlangDictUtils::makeUri($config, 'eng'); ?>" class="w3-bar-item w3-button"><span class="fa fa-random"></span> English</a>
+            <a href="<?php echo WorldlangDictUtils::makeUri($config, 'epo'); ?>" class="w3-bar-item w3-button"><span class="fa fa-random"></span> Esperanto</a>
+            <a href="<?php echo WorldlangDictUtils::makeUri($config, 'fra'); ?>" class="w3-bar-item w3-button"><span class="fa fa-random"></span> français</a>
+            <a href="<?php echo WorldlangDictUtils::makeUri($config, 'glb'); ?>" class="w3-bar-item w3-button"><span class="fa fa-random"></span> globasa</a>
+            <a href="<?php echo WorldlangDictUtils::makeUri($config, 'spa'); ?>" class="w3-bar-item w3-button"><span class="fa fa-random"></span> español</a>
+            <a href="<?php echo WorldlangDictUtils::makeUri($config, 'rus'); ?>" class="w3-bar-item w3-button"><span class="fa fa-random"></span> русский</a>
+            <a href="<?php echo WorldlangDictUtils::makeUri($config, 'zho'); ?>" class="w3-bar-item w3-button"><span class="fa fa-random"></span> 中文</a>
         </div>
     </div>
     <div class="w3-dropdown-hover">
@@ -105,12 +105,12 @@ namespace WorldlangDict;?>
 <div class="w3-pale-green">
   <div class="w3-container">
     <button id="openNav" class="w3-button w3-pale-green w3-xlarge" onclick="w3_open()">&#9776;</button>
-    <h1 id="appTitle" style="display: inline-block;"><span class="fa fa-book fa-lg"></span> Menalar <?php /* echo $app->getTrans('App Name'); */ ?></h1>
+    <h1 id="appTitle" style="display: inline-block;"><span class="fa fa-book fa-lg"></span> <?php echo $config->siteName; ?></h1>
   </div>
 </div>
 
-<div style="max-width: 600px; margin: auto auto; min-margin: 5px;">
-    <?php echo $app->page->content ?>
+<div id="content">
+    <?php echo $page->content ?>
 </div>
 
 

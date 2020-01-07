@@ -3,21 +3,20 @@ namespace WorldlangDict;
 
 class WordController {
     
-    public static function getWord($config, $term=null)
+    public static function addEntry($config, $term, &$page)
     {
         if (is_null($term)) {
-            $config->setPageTitle('Word list');
-            return WordController::randomWord($config);
+            WordController::randomWord($config, $page);
         } else {
-            if (isset($config->dictionary['glb'][$term])) {
-                $word = new Word($config, $config->dictionary['glb'][$term]);
-                $config->setPageTitle($term);
-                return $word->get($word);
+            if (isset($config->dictionary[$config->worldlang][$term])) {
+                $word = new Word($config, $config->dictionary[$config->worldlang][$term]);
+                $page->setTitle($term);
+                WordView::dictionaryEntry($config, $request, $word, $page);
             }
         }
     }
     
-    public static function getReverseWord($config, $lang, $term=null)
+    public static function getNatWord($config, $lang, $term=null)
     {
         if (is_null($term)) {
             $config->setPageTitle('Word list');
@@ -27,7 +26,7 @@ class WordController {
             if (isset($config->dictionary[$lang][$term])) {
                 $matches = explode(", ", $config->dictionary[$lang][$term]);
                 foreach ($matches as $curMatch) {
-                    $word = new Word($config, $config->dictionary['glb'][$curMatch]);
+                    $word = new Word($config, $config->dictionary[$config->worldlang][$curMatch]);
                     $result .= $word->get($word);
                 }
                 $config->setPageTitle($term.': English to Globasa');
@@ -36,11 +35,8 @@ class WordController {
         }
     }
     
-    public static function randomWord($config) {
-        $result = '<h1>Random word</h1>';
-        $wordIndex = array_rand($config->dictionary['glb']);
-        $word = new Word($config, $config->dictionary['glb'][$wordIndex]);
-        $result .= $word->get();
-        return $result;
+    public static function randomWord($config, &$page) {
+        $wordIndex = array_rand($config->dictionary[$config->worldlang]);
+        WordController::addEntry($config, $wordIndex, $page);
     }
 }

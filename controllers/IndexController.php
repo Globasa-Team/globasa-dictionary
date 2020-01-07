@@ -3,11 +3,9 @@ namespace WorldlangDict;
 
 class IndexController
 {
-    public static function home($config)
+    public static function home($config, &$page)
     {
-        $result = '';
-        $result .= WordController::randomWord($config);
-        
-        return $result;
+        IndexView::home($page);
+        WordController::randomWord($config, $page);
     }
 }

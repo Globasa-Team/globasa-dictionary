@@ -4,26 +4,22 @@ namespace WorldlangDict;
 // A Globasa Word
 class Word
 {
-    private $wordSource;
-    private $word;
-    private $definition;
-    private $etymology;
-    private $relatedWords;
-    private $langSynonyms;
+    public $wordSource;
+    public $term;
+    public $definition;
+    public $etymology;
+    public $relatedWords;
+    public $langSynonyms;
+    public $ipaLink;
     
     private $app;
     
-    public function get($match = null)
+    public function getDelete($match = null)
     {
-        // if (is_null($match) || $this->word==$match) {
-        //     $displayAttribute = "";
-        // } elseif (!is_null($match)) {
-        //     $displayAttribute = 'style="display: none;"';
-        // }
         $result ='
-            <div id="'.$this->word.'" class="dictionaryEntry w3-card" data-search="'.implode(' ', $this->searchText).'" '.$displayAttribute.'>
+            <div id="'.$this->term.'" class="dictionaryEntry w3-card" data-search="'.implode(' ', $this->searchText).'" '.$displayAttribute.'>
             <header class="w3-container w3-green">
-                <h2 id="entryTerm">'.$this->word.'</h2>
+                <h2 id="entryTerm">'.$this->term.'</h2>
             </header>
             <div class="w3-container">
             <p class="definition">'.$this->definition.'</p>
@@ -79,16 +75,17 @@ class Word
         return $result;
     }
     
-    public function __construct($app, $word)
+    public function __construct($app, $data)
     {
         $this->app = $app;
-        $this->wordSource = $word;
-        $this->word = $word['Word'];
-        $this->definition = $this->processEntryPart($word, 'Translation');
-        $this->etymology = $this->processEntryPart($word, 'Etymology');
-        $this->relatedWords = $this->makeRelatedWordsUl($this->processEntryList($word['RelatedWordsGlb']));
-        $this->searchText = $this->processEntryList($word[$app->langCap]);
+        $this->wordSource = $data;
+        $this->term = $data['Word'];
+        $this->definition = $this->processEntryPart($data, 'Translation');
+        $this->etymology = $this->processEntryPart($data, 'Etymology');
+        $this->relatedWords = $this->makeRelatedWordsUl($this->processEntryList($data['RelatedWordsGlb']));
+        $this->searchText = $this->processEntryList($data[$app->langCap]);
         $this->searchText[] = $this->word;
+        $this->ipa();
     }
     
     private function makeRelatedWordsUl($listItems)
@@ -109,16 +106,16 @@ class Word
         return $result;
     }
     
-    private function processEntryPart($word, $part)
+    private function processEntryPart($data, $part)
     {
-        if (!empty($word[$part.$this->app->langCap])) {
-            return $word[$part.$this->app->langCap];
+        if (!empty($data[$part.$this->app->langCap])) {
+            return $data[$part.$this->app->langCap];
         } else {
             $result = "";
-            if (!empty($word[$part.$this->app->defaultLangCap])) {
-                $result = $word[$part.$this->app->defaultLangCap];
-            } elseif (!empty($word[$part.$this->app->auxLangCap])) {
-                $result = $word[$part.$this->app->auxLangCap];
+            if (!empty($data[$part.$this->app->defaultLangCap])) {
+                $result = $data[$part.$this->app->defaultLangCap];
+            } elseif (!empty($data[$part.$this->app->auxLangCap])) {
+                $result = $data[$part.$this->app->auxLangCap];
             }
             return $this->app->getTrans('Missing Word Translation').$result;
         }
@@ -135,5 +132,15 @@ class Word
         } else {
             return null;
         }
+    }
+    
+    private function ipa() {
+        $phrase = strtolower($this->term);
+        $pattern = ['/c/', '/h/', '/j/', '/r/', '/x/', '/y/'];
+        $replacement = ['tʃ', 'x', 'dʒ', 'ɾ', 'ʃ', 'j'];
+        $result = preg_replace($pattern, $replacement, $phrase);
+        $result = "http://ipa-reader.xyz/?text=".$result."&voice=Carla";
+        $result = '<a href="'.$result.'"><span class="fa fa-volume-up"></span> listen</a>';
+        $this->ipaLink = $result;
     }
 }

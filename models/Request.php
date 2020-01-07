@@ -14,7 +14,7 @@ class Request
     private $path;
     private $linkQuery;
     
-    public function __construct($app)
+    public function __construct($config)
     {
         $parsedUrl = parse_url(strtolower($_SERVER['REQUEST_URI']));
         $this->path = explode('/', $parsedUrl['path']);
@@ -32,11 +32,11 @@ class Request
         if (empty($this->path[$requestSize-1])) {
             $requestSize -= 1;
         }
-        $requestSkip = sizeof(explode('/', $app->siteUri))-3;
+        $requestSkip = sizeof(explode('/', $config->siteUri))-3;
         $requestSize = $requestSize-$requestSkip;
         
         // Let's get to the request content!
-        $this->lang = $app->lang;
+        $this->lang = $config->lang;
         $this->controller = 'index';
         $this->arguments = null;
         
@@ -52,10 +52,8 @@ class Request
             }
         }
         
-        if ($requestSize <= 1) {
+        if ($requestSize <= 0) {
             $this->incomplete = true;
-        // header("Location: ".$app->siteUri.$app->lang.'/words');
-            // exit();
         } else {
             $this->incomplete = false;
         }

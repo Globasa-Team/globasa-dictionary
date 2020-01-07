@@ -1,3 +1,5 @@
+
+RewriteOptions inherit
 AddType application/x-httpd-php71 .php
 # FallbackResource /index.php
 
