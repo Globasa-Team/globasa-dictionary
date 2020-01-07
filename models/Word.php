@@ -27,7 +27,7 @@ class Word
             </header>
             <div class="w3-container">
             <p class="definition">'.$this->definition.'</p>
-            <p class="etymology">'.sprintf($this->app->getTrans('Etymology'), $this->etymology).'</p>
+            <p id="EtymologyFonts" class="etymology">'.sprintf($this->app->getTrans('Etymology'), $this->etymology).'</p>
             ';
         if (!empty($this->relatedWords)) {
             $result .= '
@@ -60,7 +60,7 @@ class Word
             <div class="w3-container">
             <p class="definition">'.$this->word.': '.$this->definition.'</p>
             </div>
-            <p class="etymology">'.sprintf($this->app->getTrans('Etymology'), $this->etymology).'</p>
+            <p id="EtymologyFonts" class="etymology">'.sprintf($this->app->getTrans('Etymology'), $this->etymology).'</p>
             ';
         if (!empty($this->relatedWords)) {
             $result .= '

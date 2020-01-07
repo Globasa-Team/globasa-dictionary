@@ -1,3 +1,5 @@
+
+RewriteOptions inherit
 AddType application/x-httpd-php71 .php
 # FallbackResource /index.php
 
@@ -6,4 +8,17 @@ RewriteBase /
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_URI} !^/\.well-known/cpanel-dcv/[0-9a-zA-Z_-]+$
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
 RewriteRule !^exclude index.php [L,NC]
+RewriteCond %{HTTP_HOST} ^menalar\.globasa\.net$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.menalar\.globasa\.net$
+RewriteCond %{REQUEST_URI} !^/\.well-known/cpanel-dcv/[0-9a-zA-Z_-]+$
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+RewriteRule ^/?$ "http\:\/\/menalar\.globasa\.net\/eng\/" [R=301,L]
+RewriteCond %{HTTP_HOST} ^menalar\.globasa\.net$ [OR]
+RewriteCond %{HTTP_HOST} ^www\.menalar\.globasa\.net$
+RewriteCond %{REQUEST_URI} !^/\.well-known/cpanel-dcv/[0-9a-zA-Z_-]+$
+RewriteCond %{REQUEST_URI} !^/\.well-known/pki-validation/[A-F0-9]{32}\.txt(?:\ Comodo\ DCV)?$
+RewriteRule ^eng\/leksi$ "http\:\/\/menalar\.globasa\.net\/eng\/" [R=301,L]
+

@@ -7,7 +7,6 @@ class IndexController
     {
         $result = '';
         $result .= WordController::randomWord($config);
-        
         return $result;
     }
 }
