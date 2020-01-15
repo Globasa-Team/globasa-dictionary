@@ -1,5 +1,6 @@
 <?php
-namespace WorldlangDict;?>
+namespace WorldlangDict;
+?>
 <!doctype html>
 <html class="no-js" lang="">
 
@@ -16,7 +17,7 @@ namespace WorldlangDict;?>
   <link rel="stylesheet" href="<?php echo $config->templateUri; ?>css/normalize.css">
   <link rel="stylesheet" href="<?php echo $config->templateUri; ?>css/main.css">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <link rel="stylesheet" href="<?php echo $app->templateUri; ?>css/globasa.css">
+  <link rel="stylesheet" href="<?php echo $config->templateUri; ?>css/globasa.css">
   <link href="https://fonts.googleapis.com/css?family=Literata|Merriweather&display=swap" rel="stylesheet"> 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" integrity="sha256-gsmEoJAws/Kd3CjuOQzLie5Q3yshhvmo7YNtBG7aaEY=" crossorigin="anonymous">
   <meta name="theme-color" content="#fafafa">
@@ -28,33 +29,40 @@ namespace WorldlangDict;?>
   <![endif]-->
 
 
-<div class="w3-sidebar w3-bar-block w3-card w3-animate-left" style="display:none" id="mySidebar">
-    <button class="w3-bar-item w3-button w3-large" onclick="w3_close()">Close &times;</button>
+<div class="w3-sidebar w3-bar-block w3-card w3-animate-right w3-collapse" style="display:none;right:0;top:50px;" id="sidebar">
+    <!--<button class="w3-bar-item w3-button w3-large" onclick="w3_close()">Close &times;</button>-->
   
     <form action="<?php echo WorldlangDictUtils::makeUri($config, "search"); ?>" method="get">
-        <input type="text" name="term" placeholder="<?php echo $config->getTrans('Search Placeholder');?>" class="w3-input w3-border" />
-        <input type="submit" name="gSearch" value="Globasa Search" class="w3-btn w3-blue" />
-        <input type="submit" name="lSearch" value="English Search" class="w3-btn w3-blue" />
+        <input type="text" name="wTerm" placeholder="Globasa search -- <?php echo $config->getTrans('Search Placeholder');?>" class="w3-input w3-border" />
+        <input type="text" name="nTerm" placeholder="English search -- <?php echo $config->getTrans('Search Placeholder');?>" class="w3-input w3-border" />
+        <input type="submit" value="Search" class="w3-btn w3-blue" />
     </form>
     <hr />
     <a href="<?php echo WorldlangDictUtils::makeUri($config, ''); ?>" class="w3-bar-item w3-button"><span class="fa fa-random"></span> Random Word</a>
     <a href="<?php echo WorldlangDictUtils::makeUri($config, 'leksilar'); ?>" class="w3-bar-item w3-button"><span class="fa fa-list"></span> All Words</a>
     <a href="<?php echo WorldlangDictUtils::makeUri($config, 'tule'); ?>" class="w3-bar-item w3-button"><span class="fa fa-briefcase"></span> Tools</a>
-    <div class="w3-dropdown-hover">
-        <button class="w3-button"><span class="fa fa-language"></span> Language</button>
-        <div class="w3-dropdown-content w3-bar-block">
-            <a href="<?php echo WorldlangDictUtils::makeUri($config, 'eng'); ?>" class="w3-bar-item w3-button"><span class="fa fa-random"></span> English</a>
-            <a href="<?php echo WorldlangDictUtils::makeUri($config, 'epo'); ?>" class="w3-bar-item w3-button"><span class="fa fa-random"></span> Esperanto</a>
-            <a href="<?php echo WorldlangDictUtils::makeUri($config, 'fra'); ?>" class="w3-bar-item w3-button"><span class="fa fa-random"></span> français</a>
-            <a href="<?php echo WorldlangDictUtils::makeUri($config, 'glb'); ?>" class="w3-bar-item w3-button"><span class="fa fa-random"></span> globasa</a>
-            <a href="<?php echo WorldlangDictUtils::makeUri($config, 'spa'); ?>" class="w3-bar-item w3-button"><span class="fa fa-random"></span> español</a>
-            <a href="<?php echo WorldlangDictUtils::makeUri($config, 'rus'); ?>" class="w3-bar-item w3-button"><span class="fa fa-random"></span> русский</a>
-            <a href="<?php echo WorldlangDictUtils::makeUri($config, 'zho'); ?>" class="w3-bar-item w3-button"><span class="fa fa-random"></span> 中文</a>
+    <div class="w3-dropdown-click">
+        <button class="w3-button" onclick="toggleAccordian(languageMenu)"><span class="fa fa-language"></span> Language</button>
+        <div id="languageMenu" class="w3-dropdown-content w3-bar-block w3-blue">
+            <a href="<?php echo WorldlangDictUtils::makeUri($config, 'eng'); ?>" class="w3-bar-item w3-button">
+                <span class="fa fa-random"></span> English</a>
+            <a href="<?php echo WorldlangDictUtils::makeUri($config, 'epo'); ?>" class="w3-bar-item w3-button">
+                <span class="fa fa-random"></span> Esperanto</a>
+            <a href="<?php echo WorldlangDictUtils::makeUri($config, 'fra'); ?>" class="w3-bar-item w3-button">
+                <span class="fa fa-random"></span> français</a>
+            <a href="<?php echo WorldlangDictUtils::makeUri($config, 'glb'); ?>" class="w3-bar-item w3-button">
+                <span class="fa fa-random"></span> globasa</a>
+            <a href="<?php echo WorldlangDictUtils::makeUri($config, 'spa'); ?>" class="w3-bar-item w3-button">
+                <span class="fa fa-random"></span> español</a>
+            <a href="<?php echo WorldlangDictUtils::makeUri($config, 'rus'); ?>" class="w3-bar-item w3-button">
+                <span class="fa fa-random"></span> русский</a>
+            <a href="<?php echo WorldlangDictUtils::makeUri($config, 'zho'); ?>" class="w3-bar-item w3-button">
+                <span class="fa fa-random"></span> 中文</a>
         </div>
     </div>
-    <div class="w3-dropdown-hover">
-        <button class="w3-button"><span class="fa fa-ellipsis-h"></span> More</button>
-        <div class="w3-dropdown-content w3-bar-block">
+    <div class="w3-dropdown-click">
+        <button class="w3-button" onclick="toggleAccordian(moreMenu)"><span class="fa fa-ellipsis-h"></span> More </button>
+        <div id="moreMenu" class="w3-dropdown-content w3-bar-block w3-blue">
             <a href="http://www.globasa.net/" class="w3-bar-item w3-button"><span class="fa fa-link"></span> Globasa</a>
             <a href="https://github.com/ShawnPConroy/WorldlangDict" class="w3-bar-item w3-button"><span class="fa fa-github"></span> GitHub</a>
             <a href="" class="w3-bar-item w3-button"><span class="fa fa-bug"></span> Report a problem (coming soon)</a>
@@ -68,9 +76,9 @@ namespace WorldlangDict;?>
 
 <div id="main">
 
-<div class="w3-pale-green">
+<div class="w3-pale-blue">
   <div class="w3-container">
-    <button id="openNav" class="w3-button w3-pale-green w3-xlarge" onclick="w3_open()">&#9776;</button>
+    <button id="openNav" class="w3-button w3-pale-blue w3-xlarge w3-right" onclick="w3_open()">&#9776;</button>
     <h1 id="appTitle" style="display: inline-block;"><span class="fa fa-book fa-lg"></span> <?php echo $config->siteName; ?></h1>
   </div>
 </div>
@@ -79,24 +87,32 @@ namespace WorldlangDict;?>
     <?php echo $page->content ?>
 </div>
 
-
-</div>
-
-</div>
+</div> <!-- id="main" -->
 
 <script>
 function w3_open() {
-  document.getElementById("main").style.marginLeft = "200px";
-  document.getElementById("mySidebar").style.width = "200px";
-  document.getElementById("mySidebar").style.display = "block";
+//   document.getElementById("main").style.marginLeft = "200px";
+  document.getElementById("sidebar").style.width = "200px";
+  document.getElementById("sidebar").style.display = "block";
   document.getElementById("openNav").style.display = 'none';
 }
 function w3_close() {
-  document.getElementById("main").style.marginLeft = "0%";
-  document.getElementById("mySidebar").style.display = "none";
+//   document.getElementById("main").style.marginLeft = "0%";
+  document.getElementById("sidebar").style.display = "none";
   document.getElementById("openNav").style.display = "inline-block";
 }
 
+function toggleAccordian(submenuId) {
+    if (submenuId.className.indexOf("w3-show") == -1) {
+        submenuId.className += " w3-show";
+        submenuId.previousElementSibling.className += " w3-grey";
+    } else { 
+        submenuId.className = submenuId.className.replace(" w3-show", "");
+        submenuId.previousElementSibling.className = 
+        submenuId.previousElementSibling.className.replace(" w3-green", "");
+    }
+    
+}
 
 </script>
 

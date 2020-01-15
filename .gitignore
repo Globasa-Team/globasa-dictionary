@@ -1,6 +1,8 @@
 # Ignore web server error logs
 error_log
 src/config.php
+.php_cs.cache
+config.php
 
 # Ignore backups
 backup

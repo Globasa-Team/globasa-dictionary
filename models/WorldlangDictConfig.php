@@ -38,7 +38,8 @@ class WorldlangDictConfig
         }
     }
     
-    public function setWorldlang($lang) {
+    public function setWorldlang($lang)
+    {
         $this->worldlang = strtolower($lang);
         $this->worldlangCap = ucfirst($lang);
     }

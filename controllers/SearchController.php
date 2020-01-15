@@ -3,26 +3,21 @@ namespace WorldlangDict;
 
 class SearchController
 {
-    
-    public static function search($config, $request)
+    public static function search($config, $request, &$page)
     {
-        $result = "";
-        $world = $config->dictionary['glb'];
+        $world = $config->dictionary[$config->worldlang];
         $nat = $config->dictionary[$request->lang];
-        $term = strtolower($request->options['term']);
-        // var_dump($request->options);
+        
         $partialMatchesWorld = [];
         $partialMatchesNat = [];
         
         if (!is_null($request->options)) {
-            if (isset($request->options['term'])) {
-                
-                if(isset($request->options['gsearch'])) {
-                    $partialMatches .= SearchController::searchLang($config, $config->dictionary, 'glb', $term);
-                }
-                else if(isset($request->options['lsearch'])) {
-                    $partialMatches .= SearchController::searchLang($config, $config->dictionary, $request->lang, $term);
-                }
+            if (isset($request->options['wterm']) && !empty($request->options['wterm'])) {
+                $term = strtolower($request->options['wterm']);
+                $partialMatches = SearchController::searchLang($config, $config->dictionary, $config->worldlang, $term);
+            } elseif (isset($request->options['nterm']) && !empty($request->options['nterm'])) {
+                $term = strtolower($request->options['nterm']);
+                $partialMatches = SearchController::searchLang($config, $config->dictionary, $request->lang, $term);
             } else {
                 // redirect to main page
                 WorldlangDictUtils::redirect($config);
@@ -32,20 +27,17 @@ class SearchController
             WorldlangDictUtils::redirect($config);
         }
         
-        return SearchView::results($partialMatches);
+        SearchView::results($config, $partialMatches, $page);
     }
     
-    private static function searchLang($config, $dict, $lang, $term) {
-                
+    private static function searchLang($config, $dict, $lang, $term)
+    {
         // look for exact match
         if (isset($dict[$lang][$term])) {
             if ($lang == 'glb') {
                 WorldlangDictUtils::redirect($config, 'leksi/'.urlencode($term));
-                
-            }
-            else {
+            } else {
                 WorldlangDictUtils::redirect($config, 'cel-ruke/'.urlencode($term));
-                
             }
         }
         
@@ -56,7 +48,6 @@ class SearchController
                 $partialMatches[] = $word;
             }
         }
-        
-        return $result;
+        return $partialMatches;
     }
 }

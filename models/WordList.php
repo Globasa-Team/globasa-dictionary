@@ -3,53 +3,26 @@ namespace WorldlangDict;
 
 class WordList
 {
-    private $app;
-    private $listLang;
-    private $list;
+    public $listLang;
+    public $list;
     
-    public function __construct($app, $lang='glb')
+    public function __construct($config, $lang='glb')
     {
-        $this->app = $app;
         $this->listLang = $lang;
-        //load dictionary
-        foreach ($this->app->dictionary[$lang] as $word=>$wordData) {
-            if ($lang == 'glb') {
-                $this->list[strtolower($word)] = new Word($app, $wordData);
+        
+        foreach ($config->dictionary[$lang] as $word=>$wordData) {
+            if ($lang == $config->worldlang) {
+                $this->list[strtolower($word)] = new Word($config, $wordData);
             } else {
-                $glbWords = explode(',', $wordData);
-                if (sizeof($glbWords)==1) {
-                    $this->list[$word] = new Word($app, $this->app->dictionary['glb'][$glbWords[0]]);
+                $wLWords = explode(',', $wordData);
+                if (sizeof($wLWords)==1) {
+                    $this->list[$word] = new Word($config, $config->dictionary[$config->worldlang][$wLWords[0]]);
                 } else {
-                    foreach ($glbWords as $glbWord) {
-                        $this->list[$word][$glbWord] = new Word($app, $this->app->dictionary['glb'][trim($glbWord)]);
+                    foreach ($wLWords as $wLWord) {
+                        $this->list[$word][$glbWord] = new Word($config, $config->dictionary[$config->worldlang][trim($wLWord)]);
                     }
                 }
             }
         }
     }
-    
-    
-    public function getNewDelete($word = null)
-    {
-        $result = '';
-        if ($this->listLang == 'glb') {
-            $result .= $this->list[$word]->get();
-        } else {
-            if ($this->listLang != "glb") {
-                $result .='<strong>'.sprintf($this->app->getTrans('Entries for'), $word, $this->listLang).'</strong>';
-            }
-            if (is_a($this->list[$word], 'WorldlangDict\Word')) {
-                // Single word
-                $result .= $this->list[$word]->getReverse();
-            } else {
-                // Array
-                foreach ($this->list[$word] as $subEntry) {
-                    // $result .= "Something /$word/";
-                    $result .= $subEntry->getReverse();
-                }
-            }
-        }
-        return $result;
-    }
-    
 }

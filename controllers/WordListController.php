@@ -3,10 +3,10 @@ namespace WorldlangDict;
 
 class WordListController
 {
-    public static function getWordList($config, $listLang, &$page) {
+    public static function getWordList($config, $request, $listLang, &$page)
+    {
         $list = new WordList($config, $listLang);
-        $page->setPageTitle('Word list');
-        WordListView::addList($page);
+        $page->setTitle('Word list');
+        WordListView::addList($config, $request, $list, $page);
     }
-    
 }

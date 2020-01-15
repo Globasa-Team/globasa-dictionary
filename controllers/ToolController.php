@@ -3,15 +3,14 @@ namespace WorldlangDict;
 
 class ToolController
 {
-    
     public static function run($config, $request, &$page)
     {
         switch ($request->arguments[0]) {
             case 'homonym-terminator':
-                ToolController::homonymTerminator($config, $request->argument[1], $page);
+                ToolController::homonymTerminator($config, $request, $page);
                 break;
             case 'minimal-pair-detector':
-                ToolController::minimalPairDetector($config, $argument, $page);
+                ToolController::minimalPairDetector($config, $request, $page);
                 break;
             default:
                 ToolView::toolList($config, $page);
@@ -19,9 +18,14 @@ class ToolController
         }
     }
     
-    public static function minimalPairDetector($config, $checkWord = null, &$page)
+    public static function minimalPairDetector($config, $request, &$page) {
+        $nearMatches = Tool::minimalPairDetector($config, $request);
+        var_dump($nearMatches);
+        ToolView::minimalPairDetector($config, $request, $nearMatches, $page);
+    }
+    
+    public static function minimalPairDetectorDelete ($config, $checkWord = null, &$page)
     {
-        $page->content = '';
         $page->content .= "<h1>Find minimal pairings</h1>";
         $page->content .= '
             <form action='.WorldlangDictUtils::makeUri($config, 'tule/minimal-pair-detector').' method="get">
@@ -64,12 +68,16 @@ class ToolController
                     <ul>".$d2."</ul>";
     }
     
-    public static function homonymTerminator($config, $newRoot = null, &$page)
+    public static function homonymTerminator($config, $request, &$page) {
+        $genWords = Tool::homonymTerminator($config, $request);
+        ToolView::homonymTerminator($config, $genWords, $page);
+    }
+    
+    public static function homonymTerminatorDelete($config, $newRoot = null, &$page)
     {
         $page->content .= "<h1>Find Homonyns</h1>";
         $page->content .= '<form action="/globasa-dictionary/eng/tool/homonym-terminator" method="post"><input placeholder="New root" /><input type="submit" /></form>';
-        // var_dump($_REQUEST);
-        // var_dump($_SERVER);
+        
         foreach ($config->dictionary['glb'] as $word=>$entry) {
             if ($entry['Category']=='root') {
                 $root[]=$word;

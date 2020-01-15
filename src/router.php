@@ -14,28 +14,28 @@ function router($config)
         WorldlangDictUtils::redirect($config, "");
     }
     $config->setLang($request->lang);
-
+    
     switch ($request->controller) {
-            
-        case 'leksi':
-            $word = isset($request->arguments[0]) ? $request->arguments[0] : null;
-            WordController::addEntry($config, $word, $page);
-            break;
-            
+        
         case 'tule':
             ToolController::run($config, $request, $page);
             break;
             
+        case 'leksi':
+            $word = isset($request->arguments[0]) ? $request->arguments[0] : null;
+            WordController::addEntry($config, $request, $word, $page);
+            break;
+            
         case 'cel-ruke':
-            $page->content .= WordController::getNatWord($config, $config->lang, $config->option);
+            WordController::addNatWord($config, $request, $config->lang, $page);
             break;
         
         case 'search':
-            $page->content .= SearchController::search($config, $request);
+            SearchController::search($config, $request, $page);
             break;
             
         case 'leksilar':
-            $page->content .= WordListController::getWordList($config, $config->worldlang, $config->option);
+            WordListController::getWordList($config, $request, $config->worldlang, $page);
             break;
             
         default:

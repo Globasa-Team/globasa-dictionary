@@ -1,9 +1,9 @@
 <?php
 namespace WorldlangDict;
 
-class WordController {
-    
-    public static function addEntry($config, $term, &$page)
+class WordController
+{
+    public static function addEntry($config, $request, $term, &$page)
     {
         if (is_null($term)) {
             WordController::randomWord($config, $page);
@@ -16,27 +16,27 @@ class WordController {
         }
     }
     
-    public static function getNatWord($config, $lang, $term=null)
+    public static function addNatWord($config, $request, $lang, &$page)
     {
+        $term = isset($request->arguments[0]) ? $request->arguments[0] : null;
+        
         if (is_null($term)) {
-            $config->setPageTitle('Word list');
-            return WordController::randomWord($config);
+            WorldlangDictUtils::redirect($config, "");
         } else {
-            $result = "";
             if (isset($config->dictionary[$lang][$term])) {
                 $matches = explode(", ", $config->dictionary[$lang][$term]);
                 foreach ($matches as $curMatch) {
                     $word = new Word($config, $config->dictionary[$config->worldlang][$curMatch]);
-                    $result .= $word->get($word);
+                    WordView::dictionaryEntry($config, $request, $word, $page);
                 }
-                $config->setPageTitle($term.': English to Globasa');
-                return $result;
+                $page->setTitle($term.': English to Globasa');
             }
         }
     }
     
-    public static function randomWord($config, &$page) {
+    public static function randomWord($config, &$page)
+    {
         $wordIndex = array_rand($config->dictionary[$config->worldlang]);
-        WordController::addEntry($config, $wordIndex, $page);
+        WordController::addEntry($config, $request, $wordIndex, $page);
     }
 }
