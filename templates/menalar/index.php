@@ -74,14 +74,14 @@ namespace WorldlangDict;
     
 </div>
 
-<div id="main">
-
-<div class="w3-pale-blue">
+<div id="siteHeader" class="w3-pale-blue">
   <div class="w3-container">
     <button id="openNav" class="w3-button w3-pale-blue w3-xlarge w3-right" onclick="w3_open()">&#9776;</button>
     <h1 id="appTitle" style="display: inline-block;"><span class="fa fa-book fa-lg"></span> <?php echo $config->siteName; ?></h1>
   </div>
 </div>
+
+<div id="main">
 
 <div id="content">
     <?php echo $page->content ?>

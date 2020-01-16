@@ -9,7 +9,7 @@ class Tool {
         foreach ($config->dictionary[$config->worldlang] as $word=>$entry) {
             if ($entry['Category']=='root') {
                 $root[]=$word;
-                $genList[$word][] = 'Root from word list';
+                $genList[$word][$currentRoot] = 'Root';
             } elseif ($entry['Category']=='affix' && $word[0]=='-') {
                 $suffix[]= $word;
             } elseif ($entry['Category']=='affix') {
@@ -22,35 +22,20 @@ class Tool {
             $root[] = $request->options['root'];
         }
         
-        // $page->content.= '<p>Found '.sizeof($root).' root, '.sizeof($prefix).' prefixes and '.sizeof($suffix).' suffixes</p>';
-        
         // Generate all word combinations
         foreach ($root as $currentRoot) {
             foreach ($suffix as $currentSuffix) {
                 $genWord = $currentRoot.substr($currentSuffix, 1);
-                $genList[$genWord][] = "$currentRoot-$currentSuffix";
+                $genList[$genWord][$currentRoot] = "$currentRoot-$currentSuffix";
             }
             foreach ($prefix as $currentPrefix) {
                 $genWord = substr($currentPrefix, 0, -1).$currentRoot;
-                $genList[$genWord][] = "$currentPrefix-$currentRoot";
+                $genList[$genWord][$currentRoot] = "$currentPrefix-$currentRoot";
             }
         }
         ksort($genList);
         
         return $genList;
-        // Show results for each word.
-        
-        foreach ($genList as $genWord=>$genRoots) {
-            if (sizeof($genRoots)>1) {
-                if (isset($config->dictionary['glb'][$genWord])) {
-                    $definition = '</br>'.$config->dictionary['glb'][$genWord][DefinitionEng];
-                } else {
-                    $definition = "";
-                }
-                $page->content .= '<li><span style="font-weight: bold; font-size: larger;">'.$genWord."</span><br />".
-                    "conflicting roots: ". implode($genRoots, ', ').$definition."</li>";
-            }
-        }
     }
     
     public static function minimalPairDetector ($config, $request) {

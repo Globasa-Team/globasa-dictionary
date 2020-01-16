@@ -25,7 +25,7 @@ class ToolView
             ';
     }
     
-    public static function homonymTerminator($config, $genList, &$page) {
+    public static function homonymTerminator($config, $request, $genList, &$page) {
         $page->content .= "<h1>Find Homonyns</h1>";
         $page->content .= '
             <div class="w3-card w3-container" style="padding: 5px">
@@ -34,9 +34,9 @@ class ToolView
                 <input type="submit" class="w3-btn w3-blue-grey" />
                 </form>
             </div>';
-        // var_dump($genList);
+        
         foreach ($genList as $genWord=>$genRoots) {
-            if (sizeof($genRoots)>1) {
+            if (sizeof($genRoots)>1 && (!isset($request->options['root']) || isset($genRoots[$request->options['root']]))) {
                 if (isset($config->dictionary['glb'][$genWord])) {
                     $definition = '</br>'.$config->dictionary['glb'][$genWord][DefinitionEng];
                 } else {

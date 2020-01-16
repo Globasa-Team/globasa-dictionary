@@ -1,0 +1,20 @@
+<?php
+namespace WorldlangDict;
+
+/* App config */
+/* Site configurations (change these) */
+$config->siteUri = 'http://test.globasa.net/';
+$config->siteName = 'Dev Menalar';
+$config->setWorldlang('glb');
+$config->setLang('glb', 'eng');
+
+/* App configurations (leave these alone) */
+$config->setTemplate('menalar', 'templates');
+
+$config->dictionaryFile = '/home/user/api.globasa.net/dictionary.yaml';
+// $config->languagesFile = '/home/user/api.globasa.net/languages.yaml';
+$config->internationalizationFile = '/home/user/api.globasa.net/internationalization.yaml';
+
+$config->dictionary = yaml_parse_file($config->dictionaryFile);
+// $config->languages = yaml_parse_file($config->languagesFile);
+$config->trans = yaml_parse_file($config->internationalizationFile);

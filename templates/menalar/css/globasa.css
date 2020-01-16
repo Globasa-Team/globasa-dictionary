@@ -13,7 +13,7 @@ h1, h2, h3, h4, h5, h6 {
 
 #content {
     max-width: 600px;
-    margin: auto auto;
+    margin: 100px auto;
     min-margin: 5px;
 }
 
@@ -21,6 +21,17 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: 500;
     margin-bottom: 25px;
     margin-top: 25px;
+}
+
+#siteHeader {
+    position: fixed;
+    top: 0;
+    width: 100%;
+}
+
+#sidebar {
+    overflow-y: scroll;
+    bottom: 50;
 }
 
 #sidebar input {

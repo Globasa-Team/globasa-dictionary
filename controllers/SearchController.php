@@ -10,7 +10,8 @@ class SearchController
         
         $partialMatchesWorld = [];
         $partialMatchesNat = [];
-        
+        var_dump($request);
+        die("search");
         if (!is_null($request->options)) {
             if (isset($request->options['wterm']) && !empty($request->options['wterm'])) {
                 $term = strtolower($request->options['wterm']);

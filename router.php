@@ -9,7 +9,7 @@ function router($config)
     $page = new Page($config->siteName);
     
     $request = new Request($config);
-    
+    var_dump($request);die();
     if ($request->incomplete) {
         WorldlangDictUtils::redirect($config, "");
     }

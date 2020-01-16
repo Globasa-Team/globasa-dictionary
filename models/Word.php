@@ -19,10 +19,21 @@ class Word
         $this->definition = $this->processEntryPart($config, $data, 'Translation');
         $this->etymology = $this->processEntryPart($config, $data, 'LeksiliAsel');
         $this->etymology = $data['LeksiliAsel'];
+        $this->processEtymology($config);
         $this->relatedWords = $this->makeRelatedWordsUl($config, $this->processEntryList($data['RelatedWordsGlb']));
         $this->searchText = $this->processEntryList($data[$app->langCap]);
         $this->searchText[] = $this->word;
         $this->ipa();
+    }
+    
+    private function processEtymology($config) {
+        if(strpos($this->etymology, '+')) {
+            $words = explode(' + ', $this->etymology);
+            foreach($words as $word) {
+                $links[] = WorldlangDictUtils::makeLink($config, 'leksi/'.$word, $word);
+            }
+            $this->etymology = implode(' + ', $links);
+        }
     }
     
     private function makeRelatedWordsUl($config, $listItems)
