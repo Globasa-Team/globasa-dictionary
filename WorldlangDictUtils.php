@@ -9,9 +9,18 @@ class WorldlangDictUtils
     }
     
     public static function changeLangUri($config, $request, $lang) {
+        if (is_null($request->arguments)) {
+            $args = '';
+        }
+        else if (sizeof($request->arguments) == 1) {
+            $args = $request->arguments[0];
+        }
+        else {
+            $args = implode('/', $request->arguments);
+        }
         return $config->siteUri.$lang.'/'
             .$request->controller.'/'
-            .implode('/', $request->arguments).'/'
+            .$args
             .$request->linkQuery;
     }
     
