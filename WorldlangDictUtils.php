@@ -6,7 +6,13 @@ class WorldlangDictUtils
     public static function makeUri($config, $controller)
     {
         return $config->siteUri.$config->lang.'/'.$controller.$request->linkQuery;
-        var_dump($config->lang);
+    }
+    
+    public static function changeLangUri($config, $request, $lang) {
+        return $config->siteUri.$lang.'/'
+            .$request->controller.'/'
+            .implode('/', $request->arguments).'/'
+            .$request->linkQuery;
     }
     
     public static function redirect($config, $controller="")

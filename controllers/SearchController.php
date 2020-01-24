@@ -10,15 +10,17 @@ class SearchController
         
         $partialMatchesWorld = [];
         $partialMatchesNat = [];
-        var_dump($request);
-        die("search");
+        $page->setTitle($config->getTrans('search result title'));
+        
         if (!is_null($request->options)) {
             if (isset($request->options['wterm']) && !empty($request->options['wterm'])) {
                 $term = strtolower($request->options['wterm']);
                 $partialMatches = SearchController::searchLang($config, $config->dictionary, $config->worldlang, $term);
+                $lang = 'glb';
             } elseif (isset($request->options['nterm']) && !empty($request->options['nterm'])) {
                 $term = strtolower($request->options['nterm']);
                 $partialMatches = SearchController::searchLang($config, $config->dictionary, $request->lang, $term);
+                $lang = 'natlang';
             } else {
                 // redirect to main page
                 WorldlangDictUtils::redirect($config);
@@ -28,7 +30,7 @@ class SearchController
             WorldlangDictUtils::redirect($config);
         }
         
-        SearchView::results($config, $partialMatches, $page);
+        SearchView::results($config, $partialMatches, $lang, $page);
     }
     
     private static function searchLang($config, $dict, $lang, $term)

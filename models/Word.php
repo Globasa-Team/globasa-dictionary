@@ -23,7 +23,7 @@ class Word
         $this->relatedWords = $this->makeRelatedWordsUl($config, $this->processEntryList($data['RelatedWordsGlb']));
         $this->searchText = $this->processEntryList($data[$app->langCap]);
         $this->searchText[] = $this->word;
-        $this->ipa();
+        $this->ipa($config);
     }
     
     private function processEtymology($config) {
@@ -82,14 +82,22 @@ class Word
         }
     }
     
-    private function ipa()
+    private function ipa($config)
     {
         $phrase = strtolower($this->term);
-        $pattern = ['/c/', '/h/', '/j/', '/r/', '/x/', '/y/'];
-        $replacement = ['tʃ', 'x', 'dʒ', 'ɾ', 'ʃ', 'j'];
+        /*
+        c - 'tʃ'
+        j - 'dʒ'
+        r - 'ɾ'
+        x - 'ʃ'
+        y - 'j'
+        h - 'x'
+        */
+        $pattern = ['/c/', '/j/', '/r/', '/x/', '/y/', '/h/'];
+        $replacement = ['tʃ', 'dʒ', 'ɾ', 'ʃ', 'j', 'x'];
         $result = preg_replace($pattern, $replacement, $phrase);
         $result = "http://ipa-reader.xyz/?text=".$result."&voice=Carla";
-        $result = '<a href="'.$result.'"><span class="fa fa-volume-up"></span> listen</a>';
+        $result = '<a href="'.$result.'"><span class="fa fa-volume-up"></span> '.$config->getTrans('ipa link').'</a>';
         $this->ipaLink = $result;
     }
 }

@@ -3,10 +3,11 @@ namespace WorldlangDict;
 
 class SearchView
 {
-    public static function results($config, $partialMatches, $page)
+    public static function results($config, $partialMatches, $lang, $page)
     {
         // if found, Ask which they want.
-        $page->content .= '<h3 style="color: black">Search results</h3>';
+        
+        $page->content .= '<h3 style="color: black">'.$config->getTrans('search result title').'</h3>';
         if (sizeof($partialMatches)) {
             $page->content .= '<ul>';
             
@@ -25,7 +26,7 @@ class SearchView
             $page->content .= '</ul>';
         } else {
             // Otherwise, say nothing was found.
-            $page->content .= 'No matches found!';
+            $page->content .= $config->getTrans['no matches found'];
         }
     }
 }

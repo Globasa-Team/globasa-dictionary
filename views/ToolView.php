@@ -5,32 +5,32 @@ class ToolView
 {
     public static function toolList($config, &$page)
     {
-        $page->content .= '<h1>Tools test</h1>
+        $page->content .= '<h1>'.$config->getTrans('tools button').'</h1>
                 
                 <div class="w3-card">
                     <header class="w3-container w3-blue">
-                        <h2><a href="'.WorldlangDictUtils::makeUri($config, 'tule/homonym-terminator').'">Find homonyms</a></h2>
+                        <h2><a href="'.WorldlangDictUtils::makeUri($config, 'tule/homonym-terminator').'">'.$config->getTrans('homonym terminator title').'</a></h2>
                     </header>
-                    <div class="w3-container"><p>Find words that are too similar to suggested new words. Used when proposing a new Globasa word.</p>
+                    <div class="w3-container"><p>'.$config->getTrans('homonym terminator description').'</p>
                     </div>
                 </div>
                 
                 <div class="w3-card">
                     <header class="w3-container w3-blue">
-                        <h2><a href="'.WorldlangDictUtils::makeUri($config, 'tule/minimal-pair-detector').'">Find minimal pairings</a></h2>
+                        <h2><a href="'.WorldlangDictUtils::makeUri($config, 'tule/minimal-pair-detector').'">'.$config->getTrans('minimum pair title').'</a></h2>
                     </header>
-                    <div class="w3-container"><p>Find words that are too similar to a suggested new word by changing or adding a letter. Used when proposing a new Globasa word.</p>
+                    <div class="w3-container"><p>'.$config->getTrans('minimum pair description').'</p>
                     </div>
                 </div>
             ';
     }
     
     public static function homonymTerminator($config, $request, $genList, &$page) {
-        $page->content .= "<h1>Find Homonyns</h1>";
+        $page->content .= '<h1>'.$config->getTrans('homonym terminator title').'</h1>';
         $page->content .= '
             <div class="w3-card w3-container" style="padding: 5px">
                 <form action="'. WorldlangDictUtils::makeUri($config, "tule/homonym-terminator") .'" method="get">
-                <input name="root" placeholder="New root" class="w3-input w3-border w3-light-grey" style="max-width: 400px; display:inline-block; margin-right: 10px;" />
+                <input name="root" placeholder="'.$config->getTrans('homonym terminator new placeholder').'" class="w3-input w3-border w3-light-grey" style="max-width: 400px; display:inline-block; margin-right: 10px;" />
                 <input type="submit" class="w3-btn w3-blue-grey" />
                 </form>
             </div>';
@@ -42,8 +42,8 @@ class ToolView
                 } else {
                     $definition = "";
                 }
-                $page->content .= '<li><span style="font-weight: bold; font-size: larger;">'.$genWord."</span><br />".
-                    "conflicting roots: ". implode($genRoots, ', ').$definition."</li>";
+                $page->content .= '<li><span style="font-weight: bold; font-size: larger;">'.$genWord."</span><br />".$config->getTrans('homonym terminator conflicting msg').
+                    " ". implode($genRoots, ', ').$definition."</li>";
             }
         }
         $page->content .= "</ul>";
@@ -54,12 +54,12 @@ class ToolView
         $searchTerm = isset($request->options['word']) ? $request->options['word'] : "";
         
         $page->content = '';
-        $page->content .= "<h1>Find minimal pairings</h1>";
+        $page->content .= '<h1>'.$config->getTrans('minimum pair title').'</h1>';
         $page->content .= '
             <div class="w3-card w3-container" style="padding: 5px">
             <form action="'.WorldlangDictUtils::makeUri($config, 'tule/minimal-pair-detector').'" method="get">
-                <input name="word" placeholder="Enter new word" class="w3-input w3-border w3-light-grey" style="max-width: 400px; display:inline-block; margin-right: 10px;" value="'.$searchTerm.'" />
-                <input type="submit" value="Find pairs" class="w3-btn w3-blue-grey" />
+                <input name="word" placeholder="'.$config->getTrans('minimum pair new placeholder').'" class="w3-input w3-border w3-light-grey" style="max-width: 400px; display:inline-block; margin-right: 10px;" value="'.$searchTerm.'" />
+                <input type="submit" value="'.$config->getTrans('minimum pair new button').'" class="w3-btn w3-blue-grey" />
             </form>
             </div>
         ';
@@ -77,9 +77,9 @@ class ToolView
             }
         }
         
-        $page->content .="<h2>Pairs with a difference of 1:</h2>
-                    <ul>".$d1."</ul>
-                    <h2>Pairs with a difference of 2:</h2>
-                    <ul>".$d2."</ul>";
+        $page->content .='<h2>'.sprintf($config->getTrans('minimum pair result diff', '1')).'</h2>
+                    <ul>'.$d1.'</ul>
+                    <h2>'.sprintf($config->getTrans('minimum pair result diff', '2')).'</h2>
+                    <ul>'.$d2.'</ul>';
     }
 }

@@ -33,40 +33,41 @@ namespace WorldlangDict;
     <!--<button class="w3-bar-item w3-button w3-large" onclick="w3_close()">Close &times;</button>-->
   
     <form action="<?php echo WorldlangDictUtils::makeUri($config, "search"); ?>" method="get">
-        <input type="text" name="wTerm" placeholder="Globasa search -- <?php echo $config->getTrans('Search Placeholder');?>" class="w3-input w3-border" />
-        <input type="text" name="nTerm" placeholder="English search -- <?php echo $config->getTrans('Search Placeholder');?>" class="w3-input w3-border" />
-        <input type="submit" value="Search" class="w3-btn w3-blue" />
+        <input type="text" name="wTerm" placeholder="<?php echo $config->getTrans('search worldlang placeholder');?>" class="w3-input w3-border" />
+        <input type="text" name="nTerm" placeholder="<?php echo $config->getTrans('search natlang placeholder');?>" class="w3-input w3-border" />
+        <input type="submit" value="<?php echo $config->getTrans('search button');?>" class="w3-btn w3-blue" />
     </form>
     <hr />
-    <a href="<?php echo WorldlangDictUtils::makeUri($config, ''); ?>" class="w3-bar-item w3-button"><span class="fa fa-random"></span> Random Word</a>
-    <a href="<?php echo WorldlangDictUtils::makeUri($config, 'leksilar'); ?>" class="w3-bar-item w3-button"><span class="fa fa-list"></span> All Words</a>
-    <a href="<?php echo WorldlangDictUtils::makeUri($config, 'tule'); ?>" class="w3-bar-item w3-button"><span class="fa fa-briefcase"></span> Tools</a>
+    <a href="<?php echo WorldlangDictUtils::makeUri($config, ''); ?>" class="w3-bar-item w3-button"><span class="fa fa-random"></span> <?php echo $config->getTrans('random word button');?></a>
+    <a href="<?php echo WorldlangDictUtils::makeUri($config, 'leksilar'); ?>" class="w3-bar-item w3-button"><span class="fa fa-list"></span> <?php echo $config->getTrans('all words button');?></a>
+    <a href="<?php echo WorldlangDictUtils::makeUri($config, 'tule'); ?>" class="w3-bar-item w3-button"><span class="fa fa-briefcase"></span> <?php echo $config->getTrans('tools button');?></a>
     <div class="w3-dropdown-click">
-        <button class="w3-button" onclick="toggleAccordian(languageMenu)"><span class="fa fa-language"></span> Language</button>
+        <button class="w3-button" onclick="toggleAccordian(languageMenu)"><span class="fa fa-language"></span> <?php echo $config->getTrans('language button');?></button>
         <div id="languageMenu" class="w3-dropdown-content w3-bar-block w3-blue">
-            <a href="<?php echo WorldlangDictUtils::makeUri($config, 'eng'); ?>" class="w3-bar-item w3-button">
+            <p>Currently only English language translations and interface is complete.</p>
+            <a href="<?php echo WorldlangDictUtils::changeLangUri($config, $request, 'eng'); ?>" class="w3-bar-item w3-button">
                 <span class="fa fa-random"></span> English</a>
-            <a href="<?php echo WorldlangDictUtils::makeUri($config, 'epo'); ?>" class="w3-bar-item w3-button">
+            <a href="<?php echo WorldlangDictUtils::changeLangUri($config, $request, 'epo'); ?>" class="w3-bar-item w3-button">
                 <span class="fa fa-random"></span> Esperanto</a>
-            <a href="<?php echo WorldlangDictUtils::makeUri($config, 'fra'); ?>" class="w3-bar-item w3-button">
+            <a href="<?php echo WorldlangDictUtils::changeLangUri($config, $request, 'fra'); ?>" class="w3-bar-item w3-button">
                 <span class="fa fa-random"></span> français</a>
-            <a href="<?php echo WorldlangDictUtils::makeUri($config, 'glb'); ?>" class="w3-bar-item w3-button">
+            <a href="<?php echo WorldlangDictUtils::changeLangUri($config, $request, 'glb'); ?>" class="w3-bar-item w3-button">
                 <span class="fa fa-random"></span> globasa</a>
-            <a href="<?php echo WorldlangDictUtils::makeUri($config, 'spa'); ?>" class="w3-bar-item w3-button">
+            <a href="<?php echo WorldlangDictUtils::changeLangUri($config, $request, 'spa'); ?>" class="w3-bar-item w3-button">
                 <span class="fa fa-random"></span> español</a>
-            <a href="<?php echo WorldlangDictUtils::makeUri($config, 'rus'); ?>" class="w3-bar-item w3-button">
+            <a href="<?php echo WorldlangDictUtils::changeLangUri($config, $request, 'rus'); ?>" class="w3-bar-item w3-button">
                 <span class="fa fa-random"></span> русский</a>
-            <a href="<?php echo WorldlangDictUtils::makeUri($config, 'zho'); ?>" class="w3-bar-item w3-button">
+            <a href="<?php echo WorldlangDictUtils::changeLangUri($config, $request, 'zho'); ?>" class="w3-bar-item w3-button">
                 <span class="fa fa-random"></span> 中文</a>
         </div>
     </div>
     <div class="w3-dropdown-click">
-        <button class="w3-button" onclick="toggleAccordian(moreMenu)"><span class="fa fa-ellipsis-h"></span> More </button>
+        <button class="w3-button" onclick="toggleAccordian(moreMenu)"><span class="fa fa-ellipsis-h"></span> <?php echo $config->getTrans('more button');?></button>
         <div id="moreMenu" class="w3-dropdown-content w3-bar-block w3-blue">
-            <a href="http://www.globasa.net/" class="w3-bar-item w3-button"><span class="fa fa-link"></span> Globasa</a>
-            <a href="https://github.com/ShawnPConroy/WorldlangDict" class="w3-bar-item w3-button"><span class="fa fa-github"></span> GitHub</a>
-            <a href="" class="w3-bar-item w3-button"><span class="fa fa-bug"></span> Report a problem (coming soon)</a>
-            <a href="http://api.globasa.net/" class="w3-bar-item w3-button"><span class="fa fa-code"></span> API</a>
+            <a href="http://www.globasa.net/" class="w3-bar-item w3-button"><span class="fa fa-link"></span> <?php echo $config->getTrans('globasa link');?></a>
+            <a href="https://github.com/ShawnPConroy/WorldlangDict" class="w3-bar-item w3-button"><span class="fa fa-github"></span> <?php echo $config->getTrans('github link');?></a>
+            <a href="" class="w3-bar-item w3-button"><span class="fa fa-bug"></span> <?php echo $config->getTrans('report link');?></a>
+            <a href="http://api.globasa.net/" class="w3-bar-item w3-button"><span class="fa fa-code"></span> <?php echo $config->getTrans('api link');?></a>
             <hr />
             C0 <a href="http://www.globasa.net">Globasa.net</a>. A <a href="http://www.partialsolution.ca/">Partial Solution</a>.
         </div>

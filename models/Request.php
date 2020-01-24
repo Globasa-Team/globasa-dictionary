@@ -11,8 +11,8 @@ class Request
     public $options;
     public $arguments;
     public $incomplete;
-    private $path;
-    private $linkQuery;
+    public $path;
+    public $linkQuery;
     
     public function __construct($config)
     {

@@ -29,7 +29,7 @@ class WordController
                     $word = new Word($config, $config->dictionary[$config->worldlang][$curMatch]);
                     WordView::dictionaryEntry($config, $request, $word, $page);
                 }
-                $page->setTitle($term.': English to Globasa');
+                $page->setTitle($term.': '.$config->getTrans('natlang search title bar'));
             }
         }
     }
