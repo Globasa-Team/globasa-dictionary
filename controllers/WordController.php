@@ -38,5 +38,6 @@ class WordController
     {
         $wordIndex = array_rand($config->dictionary[$config->worldlang]);
         WordController::addEntry($config, $request, $wordIndex, $page);
+        $page->setTitle("Random word");
     }
 }

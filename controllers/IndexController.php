@@ -7,5 +7,6 @@ class IndexController
     {
         IndexView::home($config, $page);
         WordController::randomWord($config, $page);
+        $page->setTitle("Globasa translation dictionary");
     }
 }
