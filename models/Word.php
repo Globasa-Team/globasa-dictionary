@@ -26,10 +26,11 @@ class Word
         $this->ipa($config);
     }
     
-    private function processEtymology($config) {
-        if(strpos($this->etymology, '+')) {
+    private function processEtymology($config)
+    {
+        if (strpos($this->etymology, '+')) {
             $words = explode(' + ', $this->etymology);
-            foreach($words as $word) {
+            foreach ($words as $word) {
                 $links[] = WorldlangDictUtils::makeLink($config, 'leksi/'.$word, $word);
             }
             $this->etymology = implode(' + ', $links);

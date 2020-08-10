@@ -1,5 +1,6 @@
 <?php
 namespace WorldlangDict;
+
 ?>
 <!doctype html>
 <html class="no-js" lang="">

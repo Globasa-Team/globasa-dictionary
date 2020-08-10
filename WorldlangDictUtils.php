@@ -8,14 +8,13 @@ class WorldlangDictUtils
         return $config->siteUri.$config->lang.'/'.$controller.$request->linkQuery;
     }
     
-    public static function changeLangUri($config, $request, $lang) {
+    public static function changeLangUri($config, $request, $lang)
+    {
         if (is_null($request->arguments)) {
             $args = '';
-        }
-        else if (sizeof($request->arguments) == 1) {
+        } elseif (sizeof($request->arguments) == 1) {
             $args = $request->arguments[0];
-        }
-        else {
+        } else {
             $args = implode('/', $request->arguments);
         }
         return $config->siteUri.$lang.'/'
