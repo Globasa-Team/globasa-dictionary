@@ -5,13 +5,14 @@ class WordView
 {
     public static function dictionaryEntry($config, $request, $word, &$page)
     {
+        //var_dump($word);
         $page->content .='
-            <div id="'.$word->term.'" class="dictionaryEntry w3-card" data-search="'.implode(' ', $word->searchText).'" >
+            <div id="'.$word->word.'" class="dictionaryEntry w3-card" data-search="'.implode(' ', $word->searchText).'" >
             <header class="w3-container w3-blue">
-                <h2 id="entryTerm">'.$word->term.'</h2>
+                <h2 id="entryTerm">'.$word->word.'</h2>
             </header>
             <div class="w3-container">
-            <p class="definition">'.$word->definition.'</p>
+            <p class="definition">'.$word->eng.'</p>
             <p class="etymology">'.sprintf($config->getTrans('Etymology'), $word->etymology).'</p>
             ';
         if (!empty($word->relatedWords)) {
