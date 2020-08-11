@@ -19,16 +19,17 @@ class ToolController
         $page->setTitle($config->getTrans('tools button'));
     }
     
-    public static function minimalPairDetector($config, $request, &$page) {
+    public static function minimalPairDetector($config, $request, &$page)
+    {
         $nearMatches = Tool::minimalPairDetector($config, $request);
         ToolView::minimalPairDetector($config, $request, $nearMatches, $page);
         $page->setTitle($config->getTrans('minimum pair title'));
     }
     
-    public static function homonymTerminator($config, $request, &$page) {
+    public static function homonymTerminator($config, $request, &$page)
+    {
         $genWords = Tool::homonymTerminator($config, $request);
         ToolView::homonymTerminator($config, $request, $genWords, $page);
         $page->setTitle($config->getTrans('homonym terminator title'));
     }
-    
 }

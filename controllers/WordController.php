@@ -5,8 +5,8 @@ class WordController
 {
     public static function addEntry($config, $request, $term, &$page)
     {
-            //die("WordController/AddEntry doesn't need to create the word!");
-            //echo "test";
+        //die("WordController/AddEntry doesn't need to create the word!");
+        //echo "test";
         if (is_null($term)) {
             WordController::randomWord($config, $page);
         } else {
@@ -42,24 +42,24 @@ class WordController
 
     public static function getWordList($config, $request, $listLang, &$page)
     {
-        $list = new Array();
+        $list = [];
         if ($listLang == $config->worldlang) {
-          // NOTE Should this be in the Word class?
-          foreach ($config->dictionary->words as $word=>$wordData) {
-            $list[strtolower($word)] = new Word($config, $wordData);
-          }
-        } else {
-          // NOTE Should this be in the Word class?
-          foreach ($config->dictionary->index as $word=>$wordData) {
-            $wLWords = explode(',', $wordData);
-            if (sizeof($wLWords)==1) {
-              $this->list[$word] = new Word($config, $config->dictionary[$config->worldlang][$wLWords[0]]);
-            } else {
-              foreach ($wLWords as $wLWord) {
-                $this->list[$word][$glbWord] = new Word($config, $config->dictionary[$config->worldlang][trim($wLWord)]);
-              }
+            // NOTE Should this be in the Word class?
+            foreach ($config->dictionary->words as $word=>$wordData) {
+                $list[strtolower($word)] = new Word($config, $wordData);
             }
-          }
+        } else {
+            // NOTE Should this be in the Word class?
+            foreach ($config->dictionary->index as $word=>$wordData) {
+                $wLWords = explode(',', $wordData);
+                if (sizeof($wLWords)==1) {
+                    $this->list[$word] = new Word($config, $config->dictionary[$config->worldlang][$wLWords[0]]);
+                } else {
+                    foreach ($wLWords as $wLWord) {
+                        $this->list[$word][$glbWord] = new Word($config, $config->dictionary[$config->worldlang][trim($wLWord)]);
+                    }
+                }
+            }
         }
 
         $page->setTitle($config->getTrans('all words button'));
