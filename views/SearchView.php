@@ -26,7 +26,7 @@ class SearchView
             $page->content .= '</ul>';
         } else {
             // Otherwise, say nothing was found.
-            $page->content .= "!!".$config->getTrans['no matches found'];
+            $page->content .= "!!".$config->getTrans('no matches found');
         }
     }
 }

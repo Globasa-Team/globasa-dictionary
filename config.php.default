@@ -9,7 +9,8 @@ $config->setLang('eng', 'eng');
 $config->setTemplate('menalar', 'templates');
 
 /* API Config */
-$config->remoteCsvLocation = 'https://location/file.csv';
+$config->remoteCsvLocation = 'https://location/words.csv';
+$config->remoteI18nCsvLocation = 'https://location/lang.csv'
 $config->serializedLocation = '/home/globasa/api.globasa.net/globasa-menalar-1.dat';
 
 $config->csvLocation = '/home/user/api/globasa-basili-menalar-1.csv';
@@ -18,8 +19,8 @@ $config->JsonLocation = '/home/user/api/globasa-menalar-1.json';
 $config->JsLocation = '/home/user/api/globasa-menalar-1.js';
 $config->dictionaryFile = '/home/user/api/globasa-menalar-1.dat';
 $config->dictionaryFile = '/home/user/api/globasa-menalar-1.dat';
-$config->internationalizationFile = '/home/user/api/internationalization.yaml';
+$config->i18nFile = '/home/user/api/internationalization.yaml';
 
 /* Load app data */
 $config->dictionary = unserialize(file_get_contents($config->serializedLocation));
-$config->trans = yaml_parse_file($config->internationalizationFile);
+$config->trans = yaml_parse_file($config->i18nFile);
