@@ -79,8 +79,10 @@ class Word
     public static function generateRelatedWords($d)
     {
         foreach($d->words as $i=>$cur) {
-            foreach($d->derived[$i] as $word) {
-                $d->words[$i]->relatedWords[] = $word;
+            if (isset($d->derived[$i])) {
+                foreach($d->derived[$i] as $word) {
+                    $d->words[$i]->relatedWords[] = $word;
+                }
             }
         }
     }
@@ -96,7 +98,10 @@ class Word
         $pd = new \Parsedown();
         foreach($this->translation as $lang=>$trans) {
             // Remove anything between brackets [{) or _underscore_ markdown.
-            $trans = preg_replace('/[\[{\(_].*[\]}\)_]/U' , '', $trans);
+            // Needs to remove parenthese first because in some cases with
+            // italic and bold in parentheses it doesn't remove all text
+            $trans = preg_replace('/[\(].*[\)]/U' , '', $trans);
+            $trans = preg_replace('/[\[{\_].*[\]}\_]/U' , '', $trans);
             $trans = explode(', ', $trans);
             $trans = extractWords($trans);
             foreach ($trans as $naturalWord) {
@@ -115,8 +120,6 @@ class Word
     {
         // Add full term to search terms
         $d->index[$worldlang][$this->termIndex] = $this->termIndex;
-        //var_dump($d);
-        //die("whelp, we made it this far in word.php but why isn't \$d a StdClass object?");
         // If has optional part, remove and add to index
         if (strpos($this->term, "(") !== false) {
             // Add to index the full term without brackets
@@ -137,24 +140,6 @@ class Word
         foreach($words as $word) {
             $d->index[$worldlang][$word] = $this->termIndex;
         }
-    }
-
-    private function makeRelatedWordsUl($config, $listItems)
-    {
-        if ($listItems !== null && sizeof($listItems) > 0) {
-            $result ='<ul>';
-            foreach ($listItems as $item) {
-                if (isset($config->dictionary['glb'])&&isset($config->dictionary['glb'][$item])) {
-                    $result .= '<li>'.$config->makeLink('leksi/'.$item, $item) .': '.$config->dictionary['glb'][$item]['Translation'.$config->langCap].'</li>';
-                } else {
-                    $result .= '<li>'.$config->makeLink('leksi/'.$item, $item) .': *ERROR*</li>';
-                }
-            }
-            $result .='</ul>';
-        } else {
-            $result = "";
-        }
-        return $result;
     }
 
     // log root of derived words and generate etymology links
@@ -183,21 +168,6 @@ class Word
         }
     }
 
-    private function processEntryPart($config, $data, $part)
-    {
-        if (!empty($data[$part.$config->langCap])) {
-            return $data[$part.$config->langCap];
-        } else {
-            $result = "";
-            if (!empty($data[$part.$config->defaultLangCap])) {
-                $result = $data[$part.$config->defaultLangCap];
-            } elseif (!empty($data[$part.$config->auxLangCap])) {
-                $result = $data[$part.$config->auxLangCap];
-            }
-            return $config->getTrans('Missing Word Translation').$result;
-        }
-    }
-
     private function processEntryList($words)
     {
         if (!empty($words) > 0) {
@@ -217,18 +187,15 @@ class Word
         fwrite($fp, serialize($dictionary));
         fclose($fp);
 
-        // $yamlDictionary['words'] = $dictionary->words;
-        // $yamlDictionary['engIndex'] = $dictionary->engIndex;
-        // $yamlDictionary['glbIndex'] = $dictionary->glbIndex;
-        // yaml_emit_file($config->YamlLocation, $yamlDictionary);
+        yaml_emit_file($config->YamlLocation, $dictionary);
 
-        // $fp = fopen($config->JsonLocation, 'w');
-        // fwrite($fp, json_encode($dictionaryFile, JSON_UNESCAPED_UNICODE));
-        // fclose($fp);
+        $fp = fopen($config->JsonLocation, 'w');
+        fwrite($fp, json_encode($dictionary, JSON_UNESCAPED_UNICODE));
+        fclose($fp);
 
-        // $fp = fopen($config->JsLocation, 'w');
-        // fwrite($fp, "var dictionary = ".json_encode($dictionaryFile));
-        // fclose($fp);
+        $fp = fopen($config->JsLocation, 'w');
+        fwrite($fp, "var dictionary = ".json_encode($dictionary));
+        fclose($fp);
     }
 
 }
