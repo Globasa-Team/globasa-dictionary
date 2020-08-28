@@ -8,6 +8,7 @@ class UpdateController {
         $rawWords = loadCsv($config->csvLocation);
         $dictionary = Word::createDictionary($config, $rawWords);
         Word::saveDictionary($config, $dictionary);
+        var_dump($dictionary->index['eng']);
     }
 
 }
