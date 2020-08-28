@@ -9,21 +9,24 @@ class Tool
         // Add the new root candidate
         if (isset($request->options['root']) && !empty($request->options['root'])) {
             $root[] = $newRoot = $request->options['root'];
-            $genList[$newRoot][$newRoot] = "|$newRoot|";
+            $genList[$newRoot]['New:'.$newRoot] = "New:$newRoot";
         }
 
         // Create arrays for 3 category types, put all roots in genList.
-        foreach ($config->dictionary[$config->worldlang] as $word=>$entry) {
-            if ($entry['Category']=='root') {
+        // echo"foreach";
+        foreach ($config->dictionary->words as $word=>$entry) {
+            // echo $entry->Category."|";
+            // var_dump($entry);
+            if ($entry->category=='root') {
                 $root[]=$word;
                 $genList[$word]["|$word|"] = "|$word|";
-            } elseif ($entry['Category']=='affix' && $word[0]=='-') {
+            } elseif ($entry->category=='affix' && $word[0]=='-') {
                 $suffix[]= $word;
-            } elseif ($entry['Category']=='affix') {
+            } elseif ($entry->category=='affix') {
                 $prefix[] = $word;
             }
         }
-
+        // var_dump($root);
         // Generate all combinations, duplicate if combos on duplicate letter
         foreach ($root as $currentRoot) {
             foreach ($prefix as $currentPrefix) {
@@ -52,7 +55,7 @@ class Tool
 
     public static function minimalPairDetector($config, $request)
     {
-        $words = array_keys($config->dictionary[$config->worldlang]);
+        $words = array_keys($config->dictionary->words);
         $numWords = sizeof($words);
         $nearMatches = [];
         $checkWord = isset($request->options['word']) ? strtolower($request->options['word']) : null;

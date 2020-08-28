@@ -7,9 +7,7 @@ class WordController
     {
         //die("WordController/AddEntry doesn't need to create the word!");
         //echo "test";
-        if (is_null($term)) {
-            WordController::randomWord($config, $page);
-        } else {
+        if (!empty($term)) {
             if (isset($config->dictionary->words[$term])) {
                 //$word = new Word($config, $config->dictionary->words[$term]);
                 $word = $config->dictionary->words[$term];
@@ -19,6 +17,8 @@ class WordController
             }
             //var_dump($page->content);
             //die("WordController/AddEntry doesn't need to create the word!");
+        } else {
+            throw new ErrorException("addEntry \$term is null");
         }
     }
 
@@ -29,15 +29,24 @@ class WordController
         if (is_null($term)) {
             WorldlangDictUtils::redirect($config, "");
         } else {
-            if (isset($config->dictionary[$lang][$term])) {
-                $matches = explode(", ", $config->dictionary[$lang][$term]);
-                foreach ($matches as $curMatch) {
-                    $word = new Word($config, $config->dictionary[$config->worldlang][$curMatch]);
-                    WordView::dictionaryEntry($config, $request, $word, $page);
+            if (isset($config->dictionary->index[$lang][$term])) {
+                foreach ($config->dictionary->index[$lang][$term] as $curMatch) {
+                    WordView::dictionaryEntry(
+                        $config,
+                        $request,
+                        $config->dictionary->words[$curMatch],
+                        $page);
                 }
                 $page->setTitle($term.': '.$config->getTrans('natlang search title bar'));
             }
         }
+    }
+
+    public static function addWordList($config, $request, $listLang, &$page)
+    {
+        // $list = new WordList($config, $listLang);
+        $page->setTitle($config->getTrans('all words button'));
+        WordView::addList($config, $request, $page);
     }
 
     public static function getWordList($config, $request, $listLang, &$page)
@@ -66,9 +75,12 @@ class WordController
         WordListView::addList($config, $request, $list, $page);
     }
 
-    public static function randomWord($config, &$page)
+    public static function randomWord($config, $request, &$page)
     {
+        // var_dump($config->dictionary);
         $wordIndex = array_rand($config->dictionary->words);
+        // die(':'.$wordIndex);
+        // echo "Enter randomWord: ".$wordIndex;
         WordController::addEntry($config, $request, $wordIndex, $page);
         $page->setTitle("Random word");
     }

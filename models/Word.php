@@ -9,56 +9,133 @@ class Word
     public $part;
     public $etymology;
     public $relatedWords;
-    // public $langSynonyms;
     public $ipaLink;
 
     // added before online.
     // Create object from CSV dictionary array
-    public function __construct($rawWords, $key)
+    public function __construct($config, $rawWords, $wordKey, $d)
     {
-        $this->term       = $rawWords[$key]['Word'];
-        $this->category   = $rawWords[$key]['Category'];
-        $this->part       = $rawWords[$key]['Part Of Speech'];
-        $this->etymology  = $rawWords[$key]['LeksiliAsel'];
+        $this->term       = $rawWords[$wordKey]['Word'];
+        $this->termIndex  = $wordKey;
+        $this->category   = $rawWords[$wordKey]['Category'];
+        $this->part       = $rawWords[$wordKey]['Part Of Speech'];
+        $this->etymology  = $rawWords[$wordKey]['LeksiliAsel'];
 
-        $this->translation['eng'] = $rawWords[$key]['TranslationEng'];
-        $this->translation['fra'] = $rawWords[$key]['TranslationFra'];
-        $this->translation['rus'] = $rawWords[$key]['TranslationRus'];
-        $this->translation['spa'] = $rawWords[$key]['TranslationSpa'];
-        $this->translation['zho'] = $rawWords[$key]['TranslationZho'];
+        $this->translation['eng'] = $rawWords[$wordKey]['TranslationEng'];
+        $this->translation['fra'] = $rawWords[$wordKey]['TranslationFra'];
+        $this->translation['rus'] = $rawWords[$wordKey]['TranslationRus'];
+        $this->translation['spa'] = $rawWords[$wordKey]['TranslationSpa'];
+        $this->translation['zho'] = $rawWords[$wordKey]['TranslationZho'];
 
-        //$this->processEtymology($config);
-
-        // $this->definition = $this->processEntryPart($config, $data, 'Translation');
-        // $this->etymology = $this->processEntryPart($config, $data, 'LeksiliAsel');
-        // $this->relatedWords = $this->makeRelatedWordsUl($config, $this->processEntryList($data['RelatedWordsGlb']));
-        // $this->searchText = $this->processEntryList($data[$app->langCap]);
-        // $this->searchText[] = $this->word;
-        // $this->ipa($config);
+        $this->parseEtymology($config, $d);
+        $this->generateSearchTerms($config->worldlang, $d);
+        $this->generateIpa($config);
     }
 
-    public function __constructOld($config, $data)
+    public static function createDictionary($config, $rawWords)
     {
-        $this->wordSource = $data;
-        $this->term = $data['Word'];
-        $this->definition = $this->processEntryPart($config, $data, 'Translation');
-        $this->etymology = $this->processEntryPart($config, $data, 'LeksiliAsel');
-        $this->etymology = $data['LeksiliAsel'];
-        $this->processEtymology($config);
-        $this->relatedWords = $this->makeRelatedWordsUl($config, $this->processEntryList($data['RelatedWordsGlb']));
-        $this->searchText = $this->processEntryList($data[$app->langCap]);
-        $this->searchText[] = $this->word;
-        $this->ipa($config);
+        $dictionary = new \StdClass();
+        $dictionary->index = [];
+        $dictionary->words = [];
+        $dictionary->derived = [];
+        foreach ($rawWords as $wordKey=>$wordData) {
+            $dictionary->words[$wordKey] =
+                new \WorldlangDict\Word(
+                    $config,
+                    $rawWords,
+                    $wordKey,
+                    $dictionary
+                );
+        }
+        foreach($dictionary->index as $lang=>$indexList) {
+            ksort($dictionary->index[$lang]);
+        }
+        Word::generateRelatedWords($dictionary);
+        return $dictionary;
+
     }
 
-    private function processEtymology($config)
+    private function generateIpa($config)
     {
-        if (strpos($this->etymology, '+')) {
-            $words = explode(' + ', $this->etymology);
-            foreach ($words as $word) {
-                $links[] = WorldlangDictUtils::makeLink($config, 'leksi/'.$word, $word);
+        $phrase = strtolower($this->term);
+        /*
+        c - 'tʃ'
+        j - 'dʒ'
+        r - 'ɾ'
+        x - 'ʃ'
+        y - 'j'
+        h - 'x'
+        */
+        $pattern     = [ '/c/', '/j/', '/r/', '/x/', '/y/', '/h/' ];
+        $replacement = [ 'tʃ',  'dʒ',   'ɾ',   'ʃ',   'j',   'x'  ];
+        $result = preg_replace($pattern, $replacement, $phrase);
+        $result = "http://ipa-reader.xyz/?text=".$result."&voice=Carla";
+        $result = '<a href="'.$result.'"><span class="fa fa-volume-up"></span> '.$config->getTrans('ipa link').'</a>';
+        $this->ipaLink = $result;
+    }
+
+    // Should this be makeRelatedWords ?
+    // Take $relatedWords from etymoloy and add any logged afixes
+    public static function generateRelatedWords($d)
+    {
+        foreach($d->words as $i=>$cur) {
+            foreach($d->derived[$i] as $word) {
+                $d->words[$i]->relatedWords[] = $word;
             }
-            $this->etymology = implode(' + ', $links);
+        }
+    }
+
+    private function generateSearchTerms($worldlang, $d)
+    {
+        $this->generateWorldlangTerms($worldlang, $d);
+        $this->generateNatlangTerms($worldlang, $d);
+    }
+
+    private function generateNatlangTerms($worldlang, $d)
+    {
+        $pd = new \Parsedown();
+        foreach($this->translation as $lang=>$trans) {
+            // Remove anything between brackets [{) or _underscore_ markdown.
+            $trans = preg_replace('/[\[{\(_].*[\]}\)_]/U' , '', $trans);
+            $trans = explode(', ', $trans);
+            $trans = extractWords($trans);
+            foreach ($trans as $naturalWord) {
+                $naturalWord = strtolower(trim($naturalWord));
+                if (!empty($naturalWord)) {
+                    $d->index[$lang][$naturalWord][$this->termIndex] =
+                        $this->termIndex;
+                }
+            }
+            $this->translation[$lang] = $pd->line($this->translation[$lang]);
+        }
+        return;
+    }
+
+    private function generateWorldlangTerms($worldlang, $d)
+    {
+        // Add full term to search terms
+        $d->index[$worldlang][$this->termIndex] = $this->termIndex;
+        //var_dump($d);
+        //die("whelp, we made it this far in word.php but why isn't \$d a StdClass object?");
+        // If has optional part, remove and add to index
+        if (strpos($this->term, "(") !== false) {
+            // Add to index the full term without brackets
+            $searchTerm =
+                trim(preg_replace('/[^A-Za-z0-9 \-]/', '', $this->term));
+            $d->index[$worldlang][$searchTerm] = $this->termIndex;
+            // Adds shortened term, removing bracketted text
+            $searchTerm =
+                trim(preg_replace('/[\[{\(_].*[\]}\)_]/U' , '', $this->term));
+            $d->index[$worldlang][$searchTerm] = $this->termIndex;
+        }
+
+        // Add all terms not in brackets
+        $words = explode(
+            ' ',
+            preg_replace('/[\[{\(_].*[\]}\)_]/U' , '', $this->term)
+        );
+        foreach($words as $word) {
+            $d->index[$worldlang][$word] = $this->termIndex;
         }
     }
 
@@ -78,6 +155,32 @@ class Word
             $result = "";
         }
         return $result;
+    }
+
+    // log root of derived words and generate etymology links
+    private function parseEtymology($config, &$d)
+    {
+        if (!empty($this->etymology)) {
+            // Find related words if it does not refernce other languages in ().
+            if (strpos($this->etymology, '(') === false) {
+                if(substr($this->etymology, 0, 6) == "am oko") {
+                    // Remove 'am oko' and formatting for links.
+                    $etymology = preg_replace('/[^A-Za-z0-9, \-]/', '', substr($this->etymology, 7));
+                } else {
+                    $etymology = $this->etymology;
+                }
+
+                // Replace + and , with | and explode on that to get words
+                $this->relatedWords = explode('|', str_replace([" + ",", "],"|",$etymology));
+                foreach ($this->relatedWords as $word) {
+                    if (strpos($word, '-') === false) {
+                        $d->derived[$word][] = $this->termIndex;
+                    }
+                }
+            }
+            $pd = new \Parsedown();
+            $this->etymology = $pd->line($this->etymology);
+        }
     }
 
     private function processEntryPart($config, $data, $part)
@@ -108,22 +211,24 @@ class Word
         }
     }
 
-    private function ipa($config)
+    public static function saveDictionary($config, $dictionary)
     {
-        $phrase = strtolower($this->term);
-        /*
-        c - 'tʃ'
-        j - 'dʒ'
-        r - 'ɾ'
-        x - 'ʃ'
-        y - 'j'
-        h - 'x'
-        */
-        $pattern = ['/c/', '/j/', '/r/', '/x/', '/y/', '/h/'];
-        $replacement = ['tʃ', 'dʒ', 'ɾ', 'ʃ', 'j', 'x'];
-        $result = preg_replace($pattern, $replacement, $phrase);
-        $result = "http://ipa-reader.xyz/?text=".$result."&voice=Carla";
-        $result = '<a href="'.$result.'"><span class="fa fa-volume-up"></span> '.$config->getTrans('ipa link').'</a>';
-        $this->ipaLink = $result;
+        $fp = fopen($config->serializedLocation, 'w');
+        fwrite($fp, serialize($dictionary));
+        fclose($fp);
+
+        // $yamlDictionary['words'] = $dictionary->words;
+        // $yamlDictionary['engIndex'] = $dictionary->engIndex;
+        // $yamlDictionary['glbIndex'] = $dictionary->glbIndex;
+        // yaml_emit_file($config->YamlLocation, $yamlDictionary);
+
+        // $fp = fopen($config->JsonLocation, 'w');
+        // fwrite($fp, json_encode($dictionaryFile, JSON_UNESCAPED_UNICODE));
+        // fclose($fp);
+
+        // $fp = fopen($config->JsLocation, 'w');
+        // fwrite($fp, "var dictionary = ".json_encode($dictionaryFile));
+        // fclose($fp);
     }
+
 }

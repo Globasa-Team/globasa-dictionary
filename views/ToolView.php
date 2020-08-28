@@ -39,8 +39,8 @@ class ToolView
         foreach ($genList as $genWord=>$sources) {
             // Show all or only show ones related to the root.
             if (sizeof($sources)>1 && (!isset($request->options['root']) || isset($sources[$request->options['root']]))) {
-                if (isset($config->dictionary['glb'][$genWord])) {
-                    $definition = '</br>'.$config->dictionary['glb'][$genWord][DefinitionEng];
+                if (isset($config->dictionary->words[$genWord])) {
+                    $definition = '</br>'.$config->dictionary->words[$genWord]->translation['eng'];
                 } else {
                     $definition = "";
                 }
