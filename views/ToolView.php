@@ -6,7 +6,7 @@ class ToolView
     public static function toolList($config, &$page)
     {
         $page->content .= '<h1>'.$config->getTrans('tools button').'</h1>
-                
+
                 <div class="w3-card">
                     <header class="w3-container w3-blue">
                         <h2><a href="'.WorldlangDictUtils::makeUri($config, 'tule/homonym-terminator').'">'.$config->getTrans('homonym terminator title').'</a></h2>
@@ -14,7 +14,7 @@ class ToolView
                     <div class="w3-container"><p>'.$config->getTrans('homonym terminator description').'</p>
                     </div>
                 </div>
-                
+
                 <div class="w3-card">
                     <header class="w3-container w3-blue">
                         <h2><a href="'.WorldlangDictUtils::makeUri($config, 'tule/minimal-pair-detector').'">'.$config->getTrans('minimum pair title').'</a></h2>
@@ -24,8 +24,9 @@ class ToolView
                 </div>
             ';
     }
-    
-    public static function homonymTerminator($config, $request, $genList, &$page) {
+
+    public static function homonymTerminator($config, $request, $genList, &$page)
+    {
         $page->content .= '<h1>'.$config->getTrans('homonym terminator title').'</h1>';
         $page->content .= '
             <div class="w3-card w3-container" style="padding: 5px">
@@ -34,25 +35,26 @@ class ToolView
                 <input type="submit" class="w3-btn w3-blue-grey" />
                 </form>
             </div>';
-        
-        foreach ($genList as $genWord=>$genRoots) {
-            if (sizeof($genRoots)>1 && (!isset($request->options['root']) || isset($genRoots[$request->options['root']]))) {
-                if (isset($config->dictionary['glb'][$genWord])) {
-                    $definition = '</br>'.$config->dictionary['glb'][$genWord][DefinitionEng];
+
+        foreach ($genList as $genWord=>$sources) {
+            // Show all or only show ones related to the root.
+            if (sizeof($sources)>1 && (!isset($request->options['root']) || isset($sources[$request->options['root']]))) {
+                if (isset($config->dictionary->words[$genWord])) {
+                    $definition = '</br>'.$config->dictionary->words[$genWord]->translation['eng'];
                 } else {
                     $definition = "";
                 }
-                $page->content .= '<li><span style="font-weight: bold; font-size: larger;">'.$genWord."</span><br />".$config->getTrans('homonym terminator conflicting msg').
-                    " ". implode($genRoots, ', ').$definition."</li>";
+                $page->content .= '<li><span style="font-weight: bold; font-size: larger;">['.$genWord."]</span><br />".$config->getTrans('homonym terminator conflicting msg').
+                    " ". implode($sources, ', ').$definition."</li>";
             }
         }
         $page->content .= "</ul>";
     }
-    
-    public static function minimalPairDetector ($config, $request, $nearMatches, &$page) {
-        
+
+    public static function minimalPairDetector($config, $request, $nearMatches, &$page)
+    {
         $searchTerm = isset($request->options['word']) ? $request->options['word'] : "";
-        
+
         $page->content = '';
         $page->content .= '<h1>'.$config->getTrans('minimum pair title').'</h1>';
         $page->content .= '
@@ -63,9 +65,9 @@ class ToolView
             </form>
             </div>
         ';
-        
+
         $numWords = sizeof($words);
-        
+
         foreach ($nearMatches as $word=>$data) {
             foreach ($data as $match=>$distance) {
                 if ($distance == 1) {
@@ -76,7 +78,7 @@ class ToolView
                 }
             }
         }
-        
+
         $page->content .='<h2>'.sprintf($config->getTrans('minimum pair result diff', '1')).'</h2>
                     <ul>'.$d1.'</ul>
                     <h2>'.sprintf($config->getTrans('minimum pair result diff', '2')).'</h2>

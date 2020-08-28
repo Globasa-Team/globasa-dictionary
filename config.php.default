@@ -2,19 +2,24 @@
 namespace WorldlangDict;
 
 /* App config */
-/* Site configurations (change these) */
 $config->siteUri = 'http://test.globasa.net/';
-$config->siteName = 'Dev Menalar';
+$config->siteName = 'Example Menalar';
 $config->setWorldlang('glb');
-$config->setLang('glb', 'eng');
-
-/* App configurations (leave these alone) */
+$config->setLang('eng', 'eng');
 $config->setTemplate('menalar', 'templates');
 
-$config->dictionaryFile = '/home/user/api.globasa.net/dictionary.yaml';
-// $config->languagesFile = '/home/user/api.globasa.net/languages.yaml';
-$config->internationalizationFile = '/home/user/api.globasa.net/internationalization.yaml';
+/* API Config */
+$config->remoteCsvLocation = 'https://location/file.csv';
+$config->serializedLocation = '/home/globasa/api.globasa.net/globasa-menalar-1.dat';
 
-$config->dictionary = yaml_parse_file($config->dictionaryFile);
-// $config->languages = yaml_parse_file($config->languagesFile);
+$config->csvLocation = '/home/user/api/globasa-basili-menalar-1.csv';
+$config->YamlLocation = '/home/use/api/globasa-menalar-1.yaml';
+$config->JsonLocation = '/home/user/api/globasa-menalar-1.json';
+$config->JsLocation = '/home/user/api/globasa-menalar-1.js';
+$config->dictionaryFile = '/home/user/api/globasa-menalar-1.dat';
+$config->dictionaryFile = '/home/user/api/globasa-menalar-1.dat';
+$config->internationalizationFile = '/home/user/api/internationalization.yaml';
+
+/* Load app data */
+$config->dictionary = unserialize(file_get_contents($config->serializedLocation));
 $config->trans = yaml_parse_file($config->internationalizationFile);

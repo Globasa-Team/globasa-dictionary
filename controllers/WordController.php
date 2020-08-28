@@ -5,38 +5,83 @@ class WordController
 {
     public static function addEntry($config, $request, $term, &$page)
     {
-        if (is_null($term)) {
-            WordController::randomWord($config, $page);
-        } else {
-            if (isset($config->dictionary[$config->worldlang][$term])) {
-                $word = new Word($config, $config->dictionary[$config->worldlang][$term]);
+        //die("WordController/AddEntry doesn't need to create the word!");
+        //echo "test";
+        if (!empty($term)) {
+            if (isset($config->dictionary->words[$term])) {
+                //$word = new Word($config, $config->dictionary->words[$term]);
+                $word = $config->dictionary->words[$term];
                 $page->setTitle($term);
+
                 WordView::dictionaryEntry($config, $request, $word, $page);
             }
+            //var_dump($page->content);
+            //die("WordController/AddEntry doesn't need to create the word!");
+        } else {
+            throw new ErrorException("addEntry \$term is null");
         }
     }
-    
+
     public static function addNatWord($config, $request, $lang, &$page)
     {
         $term = isset($request->arguments[0]) ? $request->arguments[0] : null;
-        
+
         if (is_null($term)) {
             WorldlangDictUtils::redirect($config, "");
         } else {
-            if (isset($config->dictionary[$lang][$term])) {
-                $matches = explode(", ", $config->dictionary[$lang][$term]);
-                foreach ($matches as $curMatch) {
-                    $word = new Word($config, $config->dictionary[$config->worldlang][$curMatch]);
-                    WordView::dictionaryEntry($config, $request, $word, $page);
+            if (isset($config->dictionary->index[$lang][$term])) {
+                foreach ($config->dictionary->index[$lang][$term] as $curMatch) {
+                    WordView::dictionaryEntry(
+                        $config,
+                        $request,
+                        $config->dictionary->words[$curMatch],
+                        $page);
                 }
                 $page->setTitle($term.': '.$config->getTrans('natlang search title bar'));
             }
         }
     }
-    
-    public static function randomWord($config, &$page)
+
+    public static function addWordList($config, $request, $listLang, &$page)
     {
-        $wordIndex = array_rand($config->dictionary[$config->worldlang]);
+        // $list = new WordList($config, $listLang);
+        $page->setTitle($config->getTrans('all words button'));
+        WordView::addList($config, $request, $page);
+    }
+
+    public static function getWordList($config, $request, $listLang, &$page)
+    {
+        $list = [];
+        if ($listLang == $config->worldlang) {
+            // NOTE Should this be in the Word class?
+            foreach ($config->dictionary->words as $word=>$wordData) {
+                $list[strtolower($word)] = new Word($config, $wordData);
+            }
+        } else {
+            // NOTE Should this be in the Word class?
+            foreach ($config->dictionary->index as $word=>$wordData) {
+                $wLWords = explode(',', $wordData);
+                if (sizeof($wLWords)==1) {
+                    $this->list[$word] = new Word($config, $config->dictionary[$config->worldlang][$wLWords[0]]);
+                } else {
+                    foreach ($wLWords as $wLWord) {
+                        $this->list[$word][$glbWord] = new Word($config, $config->dictionary[$config->worldlang][trim($wLWord)]);
+                    }
+                }
+            }
+        }
+
+        $page->setTitle($config->getTrans('all words button'));
+        WordListView::addList($config, $request, $list, $page);
+    }
+
+    public static function randomWord($config, $request, &$page)
+    {
+        // var_dump($config->dictionary);
+        $wordIndex = array_rand($config->dictionary->words);
+        // die(':'.$wordIndex);
+        // echo "Enter randomWord: ".$wordIndex;
         WordController::addEntry($config, $request, $wordIndex, $page);
+        $page->setTitle("Random word");
     }
 }
