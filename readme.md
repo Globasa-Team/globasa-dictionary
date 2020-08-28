@@ -33,4 +33,4 @@ It's currently set to auto-update the CSV if you setup a cron job for it.
 
 ## Demo
 
-To see this app in action, check out http://demo.partialsolution.ca/globasa-dictionary/ on my demo subdomain.
+To see this app in action, check out http://menalar.globasa.net/eng/
