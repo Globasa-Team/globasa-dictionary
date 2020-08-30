@@ -52,7 +52,27 @@ class Word
         }
         Word::generateRelatedWords($dictionary);
         return $dictionary;
+    }
 
+
+    private static function extractWords($source) {
+        $nestedBracket = 0;
+        $nestedUnderscore = 0;
+        $result = [];
+
+        foreach($source as $fragment) {
+            $subfrags = explode('; ', $fragment);
+
+            if (sizeof($subfrags)>1) {
+                $newWords = Word::extractWords($subfrags);
+                $result = array_merge($result, $newWords);
+            }
+            else {
+                $result[] = preg_replace("/[^a-zA-Z 0-9]+/", " ", trim($fragment));
+            }
+
+        }
+        return $result;
     }
 
     private function generateIpa($config)
@@ -103,7 +123,7 @@ class Word
             $trans = preg_replace('/[\(].*[\)]/U' , '', $trans);
             $trans = preg_replace('/[\[{\_].*[\]}\_]/U' , '', $trans);
             $trans = explode(', ', $trans);
-            $trans = extractWords($trans);
+            $trans = Word::extractWords($trans);
             foreach ($trans as $naturalWord) {
                 $naturalWord = strtolower(trim($naturalWord));
                 if (!empty($naturalWord)) {
@@ -156,11 +176,13 @@ class Word
                 }
 
                 // Replace + and , with | and explode on that to get words
+                // if ($this->term == "burnini") echo "test";
                 $this->relatedWords = explode('|', str_replace([" + ",", "],"|",$etymology));
                 foreach ($this->relatedWords as $word) {
-                    if (strpos($word, '-') === false) {
+                    // if (strpos($word, '-') >= false) echo $this->termIndex;
+                    // if (strpos($word, '-') === false) {
                         $d->derived[$word][] = $this->termIndex;
-                    }
+                    // }
                 }
             }
             $pd = new \Parsedown();
