@@ -7,7 +7,7 @@ class WordView
     {
         $page->content .='
             <div id="'.$word->term.'" class="dictionaryEntry w3-card" data-search="'./*implode(' ', $word->searchText).*/'" >
-            <header class="w3-container w3-blue">
+            <header class="w3-container">
                 <h2 id="entryTerm">'.$word->term.'</h2>
             </header>
             <div class="w3-container">
@@ -42,7 +42,7 @@ class WordView
             $page->content .= '</div>';
         }
         $page->content .=
-            '<footer class="w3-container w3-pale-blue">
+            '<footer class="w3-container">
             '.WorldlangDictUtils::makeLink(
                 $config,
                 'leksi/'.$word->term,

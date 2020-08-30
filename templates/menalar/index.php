@@ -19,7 +19,7 @@ namespace WorldlangDict;
   <link rel="stylesheet" href="<?php echo $config->templateUri; ?>css/main.css">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="<?php echo $config->templateUri; ?>css/globasa.css">
-  <link href="https://fonts.googleapis.com/css?family=Literata|Merriweather&display=swap" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css?family=Literata|Merriweather&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" integrity="sha256-gsmEoJAws/Kd3CjuOQzLie5Q3yshhvmo7YNtBG7aaEY=" crossorigin="anonymous">
   <meta name="theme-color" content="#fafafa">
 </head>
@@ -30,13 +30,13 @@ namespace WorldlangDict;
   <![endif]-->
 
 
-<div class="w3-sidebar w3-bar-block w3-card w3-animate-right w3-collapse" style="display:none;right:0;top:50px;" id="sidebar">
+<div class="w3-sidebar w3-bar-block w3-card w3-animate-right w3-collapse" id="sidebar">
     <!--<button class="w3-bar-item w3-button w3-large" onclick="w3_close()">Close &times;</button>-->
-  
+
     <form action="<?php echo WorldlangDictUtils::makeUri($config, "search"); ?>" method="get">
         <input type="text" name="wTerm" placeholder="<?php echo $config->getTrans('search worldlang placeholder');?>" class="w3-input w3-border" />
         <input type="text" name="nTerm" placeholder="<?php echo $config->getTrans('search natlang placeholder');?>" class="w3-input w3-border" />
-        <input type="submit" value="<?php echo $config->getTrans('search button');?>" class="w3-btn w3-blue" />
+        <input type="submit" value="<?php echo $config->getTrans('search button');?>" class="w3-btn" />
     </form>
     <hr />
     <a href="<?php echo WorldlangDictUtils::makeUri($config, ''); ?>" class="w3-bar-item w3-button"><span class="fa fa-random"></span> <?php echo $config->getTrans('random word button');?></a>
@@ -73,12 +73,12 @@ namespace WorldlangDict;
             C0 <a href="http://www.globasa.net">Globasa.net</a>. A <a href="http://www.partialsolution.ca/">Partial Solution</a>.
         </div>
     </div>
-    
+
 </div>
 
-<div id="siteHeader" class="w3-pale-blue">
+<div id="siteHeader">
   <div class="w3-container">
-    <button id="openNav" class="w3-button w3-pale-blue w3-xlarge w3-right" onclick="w3_open()">&#9776;</button>
+    <button id="openNav" class="w3-button w3-xlarge w3-right" onclick="w3_open()">&#9776;</button>
     <h1 id="appTitle" style="display: inline-block;"><span class="fa fa-book fa-lg"></span> <?php echo $config->siteName; ?></h1>
   </div>
 </div>
@@ -108,12 +108,12 @@ function toggleAccordian(submenuId) {
     if (submenuId.className.indexOf("w3-show") == -1) {
         submenuId.className += " w3-show";
         submenuId.previousElementSibling.className += " w3-grey";
-    } else { 
+    } else {
         submenuId.className = submenuId.className.replace(" w3-show", "");
-        submenuId.previousElementSibling.className = 
+        submenuId.previousElementSibling.className =
         submenuId.previousElementSibling.className.replace(" w3-green", "");
     }
-    
+
 }
 
 </script>
