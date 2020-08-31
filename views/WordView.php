@@ -16,10 +16,9 @@ class WordView
         if (!empty($word->etymology)) {
             $page->content .='
                 <p class="etymology">'.sprintf($config->getTrans('Etymology'), $word->etymology).'</p>';
-
         }
         if (!empty($word->relatedWords)) {
-            foreach($word->relatedWords as $i=>$cur) {
+            foreach ($word->relatedWords as $i=>$cur) {
                 $word->relatedWords[$i] = WorldlangDictUtils::makeLink(
                     $config,
                     'leksi/'.$cur,
@@ -28,8 +27,10 @@ class WordView
             }
             $page->content .= '
                 <p class="alsosee">'.
-                sprintf($config->getTrans(
-                    'Also See Sentence'),
+                sprintf(
+                    $config->getTrans(
+                    'Also See Sentence'
+                ),
                     implode(', ', $word->relatedWords)
                 ).'</p>';
         }

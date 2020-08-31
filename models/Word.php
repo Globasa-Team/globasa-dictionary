@@ -47,7 +47,7 @@ class Word
                     $dictionary
                 );
         }
-        foreach($dictionary->index as $lang=>$indexList) {
+        foreach ($dictionary->index as $lang=>$indexList) {
             ksort($dictionary->index[$lang]);
         }
         Word::generateRelatedWords($dictionary);
@@ -55,22 +55,21 @@ class Word
     }
 
 
-    private static function extractWords($source) {
+    private static function extractWords($source)
+    {
         $nestedBracket = 0;
         $nestedUnderscore = 0;
         $result = [];
 
-        foreach($source as $fragment) {
+        foreach ($source as $fragment) {
             $subfrags = explode('; ', $fragment);
 
             if (sizeof($subfrags)>1) {
                 $newWords = Word::extractWords($subfrags);
                 $result = array_merge($result, $newWords);
-            }
-            else {
+            } else {
                 $result[] = preg_replace("/[^a-zA-Z 0-9]+/", " ", trim($fragment));
             }
-
         }
         return $result;
     }
@@ -98,9 +97,9 @@ class Word
     // Take $relatedWords from etymoloy and add any logged afixes
     public static function generateRelatedWords($d)
     {
-        foreach($d->words as $i=>$cur) {
+        foreach ($d->words as $i=>$cur) {
             if (isset($d->derived[$i])) {
-                foreach($d->derived[$i] as $word) {
+                foreach ($d->derived[$i] as $word) {
                     $d->words[$i]->relatedWords[] = $word;
                 }
             }
@@ -116,12 +115,12 @@ class Word
     private function generateNatlangTerms($worldlang, $d)
     {
         $pd = new \Parsedown();
-        foreach($this->translation as $lang=>$trans) {
+        foreach ($this->translation as $lang=>$trans) {
             // Remove anything between brackets [{) or _underscore_ markdown.
             // Needs to remove parenthese first because in some cases with
             // italic and bold in parentheses it doesn't remove all text
-            $trans = preg_replace('/[\(].*[\)]/U' , '', $trans);
-            $trans = preg_replace('/[\[{\_].*[\]}\_]/U' , '', $trans);
+            $trans = preg_replace('/[\(].*[\)]/U', '', $trans);
+            $trans = preg_replace('/[\[{\_].*[\]}\_]/U', '', $trans);
             $trans = explode(', ', $trans);
             $trans = Word::extractWords($trans);
             foreach ($trans as $naturalWord) {
@@ -148,16 +147,16 @@ class Word
             $d->index[$worldlang][$searchTerm] = $this->termIndex;
             // Adds shortened term, removing bracketted text
             $searchTerm =
-                trim(preg_replace('/[\[{\(_].*[\]}\)_]/U' , '', $this->term));
+                trim(preg_replace('/[\[{\(_].*[\]}\)_]/U', '', $this->term));
             $d->index[$worldlang][$searchTerm] = $this->termIndex;
         }
 
         // Add all terms not in brackets
         $words = explode(
             ' ',
-            preg_replace('/[\[{\(_].*[\]}\)_]/U' , '', $this->term)
+            preg_replace('/[\[{\(_].*[\]}\)_]/U', '', $this->term)
         );
-        foreach($words as $word) {
+        foreach ($words as $word) {
             $d->index[$worldlang][$word] = $this->termIndex;
         }
     }
@@ -168,7 +167,7 @@ class Word
         if (!empty($this->etymology)) {
             // Find related words if it does not refernce other languages in ().
             if (strpos($this->etymology, '(') === false) {
-                if(substr($this->etymology, 0, 6) == "am oko") {
+                if (substr($this->etymology, 0, 6) == "am oko") {
                     // Remove 'am oko' and formatting for links.
                     $etymology = preg_replace('/[^A-Za-z0-9, \-]/', '', substr($this->etymology, 7));
                 } else {
@@ -177,11 +176,11 @@ class Word
 
                 // Replace + and , with | and explode on that to get words
                 // if ($this->term == "burnini") echo "test";
-                $this->relatedWords = explode('|', str_replace([" + ",", "],"|",$etymology));
+                $this->relatedWords = explode('|', str_replace([" + ",", "], "|", $etymology));
                 foreach ($this->relatedWords as $word) {
                     // if (strpos($word, '-') >= false) echo $this->termIndex;
                     // if (strpos($word, '-') === false) {
-                        $d->derived[$word][] = $this->termIndex;
+                    $d->derived[$word][] = $this->termIndex;
                     // }
                 }
             }
@@ -219,5 +218,4 @@ class Word
         fwrite($fp, "var dictionary = ".json_encode($dictionary));
         fclose($fp);
     }
-
 }

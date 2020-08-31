@@ -18,7 +18,8 @@ class WordController
             //var_dump($page->content);
             //die("WordController/AddEntry doesn't need to create the word!");
         } else {
-            throw new ErrorException("addEntry \$term is null");
+            WordController::randomWord($config, $request, $page);
+            //     throw new ErrorException("addEntry \$term is null");
         }
     }
 
@@ -35,7 +36,8 @@ class WordController
                         $config,
                         $request,
                         $config->dictionary->words[$curMatch],
-                        $page);
+                        $page
+                    );
                 }
                 $page->setTitle($term.': '.$config->getTrans('natlang search title bar'));
             }
