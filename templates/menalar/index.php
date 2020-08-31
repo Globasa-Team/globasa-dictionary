@@ -30,93 +30,75 @@ namespace WorldlangDict;
   <![endif]-->
 
 
-<div class="w3-sidebar w3-bar-block w3-card w3-animate-right w3-collapse" id="sidebar">
-    <!--<button class="w3-bar-item w3-button w3-large" onclick="w3_close()">Close &times;</button>-->
 
-    <form action="<?php echo WorldlangDictUtils::makeUri($config, "search"); ?>" method="get">
-        <input type="text" name="wTerm" placeholder="<?php echo $config->getTrans('search worldlang placeholder');?>" class="w3-input w3-border" />
-        <input type="text" name="nTerm" placeholder="<?php echo $config->getTrans('search natlang placeholder');?>" class="w3-input w3-border" />
-        <input type="submit" value="<?php echo $config->getTrans('search button');?>" class="w3-btn" />
-    </form>
-    <hr />
-    <a href="<?php echo WorldlangDictUtils::makeUri($config, ''); ?>" class="w3-bar-item w3-button"><span class="fa fa-random"></span> <?php echo $config->getTrans('random word button');?></a>
-    <a href="<?php echo WorldlangDictUtils::makeUri($config, 'leksilar'); ?>" class="w3-bar-item w3-button"><span class="fa fa-list"></span> <?php echo $config->getTrans('all words button');?></a>
-    <a href="<?php echo WorldlangDictUtils::makeUri($config, 'tule'); ?>" class="w3-bar-item w3-button"><span class="fa fa-briefcase"></span> <?php echo $config->getTrans('tools button');?></a>
-    <div class="w3-dropdown-click">
-        <button class="w3-button" onclick="toggleAccordian(languageMenu)"><span class="fa fa-language"></span> <?php echo $config->getTrans('language button');?></button>
-        <div id="languageMenu" class="w3-dropdown-content w3-bar-block w3-blue">
-            <p>Currently only English language translations and interface is complete.</p>
-            <a href="<?php echo WorldlangDictUtils::changeLangUri($config, $request, 'eng'); ?>" class="w3-bar-item w3-button">
-                <span class="fa fa-random"></span> English</a>
-            <a href="<?php echo WorldlangDictUtils::changeLangUri($config, $request, 'epo'); ?>" class="w3-bar-item w3-button">
-                <span class="fa fa-random"></span> Esperanto</a>
-            <a href="<?php echo WorldlangDictUtils::changeLangUri($config, $request, 'fra'); ?>" class="w3-bar-item w3-button">
-                <span class="fa fa-random"></span> français</a>
-            <a href="<?php echo WorldlangDictUtils::changeLangUri($config, $request, 'glb'); ?>" class="w3-bar-item w3-button">
-                <span class="fa fa-random"></span> globasa</a>
-            <a href="<?php echo WorldlangDictUtils::changeLangUri($config, $request, 'spa'); ?>" class="w3-bar-item w3-button">
-                <span class="fa fa-random"></span> español</a>
-            <a href="<?php echo WorldlangDictUtils::changeLangUri($config, $request, 'rus'); ?>" class="w3-bar-item w3-button">
-                <span class="fa fa-random"></span> русский</a>
-            <a href="<?php echo WorldlangDictUtils::changeLangUri($config, $request, 'zho'); ?>" class="w3-bar-item w3-button">
-                <span class="fa fa-random"></span> 中文</a>
-        </div>
-    </div>
-    <div class="w3-dropdown-click">
-        <button class="w3-button" onclick="toggleAccordian(moreMenu)"><span class="fa fa-ellipsis-h"></span> <?php echo $config->getTrans('more button');?></button>
-        <div id="moreMenu" class="w3-dropdown-content w3-bar-block w3-blue">
-            <a href="http://www.globasa.net/" class="w3-bar-item w3-button"><span class="fa fa-link"></span> <?php echo $config->getTrans('globasa link');?></a>
-            <a href="https://github.com/ShawnPConroy/WorldlangDict" class="w3-bar-item w3-button"><span class="fa fa-github"></span> <?php echo $config->getTrans('github link');?></a>
-            <a href="" class="w3-bar-item w3-button"><span class="fa fa-bug"></span> <?php echo $config->getTrans('report link');?></a>
-            <a href="http://api.globasa.net/" class="w3-bar-item w3-button"><span class="fa fa-code"></span> <?php echo $config->getTrans('api link');?></a>
-            <hr />
-            C0 <a href="http://www.globasa.net">Globasa.net</a>. A <a href="http://www.partialsolution.ca/">Partial Solution</a>.
-        </div>
-    </div>
-
-</div>
 
 <div id="siteHeader">
   <div class="w3-container">
-    <button id="openNav" class="w3-button w3-xlarge w3-right" onclick="w3_open()">&#9776;</button>
-    <h1 id="appTitle" style="display: inline-block;"><span class="fa fa-book fa-lg"></span> <?php echo $config->siteName; ?></h1>
+    <h1 id="appTitle">
+        <a href="<?php echo WorldlangDictUtils::makeUri($config, ''); ?>">
+            <span class="fa fa-book fa-lg"></span> <?php echo $config->siteName; ?>
+        </a>
+    </h1>
+        <a href="<?php echo WorldlangDictUtils::makeUri($config, ''); ?>"><?php echo $config->getTrans('random word button');?></a> &mdash;
+        <a href="<?php echo WorldlangDictUtils::makeUri($config, 'leksilar'); ?>"><?php echo $config->getTrans('all words button');?></a> &mdash;
+        <a href="<?php echo WorldlangDictUtils::makeUri($config, 'tule'); ?>"><?php echo $config->getTrans('tools button');?></a>
+    <form action="<?php echo WorldlangDictUtils::makeUri($config, "search"); ?>" method="get">
+    <div class="w3-cell-row">
+        <div class="w3-container w3-cell">
+            <input type="text" name="wTerm" placeholder="<?php echo $config->getTrans('search worldlang placeholder');?>" class="w3-input w3-border" />
+        </div>
+        <div class="w3-container w3-cell">
+            <input type="text" name="nTerm" placeholder="<?php echo $config->getTrans('search natlang placeholder');?>" class="w3-input w3-border" />
+        </div>
+        <div class="w3-container w3-cell w3-cell-middle">
+            <input type="submit" value="<?php echo $config->getTrans('search button');?>" class="w3-btn" />
+        </div>
+    </div>
+    </form>
   </div>
+
+
 </div>
 
-<div id="main">
 
-<div id="content">
+
+<div id="content" class="w3-main">
     <?php echo $page->content ?>
-</div>
+</div> <!-- id="w3-main" -->
 
-</div> <!-- id="main" -->
 
-<script>
-function w3_open() {
-//   document.getElementById("main").style.marginLeft = "200px";
-  document.getElementById("sidebar").style.width = "200px";
-  document.getElementById("sidebar").style.display = "block";
-  document.getElementById("openNav").style.display = 'none';
-}
-function w3_close() {
-//   document.getElementById("main").style.marginLeft = "0%";
-  document.getElementById("sidebar").style.display = "none";
-  document.getElementById("openNav").style.display = "inline-block";
-}
+<footer id="siteFooter" class="w3-container w3-padding-large w3-light-grey w3-opacity">
+    <div class="w3-cell-row">
+        <div class="w3-container w3-cell w3-mobile">
+            <p>C0 <a href="http://www.globasa.net">Globasa.net</a>.<br/>
+            A <a href="http://www.partialsolution.ca/">Partial Solution</a>.</p>
+        </div>
+        <div class="w3-container w3-cell w3-mobile" style="text-align: center;">
+            <p>Currently only English language translations and interface is complete.</p>
+            <a href="<?php echo WorldlangDictUtils::changeLangUri($config, $request, 'eng'); ?>">
+                English</a> &mdash;
+            <a href="<?php echo WorldlangDictUtils::changeLangUri($config, $request, 'epo'); ?>">
+                Esperanto</a> &mdash;
+            <a href="<?php echo WorldlangDictUtils::changeLangUri($config, $request, 'fra'); ?>">
+                français</a> &mdash;
+            <a href="<?php echo WorldlangDictUtils::changeLangUri($config, $request, 'glb'); ?>">
+                globasa</a> &mdash;
+            <a href="<?php echo WorldlangDictUtils::changeLangUri($config, $request, 'spa'); ?>">
+                español</a> &mdash;
+            <a href="<?php echo WorldlangDictUtils::changeLangUri($config, $request, 'rus'); ?>">
+                русский</a> &mdash;
+            <a href="<?php echo WorldlangDictUtils::changeLangUri($config, $request, 'zho'); ?>">
+                中文</a>
+        </div>
 
-function toggleAccordian(submenuId) {
-    if (submenuId.className.indexOf("w3-show") == -1) {
-        submenuId.className += " w3-show";
-        submenuId.previousElementSibling.className += " w3-grey";
-    } else {
-        submenuId.className = submenuId.className.replace(" w3-show", "");
-        submenuId.previousElementSibling.className =
-        submenuId.previousElementSibling.className.replace(" w3-green", "");
-    }
-
-}
-
-</script>
+        <div class="w3-container w3-cell w3-mobile">
+            <p><a href="http://www.globasa.net/" class="w3-button"><span class="fa fa-link"></span> <?php echo $config->getTrans('globasa link');?></a><br/>
+            <a href="https://github.com/ShawnPConroy/WorldlangDict" class="w3-button"><span class="fa fa-github"></span> <?php echo $config->getTrans('github link');?></a><br/>
+            <a href="" class="w3-button"><span class="fa fa-bug"></span> <?php echo $config->getTrans('report link');?></a><br/>
+            <a href="http://api.globasa.net/" class="w3-bar-item w3-button"><span class="fa fa-code"></span> <?php echo $config->getTrans('api link');?></a></p>
+        </div>
+    </div>
+</footer>
 
   <script src="<?php echo $app->templateUri; ?>js/vendor/modernizr-3.7.1.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>

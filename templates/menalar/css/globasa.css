@@ -13,7 +13,8 @@ h1, h2, h3, h4, h5, h6 {
 
 #content {
     max-width: 600px;
-    margin: 100px auto;
+    /* margin: 100px auto; */
+    margin: auto;
     min-margin: 5px;
 }
 
@@ -24,27 +25,29 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #siteHeader {
-    position: fixed;
-    top: 0;
     width: 100%;
     background-color: white;
+    text-align: center;
 }
 
-#sidebar {
-    overflow-y: scroll;
-    bottom: 50;
-    display:none;
-    right:0;
-    top:50px;"
-}
-
-#sidebar input {
+#siteHeader input {
     width: 100%;
+    display: inline-block;
+    margin: 0;
 }
 
-#sidebar .w3-btn {
+#siteHeader .w3-cell {
+    padding: 0 1px;
+    margin: 0;
+}
+
+#siteHeader .w3-btn {
     background-color: #0040a9;
     color: white;
+}
+
+#siteHeader a {
+    text-decoration: none;
 }
 
 p.alsosee a {
@@ -55,22 +58,23 @@ p.alsosee a {
     background-color: #0040a9;
     color: white;
 }
-/* .dictionaryEntry header, .dictionaryEntry footer, #siteHeader, .siteheader .w3-container { */
 .dictionaryEntry footer {
     background-color: #008113;
     color: white;
 }
 
-footer a {
+.dictionaryEntry footer a {
     text-decoration: none;
     color: #red;
 }
-footer a:hover {
+.dictionaryEntry footer a:hover {
     text-decoration: none;
     color: white;
 }
 
-/* .w3-card {
-    box-shadow:0 2px 5px 0 #000060,0 2px 10px 0 #000060;
-} */
-// The blue is #0040a9 and the green is #008113. The shadow color is #000060.
+/*
+ Globasa flag colours
+ blue #0040a9
+ green #008113
+ Recommended shadow #000060.
+*/
