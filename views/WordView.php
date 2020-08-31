@@ -5,6 +5,7 @@ class WordView
 {
     public static function dictionaryEntry($config, $request, $word, &$page)
     {
+        $page->description = $word->term . ': ' . $word->translation[$config->lang];
         $page->content .='
             <div id="'.$word->term.'" class="dictionaryEntry w3-card" data-search="'./*implode(' ', $word->searchText).*/'" >
             <header class="w3-container">
