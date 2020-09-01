@@ -35,8 +35,10 @@ class SearchController
     {
         // look for exact match
         if ($lang == 'glb') {
-            if (isset($dict[$term])) {
-                WorldlangDictUtils::redirect($config, 'leksi/'.urlencode($dict[$term]));
+            if (isset($dict[$term]) && count($dict[$term])==1) {
+                WorldlangDictUtils::redirect($config, 'leksi/'.urlencode($term));
+            } else if (isset($dict[$term])) {
+                return $dict[$term];
             }
         } else {
             if (isset($dict[$term])) {

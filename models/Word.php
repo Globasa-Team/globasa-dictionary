@@ -138,17 +138,17 @@ class Word
     private function generateWorldlangTerms($worldlang, $d)
     {
         // Add full term to search terms
-        $d->index[$worldlang][$this->termIndex] = $this->termIndex;
+        $d->index[$worldlang][$this->termIndex][$this->termIndex] = $this->termIndex;
         // If has optional part, remove and add to index
         if (strpos($this->term, "(") !== false) {
             // Add to index the full term without brackets
             $searchTerm =
                 trim(preg_replace('/[^A-Za-z0-9 \-]/', '', $this->term));
-            $d->index[$worldlang][$searchTerm] = $this->termIndex;
+            $d->index[$worldlang][$searchTerm][$this->termIndex] = $this->termIndex;
             // Adds shortened term, removing bracketted text
             $searchTerm =
                 trim(preg_replace('/[\[{\(_].*[\]}\)_]/U', '', $this->term));
-            $d->index[$worldlang][$searchTerm] = $this->termIndex;
+            $d->index[$worldlang][$searchTerm][$this->termIndex] = $this->termIndex;
         }
 
         // Add all terms not in brackets
@@ -157,7 +157,7 @@ class Word
             preg_replace('/[\[{\(_].*[\]}\)_]/U', '', $this->term)
         );
         foreach ($words as $word) {
-            $d->index[$worldlang][$word] = $this->termIndex;
+            $d->index[$worldlang][$word][$this->termIndex] = $this->termIndex;
         }
     }
 
