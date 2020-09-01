@@ -29,8 +29,8 @@ class WordView
                 <p class="alsosee">'.
                 sprintf(
                     $config->getTrans(
-                    'Also See Sentence'
-                ),
+                        'Also See Sentence'
+                    ),
                     implode(', ', $word->relatedWords)
                 ).'</p>';
         }
