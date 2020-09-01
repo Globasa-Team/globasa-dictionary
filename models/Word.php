@@ -167,7 +167,7 @@ class Word
         if (!empty($this->etymology)) {
             // Find related words if it does not refernce other languages in ().
             if (strpos($this->etymology, '(') === false) {
-                if (substr($this->etymology, 0, 6) == "am oko") {
+                if (substr($this->etymology, 0, 6) == "Am oko") {
                     // Remove 'am oko' and formatting for links.
                     $etymology = preg_replace('/[^A-Za-z0-9, \-]/', '', substr($this->etymology, 7));
                 } else {
@@ -176,7 +176,7 @@ class Word
 
                 // Replace + and , with | and explode on that to get words
                 // if ($this->term == "burnini") echo "test";
-                $this->relatedWords = explode('|', str_replace([" + ",", "], "|", $etymology));
+                $this->relatedWords = explode('|', str_replace([" + ",", "], "|", strtolower($etymology)));
                 foreach ($this->relatedWords as $word) {
                     // if (strpos($word, '-') >= false) echo $this->termIndex;
                     // if (strpos($word, '-') === false) {
