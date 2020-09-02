@@ -9,6 +9,7 @@ h1, h2, h3, h4, h5, h6 {
 
 #main {
     font-size: large;
+
 }
 
 #content {
@@ -26,28 +27,44 @@ h1, h2, h3, h4, h5, h6 {
 
 #siteHeader {
     width: 100%;
-    background-color: white;
+    background-color: #99B2DC /* #0040a9*/;
+    color: black;
     text-align: center;
+    padding: 0;
+    padding-top: 1px;
+    margin: 0;
 }
 
 #siteHeader input {
     width: 100%;
     display: inline-block;
     margin: 0;
+    background-color: #99CCA0;
 }
 
 #siteHeader .w3-cell {
-    padding: 0 1px;
+    padding: 0 3px;
     margin: 0;
 }
 
+#siteHeader .w3-cell-row {
+    background-color: #008113;
+    color: inherit;
+    margin: 5px 0 0 0;
+    padding: 5px 10px;
+}
+
 #siteHeader .w3-btn {
-    background-color: #0040a9;
-    color: white;
+    background-color: white;
+    color: black;
 }
 
 #siteHeader a {
     text-decoration: none;
+}
+
+#siteFooter {
+    margin-top: 50px;
 }
 
 p.alsosee a {

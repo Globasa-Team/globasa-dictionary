@@ -1,6 +1,5 @@
 <?php
 namespace WorldlangDict;
-
 ?>
 <!doctype html>
 <html class="no-js" lang="">
@@ -33,14 +32,13 @@ namespace WorldlangDict;
 
 
 <div id="siteHeader">
-  <div class="w3-container">
     <h1 id="appTitle">
         <a href="<?php echo WorldlangDictUtils::makeUri($config, ''); ?>">
             <span class="fa fa-book fa-lg"></span> <?php echo $config->siteName; ?>
         </a>
     </h1>
-        <a href="<?php echo WorldlangDictUtils::makeUri($config, ''); ?>"><?php echo $config->getTrans('random word button');?></a> &mdash;
-        <a href="<?php echo WorldlangDictUtils::makeUri($config, 'leksilar'); ?>"><?php echo $config->getTrans('all words button');?></a> &mdash;
+        <a href="<?php echo WorldlangDictUtils::makeUri($config, ''); ?>"><?php echo $config->getTrans('random word button');?></a> &bull;
+        <a href="<?php echo WorldlangDictUtils::makeUri($config, 'leksilar'); ?>"><?php echo $config->getTrans('all words button');?></a> &bull;
         <a href="<?php echo WorldlangDictUtils::makeUri($config, 'tule'); ?>"><?php echo $config->getTrans('tools button');?></a>
     <form action="<?php echo WorldlangDictUtils::makeUri($config, "search"); ?>" method="get">
     <div class="w3-cell-row">
@@ -55,7 +53,6 @@ namespace WorldlangDict;
         </div>
     </div>
     </form>
-  </div>
 
 
 </div>
@@ -76,17 +73,17 @@ namespace WorldlangDict;
         <div class="w3-container w3-cell w3-mobile" style="text-align: center;">
             <p>Currently only English language translations and interface is complete.</p>
             <a href="<?php echo WorldlangDictUtils::changeLangUri($config, $request, 'eng'); ?>">
-                English</a> &mdash;
+                English</a> &bull;
             <a href="<?php echo WorldlangDictUtils::changeLangUri($config, $request, 'epo'); ?>">
-                Esperanto</a> &mdash;
+                Esperanto</a> &bull;
             <a href="<?php echo WorldlangDictUtils::changeLangUri($config, $request, 'fra'); ?>">
-                français</a> &mdash;
+                français</a> &bull;
             <a href="<?php echo WorldlangDictUtils::changeLangUri($config, $request, 'glb'); ?>">
-                globasa</a> &mdash;
+                globasa</a> &bull;
             <a href="<?php echo WorldlangDictUtils::changeLangUri($config, $request, 'spa'); ?>">
-                español</a> &mdash;
+                español</a> &bull;
             <a href="<?php echo WorldlangDictUtils::changeLangUri($config, $request, 'rus'); ?>">
-                русский</a> &mdash;
+                русский</a> &bull;
             <a href="<?php echo WorldlangDictUtils::changeLangUri($config, $request, 'zho'); ?>">
                 中文</a>
         </div>
