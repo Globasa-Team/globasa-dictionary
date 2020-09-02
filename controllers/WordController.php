@@ -5,21 +5,15 @@ class WordController
 {
     public static function addEntry($config, $request, $term, &$page)
     {
-        //die("WordController/AddEntry doesn't need to create the word!");
-        //echo "test";
         if (!empty($term)) {
             if (isset($config->dictionary->words[$term])) {
-                //$word = new Word($config, $config->dictionary->words[$term]);
                 $word = $config->dictionary->words[$term];
-                $page->setTitle($term);
-
+                $page->setTitle($word->term);
+                
                 WordView::dictionaryEntry($config, $request, $word, $page);
             }
-            //var_dump($page->content);
-            //die("WordController/AddEntry doesn't need to create the word!");
         } else {
             WordController::randomWord($config, $request, $page);
-            //     throw new ErrorException("addEntry \$term is null");
         }
     }
 

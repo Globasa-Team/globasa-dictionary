@@ -175,13 +175,9 @@ class Word
                 }
 
                 // Replace + and , with | and explode on that to get words
-                // if ($this->term == "burnini") echo "test";
-                $this->relatedWords = explode('|', str_replace([" + ",", "], "|", strtolower($etymology)));
-                foreach ($this->relatedWords as $word) {
-                    // if (strpos($word, '-') >= false) echo $this->termIndex;
-                    // if (strpos($word, '-') === false) {
-                    $d->derived[$word][] = $this->termIndex;
-                    // }
+                $this->relatedWords = explode('|', str_replace([" + ",", "], "|", $etymology));
+                foreach ($this->relatedWords as $wordIndex=>$word) {
+                    $d->derived[strtolower($word)][$this->termIndex] = $this->term;
                 }
             }
             $pd = new \Parsedown();
