@@ -27,8 +27,8 @@ h1, h2, h3, h4, h5, h6 {
 
 #siteHeader {
     width: 100%;
-    background-color: #99B2DC /* #0040a9*/;
-    color: black;
+    background-color: inherit;
+    color: inherit;
     text-align: center;
     padding: 0;
     padding-top: 1px;
@@ -39,7 +39,6 @@ h1, h2, h3, h4, h5, h6 {
     width: 100%;
     display: inline-block;
     margin: 0;
-    background-color: #99CCA0;
 }
 
 #siteHeader .w3-cell {
@@ -48,15 +47,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #siteHeader .w3-cell-row {
-    background-color: #008113;
-    color: inherit;
+    background-color: #666;
+    color: white;
     margin: 5px 0 0 0;
     padding: 5px 10px;
 }
 
 #siteHeader .w3-btn {
     background-color: white;
-    color: black;
+    color: #0040a9;
 }
 
 #siteHeader a {
