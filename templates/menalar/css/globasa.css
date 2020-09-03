@@ -19,6 +19,9 @@ h1, h2, h3, h4, h5, h6 {
     min-margin: 5px;
 }
 
+#appTitle a, #appTitle a:link, #appTitle a:visited {
+    color: black;
+}
 .w3-card {
     font-weight: 500;
     margin-bottom: 25px;
@@ -55,11 +58,12 @@ h1, h2, h3, h4, h5, h6 {
 
 #siteHeader .w3-btn {
     background-color: white;
-    color: #0040a9;
+    color: #008113;
 }
 
 #siteHeader a {
     text-decoration: none;
+    color: #0040a9;
 }
 
 #siteFooter {
