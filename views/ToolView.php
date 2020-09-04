@@ -9,6 +9,19 @@ class ToolView
 
                 <div class="w3-card">
                     <header class="w3-container w3-blue">
+                        <h2><a href="'.WorldlangDictUtils::makeUri($config, 'tule/candidate-check').'">'.$config->getTrans('candidate check title').'</a></h2>
+                    </header>
+                    <div class="w3-container">
+                    <form action="'. WorldlangDictUtils::makeUri($config, "tule/candidate-check") .'" method="get">
+                    <input name="candidate" placeholder="'.$config->getTrans('candidate check placeholder').'" class="w3-input w3-border w3-light-grey" style="max-width: 400px; display:inline-block; margin-right: 10px;" />
+                    <input value="'.$config->getTrans('candidate check button').'" type="submit" class="w3-btn w3-blue-grey" />
+                    </form>
+                    <p>'.$config->getTrans('candidate check description').'</p>
+                    </div>
+                </div>
+
+                <div class="w3-card">
+                    <header class="w3-container w3-blue">
                         <h2><a href="'.WorldlangDictUtils::makeUri($config, 'tule/homonym-terminator').'">'.$config->getTrans('homonym terminator title').'</a></h2>
                     </header>
                     <div class="w3-container"><p>'.$config->getTrans('homonym terminator description').'</p>
@@ -31,14 +44,14 @@ class ToolView
         $page->content .= '
             <div class="w3-card w3-container" style="padding: 5px">
                 <form action="'. WorldlangDictUtils::makeUri($config, "tule/homonym-terminator") .'" method="get">
-                <input name="root" placeholder="'.$config->getTrans('homonym terminator new placeholder').'" class="w3-input w3-border w3-light-grey" style="max-width: 400px; display:inline-block; margin-right: 10px;" />
+                <input name="candidate" placeholder="'.$config->getTrans('homonym terminator new placeholder').'" class="w3-input w3-border w3-light-grey" style="max-width: 400px; display:inline-block; margin-right: 10px;" />
                 <input type="submit" class="w3-btn w3-blue-grey" />
                 </form>
             </div>';
 
         foreach ($genList as $genWord=>$sources) {
             // Show all or only show ones related to the root.
-            if (sizeof($sources)>1 && (!isset($request->options['root']) || isset($sources[$request->options['root']]))) {
+            if (sizeof($sources)>1 && (!isset($request->options['candidate']) || isset($sources[$request->options['candidate']]))) {
                 if (isset($config->dictionary->words[$genWord])) {
                     $definition = '</br>'.$config->dictionary->words[$genWord]->translation['eng'];
                 } else {
@@ -55,12 +68,12 @@ class ToolView
     {
         $searchTerm = isset($request->options['word']) ? $request->options['word'] : "";
 
-        $page->content = '';
+        $page->content .= '';
         $page->content .= '<h1>'.$config->getTrans('minimum pair title').'</h1>';
         $page->content .= '
             <div class="w3-card w3-container" style="padding: 5px">
             <form action="'.WorldlangDictUtils::makeUri($config, 'tule/minimal-pair-detector').'" method="get">
-                <input name="word" placeholder="'.$config->getTrans('minimum pair new placeholder').'" class="w3-input w3-border w3-light-grey" style="max-width: 400px; display:inline-block; margin-right: 10px;" value="'.$searchTerm.'" />
+                <input name="candidate" placeholder="'.$config->getTrans('minimum pair new placeholder').'" class="w3-input w3-border w3-light-grey" style="max-width: 400px; display:inline-block; margin-right: 10px;" value="'.$searchTerm.'" />
                 <input type="submit" value="'.$config->getTrans('minimum pair new button').'" class="w3-btn w3-blue-grey" />
             </form>
             </div>

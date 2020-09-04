@@ -9,7 +9,7 @@ class WordController
             if (isset($config->dictionary->words[$term])) {
                 $word = $config->dictionary->words[$term];
                 $page->setTitle($word->term);
-                
+
                 WordView::dictionaryEntry($config, $request, $word, $page);
             }
         } else {
@@ -73,10 +73,7 @@ class WordController
 
     public static function randomWord($config, $request, &$page)
     {
-        // var_dump($config->dictionary);
         $wordIndex = array_rand($config->dictionary->words);
-        // die(':'.$wordIndex);
-        // echo "Enter randomWord: ".$wordIndex;
         WordController::addEntry($config, $request, $wordIndex, $page);
         $page->setTitle("Random word");
     }

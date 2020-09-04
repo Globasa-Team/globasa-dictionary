@@ -7,16 +7,13 @@ class Tool
     {
 
         // Add the new root candidate
-        if (isset($request->options['root']) && !empty($request->options['root'])) {
-            $root[] = $newRoot = $request->options['root'];
+        if (isset($request->options['candidate']) && !empty($request->options['candidate'])) {
+            $root[] = $newRoot = $request->options['candidate'];
             $genList[$newRoot]['New:'.$newRoot] = "New:$newRoot";
         }
 
         // Create arrays for 3 category types, put all roots in genList.
-        // echo"foreach";
         foreach ($config->dictionary->words as $word=>$entry) {
-            // echo $entry->Category."|";
-            // var_dump($entry);
             if ($entry->category=='root') {
                 $root[]=$word;
                 $genList[$word]["|$word|"] = "|$word|";
@@ -26,7 +23,7 @@ class Tool
                 $prefix[] = $word;
             }
         }
-        // var_dump($root);
+
         // Generate all combinations, duplicate if combos on duplicate letter
         foreach ($root as $currentRoot) {
             foreach ($prefix as $currentPrefix) {
@@ -58,7 +55,7 @@ class Tool
         $words = array_keys($config->dictionary->words);
         $numWords = sizeof($words);
         $nearMatches = [];
-        $checkWord = isset($request->options['word']) ? strtolower($request->options['word']) : null;
+        $checkWord = isset($request->options['candidate']) ? strtolower($request->options['candidate']) : null;
 
         if (empty($checkWord)) {
             for ($i = 0; $i < $numWords; $i++) {
@@ -77,6 +74,17 @@ class Tool
                 }
             }
         }
+
+        return $nearMatches;
+    }
+
+    public static function checkCandidateWord($config, $request)
+    {
+        $words = array_keys($config->dictionary->words);
+        $numWords = sizeof($words);
+        $nearMatches = [];
+        $checkWord = isset($request->options['word']) ? strtolower($request->options['word']) : null;
+
 
         return $nearMatches;
     }
