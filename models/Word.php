@@ -10,6 +10,8 @@ class Word
     public $etymology;
     public $relatedWords;
     public $ipaLink;
+    public $example;
+
 
     // added before online.
     // Create object from CSV dictionary array
@@ -20,6 +22,8 @@ class Word
         $this->category   = $rawWords[$wordKey]['Category'];
         $this->part       = $rawWords[$wordKey]['Part Of Speech'];
         $this->etymology  = $rawWords[$wordKey]['LeksiliAsel'];
+        $this->tags       = $rawWords[$wordKey]['Tags'];
+        $this->example    = $rawWords[$wordKey]['Example'];
 
         $this->translation['eng'] = $rawWords[$wordKey]['TranslationEng'];
         $this->translation['fra'] = $rawWords[$wordKey]['TranslationFra'];

@@ -13,6 +13,10 @@ class WordView
             </header>
             <div class="w3-container">
             <p class="definition">'.$word->translation[$config->lang].'</p>';
+        if (!empty($word->example)) {
+            $page->content .='
+                <p class="example">'.sprintf($config->getTrans('Example'), $word->example).'</p>';
+        }
         if (!empty($word->etymology)) {
             $page->content .='
                 <p class="etymology">'.sprintf($config->getTrans('Etymology'), $word->etymology).'</p>';
