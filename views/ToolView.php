@@ -8,8 +8,8 @@ class ToolView
         $page->content .= '<h1>'.$config->getTrans('tools button').'</h1>
 
             <div class="w3-card">
-                <header class="w3-container w3-blue">
-                    <h2><a href="'.WorldlangDictUtils::makeUri($config, 'tule/candidate-check').'">'.$config->getTrans('candidate check title').'</a></h2>
+                <header class="w3-container">
+                    <h2>'.$config->getTrans('candidate check title').'</h2>
                 </header>
                 <p><div class="w3-container">
                 <form action="'. WorldlangDictUtils::makeUri($config, "tule/candidate-check") .'" method="get">
@@ -21,7 +21,7 @@ class ToolView
             </div>
 
             <div class="w3-card">
-                <header class="w3-container w3-blue">
+                <header class="w3-container">
                     <h2><a href="'.WorldlangDictUtils::makeUri($config, 'tule/homonym-check').'">'.$config->getTrans('homonym terminator title').'</a></h2>
                 </header>
                 <div class="w3-container"><p>'.$config->getTrans('homonym terminator description').'</p>
@@ -29,7 +29,7 @@ class ToolView
             </div>
 
             <div class="w3-card">
-                <header class="w3-container w3-blue">
+                <header class="w3-container">
                     <h2><a href="'.WorldlangDictUtils::makeUri($config, 'tule/minimal-pair-detector').'">'.$config->getTrans('minimum pair title').'</a></h2>
                 </header>
                 <div class="w3-container"><p>'.$config->getTrans('minimum pair description').'</p>

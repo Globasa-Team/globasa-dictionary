@@ -69,11 +69,15 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 50px;
 }
 
+.w3-card a:link {
+    text-decoration: none;
+}
+
 .dictionaryEntry a {
     text-decoration: none;
     color: #008113;
 }
-.dictionaryEntry header, .dictionaryEntry footer {
+.w3-card header, .dictionaryEntry footer {
     background-color: #0040a9;
     color: white;
 }
