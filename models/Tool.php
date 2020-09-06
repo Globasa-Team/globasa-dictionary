@@ -3,7 +3,7 @@ namespace WorldlangDict;
 
 class Tool
 {
-    public static function homonymTerminator($config, $request)
+    public static function homonymCheck($config, $request)
     {
 
         // Add the new root candidate
@@ -50,7 +50,7 @@ class Tool
         return $genList;
     }
 
-    public static function minimalPairDetector($config, $request)
+    public static function minimalPairCheck($config, $request)
     {
         $words = array_keys($config->dictionary->words);
         $numWords = sizeof($words);
@@ -78,7 +78,7 @@ class Tool
         return $nearMatches;
     }
 
-    public static function checkCandidateWord($config, $request)
+    public static function candidateWordCheck($config, $request)
     {
         $words = array_keys($config->dictionary->words);
         $numWords = sizeof($words);
