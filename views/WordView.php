@@ -38,6 +38,22 @@ class WordView
                     implode(', ', $word->relatedWords)
                 ).'</p>';
         }
+        if (!empty($word->tags)) {
+            foreach($word->tags as $i=>$tag) {
+                $word->tags[$i] = WorldlangDictUtils::makeLink(
+                    $config,
+                    "leksilar/".$tag,
+                    $tag
+                );
+            }
+            $page->content .= '
+                <p class="tags">'.sprintf(
+                    $config->getTrans('tags links'),
+                    implode($word->tags)
+                    ).'</p>
+                    ';
+        }
+        else die("fail");
 
         $page->content .= '</div>';
         if (isset($request->options['full'])) {
@@ -87,6 +103,40 @@ class WordView
                     $page->content .= $subEntry->getReverse();
                 }
             }
+        }
+    }
+
+    public static function tags($config, $request, &$page)
+    {
+        $page->content .= '<h1>'.$config->getTrans('tags title').'</h1>';
+
+        if (isset($request->arguments[0]) && isset($config->dictionary->tags[$request->arguments[0]])) {
+            $tags[$request->arguments[0]] = $config->dictionary->tags[$request->arguments[0]];
+        } else {
+            $tags = $config->dictionary->tags;
+        }
+        foreach($tags as $tag=>$words) {
+            foreach($words as $i=>$word) {
+                $words[$i] = WorldlangDictUtils::makeLink($config, "leksi/".$word, $word);
+            }
+
+            $page->content .= '
+                <div class="w3-card">
+                <header class="w3-container"><h1>'.$config->dictionary->words[$tag]->term.'</h1></header>
+                    <div class="w3-container">';
+            if (isset($config->dictionary->words[$tag])) {
+                $page->content .= '
+                    <p>'.$config->dictionary->words[$tag]->translation[$request->lang].'</p>
+                    ';
+            }
+            if (!empty($words)) {
+                $page->content .= '
+                    <p class="tags">'.implode(', ', $words).'</p>';
+            }
+            $page->content .= '
+                    </div>
+                </div>
+                ';
         }
     }
 }

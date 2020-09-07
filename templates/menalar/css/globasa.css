@@ -73,7 +73,7 @@ h1, h2, h3, h4, h5, h6 {
     text-decoration: none;
 }
 
-.dictionaryEntry a {
+.dictionaryEntry a, .tags a {
     text-decoration: none;
     color: #008113;
 }

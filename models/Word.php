@@ -11,6 +11,7 @@ class Word
     public $relatedWords;
     public $ipaLink;
     public $example;
+    public $tags;
 
 
     // added before online.
@@ -32,6 +33,7 @@ class Word
         $this->translation['zho'] = $rawWords[$wordKey]['TranslationZho'];
 
         $this->parseEtymology($config, $d);
+        $this->parseTags($config, $d);
         $this->generateSearchTerms($config->worldlang, $d);
         $this->generateIpa($config);
     }
@@ -188,6 +190,18 @@ class Word
             }
             $pd = new \Parsedown();
             $this->etymology = $pd->line(str_replace($terms, $links, $this->etymology));
+        }
+    }
+
+    private function parseTags($config, $d)
+    {
+        if (!empty($this->tags)) {
+            $this->tags = explode(',', $this->tags);
+            foreach ($this->tags as $i=>$tag) {
+                $tag = trim($tag);
+                $this->tags[$i]=$tag;
+                $d->tags[$tag][] = $this->termIndex;
+            }
         }
     }
 

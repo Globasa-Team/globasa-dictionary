@@ -17,7 +17,7 @@ namespace WorldlangDict;
   <link rel="stylesheet" href="<?php echo $config->templateUri; ?>css/normalize.css">
   <link rel="stylesheet" href="<?php echo $config->templateUri; ?>css/main.css">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <link rel="stylesheet" href="<?php echo $config->templateUri; ?>css/globasa.css?v3.6">
+  <link rel="stylesheet" href="<?php echo $config->templateUri; ?>css/globasa.css?v3.7">
   <link href="https://fonts.googleapis.com/css?family=Literata|Merriweather&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" integrity="sha256-gsmEoJAws/Kd3CjuOQzLie5Q3yshhvmo7YNtBG7aaEY=" crossorigin="anonymous">
   <meta name="theme-color" content="#fafafa">

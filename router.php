@@ -36,7 +36,8 @@ function router($config)
 
         case 'leksilar':
             // WordListController::getWordList($config, $request, $config->worldlang, $page);
-            WordController::addWordList($config, $request, $config->worldlang, $page);
+            // WordController::addWordList($config, $request, $config->worldlang, $page);
+            WordController::addTags($config, $request, $page);
             break;
 
         default:

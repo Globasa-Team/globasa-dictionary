@@ -38,6 +38,11 @@ class WordController
         }
     }
 
+    public static function addTags($config, $request, &$page)
+    {
+        WordView::tags($config, $request, $page);
+    }
+
     public static function addWordList($config, $request, $listLang, &$page)
     {
         // $list = new WordList($config, $listLang);
