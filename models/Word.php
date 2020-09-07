@@ -182,10 +182,11 @@ class Word
 
                 // Replace + and , with | and explode on that to get words
                 // $this->relatedWords = explode('|', str_replace([" + ",", "], "|", $etymology));
-                $terms = explode('|', str_replace([" + ",", "], "|", $etymology));
-                foreach ($terms as $word) {
+                $termList = explode('|', str_replace([" + ",", "], "|", $etymology));
+                foreach ($termList as $word) {
                     $d->derived[strtolower($word)][$this->termIndex] = $this->term;
-                    $links[] = '<a href="'.$word.'">'.$word.'</a>';
+                    $links[$word] = '<a href="'.$word.'">'.$word.'</a>';
+                    $terms[$word] = $word;
                 }
             }
             $pd = new \Parsedown();
