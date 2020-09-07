@@ -53,7 +53,6 @@ class WordView
                     ).'</p>
                     ';
         }
-        else die("fail");
 
         $page->content .= '</div>';
         if (isset($request->options['full'])) {
