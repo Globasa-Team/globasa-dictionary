@@ -1,5 +1,5 @@
+AddType application/x-httpd-php72 .php
 RewriteOptions inherit
-AddType application/x-httpd-php71 .php
 # FallbackResource /index.php
 
 RewriteEngine On

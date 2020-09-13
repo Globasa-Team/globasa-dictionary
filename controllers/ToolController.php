@@ -42,13 +42,13 @@ class ToolController
 
     public static function checkCandidateWord($config, $request, &$page)
     {
-        ToolView::minimalPairCheckTitle($config, $page);
-        $nearMatches = Tool::minimalPairCheck($config, $request);
-        ToolView::minimalPairCheck($config, $request, $nearMatches, $page);
-
         ToolView::homonymCheckTitle($config, $page);
         $genWords = Tool::homonymCheck($config, $request);
         ToolView::homonymCheck($config, $request, $genWords, $page);
+
+        ToolView::minimalPairCheckTitle($config, $page);
+        $nearMatches = Tool::minimalPairCheck($config, $request);
+        ToolView::minimalPairCheck($config, $request, $nearMatches, $page);
 
         $page->setTitle($config->getTrans('candidate check title'));
     }
