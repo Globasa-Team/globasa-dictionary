@@ -119,20 +119,27 @@ class WordView
                 $words[$i] = WorldlangDictUtils::makeLink($config, "leksi/".$word, $word);
             }
 
-            $page->content .= '
-                <div class="w3-card">
-                <header class="w3-container"><h1>'.$config->dictionary->words[$tag]->term.'</h1></header>
-                    <div class="w3-container">';
             if (isset($config->dictionary->words[$tag])) {
-                $page->content .= '
-                    <p>'.$config->dictionary->words[$tag]->translation[$request->lang].'</p>
-                    ';
+                $term = $config->dictionary->words[$tag]->term;
+                $def = '
+                <p>'.$config->dictionary->words[$tag]->translation[$request->lang].'</p>
+                ';
+            } else {
+                $term = $tag;
+                $def = "";
             }
             if (!empty($words)) {
-                $page->content .= '
-                    <p class="tags">'.implode(', ', $words).'</p>';
+                $tags = '
+                <p class="tags">'.implode(', ', $words).'</p>';
+            } else {
+                $tags = "";
             }
             $page->content .= '
+                <div class="w3-card">
+                <header class="w3-container"><h1>'.$term.'</h1></header>
+                    <div class="w3-container">'.
+                    $def.
+                    $tags.'
                     </div>
                 </div>
                 ';
