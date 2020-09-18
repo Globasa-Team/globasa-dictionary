@@ -5,6 +5,12 @@ class WordView
 {
     public static function dictionaryEntry($config, $request, $word, &$page)
     {
+
+//         synonym sentence
+// synonyms sentence
+// antonym sentence
+// antonyms sentence
+// compare with sentence
         $page->description = $word->term . ': ' . htmlspecialchars($word->translation[$config->lang]);
         $page->content .='
             <div id="'.$word->term.'" class="dictionaryEntry w3-card" data-search="'./*implode(' ', $word->searchText).*/'" >
@@ -13,6 +19,55 @@ class WordView
             </header>
             <div class="w3-container">
             <p class="definition">'.$word->translation[$config->lang].'</p>';
+        if (isset($word->compareWith)) {
+            if (!empty($word->compareWith['synonyms'])) {
+                $words = [];
+                if (count($word->compareWith['synonyms']) == 1) {
+                    $trans = 'synonym sentence';
+                } else {
+                    $trans = 'synonyms sentence';
+                }
+                foreach($word->compareWith['synonyms'] as $cur) {
+                    $words[] = WorldlangDictUtils::makeLink(
+                        $config,
+                        'leksi/'.$cur,
+                        $cur
+                    );
+                }
+                $page->content .='
+                    <p>'.sprintf($config->getTrans($trans), implode(', ', $words)).'</p>';
+            }
+            if (!empty($word->compareWith['antonyms'])) {
+                $words = [];
+                if (count($word->compareWith['antonyms']) == 1) {
+                    $trans = 'antonym sentence';
+                } else {
+                    $trans = 'antonyms sentence';
+                }
+                foreach($word->compareWith['antonyms'] as $cur) {
+                    $words[] = WorldlangDictUtils::makeLink(
+                        $config,
+                        'leksi/'.$cur,
+                        $cur
+                    );
+                }
+                $page->content .='
+                    <p>'.sprintf($config->getTrans($trans), implode(', ', $words)).'</p>';
+            }
+            if (!empty($word->compareWith['compare with'])) {
+                $words = [];
+                foreach($word->compareWith['compare with'] as $cur) {
+                    $words[] = WorldlangDictUtils::makeLink(
+                        $config,
+                        'leksi/'.$cur,
+                        $cur
+                    );
+                }
+                $page->content .='
+                    <p>'.sprintf($config->getTrans('compare with sentence'), implode(', ', $words)).'</p>';
+            }
+        }
+
         if (!empty($word->example)) {
             $page->content .='
                 <p class="example">'.sprintf($config->getTrans('Example'), $word->example).'</p>';
