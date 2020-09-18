@@ -12,6 +12,7 @@ class Word
     public $ipaLink;
     public $example;
     public $tags;
+    public $compareWith;
 
 
     // added before online.
@@ -34,6 +35,7 @@ class Word
 
         $this->parseEtymology($config, $d);
         $this->parseTags($config, $d);
+        $this->parseCompareTerms($rawWords[$wordKey]);
         $this->generateSearchTerms($config->worldlang, $d);
         $this->generateIpa($config);
     }
@@ -164,6 +166,20 @@ class Word
         );
         foreach ($words as $word) {
             $d->index[$worldlang][$word][$this->termIndex] = $this->termIndex;
+        }
+    }
+
+    private function parseCompareTerms($rawWord)
+    {
+
+        if (!empty($rawWord['Synonyms'])) {
+            $this->compareWith['synonyms'] = explode(', ',$rawWord['Synonyms']);
+        }
+        if (!empty($rawWord['Antonyms'])) {
+            $this->compareWith['antonyms'] = explode(', ',$rawWord['Antonyms']);
+        }
+        if (!empty($rawWord['Compare With'])) {
+            $this->compareWith['compare with'] = explode(', ',$rawWord['Compare With']);
         }
     }
 
