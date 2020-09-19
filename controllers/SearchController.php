@@ -52,7 +52,6 @@ class SearchController
                 $partialMatches[] = $word;
             }
         }
-        var_dump($partialMatches);
 
         return $partialMatches;
     }
