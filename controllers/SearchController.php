@@ -15,7 +15,7 @@ class SearchController
         if (!is_null($request->options)) {
             if (isset($request->options['wterm'])) {
                 $term = strtolower($request->options['wterm']);
-                $partialMatches = SearchController::searchLang($config, $config->dictionary->index[glb], $config->worldlang, $term);
+                $partialMatches = SearchController::searchLang($config, $config->dictionary->index['glb'], $config->worldlang, $term);
                 $lang = 'glb';
             } elseif (isset($request->options['nterm'])) {
                 $term = strtolower($request->options['nterm']);
@@ -38,7 +38,7 @@ class SearchController
             if (isset($dict[$term]) && isset($dict[$term][$term])) {
                 WorldlangDictUtils::redirect($config, 'leksi/'.urlencode($term));
             } elseif (isset($dict[$term])) {
-                return $dict[$term];
+                return [$dict[$term]];
             }
         } else {
             if (isset($dict[$term])) {
@@ -47,6 +47,7 @@ class SearchController
         }
 
         // look for partial match in index
+        $partialMatches = [];
         foreach ($dict as $word=>$data) {
             // insert, replace, delete
             if (levenshtein($term, $word, 1, 1, 1)<2) {
