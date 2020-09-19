@@ -19,53 +19,39 @@ class WordView
             </header>
             <div class="w3-container">
             <p class="definition">'.$word->translation[$config->lang].'</p>';
-        if (isset($word->compareWith)) {
-            if (!empty($word->compareWith['synonyms'])) {
-                $words = [];
-                if (count($word->compareWith['synonyms']) == 1) {
-                    $trans = 'synonym sentence';
-                } else {
-                    $trans = 'synonyms sentence';
-                }
-                foreach($word->compareWith['synonyms'] as $cur) {
-                    $words[] = WorldlangDictUtils::makeLink(
-                        $config,
-                        'leksi/'.$cur,
-                        $cur
-                    );
-                }
-                $page->content .='
-                    <p>'.sprintf($config->getTrans($trans), implode(', ', $words)).'</p>';
+        if (!empty($word->synonyms)) {
+            $words = [];
+            if (count($word->synonyms) == 1) {
+                $trans = 'synonym sentence';
+            } else {
+                $trans = 'synonyms sentence';
             }
-            if (!empty($word->compareWith['antonyms'])) {
-                $words = [];
-                if (count($word->compareWith['antonyms']) == 1) {
-                    $trans = 'antonym sentence';
-                } else {
-                    $trans = 'antonyms sentence';
-                }
-                foreach($word->compareWith['antonyms'] as $cur) {
-                    $words[] = WorldlangDictUtils::makeLink(
-                        $config,
-                        'leksi/'.$cur,
-                        $cur
-                    );
-                }
-                $page->content .='
-                    <p>'.sprintf($config->getTrans($trans), implode(', ', $words)).'</p>';
+            foreach($word->synonyms as $cur) {
+                $words[] = WorldlangDictUtils::makeLink(
+                    $config,
+                    'leksi/'.$cur,
+                    $cur
+                );
             }
-            if (!empty($word->compareWith['compare with'])) {
-                $words = [];
-                foreach($word->compareWith['compare with'] as $cur) {
-                    $words[] = WorldlangDictUtils::makeLink(
-                        $config,
-                        'leksi/'.$cur,
-                        $cur
-                    );
-                }
-                $page->content .='
-                    <p>'.sprintf($config->getTrans('compare with sentence'), implode(', ', $words)).'</p>';
+            $page->content .='
+                <p>'.sprintf($config->getTrans($trans), implode(', ', $words)).'</p>';
+        }
+        if (!empty($word->antonyms)) {
+            $words = [];
+            if (count($word->antonyms) == 1) {
+                $trans = 'antonym sentence';
+            } else {
+                $trans = 'antonyms sentence';
             }
+            foreach($word->antonyms as $cur) {
+                $words[] = WorldlangDictUtils::makeLink(
+                    $config,
+                    'leksi/'.$cur,
+                    $cur
+                );
+            }
+            $page->content .='
+                <p>'.sprintf($config->getTrans($trans), implode(', ', $words)).'</p>';
         }
 
         if (!empty($word->example)) {

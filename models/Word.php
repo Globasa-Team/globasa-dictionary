@@ -12,7 +12,8 @@ class Word
     public $ipaLink;
     public $example;
     public $tags;
-    public $compareWith;
+    public $synonyms;
+    public $antonyms;
 
 
     // added before online.
@@ -35,7 +36,7 @@ class Word
 
         $this->parseEtymology($config, $d);
         $this->parseTags($config, $d);
-        $this->parseCompareTerms($rawWords[$wordKey]);
+        $this->parseSynAnt($rawWords[$wordKey]);
         $this->generateSearchTerms($config->worldlang, $d);
         $this->generateIpa($config);
     }
@@ -169,20 +170,6 @@ class Word
         }
     }
 
-    private function parseCompareTerms($rawWord)
-    {
-
-        if (!empty($rawWord['Synonyms'])) {
-            $this->compareWith['synonyms'] = explode(', ',$rawWord['Synonyms']);
-        }
-        if (!empty($rawWord['Antonyms'])) {
-            $this->compareWith['antonyms'] = explode(', ',$rawWord['Antonyms']);
-        }
-        if (!empty($rawWord['Compare With'])) {
-            $this->compareWith['compare with'] = explode(', ',$rawWord['Compare With']);
-        }
-    }
-
     // log root of derived words and generate etymology links
     private function parseEtymology($config, &$d)
     {
@@ -207,6 +194,17 @@ class Word
             }
             $pd = new \Parsedown();
             $this->etymology = $pd->line(str_replace($terms, $links, $this->etymology));
+        }
+    }
+
+    private function parseSynAnt($rawWord)
+    {
+
+        if (!empty($rawWord['Synonyms'])) {
+            $this->synonyms = explode(', ',$rawWord['Synonyms']);
+        }
+        if (!empty($rawWord['Antonyms'])) {
+            $this->antonyms = explode(', ',$rawWord['Antonyms']);
         }
     }
 
