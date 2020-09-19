@@ -13,11 +13,11 @@ class SearchController
         $page->setTitle($config->getTrans('search result title').": ".$request->options['wterm']." ".$request->options['nterm']);
 
         if (!is_null($request->options)) {
-            if (isset($request->options['wterm'])) {
+            if (!empty($request->options['wterm'])) {
                 $term = strtolower($request->options['wterm']);
-                $partialMatches = SearchController::searchLang($config, $config->dictionary->index['glb'], $config->worldlang, $term);
+                $partialMatches = SearchController::searchLang($config, $config->dictionary->index[glb], $config->worldlang, $term);
                 $lang = 'glb';
-            } elseif (isset($request->options['nterm'])) {
+            } elseif (!empty($request->options['nterm'])) {
                 $term = strtolower($request->options['nterm']);
                 $partialMatches = SearchController::searchLang($config, $config->dictionary->index[$request->lang], $request->lang, $term);
                 $lang = 'natlang';
@@ -27,7 +27,6 @@ class SearchController
         } else {
             WorldlangDictUtils::redirect($config);
         }
-
         SearchView::results($config, $partialMatches, $lang, $request, $page);
     }
 
@@ -38,7 +37,7 @@ class SearchController
             if (isset($dict[$term]) && isset($dict[$term][$term])) {
                 WorldlangDictUtils::redirect($config, 'leksi/'.urlencode($term));
             } elseif (isset($dict[$term])) {
-                return [$dict[$term]];
+                return $dict[$term];
             }
         } else {
             if (isset($dict[$term])) {
@@ -47,13 +46,13 @@ class SearchController
         }
 
         // look for partial match in index
-        $partialMatches = [];
         foreach ($dict as $word=>$data) {
             // insert, replace, delete
             if (levenshtein($term, $word, 1, 1, 1)<2) {
                 $partialMatches[] = $word;
             }
         }
+        var_dump($partialMatches);
 
         return $partialMatches;
     }
