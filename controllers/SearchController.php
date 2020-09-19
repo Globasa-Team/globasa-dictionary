@@ -10,7 +10,7 @@ class SearchController
 
         $partialMatchesWorld = [];
         $partialMatchesNat = [];
-        $page->setTitle($config->getTrans('search result title').': '.);
+        $page->setTitle($config->getTrans('search result title').": ".$request->options['wterm']." ".$request->options['nterm']);
 
         if (!is_null($request->options)) {
             if (isset($request->options['wterm'])) {
