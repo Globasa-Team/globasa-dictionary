@@ -3,16 +3,19 @@
 class FeedbackView
 {
 
-    public static function new ($config, $request, $page)
+    public static function feedback ($config, $request, $page)
     {
         $page->content .= '
 
         <div class="w3-card">
 
-        <div class="w3-container w3-green">
-          <h2>Feedback / Report</h2>
-        </div>
+        <header>
+          <div class="w3-container">
+          <h2>'.$config->getTrans('feedback title').'</h2>
+          </div>
+        </header>
 
+        <div class="w3-container">
         <form
           action="https://formspree.io/maylyonr"
           method="POST"
@@ -20,32 +23,30 @@ class FeedbackView
         >
           <input type="hidden" name="URL" value="'. $request->options['url'] .'" >
           <label>
-            <p>Your email:</p>
+            <p>'.$config->getTrans('email?').'</p>
             <input type="text" name="_replyto" class="w3-input" >
           </label>
 
-          <p>Subject:</p>
-          <label><input class="w3-radio" type="radio" name="subject" value="Website error" checked>
-          website error</label><br/>
+          <p>'.$config->getTrans('subject?').'</p>
+          <label><input class="w3-radio" type="radio" name="subject" value="'.$config->getTrans('feedback site error').'" checked>
+          '.$config->getTrans('feedback site error').'</label><br/>
 
-          <label><input class="w3-radio" type="radio" name="subject" value="Suggestion" >
-          Suggestion</label><br/>
+          <label><input class="w3-radio" type="radio" name="subject" value="'.$config->getTrans('feedback lang sug').'">
+          '.$config->getTrans('feedback lang sug').'</label><br/>
 
-          <label><input class="w3-radio" type="radio" name="subject" value="Language suggestion">
-          Language suggestion</label><br/>
-
-          <label><input class="w3-radio" type="radio" name="subject" value="Other / Not Sure">
-          Other</label><br/>
+          <label><input class="w3-radio" type="radio" name="subject" value="'.$config->getTrans('feedback other').'">
+          '.$config->getTrans('feedback other').'</label><br/>
 
           <label>
-            <p>Your message:</p>
+            <p>'.$config->getTrans('message?').'</p>
             <textarea name="message" class="w3-input" ></textarea>
           </label>
 
           <div class="feedbackSubmit">
-            <button type="submit" class="w3-btn w3-blue">Send</button>
+            <button type="submit" class="w3-btn">'.$config->getTrans('feedback send button').'</button>
           </div>
         </form>
+        </div>
         </div>
         ';
     }

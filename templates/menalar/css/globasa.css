@@ -77,11 +77,11 @@ h1, h2, h3, h4, h5, h6 {
     text-decoration: none;
     color: #008113;
 }
-.w3-card header, .dictionaryEntry footer {
+.w3-card header {
     background-color: #0040a9;
     color: white;
 }
-.dictionaryEntry footer {
+.feedbackSubmit .w3-btn, .dictionaryEntry footer {
     background-color: #008113;
     color: white;
 }
@@ -101,6 +101,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .feedbackSubmit {
     margin: 1em;
+    text-align: center;
 }
 /*
  Globasa flag colours
