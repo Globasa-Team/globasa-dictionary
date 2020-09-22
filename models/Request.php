@@ -13,9 +13,11 @@ class Request
     public $incomplete;
     public $path;
     public $linkQuery;
+    public $url;
 
     public function __construct($config)
     {
+        $this->url = $_SERVER['REQUEST_URI'];
         $parsedUrl = parse_url(strtolower($_SERVER['REQUEST_URI']));
         $this->path = explode('/', $parsedUrl['path']);
 
@@ -52,7 +54,7 @@ class Request
                 }
             }
         }
-        
+
         if ($requestSize <= 0) {
             $this->incomplete = true;
         } else {

@@ -16,11 +16,13 @@ include_once 'views/IndexView.php';
 include_once 'views/SearchView.php';
 include_once 'views/ToolView.php';
 include_once 'views/WordView.php';
+include_once 'views/FeedbackView.php';
 include_once 'controllers/ToolController.php';
 include_once 'controllers/WordController.php';
 include_once 'controllers/SearchController.php';
 include_once 'controllers/IndexController.php';
 include_once 'controllers/UpdateController.php';
+include_once 'controllers/FeedbackController.php';
 
 $config = new WorldlangDictConfig();
 include_once 'config.php';

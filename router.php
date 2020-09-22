@@ -34,6 +34,10 @@ function router($config)
             SearchController::search($config, $request, $page);
             break;
 
+        case 'am-reporte':
+            FeedbackController::feedback($config, $request, $page);
+            break;
+
         case 'leksilar':
             // WordListController::getWordList($config, $request, $config->worldlang, $page);
             // WordController::addWordList($config, $request, $config->worldlang, $page);

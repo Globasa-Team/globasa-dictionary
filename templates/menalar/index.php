@@ -91,7 +91,10 @@ namespace WorldlangDict;
         <div class="w3-container w3-cell w3-mobile">
             <p><a href="http://www.globasa.net/" class="w3-button"><span class="fa fa-link"></span> <?php echo $config->getTrans('globasa link');?></a><br/>
             <a href="https://github.com/ShawnPConroy/WorldlangDict" class="w3-button"><span class="fa fa-github"></span> <?php echo $config->getTrans('github link');?></a><br/>
-            <a href="" class="w3-button"><span class="fa fa-bug"></span> <?php echo $config->getTrans('report link');?></a><br/>
+            <a href="<?php echo WorldlangDictUtils::makeUri(
+                $config,
+                'am-reporte/?url='.$config->siteUri.substr($request->url, 1)
+            ); ?>" class="w3-button"><span class="fa fa-bug"></span> <?php echo $config->getTrans('report link');?></a><br/>
             <a href="http://api.globasa.net/" class="w3-bar-item w3-button"><span class="fa fa-code"></span> <?php echo $config->getTrans('api link');?></a></p>
         </div>
     </div>

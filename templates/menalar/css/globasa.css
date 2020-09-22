@@ -95,6 +95,13 @@ h1, h2, h3, h4, h5, h6 {
     color: white;
 }
 
+.feedback {
+    width: 100%;
+}
+
+.feedbackSubmit {
+    margin: 1em;
+}
 /*
  Globasa flag colours
  blue #0040a9
