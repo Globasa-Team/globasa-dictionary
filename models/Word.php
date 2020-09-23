@@ -190,7 +190,7 @@ class Word
                 $termList = explode('|', str_replace([" + ",", "], "|", $etymology));
                 foreach ($termList as $word) {
                     $d->derived[strtolower($word)][$this->termIndex] = $this->term;
-                    $links[$word] = '<a href="'.$word.'">'.$word.'</a>';
+                    $links[$word] = '<a href="../leksi/'.$word.'">'.$word.'</a>';
                     $terms[$word] = $word;
                 }
             }
