@@ -22,12 +22,13 @@ class WorldlangDictConfig
     public $languages;
     public $trans;
     public $startTime;
-    
+    public $debugging;
+
     public function __construct()
     {
         $this->startTime = microtime(true);
     }
-    
+
     public function setLang($lang, $aux=null)
     {
         $this->lang = strtolower($lang);
@@ -37,24 +38,24 @@ class WorldlangDictConfig
             $this->auxLangCap = ucfirst($aux);
         }
     }
-    
+
     public function setWorldlang($lang)
     {
         $this->worldlang = strtolower($lang);
         $this->worldlangCap = ucfirst($lang);
     }
-    
+
     public function setTemplate($name, $folder=null)
     {
         $this->template = $name;
         if (!is_null($folder)) {
             $this->templatesFolder = $folder;
         }
-        
+
         $this->templatePath = "./".$this->templatesFolder.'/'.$this->template.'/';
         $this->templateUri = $this->siteUri.$this->templatesFolder.'/'.$this->template.'/';
     }
-    
+
     public function getTrans($textId)
     {
         $missingTranslation = "";
@@ -79,13 +80,13 @@ class WorldlangDictConfig
             return $missingTranslation.$this->trans[$this->auxLang][$textId];
         }
     }
-    
+
     public function getWord($word)
     {
         return $this->dictionary[$this->defaultLang][$word];
     }
-    
-    
+
+
     public function makeLink($request, $text=null, $lang=null)
     {
         if ($lang == null) {

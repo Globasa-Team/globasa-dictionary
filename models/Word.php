@@ -41,7 +41,7 @@ class Word
         $this->generateIpa($config);
     }
 
-    public static function createDictionary($config, $rawWords)
+    public static function createDictionary($config, $rawWords, $verbose)
     {
         $dictionary = new \StdClass();
         $dictionary->index = [];
@@ -55,7 +55,9 @@ class Word
                     $wordKey,
                     $dictionary
                 );
+            if ($verbose && (count($dictionary->words)%100==0)) echo count($dictionary->words)." ";
         }
+        if ($verbose) echo "<p> ... Saved ".count($dictionary->words)." words.</p>";
         foreach ($dictionary->index as $lang=>$indexList) {
             ksort($dictionary->index[$lang]);
         }
