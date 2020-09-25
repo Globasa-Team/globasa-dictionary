@@ -55,9 +55,13 @@ class Word
                     $wordKey,
                     $dictionary
                 );
-            if ($verbose && (count($dictionary->words)%100==0)) echo count($dictionary->words)." ";
+            if ($verbose && (count($dictionary->words)%100==0)) {
+                echo count($dictionary->words)." ";
+            }
         }
-        if ($verbose) echo "<p> ... Saved ".count($dictionary->words)." words.</p>";
+        if ($verbose) {
+            echo "<p> ... Saved ".count($dictionary->words)." words.</p>";
+        }
         foreach ($dictionary->index as $lang=>$indexList) {
             ksort($dictionary->index[$lang]);
         }
@@ -201,12 +205,11 @@ class Word
 
     private function parseSynAnt($rawWord)
     {
-
         if (!empty($rawWord['Synonyms'])) {
-            $this->synonyms = explode(', ',$rawWord['Synonyms']);
+            $this->synonyms = explode(', ', $rawWord['Synonyms']);
         }
         if (!empty($rawWord['Antonyms'])) {
-            $this->antonyms = explode(', ',$rawWord['Antonyms']);
+            $this->antonyms = explode(', ', $rawWord['Antonyms']);
         }
     }
 

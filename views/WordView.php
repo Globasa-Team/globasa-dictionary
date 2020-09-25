@@ -5,12 +5,6 @@ class WordView
 {
     public static function dictionaryEntry($config, $request, $word, &$page)
     {
-
-//         synonym sentence
-// synonyms sentence
-// antonym sentence
-// antonyms sentence
-// compare with sentence
         $page->description = $word->term . ': ' . htmlspecialchars($word->translation[$config->lang]);
         $page->content .='
             <div id="'.$word->term.'" class="dictionaryEntry w3-card" data-search="'./*implode(' ', $word->searchText).*/'" >
@@ -26,10 +20,11 @@ class WordView
             } else {
                 $trans = 'synonyms sentence';
             }
-            foreach($word->synonyms as $cur) {
+            foreach ($word->synonyms as $cur) {
                 $words[] = WorldlangDictUtils::makeLink(
                     $config,
                     'leksi/'.$cur,
+                    $request,
                     $cur
                 );
             }
@@ -43,10 +38,11 @@ class WordView
             } else {
                 $trans = 'antonyms sentence';
             }
-            foreach($word->antonyms as $cur) {
+            foreach ($word->antonyms as $cur) {
                 $words[] = WorldlangDictUtils::makeLink(
                     $config,
                     'leksi/'.$cur,
+                    $request,
                     $cur
                 );
             }
@@ -67,6 +63,7 @@ class WordView
                 $word->relatedWords[$i] = WorldlangDictUtils::makeLink(
                     $config,
                     'leksi/'.$cur,
+                    $request,
                     $cur
                 );
             }
@@ -80,18 +77,19 @@ class WordView
                 ).'</p>';
         }
         if (!empty($word->tags)) {
-            foreach($word->tags as $i=>$tag) {
+            foreach ($word->tags as $i=>$tag) {
                 $word->tags[$i] = WorldlangDictUtils::makeLink(
                     $config,
                     "leksilar/".$tag,
+                    $request,
                     $tag
                 );
             }
             $page->content .= '
                 <p class="tags">'.sprintf(
-                    $config->getTrans('tags links'),
-                    implode($word->tags)
-                    ).'</p>
+                $config->getTrans('tags links'),
+                implode($word->tags)
+            ).'</p>
                     ';
         }
 
@@ -108,6 +106,7 @@ class WordView
             '.WorldlangDictUtils::makeLink(
                 $config,
                 'leksi/'.$word->term,
+                $request,
                 '<span class="fa fa-link"></span> '.
                     $config->getTrans('Word Link')
             ).'
@@ -155,9 +154,9 @@ class WordView
         } else {
             $tags = $config->dictionary->tags;
         }
-        foreach($tags as $tag=>$words) {
-            foreach($words as $i=>$word) {
-                $words[$i] = WorldlangDictUtils::makeLink($config, "leksi/".$word, $word);
+        foreach ($tags as $tag=>$words) {
+            foreach ($words as $i=>$word) {
+                $words[$i] = WorldlangDictUtils::makeLink($config, "leksi/".$word, $request, $word);
             }
 
             if (isset($config->dictionary->words[$tag])) {

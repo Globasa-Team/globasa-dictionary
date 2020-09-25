@@ -61,11 +61,11 @@ class WorldlangDictConfig
         $missingTranslation = "";
         if (!empty($this->trans[$this->lang][$textId])) {
             return $this->trans[$this->lang][$textId];
-        } elseif (!empty($this->trans[$this->defaultLang][$textId])) {
+        } elseif (!empty($this->trans[$this->worldLang][$textId])) {
             if ($textId!='Missing App Text Translation') {
                 $missingTranslation = $this->getTrans('Missing App Text Translation');
             }
-            return $missingTranslation.$this->trans[$this->defaultLang][$textId];
+            return $missingTranslation.$this->trans[$this->worldLang][$textId];
         } elseif (!empty($this->trans[$this->auxLang][$textId])) {
             if ($textId!='Missing App Text Translation') {
                 $missingTranslation = $this->getTrans('Missing App Text Translation');

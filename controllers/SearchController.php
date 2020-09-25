@@ -15,7 +15,7 @@ class SearchController
         if (!is_null($request->options)) {
             if (!empty($request->options['wterm'])) {
                 $term = strtolower($request->options['wterm']);
-                $partialMatches = SearchController::searchLang($config, $config->dictionary->index[glb], $config->worldlang, $term);
+                $partialMatches = SearchController::searchLang($config, $config->dictionary->index['glb'], $config->worldlang, $term);
                 $lang = 'glb';
             } elseif (!empty($request->options['nterm'])) {
                 $term = strtolower($request->options['nterm']);
@@ -46,6 +46,7 @@ class SearchController
         }
 
         // look for partial match in index
+        $partialMatches = [];
         foreach ($dict as $word=>$data) {
             // insert, replace, delete
             if (levenshtein($term, $word, 1, 1, 1)<2) {

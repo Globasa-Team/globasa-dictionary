@@ -1,5 +1,6 @@
 <?php
 namespace WorldlangDict;
+
 ?>
 <!doctype html>
 <html class="no-js" lang="">
@@ -33,20 +34,24 @@ namespace WorldlangDict;
 
 <div id="siteHeader">
     <h1 id="appTitle">
-        <a href="<?php echo WorldlangDictUtils::makeUri($config, ''); ?>">
+        <a href="<?php echo WorldlangDictUtils::makeUri($config, '', $request); ?>">
             <span class="fa fa-book fa-lg"></span> <?php echo $config->siteName; ?>
         </a>
     </h1>
-        <a href="<?php echo WorldlangDictUtils::makeUri($config, ''); ?>"><?php echo $config->getTrans('random word button');?></a> &bull;
-        <a href="<?php echo WorldlangDictUtils::makeUri($config, 'leksilar'); ?>"><?php echo $config->getTrans('all words button');?></a> &bull;
-        <a href="<?php echo WorldlangDictUtils::makeUri($config, 'tule'); ?>"><?php echo $config->getTrans('tools button');?></a>
-    <form action="<?php echo WorldlangDictUtils::makeUri($config, "search"); ?>" method="get">
+        <a href="<?php echo WorldlangDictUtils::makeUri($config, '', $request); ?>"><?php echo $config->getTrans('random word button');?></a> &bull;
+        <a href="<?php echo WorldlangDictUtils::makeUri($config, 'leksilar', $request); ?>"><?php echo $config->getTrans('all words button');?></a> &bull;
+        <a href="<?php echo WorldlangDictUtils::makeUri($config, 'tule', $request); ?>"><?php echo $config->getTrans('tools button');?></a>
+    <form action="<?php echo WorldlangDictUtils::makeUri($config, "search", $request); ?>" method="get">
     <div class="w3-cell-row">
         <div class="w3-container w3-cell">
-            <input type="text" name="wTerm" placeholder="<?php echo $config->getTrans('search worldlang placeholder');?>" class="w3-input w3-border" value="<?php echo $request->options['wterm']; ?>" />
+            <input type="text" name="wTerm" placeholder="<?php echo $config->getTrans('search worldlang placeholder');?>" class="w3-input w3-border" value="<?php if (!empty($request->options['wterm'])) {
+    echo $request->options['wterm'];
+} ?>" />
         </div>
         <div class="w3-container w3-cell">
-            <input type="text" name="nTerm" placeholder="<?php echo $config->getTrans('search natlang placeholder');?>" class="w3-input w3-border" value="<?php echo $request->options['nterm']; ?>" />
+            <input type="text" name="nTerm" placeholder="<?php echo $config->getTrans('search natlang placeholder');?>" class="w3-input w3-border" value="<?php if (!empty($request->options['wterm'])) {
+    echo $request->options['nterm'];
+} ?>" />
         </div>
         <div class="w3-container w3-cell w3-cell-middle">
             <input type="submit" value="<?php echo $config->getTrans('search button');?>" class="w3-btn" />
@@ -92,19 +97,20 @@ namespace WorldlangDict;
             <p><a href="http://www.globasa.net/" class="w3-button"><span class="fa fa-link"></span> <?php echo $config->getTrans('globasa link');?></a><br/>
             <a href="https://github.com/ShawnPConroy/WorldlangDict" class="w3-button"><span class="fa fa-github"></span> <?php echo $config->getTrans('github link');?></a><br/>
             <a href="<?php echo WorldlangDictUtils::makeUri(
-                $config,
-                'am-reporte/?url='.$config->siteUri.substr($request->url, 1)
-            ); ?>" class="w3-button"><span class="fa fa-bug"></span> <?php echo $config->getTrans('report link');?></a><br/>
+    $config,
+    'am-reporte/?url='.$config->siteUri.substr($request->url, 1),
+    $request
+); ?>" class="w3-button"><span class="fa fa-bug"></span> <?php echo $config->getTrans('report link');?></a><br/>
             <a href="http://api.globasa.net/" class="w3-bar-item w3-button"><span class="fa fa-code"></span> <?php echo $config->getTrans('api link');?></a></p>
         </div>
     </div>
 </footer>
 
-  <script src="<?php echo $app->templateUri; ?>js/vendor/modernizr-3.7.1.min.js"></script>
+  <script src="<?php echo $config->templateUri; ?>js/vendor/modernizr-3.7.1.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.4.1.min.js"><\/script>')</script>
-  <script src="<?php echo $app->templateUri; ?>js/plugins.js"></script>
-  <script src="<?php echo $app->templateUri; ?>js/main.js"></script>
+  <script src="<?php echo $config->templateUri; ?>js/plugins.js"></script>
+  <script src="<?php echo $config->templateUri; ?>js/main.js"></script>
 
 </body>
 

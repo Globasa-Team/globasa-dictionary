@@ -6,13 +6,15 @@ class Page
     public $title;
     public $content;
     public $siteName;
-    
+    public $description;
+
     public function __construct($siteName)
     {
         $this->title = $this->siteName = $siteName;
-        $content = "";
+        $this->content = '';
+        $this->description = '';
     }
-    
+
     public function setTitle($title)
     {
         $this->title = $title . ' - ' . $this->siteName;

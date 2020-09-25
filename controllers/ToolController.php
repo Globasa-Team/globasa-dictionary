@@ -5,7 +5,8 @@ class ToolController
 {
     public static function run($config, $request, &$page)
     {
-        switch ($request->arguments[0]) {
+        $arg = isset($request->arguments[0]) ? $request->arguments[0] : '';
+        switch ($arg) {
             case 'homonym-check':
                 ToolController::homonymCheck($config, $request, $page);
                 break;
@@ -16,7 +17,7 @@ class ToolController
                 ToolController::checkCandidateWord($config, $request, $page);
                 break;
             default:
-                ToolView::toolList($config, $page);
+                ToolView::toolList($config, $page, $request);
                 break;
         }
         $page->setTitle($config->getTrans('tools button'));
@@ -26,7 +27,7 @@ class ToolController
     {
         $nearMatches = Tool::minimalPairCheck($config, $request);
         ToolView::minimalPairCheckTitle($config, $page);
-        ToolView::minimalPairCheckInput($config, $page);
+        ToolView::minimalPairCheckInput($config, $request, $page);
         ToolView::minimalPairCheck($config, $request, $nearMatches, $page);
         $page->setTitle($config->getTrans('minimum pair title'));
     }
@@ -35,7 +36,7 @@ class ToolController
     {
         $genWords = Tool::homonymCheck($config, $request);
         ToolView::homonymCheckTitle($config, $page);
-        ToolView::homonymCheckInput($config, $page);
+        ToolView::homonymCheckInput($config, $request, $page);
         ToolView::homonymCheck($config, $request, $genWords, $page);
         $page->setTitle($config->getTrans('homonym terminator title'));
     }

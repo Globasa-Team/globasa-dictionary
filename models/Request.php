@@ -25,8 +25,8 @@ class Request
             $this->linkQuery = '?'.$parsedUrl['query'];
             parse_str($parsedUrl['query'], $this->options);
         } else {
-            $this->linkQuery = null;
-            $this->options = null;
+            $this->linkQuery = '';
+            $this->options = '';
         }
 
         // Find num of parameters by comparing path to URI (minus 3 for domain)
@@ -40,7 +40,7 @@ class Request
         // Let's get to the request content!
         $this->lang = $config->lang;
         $this->controller = 'index';
-        $this->arguments = null;
+        $this->arguments = [];
 
         if ($requestSize >= 1) {
             $this->lang = $this->path[$requestSkip];

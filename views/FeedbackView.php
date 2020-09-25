@@ -2,8 +2,7 @@
 
 class FeedbackView
 {
-
-    public static function feedback ($config, $request, $page)
+    public static function feedback($config, $request, $page)
     {
         $page->content .= '
 
