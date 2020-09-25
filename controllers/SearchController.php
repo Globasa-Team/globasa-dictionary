@@ -22,11 +22,13 @@ class SearchController
                 $partialMatches = SearchController::searchLang($config, $config->dictionary->index[$request->lang], $request->lang, $term);
                 $lang = 'natlang';
             } else {
-                WorldlangDictUtils::redirect($config);
+                WorldlangDictUtils::redirect($config, $request);
             }
         } else {
-            WorldlangDictUtils::redirect($config);
+            WorldlangDictUtils::redirect($config, $request);
         }
+        // var_dump($partialMatches);
+        // die('done');
         SearchView::results($config, $partialMatches, $lang, $request, $page);
     }
 
@@ -35,13 +37,13 @@ class SearchController
         // look for exact match
         if ($lang == 'glb') {
             if (isset($dict[$term]) && isset($dict[$term][$term])) {
-                WorldlangDictUtils::redirect($config, 'leksi/'.urlencode($term));
+                WorldlangDictUtils::redirect($config, $request, 'leksi/'.urlencode($term));
             } elseif (isset($dict[$term])) {
                 return $dict[$term];
             }
         } else {
             if (isset($dict[$term])) {
-                WorldlangDictUtils::redirect($config, 'cel-ruke/'.urlencode($term));
+                WorldlangDictUtils::redirect($config, $request, 'cel-ruke/'.urlencode($term));
             }
         }
 

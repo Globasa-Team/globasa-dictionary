@@ -22,7 +22,7 @@ class WordController
         $term = isset($request->arguments[0]) ? $request->arguments[0] : null;
 
         if (is_null($term)) {
-            WorldlangDictUtils::redirect($config, "");
+            WorldlangDictUtils::redirect($config, $redirect, "");
         } else {
             if (isset($config->dictionary->index[$lang][$term])) {
                 foreach ($config->dictionary->index[$lang][$term] as $curMatch) {
