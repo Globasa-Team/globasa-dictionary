@@ -179,6 +179,8 @@ class Word
     // log root of derived words and generate etymology links
     private function parseEtymology($config, &$d)
     {
+        $terms = [];
+        $links = [];
         if (!empty($this->etymology)) {
             // Find related words if it does not refernce other languages in ().
             if (strpos($this->etymology, '(') === false) {
