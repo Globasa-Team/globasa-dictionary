@@ -58,6 +58,20 @@ class ToolView
     public static function homonymCheck($config, $request, $genList, &$page)
     {
         $result = '';
+
+        if (isset($config->dictionary->words[$request->options['candidate']])) {
+            $page->content .= "<h3>" .$config->getTrans('homonym terminator word exists title'). "</h3>
+                <p>". sprintf(
+                        $config->getTrans('homonym terminator word exists'),
+                        WorldlangDictUtils::makeLink(
+                            $config,
+                            'leksi/'.$request->options['candidate'],
+                            $request,
+                            $request->options['candidate']
+                        )
+                    )."</p>
+                ";
+        }
         foreach ($genList as $genWord=>$sources) {
             // Show all or only show ones related to the root.
             if (sizeof($sources)>1 && (!isset($request->options['candidate']) || isset($sources[$request->options['candidate']]))) {
@@ -74,7 +88,7 @@ class ToolView
         if (!empty($result)) {
             $page->content .= "<ul>".$result."</ul>";
         } else {
-            $page->content .= "No potential homonyms detected.";
+            $page->content .= "<h3>".$config->getTrans('homonym terminator none found')."</h3>";
         }
     }
 

@@ -61,21 +61,21 @@ class WorldlangDictConfig
         $missingTranslation = "";
         if (!empty($this->trans[$this->lang][$textId])) {
             return $this->trans[$this->lang][$textId];
-        } elseif (!empty($this->trans[$this->worldLang][$textId])) {
-            if ($textId!='Missing App Text Translation') {
-                $missingTranslation = $this->getTrans('Missing App Text Translation');
+        } elseif (!empty($this->trans[$this->worldlang][$textId])) {
+            if ($textId!='Missing Interface Text Translation') {
+                $missingTranslation = $this->getTrans('Missing Interface Text Translation');
             }
             return $missingTranslation.$this->trans[$this->worldLang][$textId];
         } elseif (!empty($this->trans[$this->auxLang][$textId])) {
-            if ($textId!='Missing App Text Translation') {
-                $missingTranslation = $this->getTrans('Missing App Text Translation');
+            if ($textId!='Missing Interface Text Translation') {
+                $missingTranslation = $this->getTrans('Missing Interface Text Translation');
             }
             return $missingTranslation.$this->trans[$this->auxLang][$textId];
         } else {
-            if ($textId!='Missing App Text Translation') {
-                $missingTranslation = $this->getTrans('Missing App Text Translation');
+            if ($textId!='Missing Interface Text Translation') {
+                $missingTranslation = $this->getTrans('Missing Interface Text Translation');
             } else {
-                $missingTranslation = '[hcMissing App Text Translation]';
+                $missingTranslation = '[hcMissing Interface Text Translation]';
             }
             return $missingTranslation.$this->trans[$this->auxLang][$textId];
         }
