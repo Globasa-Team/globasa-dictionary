@@ -220,9 +220,14 @@ class Word
         if (!empty($this->tags)) {
             $this->tags = explode(',', $this->tags);
             foreach ($this->tags as $i=>$tag) {
-                $tag = trim($tag);
-                $this->tags[$i]=$tag;
-                $d->tags[$tag][] = $this->termIndex;
+                $tag = strtolower(trim($tag));
+                if (isset($d->words[$tag])) {
+                    $tagName = $d->words[$tag]->term;
+                } else {
+                    $tagName = $tag;
+                }
+                $this->tags[$i]=$tagName;
+                $d->tags[$tag][] = $this->term;
             }
         }
     }

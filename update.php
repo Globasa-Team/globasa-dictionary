@@ -6,7 +6,7 @@ include_once 'bootstrap.php';
 $verbose = (php_sapi_name()!=="cli");
 if ($verbose) {
     echo "<html><head><title>".$config->siteName." Update</title></head><body>
-    <h1>Updating local files</h1>";
+    <h1>Updating local files ".date('h:i:s')."</h1>";
 }
 
 UpdateController::updateDictionaryData($config, $verbose);

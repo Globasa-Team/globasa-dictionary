@@ -88,7 +88,7 @@ class WordView
             $page->content .= '
                 <p class="tags">'.sprintf(
                 $config->getTrans('tags links'),
-                implode($word->tags)
+                implode(', ', $word->tags)
             ).'</p>
                     ';
         }

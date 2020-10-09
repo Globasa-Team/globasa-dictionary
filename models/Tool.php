@@ -27,9 +27,14 @@ class Tool
         // Generate all combinations, duplicate if combos on duplicate letter
         foreach ($root as $currentRoot) {
             foreach ($prefix as $currentPrefix) {
+                // if ($currentPrefix == "he") {
+                //     var_dump($currentPrefix.'3');
+                // }
                 $genWord = substr($currentPrefix, 0, -1).$currentRoot;
                 $genList[$genWord][$currentRoot] = "$currentPrefix-|$currentRoot|";
 
+                // Check if they were joined on the same letter, and check with only one
+                // Eg., bur- and rito make burrito, check burito. Remove hyphen.
                 if (substr($currentPrefix, -2, 1) == $currentRoot[0]) {
                     $genWord = substr($currentPrefix, 0, -2) . $currentRoot;
                     $genList[$genWord][$currentRoot] = "$currentPrefix-|$currentRoot|";
