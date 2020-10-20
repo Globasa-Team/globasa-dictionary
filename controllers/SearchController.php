@@ -20,15 +20,14 @@ class SearchController
             } elseif (!empty($request->options['nterm'])) {
                 $term = strtolower($request->options['nterm']);
                 $partialMatches = SearchController::searchLang($config, $config->dictionary->index[$request->lang], $request->lang, $term);
-                $lang = 'natlang';
+                $lang = $config->lang;
             } else {
                 WorldlangDictUtils::redirect($config, $request);
             }
         } else {
             WorldlangDictUtils::redirect($config, $request);
         }
-        // var_dump($partialMatches);
-        // die('done');
+        SearchView::resultsTitle($config, $request, $page);
         SearchView::results($config, $partialMatches, $lang, $request, $page);
     }
 

@@ -25,14 +25,15 @@ class WordController
             WorldlangDictUtils::redirect($config, $redirect, "");
         } else {
             if (isset($config->dictionary->index[$lang][$term])) {
-                foreach ($config->dictionary->index[$lang][$term] as $curMatch) {
-                    WordView::dictionaryEntry(
-                        $config,
-                        $request,
-                        $config->dictionary->words[$curMatch],
-                        $page
-                    );
-                }
+                // foreach ($config->dictionary->index[$lang][$term] as $curMatch) {
+                //     WordView::dictionaryEntry(
+                //         $config,
+                //         $request,
+                //         $config->dictionary->words[$curMatch],
+                //         $page
+                //     );
+                // }
+                SearchView::results($config, $config->dictionary->index[$lang][$term], 'glb', $request, $page);
                 $page->setTitle($term.': '.$config->getTrans('natlang search title bar'));
             }
         }
