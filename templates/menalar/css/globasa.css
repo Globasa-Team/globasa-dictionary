@@ -73,7 +73,7 @@ h1, h2, h3, h4, h5, h6 {
     text-decoration: none;
 }
 
-.dictionaryEntry a, .tags a {
+.dictionaryEntry a, .tags a, .dictionaryList a {
     text-decoration: none;
     color: #008113;
 }
@@ -95,6 +95,15 @@ h1, h2, h3, h4, h5, h6 {
     color: white;
 }
 
+.dictionaryList li {
+    margin-bottom: 1em;
+}
+
+.dictionaryList a {
+    font-size: large;
+    font-weight: bold;
+    text-decoration: none;
+}
 .feedback {
     width: 100%;
 }

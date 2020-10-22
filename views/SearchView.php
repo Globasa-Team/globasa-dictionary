@@ -16,7 +16,7 @@ class SearchView
         // var_dump($partialMatches);
         // if found, Ask which they want.
         if (sizeof($partialMatches)) {
-            $page->content .= '<ul>';
+            $page->content .= '<ul class="dictionaryList">';
 
             foreach ($partialMatches as $word) {
                 // var_dump($word);
