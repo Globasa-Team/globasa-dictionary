@@ -177,7 +177,7 @@ class Word
     }
 
     // log root of derived words and generate etymology links
-    private function parseEtymology($config, &$d)
+    private function parseEtymology_old($config, &$d)
     {
         $terms = [];
         $links = [];
@@ -203,6 +203,88 @@ class Word
             $pd = new \Parsedown();
             $this->etymology = $pd->line(str_replace($terms, $links, $this->etymology));
         }
+    }
+
+    // Parse the etymology field and create formatting etymology and log this
+    // as a derived word. Skip if this field is listing languages rather
+    // than being derived. If it has any parentheses its a borrowed word, skip.
+    private function parseEtymology($config, &$d)
+    {
+        $etymology = [];
+        if (!empty($this->etymology) && (strpos($this->etymology, '(') === false)) {
+            // Not borrowed, so find mentioned terms. Break in to fragments and
+            // rebuild fragment by fragment. When reaching term index and link
+            // where applicable.
+            $frag = explode(' ', $this->etymology);
+            $phrase = '';
+            $seperator = '';
+            $phraseStart = false;
+
+            foreach ($frag as $word) {
+                // Check if end of phrase (or term). The end is reach when $word
+                // is a `+` or ends with a `,`, is the oko of the `Am oko` or the
+                // priori_ of `_a priori_`
+                $stop = '';
+
+                if ($word == '+') {
+                    $word = '';
+                    $stop = ' + ';
+                    $phraseStart = true;
+                } else if (substr($word, -1) == ',') {
+                    $word = substr($word, 0, -1);
+                    $stop = ', ';
+                    $phraseStart = true;
+                } else if (substr($word, -1) == '.') {
+                    $word = substr($word, 0, -1);
+                    $stop = '.';
+                } else if ($word == 'oko' || $word == 'priori_') {
+                    $phrase .= ' '.$word;
+                    // die();
+                    if ($phrase == 'Am oko') {
+                        $etymology[] = $phrase.' ';
+                        $phrase = '';
+                        $seperator = '';
+                        $stop = '';
+                        $word = '';
+                    } else if ($phrase == '_a priori_') {
+                        $etymology[] = $phrase;
+                        $phrase = '';
+                        $seperator = '';
+                        $stop = '';
+                        $word = '';
+                    }
+                }
+
+                if (empty($stop)) {
+                    $phrase .= (!$phraseStart?$seperator:'').$word;
+                    $phraseStart = false;
+                } else {
+                    $phrase .= $word;
+                    // log as a derived term
+                    $d->derived[strtolower($phrase)][$this->termIndex] = $this->term;
+                    // link to term
+                    $phrase = '<a href="../leksi/'.$phrase.'">'.$phrase.'</a>';
+                    // add to etymology
+                    $etymology[] = $phrase.$stop;
+                    $phrase = '';
+                }
+                $seperator = ' ';
+                $stop = '';
+            }
+
+            // clean up if !empty($phrase)
+            // exactly as above: log, link, add
+            if (!empty($phrase)) {
+                // log as a derived term
+                $d->derived[strtolower($phrase)][$this->termIndex] = $this->term;
+                // link to term
+                $phrase = '<a href="../leksi/'.$phrase.'">'.$phrase.'</a>';
+                // add to etymology
+                $etymology[] = $phrase;
+            }
+        }
+        $pd = new \Parsedown();
+        $this->etymology = $pd->line(implode($etymology));
     }
 
     private function parseSynAnt($rawWord)
