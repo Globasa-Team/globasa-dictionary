@@ -65,6 +65,10 @@ class Word
         foreach ($dictionary->index as $lang=>$indexList) {
             ksort($dictionary->index[$lang]);
         }
+        foreach ($dictionary->tags as $tag=>$words) {
+            ksort($dictionary->tags[$tag]);
+        }
+        ksort($dictionary->tags);
         Word::generateRelatedWords($dictionary);
         return $dictionary;
     }
@@ -309,7 +313,7 @@ class Word
                     $tagName = $tag;
                 }
                 $this->tags[$i]=$tagName;
-                $d->tags[$tag][] = $this->term;
+                $d->tags[$tag][$this->termIndex] = $this->term;
             }
         }
     }
