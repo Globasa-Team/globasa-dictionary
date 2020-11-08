@@ -286,7 +286,7 @@ class Word
                 // add to etymology
                 $etymology[] = $phrase;
             }
-            $this->etymoloy = implode($etymology);
+            $this->etymology = implode($etymology);
         }
         $pd = new \Parsedown();
         $this->etymology = $pd->line($this->etymology);
