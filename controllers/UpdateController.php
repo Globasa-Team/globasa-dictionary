@@ -11,7 +11,7 @@ class UpdateController
         if ($verbose) {
             echo "<p> ... download word list.</p>";
         }
-        if(!isset($config->debugging)||$config->debugging) {
+        if(!isset($config->debugging)||!$config->debugging) {
             downloadFile($config->remoteCsvLocation, $config->csvLocation);
         }
         $rawWords = loadCsv($config->csvLocation);
