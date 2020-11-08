@@ -286,9 +286,10 @@ class Word
                 // add to etymology
                 $etymology[] = $phrase;
             }
+            $this->etymoloy = implode($etymology);
         }
         $pd = new \Parsedown();
-        $this->etymology = $pd->line(implode($etymology));
+        $this->etymology = $pd->line($this->etymology);
     }
 
     private function parseSynAnt($rawWord)
