@@ -1,6 +1,7 @@
 <?php
 namespace WorldlangDict;
 
+define(TRANS_SEPERATORS, ",;:");
 // Added at home in remote. Add in project. Added offline.
 class Word
 {
@@ -153,62 +154,38 @@ class Word
         }
         return;
     }
-/*
-am: _imperative verb marker_
--bel: _short for_ (/eng/leksi/-bil): -ible
-    - Has multiple links in it.
-    - hataya also does it.
--cu: _intransitive verb marker_
--do:  _in an inactive state of_
--gi: _**n/v.tr sfx**_ _causative, transitive marker_, make, cause to be
--mo: _adverb of degree and manner_
--ner: near (_used only with_ (/eng/leksi/xa-))
--su: _possessive adjective marker_
-am: _imperative verb marker_
-be-: _passive voice marker_
-infer: _**n**_  _short for [infraya](/eng/leksi/infraya)_: inferiority, belowness
-kuloka: _subordinate clause_: where
-kumaner: _subordinate clause_: how
-kuseba: _subordinate clause_: why
-kusu: _subordinate clause_: whose
-kute: _subordinate clause_: who
-kuto: _subordinate clause_: which
-kuwatu: _subordinate clause_: when
-max kom: _det phrs_ more than
-maxmo kom: _det phrs_ more than
-megagon: _**n**_ megagon, 1,000,000-gon
-min kom: _det phrs_ fewer than
-nun: _present tense marker_
-of-: _forms fractions_
-plu: _**adj/adv**_  multiple, _plurality marker_
-plu-: _multiple_
-se: _**pron**_ _reflexive pronoun_, myself, yourself, herself, himself, itself, themselves, ourselves, yourselves
-su: _**part**_ _marks the genitive case_
-_**n**_  _short for [supraya](/eng/leksi/supraya)_: superiority, aboveness
-wal: _**prep**_ without (not using/having)
-
-xosu
-    few
-    (a) little (bit of)
-    (a) bit (of)
-
-
-*/
+    
     private function generateNatlangTerms($worldlang, $d) {
+
         $pd = new \Parsedown();
-        echo $this->term;
         foreach ($this->translation as $lang=>$trans) {
             $trans = preg_replace('/\(_(.+)_\)/U', '', $trans);     // (_ ... _)
             $trans = preg_replace('/_\*\*(.+)\*\*_/U', '', $trans); // _** ... **_
             $trans = preg_replace('/\[.+\].+\]/U', '', $trans); // [...[...]...]
             // If we also need to do single bracket: /\[.+\]/U
-            $tok = strtok($trans, ",;/");
-            while ($tok !== false) {
-                if ($lang == 'eng') echo "<li>$tok</li>";
-                $tok = strtok(",;/");
+            $tok = trim(strtok($trans, TRANS_SEPERATORS));
+            while (!empty($tok)) {
+                if ($tok[0] == '_' && $tok[-1] != '_') {
+                    $tok .= ','.strtok(TRANS_SEPERATORS);
+                }
+
+                // included all parts, removing parentheses and underscores.
+                $searchTerm = preg_replace('/[\(\)_]/U', '', $tok);     // (_ ... _)
+                $d->index[$lang][$searchTerm][$this->termIndex] = $this->termIndex;
+
+                // Remove optional parts by deleting what is inside the
+                // brackets and removing double white space.
+                if (strpos($tok, '(')) {
+                    $searchTerm = preg_replace('/\((.+)\)/U', '', $tok);
+                    $searchTerm = preg_replace('/\s\s+/', ' ',$searchTerm);
+                    $searchTerm = trim($searchTerm);
+                    $d->index[$lang][$searchTerm][$this->termIndex] = $this->termIndex;
+                }
+
+                $tok = strtok(TRANS_SEPERATORS);
             }
+            $this->translation[$lang] = $pd->line($this->translation[$lang]);
         }
-        $this->translation[$lang] = $pd->line($this->translation[$lang]);
     }
 
     private function generateWorldlangTerms($worldlang, $d)

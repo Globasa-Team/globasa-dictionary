@@ -27,7 +27,6 @@ class SearchController
         } else {
             WorldlangDictUtils::redirect($config, $request);
         }
-        SearchView::resultsTitle($config, $request, $page);
         SearchView::results($config, $partialMatches, $lang, $request, $page);
     }
 
