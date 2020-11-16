@@ -154,7 +154,43 @@ class Word
         }
         return;
     }
-    
+/*
+    - Has multiple links in it.
+    - hataya also does it.
+-cu: _intransitive verb marker_
+-do:  _in an inactive state of_
+-gi: _**n/v.tr sfx**_ _causative, transitive marker_, make, cause to be
+-mo: _adverb of degree and manner_
+-ner: near (_used only with_ (/eng/leksi/xa-))
+-su: _possessive adjective marker_
+am: _imperative verb marker_
+be-: _passive voice marker_
+kuloka: _subordinate clause_: where
+kumaner: _subordinate clause_: how
+kuseba: _subordinate clause_: why
+kusu: _subordinate clause_: whose
+kute: _subordinate clause_: who
+kuto: _subordinate clause_: which
+kuwatu: _subordinate clause_: when
+megagon: _**n**_ megagon, 1,000,000-gon
+nun: _present tense marker_
+of-: _forms fractions_
+plu: _**adj/adv**_  multiple, _plurality marker_
+plu-: _multiple_
+se: _**pron**_ _reflexive pronoun_, myself, yourself, herself, himself, itself, themselves, ourselves, yourselves
+su: _**part**_ _marks the genitive case_
+
+xosu
+    few
+    (a) little (bit of)
+    (a) bit (of)
+
+
+    -bel: _short for_ (/eng/leksi/-bil): -ible
+    super: _**n**_  _short for [supraya](/eng/leksi/supraya)_: superiority, aboveness
+    infer: _**n**_  _short for [infraya](/eng/leksi/infraya)_: inferiority, belowness
+
+*/
     private function generateNatlangTerms($worldlang, $d) {
 
         $pd = new \Parsedown();
@@ -170,7 +206,7 @@ class Word
                 }
 
                 // included all parts, removing parentheses and underscores.
-                $searchTerm = preg_replace('/[\(\)_]/U', '', $tok);     // (_ ... _)
+                $searchTerm = trim(preg_replace('/[\(\)_]/U', '', $tok));     // (_ ... _)
                 $d->index[$lang][$searchTerm][$this->termIndex] = $this->termIndex;
 
                 // Remove optional parts by deleting what is inside the
@@ -181,7 +217,6 @@ class Word
                     $searchTerm = trim($searchTerm);
                     $d->index[$lang][$searchTerm][$this->termIndex] = $this->termIndex;
                 }
-
                 $tok = strtok(TRANS_SEPERATORS);
             }
             $this->translation[$lang] = $pd->line($this->translation[$lang]);
