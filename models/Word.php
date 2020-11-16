@@ -182,7 +182,7 @@ class Word
 
                 // Remove optional parts by deleting what is inside the
                 // brackets and removing double white space.
-                if (strpos($tok, '(')) {
+                if (strpos($tok, '(') !== false) {
                     $searchTerm = preg_replace('/\((.+)\)/U', '', $tok);
                     $searchTerm = preg_replace('/\s\s+/', ' ',$searchTerm);
                     $searchTerm = trim($searchTerm);
