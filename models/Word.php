@@ -276,17 +276,16 @@ class Word
                     $word = substr($word, 0, -1);
                     $stop = '.';
                 } else if ($word == 'oko' || $word == 'priori_') {
+                    $tempPhrase = $phrase.' '.$word;
                     // die();
-                    if ($phrase == 'Am oko') {
-                        $phrase .= ' '.$word;
-                        $etymology[] = $phrase.' ';
+                    if ($tempPhrase == 'Am oko') {
+                        $etymology[] = $phrase.' '.$word.' ';
                         $phrase = '';
                         $seperator = '';
                         $stop = '';
                         $word = '';
-                    } else if ($phrase == '_a priori_') {
-                        $phrase .= ' '.$word;
-                        $etymology[] = $phrase;
+                    } else if ($tempPhrase == '_a priori_') {
+                        $etymology[] = $phrase.' '.$word;
                         $phrase = '';
                         $seperator = '';
                         $stop = '';
@@ -298,9 +297,9 @@ class Word
                     $phrase .= (!$phraseStart?$seperator:'').$word;
                     $phraseStart = false;
                 } else {
-                    $phrase = $phrase.$word;
+                    $phrase .= $word;
                     $phrase = preg_replace('/[^A-Za-z0-9, \-]/', '', $phrase);
-                    $phrase = trim($phrase);
+
                     // log as a derived term
                     $d->derived[strtolower($phrase)][$this->termIndex] = $this->term;
                     // link to term
