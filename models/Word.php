@@ -38,7 +38,7 @@ class Word
         $this->parseEtymology($config, $d);
         $this->parseTags($config, $d);
         $this->parseSynAnt($rawWords[$wordKey]);
-        $this->generateSearchTerms($config->worldlang, $d);
+        $this->generateSearchTerms($config->worldlang, $d, $rawWords[$wordKey]['SearchTermsEng']);
         $this->generateIpa($config);
     }
 
@@ -126,10 +126,16 @@ class Word
         }
     }
 
-    private function generateSearchTerms($worldlang, $d)
+    private function generateSearchTerms($worldlang, $d, $searchTerms)
     {
         $this->generateWorldlangTerms($worldlang, $d);
         $this->generateNatlangTerms($worldlang, $d);
+        if (!empty($searchTerms)) {
+            $searchTerms = explode(',', $searchTerms);
+            foreach ($searchTerms as $term) {
+                $d->index['eng'][$term][$this->termIndex] = $this->termIndex;
+            }
+        }
     }
 
     private function generateNatlangTerms_old($worldlang, $d)
