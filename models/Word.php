@@ -22,7 +22,7 @@ class Word
     public function __construct($config, $rawWords, $wordKey, $d)
     {
         $this->term       = $rawWords[$wordKey]['Word'];
-        $this->termIndex  = $wordKey;
+        $this->termIndex  = strtolower(trim($wordKey));
         $this->category   = $rawWords[$wordKey]['Category'];
         $this->part       = $rawWords[$wordKey]['Part Of Speech'];
         $this->etymology  = $rawWords[$wordKey]['LeksiliAsel'];
@@ -133,6 +133,7 @@ class Word
         if (!empty($searchTerms)) {
             $searchTerms = explode(',', $searchTerms);
             foreach ($searchTerms as $term) {
+                $term = trim($term);
                 $d->index['eng'][$term][$this->termIndex] = $this->termIndex;
             }
         }
@@ -178,6 +179,7 @@ class Word
 
                 // included all parts, removing parentheses and underscores.
                 $searchTerm = trim(preg_replace('/[\(\)_]/U', '', $tok));     // (_ ... _)
+                $searchTerm = strtolower(trim($searchTerm));
                 $d->index[$lang][$searchTerm][$this->termIndex] = $this->termIndex;
 
                 // Remove optional parts by deleting what is inside the
@@ -185,7 +187,7 @@ class Word
                 if (strpos($tok, '(') !== false) {
                     $searchTerm = preg_replace('/\((.+)\)/U', '', $tok);
                     $searchTerm = preg_replace('/\s\s+/', ' ',$searchTerm);
-                    $searchTerm = trim($searchTerm);
+                    $searchTerm = strtolower(trim($searchTerm));
                     $d->index[$lang][$searchTerm][$this->termIndex] = $this->termIndex;
                 }
                 $tok = strtok(TRANS_SEPERATORS);

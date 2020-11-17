@@ -32,6 +32,7 @@ class SearchController
 
     private static function searchLang($config, $dict, $lang, $term)
     {
+        $term = strtolower(trim($term));
         // look for exact match
         if ($lang == 'glb') {
             if (isset($dict[$term]) && isset($dict[$term][$term])) {
