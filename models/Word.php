@@ -171,11 +171,11 @@ class Word
             $trans = preg_replace('/_\*\*(.+)\*\*_/U', '', $trans); // _** ... **_
             $trans = preg_replace('/\[.+\].+\]/U', '', $trans); // [...[...]...]
             // If we also need to do single bracket: /\[.+\]/U
-            $tok = trim(strtok($trans, TRANS_SEPERATORS));
+            $tok = trim(strtok($trans, constant("TRANS_SEPERATORS")));
             while (!empty($tok)) {
                 if ($tok[0] == '_' && $tok[-1] != '_') {
-                    $tok .= ','.strtok(TRANS_SEPERATORS);
-                }
+                    $tok .= ','.strtok(constant("TRANS_SEPERATORS"));
+                } 
 
                 // included all parts, removing parentheses and underscores.
                 $searchTerm = trim(preg_replace('/[\(\)_]/U', '', $tok));     // (_ ... _)
@@ -190,7 +190,7 @@ class Word
                     $searchTerm = strtolower(trim($searchTerm));
                     $d->index[$lang][$searchTerm][$this->termIndex] = $this->termIndex;
                 }
-                $tok = strtok(TRANS_SEPERATORS);
+                $tok = strtok(constant("TRANS_SEPERATORS"));
             }
             $this->translation[$lang] = $pd->line($this->translation[$lang]);
         }

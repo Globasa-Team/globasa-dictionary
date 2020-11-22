@@ -8,6 +8,8 @@ class UpdateController
         if ($verbose) {
             echo "<h2>📖 Updating dictionary data...</h2>";
         }
+
+        copy($config->csvLocation, $config->csvLocation.'.bak');
         if ($verbose) {
             echo "<p> ... download word list.</p>";
         }
