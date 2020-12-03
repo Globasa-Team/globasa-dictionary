@@ -22,20 +22,36 @@ class SearchView
                 // var_dump($word);
                 if ($lang=='glb') {
                     $page->content .= '<li>'.
-                        WorldlangDictUtils::makeLink($config, 'lexi/'.urlencode($word), $request, $word).
-                        '<br/>'.$config->dictionary->words[$word]->translation[$config->lang].'</li>';
+                        WorldlangDictUtils::makeLink(
+                            $config,
+                            'lexi/'.urlencode($word),
+                            $request,
+                            $config->dictionary->words[$word]->term
+                        ).'<br/>'.
+                        $config->dictionary->words[$word]->translation[$config->lang].
+                        '</li>';
                 } else {
                     if (count($config->dictionary->index[$lang][$word]) == 1) {
                         $word = current($config->dictionary->index[$lang][$word]);
                         $def = $config->dictionary->words[$word]->translation[$lang];
                         $page->content .= '<li>'.
-                            WorldlangDictUtils::makeLink($config, 'cel-ruke/'.urlencode($word), $request, $word).
-                            '<br/>'.$def.'</li>';
+                            WorldlangDictUtils::makeLink(
+                                $config,
+                                'cel-ruke/'.urlencode($word),
+                                $request,
+                                $config->dictionary->words[$word]->term
+                            ).'<br/>'.$def.'</li>';
                     } else {
                         foreach($config->dictionary->index[$lang][$word] as $word) {
                             $page->content .= '<li>'.
-                            WorldlangDictUtils::makeLink($config, 'lexi/'.urlencode($word), $request, $word).
-                            '<br/>'.$config->dictionary->words[$word]->translation[$config->lang].'</li>';
+                            WorldlangDictUtils::makeLink(
+                                $config,
+                                'lexi/'.urlencode($word),
+                                $request,
+                                $config->dictionary->words[$word]->term
+                            ).'<br/>'.
+                            $config->dictionary->words[$word]->translation[$config->lang].
+                            '</li>';
                         }
                     }
                 }
