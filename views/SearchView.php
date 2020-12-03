@@ -22,7 +22,7 @@ class SearchView
                 // var_dump($word);
                 if ($lang=='glb') {
                     $page->content .= '<li>'.
-                        WorldlangDictUtils::makeLink($config, 'leksi/'.urlencode($word), $request, $word).
+                        WorldlangDictUtils::makeLink($config, 'lexi/'.urlencode($word), $request, $word).
                         '<br/>'.$config->dictionary->words[$word]->translation[$config->lang].'</li>';
                 } else {
                     if (count($config->dictionary->index[$lang][$word]) == 1) {
@@ -34,7 +34,7 @@ class SearchView
                     } else {
                         foreach($config->dictionary->index[$lang][$word] as $word) {
                             $page->content .= '<li>'.
-                            WorldlangDictUtils::makeLink($config, 'leksi/'.urlencode($word), $request, $word).
+                            WorldlangDictUtils::makeLink($config, 'lexi/'.urlencode($word), $request, $word).
                             '<br/>'.$config->dictionary->words[$word]->translation[$config->lang].'</li>';
                         }
                     }

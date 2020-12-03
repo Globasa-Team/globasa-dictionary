@@ -65,7 +65,7 @@ class ToolView
                         $config->getTrans('homonym terminator word exists'),
                         WorldlangDictUtils::makeLink(
                             $config,
-                            'leksi/'.$request->options['candidate'],
+                            'lexi/'.$request->options['candidate'],
                             $request,
                             $request->options['candidate']
                         )

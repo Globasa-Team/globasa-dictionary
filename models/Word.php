@@ -175,7 +175,7 @@ class Word
             while (!empty($tok)) {
                 if ($tok[0] == '_' && $tok[-1] != '_') {
                     $tok .= ','.strtok(constant("TRANS_SEPERATORS"));
-                } 
+                }
 
                 // included all parts, removing parentheses and underscores.
                 $searchTerm = trim(preg_replace('/[\(\)_]/U', '', $tok));     // (_ ... _)
@@ -242,7 +242,7 @@ class Word
                 $termList = explode('|', str_replace([" + ",", "], "|", $etymology));
                 foreach ($termList as $word) {
                     $d->derived[strtolower($word)][$this->termIndex] = $this->term;
-                    $links[$word] = '<a href="../leksi/'.$word.'">'.$word.'</a>';
+                    $links[$word] = '<a href="../lexi/'.$word.'">'.$word.'</a>';
                     $terms[$word] = $word;
                 }
             }
@@ -311,7 +311,7 @@ class Word
                     // log as a derived term
                     $d->derived[strtolower($phrase)][$this->termIndex] = $this->term;
                     // link to term
-                    $phrase = '<a href="../leksi/'.$phrase.'">'.$phrase.'</a>';
+                    $phrase = '<a href="../lexi/'.$phrase.'">'.$phrase.'</a>';
                     // add to etymology
                     $etymology[] = $phrase.$stop;
                     $phrase = '';
@@ -326,7 +326,7 @@ class Word
                 // log as a derived term
                 $d->derived[strtolower($phrase)][$this->termIndex] = $this->term;
                 // link to term
-                $phrase = '<a href="../leksi/'.$phrase.'">'.$phrase.'</a>';
+                $phrase = '<a href="../lexi/'.$phrase.'">'.$phrase.'</a>';
                 // add to etymology
                 $etymology[] = $phrase;
             }

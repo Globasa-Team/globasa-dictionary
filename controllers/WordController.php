@@ -81,7 +81,7 @@ class WordController
     public static function randomWord($config, $request, &$page)
     {
         $wordIndex = array_rand($config->dictionary->words);
-        WorldlangDictUtils::redirect($config, $request, "leksi/".$wordIndex);
+        WorldlangDictUtils::redirect($config, $request, "lexi/".$wordIndex);
         // WordController::addEntry($config, $request, $wordIndex, $page);
         // $page->setTitle("Random word");
     }

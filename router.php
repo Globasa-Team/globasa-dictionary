@@ -21,7 +21,8 @@ function router($config)
             ToolController::run($config, $request, $page);
             break;
 
-        case 'leksi':
+        case 'leksi': // TODO: Delete this old term
+        case 'lexi':
             $word = isset($request->arguments[0]) ? $request->arguments[0] : null;
             WordController::addEntry($config, $request, $word, $page);
             break;
@@ -38,7 +39,8 @@ function router($config)
             FeedbackController::feedback($config, $request, $page);
             break;
 
-        case 'leksilar':
+        case 'leksilar': // TODO: delete this old term
+        case 'lexilar':
             // WordListController::getWordList($config, $request, $config->worldlang, $page);
             // WordController::addWordList($config, $request, $config->worldlang, $page);
             WordController::addTags($config, $request, $page);

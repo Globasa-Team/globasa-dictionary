@@ -36,7 +36,7 @@ class SearchController
         // look for exact match
         if ($lang == 'glb') {
             if (isset($dict[$term]) && isset($dict[$term][$term])) {
-                WorldlangDictUtils::redirect($config, $request, 'leksi/'.urlencode($term));
+                WorldlangDictUtils::redirect($config, $request, 'lexi/'.urlencode($term));
             } elseif (isset($dict[$term])) {
                 return $dict[$term];
             }

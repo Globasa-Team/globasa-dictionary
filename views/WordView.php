@@ -23,7 +23,7 @@ class WordView
             foreach ($word->synonyms as $cur) {
                 $words[] = WorldlangDictUtils::makeLink(
                     $config,
-                    'leksi/'.$cur,
+                    'lexi/'.$cur,
                     $request,
                     $cur
                 );
@@ -41,7 +41,7 @@ class WordView
             foreach ($word->antonyms as $cur) {
                 $words[] = WorldlangDictUtils::makeLink(
                     $config,
-                    'leksi/'.$cur,
+                    'lexi/'.$cur,
                     $request,
                     $cur
                 );
@@ -62,7 +62,7 @@ class WordView
             foreach ($word->relatedWords as $i=>$cur) {
                 $word->relatedWords[$i] = WorldlangDictUtils::makeLink(
                     $config,
-                    'leksi/'.$cur,
+                    'lexi/'.$cur,
                     $request,
                     $cur
                 );
@@ -80,7 +80,7 @@ class WordView
             foreach ($word->tags as $i=>$tag) {
                 $word->tags[$i] = WorldlangDictUtils::makeLink(
                     $config,
-                    "leksilar/".$tag,
+                    "lexilar/".$tag,
                     $request,
                     $tag
                 );
@@ -105,7 +105,7 @@ class WordView
             '<footer class="w3-container">
             '.WorldlangDictUtils::makeLink(
                 $config,
-                'leksi/'.$word->term,
+                'lexi/'.$word->term,
                 $request,
                 '<span class="fa fa-link"></span> '.
                     $config->getTrans('Word Link')
@@ -156,7 +156,7 @@ class WordView
         }
         foreach ($tags as $tag=>$words) {
             foreach ($words as $i=>$word) {
-                $words[$i] = WorldlangDictUtils::makeLink($config, "leksi/".$word, $request, $word);
+                $words[$i] = WorldlangDictUtils::makeLink($config, "lexi/".$word, $request, $word);
             }
 
             if (isset($config->dictionary->words[$tag])) {
