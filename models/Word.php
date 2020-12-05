@@ -25,7 +25,7 @@ class Word
         $this->termIndex  = strtolower(trim($wordKey));
         $this->category   = $rawWords[$wordKey]['Category'];
         $this->part       = $rawWords[$wordKey]['Part Of Speech'];
-        $this->etymology  = $rawWords[$wordKey]['LeksiliAsel'];
+        $this->etymology  = $rawWords[$wordKey]['LexiliAsel'];
         $this->tags       = $rawWords[$wordKey]['Tags'];
         $this->example    = $rawWords[$wordKey]['Example'];
 
