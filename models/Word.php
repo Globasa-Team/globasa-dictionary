@@ -30,6 +30,7 @@ class Word
         $this->example    = $rawWords[$wordKey]['Example'];
 
         $this->translation['eng'] = $rawWords[$wordKey]['TranslationEng'];
+        $this->translation['deu'] = $rawWords[$wordKey]['TranslationDeu'];
         $this->translation['fra'] = $rawWords[$wordKey]['TranslationFra'];
         $this->translation['rus'] = $rawWords[$wordKey]['TranslationRus'];
         $this->translation['spa'] = $rawWords[$wordKey]['TranslationSpa'];
