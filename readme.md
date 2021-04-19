@@ -26,11 +26,6 @@ __not__ be writable by group.
 
 It's currently set to auto-update the CSV if you setup a cron job for it.
 
-### Possible Future Features
-
-* Tags for groups of words like regions (countries, cities, stuff on a geography text), ethnicities, languages or anything else you want: words related to family, sports, etc.
-* Maybe AJAX for getting and showing a definition?
-
 ## Demo
 
 To see this app in action, check out http://menalar.globasa.net/eng/
