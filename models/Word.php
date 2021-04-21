@@ -15,6 +15,7 @@ class Word
     public $tags;
     public $synonyms;
     public $antonyms;
+    public $status;
 
 
     // added before online.
@@ -24,10 +25,10 @@ class Word
         $this->term       = $rawWords[$wordKey]['Word'];
         $this->termIndex  = strtolower(trim($wordKey));
         $this->category   = $rawWords[$wordKey]['Category'];
-        $this->part       = $rawWords[$wordKey]['Part Of Speech'];
         $this->etymology  = $rawWords[$wordKey]['LexiliAsel'];
         $this->tags       = $rawWords[$wordKey]['Tags'];
         $this->example    = $rawWords[$wordKey]['Example'];
+        $this->status     = $rawWords[$wordKey]['LexiliEstatus'];
 
         $this->translation['eng'] = $rawWords[$wordKey]['TranslationEng'];
         $this->translation['deu'] = $rawWords[$wordKey]['TranslationDeu'];
