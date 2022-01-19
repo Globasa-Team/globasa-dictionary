@@ -93,4 +93,17 @@ class Tool
 
         return $nearMatches;
     }
+
+    public static function transAideBulkTranslate($config, $request) {
+        $words = isset($_REQUEST['text']) ? strtolower($_REQUEST['text']) : null;
+        // Remove punctuation using PCRE unicode character class for all punctuation characters
+        $words = preg_replace('/\p{P}/', '', $words);
+
+        if (!empty($words)) {
+            $words = preg_split("@[\s+　]@u", trim($words));
+        }
+        return $words;
+    }
+
+
 }

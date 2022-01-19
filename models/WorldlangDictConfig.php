@@ -77,7 +77,7 @@ class WorldlangDictConfig
             } else {
                 $missingTranslation = '[hcMissing Interface Text Translation]';
             }
-            return $missingTranslation.$this->trans[$this->auxLang][$textId];
+            return $missingTranslation;
         }
     }
 

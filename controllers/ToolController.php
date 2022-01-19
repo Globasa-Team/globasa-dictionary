@@ -16,6 +16,9 @@ class ToolController
             case 'candidate-check':
                 ToolController::checkCandidateWord($config, $request, $page);
                 break;
+            case 'translation-aide':
+                ToolController::transAide($config, $request, $page);
+                break;
             default:
                 ToolView::toolList($config, $page, $request);
                 break;
@@ -50,7 +53,19 @@ class ToolController
         ToolView::minimalPairCheckTitle($config, $page);
         $nearMatches = Tool::minimalPairCheck($config, $request);
         ToolView::minimalPairCheck($config, $request, $nearMatches, $page);
-
+        
         $page->setTitle($config->getTrans('candidate check title'));
     }
+
+    public static function transAide($config, $request, &$page)
+    {
+        $transWords = Tool::transAideBulkTranslate($config, $request);
+
+        ToolView::transAideTitle($config, $page);
+        ToolView::transAideInput($config, $request, $page);
+        ToolView::transAideResults($config, $request, $transWords, $page);
+
+        $page->setTitle($config->getTrans('trans-from-glb'));
+    }
+
 }
