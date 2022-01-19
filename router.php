@@ -39,8 +39,9 @@ function router($config)
             FeedbackController::feedback($config, $request, $page);
             break;
 
-        case 'leksilar': // TODO: delete this old term
-        case 'lexilar':
+        case 'leksilar': // TODO: delete? deprecated 2020/2021?
+        case 'lexilar': // TODO: delete? deprecated 2021-11-19
+        case 'lexilari':
             // WordListController::getWordList($config, $request, $config->worldlang, $page);
             // WordController::addWordList($config, $request, $config->worldlang, $page);
             WordController::addTags($config, $request, $page);

@@ -39,7 +39,7 @@ namespace WorldlangDict;
         </a>
     </h1>
         <a href="<?php echo WorldlangDictUtils::makeUri($config, '', $request); ?>"><?php echo $config->getTrans('random word button');?></a> &bull;
-        <a href="<?php echo WorldlangDictUtils::makeUri($config, 'lexilar', $request); ?>"><?php echo $config->getTrans('all words button');?></a> &bull;
+        <a href="<?php echo WorldlangDictUtils::makeUri($config, 'lexilari', $request); ?>"><?php echo $config->getTrans('all words button');?></a> &bull;
         <a href="<?php echo WorldlangDictUtils::makeUri($config, 'tule', $request); ?>"><?php echo $config->getTrans('tools button');?></a>
     <form action="<?php echo WorldlangDictUtils::makeUri($config, "search", $request); ?>" method="get">
     <div class="w3-cell-row">
@@ -72,8 +72,8 @@ namespace WorldlangDict;
 <footer id="siteFooter" class="w3-container w3-padding-large w3-light-grey w3-opacity">
     <div class="w3-cell-row">
         <div class="w3-container w3-cell w3-mobile">
-            <p>C0 <a href="http://www.globasa.net">Globasa.net</a>.<br/>
-            A <a href="http://www.partialsolution.ca/">Partial Solution</a>.</p>
+            <p>C0 <a href="https://www.globasa.net">Globasa.net</a>.<br/>
+            A <a href="https://www.partialsolution.ca/">Partial Solution</a>.</p>
         </div>
         <div class="w3-container w3-cell w3-mobile" style="text-align: center;">
             <p>Currently only English language translations and interface is complete.</p>
@@ -94,14 +94,14 @@ namespace WorldlangDict;
         </div>
 
         <div class="w3-container w3-cell w3-mobile">
-            <p><a href="http://www.globasa.net/" class="w3-button"><span class="fa fa-link"></span> <?php echo $config->getTrans('globasa link');?></a><br/>
+            <p><a href="https://www.globasa.net/" class="w3-button"><span class="fa fa-link"></span> <?php echo $config->getTrans('globasa link');?></a><br/>
             <a href="https://github.com/ShawnPConroy/WorldlangDict" class="w3-button"><span class="fa fa-github"></span> <?php echo $config->getTrans('github link');?></a><br/>
             <a href="<?php echo WorldlangDictUtils::makeUri(
     $config,
     'am-reporte/?url='.$config->siteUri.substr($request->url, 1),
     $request
 ); ?>" class="w3-button"><span class="fa fa-bug"></span> <?php echo $config->getTrans('report link');?></a><br/>
-            <a href="http://api.globasa.net/" class="w3-bar-item w3-button"><span class="fa fa-code"></span> <?php echo $config->getTrans('api link');?></a></p>
+            <a href="https://api.globasa.net/" class="w3-bar-item w3-button"><span class="fa fa-code"></span> <?php echo $config->getTrans('api link');?></a></p>
         </div>
     </div>
 </footer>

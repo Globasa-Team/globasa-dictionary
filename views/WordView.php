@@ -80,7 +80,7 @@ class WordView
             foreach ($word->tags as $i=>$tag) {
                 $word->tags[$i] = WorldlangDictUtils::makeLink(
                     $config,
-                    "lexilar/".$tag,
+                    "lexilari/".$tag,
                     $request,
                     $tag
                 );
