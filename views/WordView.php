@@ -9,8 +9,23 @@ class WordView
         $page->content .='
             <div id="'.$word->term.'" class="dictionaryEntry w3-card" data-search="'./*implode(' ', $word->searchText).*/'" >
             <header class="w3-container">
-                <h2 id="entryTerm">'.$word->term.'</h2>
-            </header>
+                <div class="status">';
+        if ($word->status == "guxi") {
+            $page->content .= $config->getTrans('status archaic');
+        } else if ($word->status == "resmi") {
+            $page->content .= $config->getTrans('status official');
+        } else if ($word->status == "leferesmi") {
+            $page->content .= $config->getTrans('status tentative');
+        }
+
+        $page->content .='
+                </div>
+                <h2 id="entryTerm">'.$word->term.'</h2>';
+        if (!empty($word->wordClass)) {
+            $page->content .= '<div class="wordClass">('.$word->wordClass.')</div>';
+        }
+        $page->content .='
+                </header>
             <div class="w3-container">
             <p class="definition">'.$word->translation[$config->lang].'</p>';
         if (!empty($word->synonyms)) {
@@ -76,6 +91,7 @@ class WordView
                     implode(', ', $word->relatedWords)
                 ).'</p>';
         }
+        
         if (!empty($word->tags)) {
             foreach ($word->tags as $i=>$tag) {
                 $word->tags[$i] = WorldlangDictUtils::makeLink(
@@ -92,7 +108,7 @@ class WordView
             ).'</p>
                     ';
         }
-
+        
         $page->content .= '</div>';
         if (isset($request->options['full'])) {
             $page->content .= '<div style="text-align: left; color: black">';
@@ -101,6 +117,7 @@ class WordView
             }
             $page->content .= '</div>';
         }
+        
         $page->content .=
             '<footer class="w3-container">
             '.WorldlangDictUtils::makeLink(

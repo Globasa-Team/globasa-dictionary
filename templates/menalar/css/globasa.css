@@ -15,7 +15,7 @@ h1, h2, h3, h4, h5, h6 {
 #content {
     max-width: 600px;
     margin: auto;
-    min-margin: 5px;
+    padding: 5px;
 }
 
 #appTitle a, #appTitle a:link, #appTitle a:visited {
@@ -73,10 +73,30 @@ h1, h2, h3, h4, h5, h6 {
     text-decoration: none;
 }
 
+.dictionaryEntry .status {
+    margin: 0;
+    padding: 0;
+    text-align: right;
+}
+
+.dictionaryEntry header h2 {
+    display: inline
+}
+
+.wordClass {
+    display: inline;
+    font-style: italic;
+}
+
+#entryTerm {
+    margin-top: 0;
+}
+
 .dictionaryEntry a, .tags a, .dictionaryList a {
     text-decoration: none;
     color: #008113;
 }
+
 .w3-card header {
     background-color: #0040a9;
     color: white;
