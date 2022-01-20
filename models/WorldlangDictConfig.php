@@ -60,22 +60,27 @@ class WorldlangDictConfig
     {
         $missingTranslation = "";
         if (!empty($this->trans[$this->lang][$textId])) {
+            // Return localization string
             return $this->trans[$this->lang][$textId];
         } elseif (!empty($this->trans[$this->worldlang][$textId])) {
+            // Fall back to worldlang, return that with a notice.
             if ($textId!='Missing Interface Text Translation') {
                 $missingTranslation = $this->getTrans('Missing Interface Text Translation');
             }
-            return $missingTranslation.$this->trans[$this->worldLang][$textId];
+            return $missingTranslation.$this->trans[$this->worldlang][$textId];
         } elseif (!empty($this->trans[$this->auxLang][$textId])) {
+            // Fall back to aux lang (eg., English) with notice
             if ($textId!='Missing Interface Text Translation') {
                 $missingTranslation = $this->getTrans('Missing Interface Text Translation');
             }
             return $missingTranslation.$this->trans[$this->auxLang][$textId];
         } else {
+            // If all else fails, just say it's broken with i18n string id.
             if ($textId!='Missing Interface Text Translation') {
                 $missingTranslation = $this->getTrans('Missing Interface Text Translation');
             } else {
-                $missingTranslation = '[hcMissing Interface Text Translation]';
+                // End condition for 
+                $missingTranslation = '[Missing Interface Text Translation: '.$textId.']';
             }
             return $missingTranslation;
         }
