@@ -9,17 +9,6 @@ class WordView
         $page->content .='
             <div id="'.$word->term.'" class="dictionaryEntry w3-card" data-search="'./*implode(' ', $word->searchText).*/'" >
             <header class="w3-container">
-                <div class="status">';
-        if ($word->status == "guxi") {
-            $page->content .= $config->getTrans('status archaic');
-        } else if ($word->status == "resmi") {
-            $page->content .= $config->getTrans('status official');
-        } else if ($word->status == "leferesmi") {
-            $page->content .= $config->getTrans('status tentative');
-        }
-
-        $page->content .='
-                </div>
                 <h2 id="entryTerm">'.$word->term.'</h2>';
         if (!empty($word->wordClass)) {
             $page->content .= '<div class="wordClass">('.$word->wordClass.')</div>';
