@@ -32,6 +32,7 @@ class Word
         $this->status     = $rawWords[$wordKey]['LexiliEstatus'];
 
         $this->translation['eng'] = $rawWords[$wordKey]['TranslationEng'];
+        $this->translation['epo'] = $rawWords[$wordKey]['TranslationEpo'];
         $this->translation['deu'] = $rawWords[$wordKey]['TranslationDeu'];
         $this->translation['fra'] = $rawWords[$wordKey]['TranslationFra'];
         $this->translation['rus'] = $rawWords[$wordKey]['TranslationRus'];
