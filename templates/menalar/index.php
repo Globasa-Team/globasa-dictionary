@@ -79,14 +79,14 @@ namespace WorldlangDict;
             <p>Currently only English language translations and interface is complete.</p>
             <a href="<?php echo WorldlangDictUtils::changeLangUri($config, $request, 'eng'); ?>">
                 English</a> &bull;
+            <a href="<?php echo WorldlangDictUtils::changeLangUri($config, $request, 'spa'); ?>">
+                español</a> &bull;
             <a href="<?php echo WorldlangDictUtils::changeLangUri($config, $request, 'epo'); ?>">
                 Esperanto</a> &bull;
             <a href="<?php echo WorldlangDictUtils::changeLangUri($config, $request, 'fra'); ?>">
                 français</a> &bull;
             <a href="<?php echo WorldlangDictUtils::changeLangUri($config, $request, 'glb'); ?>">
-                globasa</a> &bull;
-            <a href="<?php echo WorldlangDictUtils::changeLangUri($config, $request, 'spa'); ?>">
-                español</a> &bull;
+                Globasa</a> &bull;
             <a href="<?php echo WorldlangDictUtils::changeLangUri($config, $request, 'rus'); ?>">
                 русский</a> &bull;
             <a href="<?php echo WorldlangDictUtils::changeLangUri($config, $request, 'zho'); ?>">
