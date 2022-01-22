@@ -7,6 +7,16 @@ class ToolView
     {
         $page->content .= '<h1>'.$config->getTrans('tools button').'</h1>
 
+
+            <div class="w3-card">
+                <header class="w3-container">
+                    <h2><a href="'.WorldlangDictUtils::makeUri($config, 'tule/translation-aide', $request).'">'.$config->getTrans('translation aide title').'</a></h2>
+                </header>
+                <div class="w3-container"><p>'.$config->getTrans('translation aide description').'</p>
+                </div>
+            </div>
+
+
             <div class="w3-card">
                 <header class="w3-container">
                     <h2>'.$config->getTrans('candidate check title').'</h2>
@@ -36,13 +46,7 @@ class ToolView
                 </div>
             </div>
             
-            <div class="w3-card">
-                <header class="w3-container">
-                    <h2><a href="'.WorldlangDictUtils::makeUri($config, 'tule/translation-aide', $request).'">'.$config->getTrans('translation aide title').'</a></h2>
-                </header>
-                <div class="w3-container"><p>'.$config->getTrans('translation aide description').'</p>
-                </div>
-            </div>
+
         ';
     }
 
