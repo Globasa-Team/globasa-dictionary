@@ -16,7 +16,9 @@ class WordView
         $page->content .='
                 </header>
             <div class="w3-container">
-            <p class="definition">'.$word->translation[$config->lang].'</p>';
+            <p class="definition">'.
+                (!empty($word->translation[$config->lang]) ? $word->translation[$config->lang] : sprintf($config->getTrans("Missing Word Translation") ) ).
+                '</p>';
         if (!empty($word->synonyms)) {
             $words = [];
             if (count($word->synonyms) == 1) {
