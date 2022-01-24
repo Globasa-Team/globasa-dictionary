@@ -118,7 +118,8 @@ class WordView
                 '<span class="fa fa-link"></span> '.
                     $config->getTrans('Word Link')
             ).'
-            &bull; '.$word->ipaLink.'
+            &bull; '.
+            '<a href="'.$word->ipaLink.'"><span class="fa fa-volume-up"></span> '.$config->getTrans('ipa link').'</a>
             </footer>
             </div>
             ';

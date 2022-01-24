@@ -113,7 +113,6 @@ class Word
         $replacement = [ 'tʃ',  'dʒ',   'ɾ',   'ʃ',   'j',   'x'  ];
         $result = preg_replace($pattern, $replacement, $phrase);
         $result = "http://ipa-reader.xyz/?text=".$result."&voice=Carla";
-        $result = '<a href="'.$result.'"><span class="fa fa-volume-up"></span> '.$config->getTrans('ipa link').'</a>';
         $this->ipaLink = $result;
     }
 
