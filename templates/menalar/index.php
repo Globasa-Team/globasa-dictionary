@@ -39,9 +39,9 @@ namespace WorldlangDict;
         </a>
     </h1>
         <a href="<?php echo WorldlangDictUtils::makeUri($config, '', $request); ?>"><?php echo $config->getTrans('random word button');?></a> &bull;
-        <a href="<?php echo WorldlangDictUtils::makeUri($config, 'tule/translation-aide', $request); ?>"><?php echo $config->getTrans('translation aide title');?></a> &bull;
+        <a href="<?php echo WorldlangDictUtils::makeUri($config, 'tul/translation-aide', $request); ?>"><?php echo $config->getTrans('translation aide title');?></a> &bull;
         <a href="<?php echo WorldlangDictUtils::makeUri($config, 'lexilari', $request); ?>"><?php echo $config->getTrans('all words button');?></a> &bull;
-        <a href="<?php echo WorldlangDictUtils::makeUri($config, 'tule', $request); ?>"><?php echo $config->getTrans('tools button');?></a>
+        <a href="<?php echo WorldlangDictUtils::makeUri($config, 'tul', $request); ?>"><?php echo $config->getTrans('tools button');?></a>
     <form action="<?php echo WorldlangDictUtils::makeUri($config, "search", $request); ?>" method="get">
     <div class="w3-cell-row">
         <div class="w3-container w3-cell">

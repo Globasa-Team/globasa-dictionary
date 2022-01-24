@@ -10,7 +10,7 @@ class ToolView
 
             <div class="w3-card">
                 <header class="w3-container">
-                    <h2><a href="'.WorldlangDictUtils::makeUri($config, 'tule/translation-aide', $request).'">'.$config->getTrans('translation aide title').'</a></h2>
+                    <h2><a href="'.WorldlangDictUtils::makeUri($config, 'tul/translation-aide', $request).'">'.$config->getTrans('translation aide title').'</a></h2>
                 </header>
                 <div class="w3-container"><p>'.$config->getTrans('translation aide description').'</p>
                 </div>
@@ -22,7 +22,7 @@ class ToolView
                     <h2>'.$config->getTrans('candidate check title').'</h2>
                 </header>
                 <p><div class="w3-container">
-                <form action="'. WorldlangDictUtils::makeUri($config, "tule/candidate-check", $request) .'" method="get">
+                <form action="'. WorldlangDictUtils::makeUri($config, "tul/candidate-check", $request) .'" method="get">
                 <input name="candidate" placeholder="'.$config->getTrans('candidate check placeholder').'" class="w3-input w3-border w3-light-grey" style="max-width: 400px; display:inline-block; margin-right: 10px;" />
                 <input value="'.$config->getTrans('candidate check button').'" type="submit" class="w3-btn w3-blue-grey" />
                 </form></p>
@@ -32,7 +32,7 @@ class ToolView
 
             <div class="w3-card">
                 <header class="w3-container">
-                    <h2><a href="'.WorldlangDictUtils::makeUri($config, 'tule/homonym-check', $request).'">'.$config->getTrans('homonym terminator title').'</a></h2>
+                    <h2><a href="'.WorldlangDictUtils::makeUri($config, 'tul/homonym-check', $request).'">'.$config->getTrans('homonym terminator title').'</a></h2>
                 </header>
                 <div class="w3-container"><p>'.$config->getTrans('homonym terminator description').'</p>
                 </div>
@@ -40,7 +40,7 @@ class ToolView
 
             <div class="w3-card">
                 <header class="w3-container">
-                    <h2><a href="'.WorldlangDictUtils::makeUri($config, 'tule/minimal-pair-detector', $request).'">'.$config->getTrans('minimum pair title').'</a></h2>
+                    <h2><a href="'.WorldlangDictUtils::makeUri($config, 'tul/minimal-pair-detector', $request).'">'.$config->getTrans('minimum pair title').'</a></h2>
                 </header>
                 <div class="w3-container"><p>'.$config->getTrans('minimum pair description').'</p>
                 </div>
@@ -60,7 +60,7 @@ class ToolView
     {
         $page->content .= '
             <div class="w3-card w3-container" style="padding: 5px">
-                <form action="'. WorldlangDictUtils::makeUri($config, "tule/homonym-check", $request) .'" method="get">
+                <form action="'. WorldlangDictUtils::makeUri($config, "tul/homonym-check", $request) .'" method="get">
                 <input name="candidate" placeholder="'.$config->getTrans('homonym terminator new placeholder').'" class="w3-input w3-border w3-light-grey" style="max-width: 400px; display:inline-block; margin-right: 10px;" />
                 <input type="submit" value="'.$config->getTrans('homonym terminator new button').'" class="w3-btn w3-blue-grey" />
                 </form>
@@ -119,7 +119,7 @@ class ToolView
         }
         $page->content .= '
             <div class="w3-card w3-container" style="padding: 5px">
-            <form action="'.WorldlangDictUtils::makeUri($config, 'tule/minimal-pair-detector', $request).'" method="get">
+            <form action="'.WorldlangDictUtils::makeUri($config, 'tul/minimal-pair-detector', $request).'" method="get">
                 <input name="candidate" placeholder="'.$config->getTrans('minimum pair new placeholder').'" class="w3-input w3-border w3-light-grey" style="max-width: 400px; display:inline-block; margin-right: 10px;" value="'.$candidate.'" />
                 <input type="submit" value="'.$config->getTrans('minimum pair new button').'" class="w3-btn w3-blue-grey" />
             </form>
@@ -166,7 +166,7 @@ class ToolView
     {
         $page->content .= '
             <div class="w3-card w3-container" style="padding: 5px">
-                <form action="'. WorldlangDictUtils::makeUri($config, "tule/translation-aide", $request) .'" method="post">
+                <form action="'. WorldlangDictUtils::makeUri($config, "tul/translation-aide", $request) .'" method="post">
                 <textarea name="text" placeholder="'.$config->getTrans('translation aide placeholder').'" class="w3-input w3-border w3-light-grey" >
 Bimaryen side in calunkursi in hospital.
 Te wawa.

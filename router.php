@@ -17,7 +17,8 @@ function router($config)
 
     switch ($request->controller) {
 
-        case 'tule':
+        case 'tule': // TODO: Delete this old term
+        case 'tul':
             ToolController::run($config, $request, $page);
             break;
 
