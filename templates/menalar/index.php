@@ -12,7 +12,8 @@ namespace WorldlangDict;
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="manifest" href="site.webmanifest">
-  <link rel="apple-touch-icon" href="icon.png">
+  <link rel="apple-touch-icon" href="<?php echo $config->siteUri; ?>globasa-logo.webp">
+  <link rel="icon" type="image/png" href="<?php echo $config->siteUri; ?>globasa-logo.webp">
   <!-- Place favicon.ico in the root directory -->
 
   <link rel="stylesheet" href="<?php echo $config->templateUri; ?>css/normalize.css">
