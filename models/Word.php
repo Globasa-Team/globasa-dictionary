@@ -259,8 +259,16 @@ class Word
     // than being derived. If it has any parentheses its a borrowed word, skip.
     private function parseEtymology($config, &$d)
     {
+        $startsHttp = substr($this->etymology, 0, 7);
+        if (strcmp($startsHttp, 'https:/') == 0 || strcmp($startsHttp, 'http://') == 0) {
+            $startsHttp = true;
+        }
+        else {
+            $startsHttp = false;
+        }
+
         $etymology = [];
-        if (!empty($this->etymology) && (strpos($this->etymology, '(') === false)) {
+        if (!empty($this->etymology) && (strpos($this->etymology, '(') === false) && !$startsHttp) {
             // Not borrowed, so find mentioned terms. Break in to fragments and
             // rebuild fragment by fragment. When reaching term index and link
             // where applicable.
@@ -334,6 +342,9 @@ class Word
                 $etymology[] = $phrase;
             }
             $this->etymology = implode($etymology);
+        }
+        else if ($startsHttp) {
+            $this->etymology = '<a href="'.$this->etymology.'">'.$config->getTrans('etymology link').'</a>';
         }
         $pd = new \Parsedown();
         $this->etymology = $pd->line($this->etymology);
