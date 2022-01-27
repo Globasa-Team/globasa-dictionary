@@ -79,6 +79,14 @@ h1, h2, h3, h4, h5, h6 {
     text-align: right;
 }
 
+.wordClass a, .wordClass a:link, .wordClass a:visited {
+    color: white;
+    background-color: inherit;
+    text-decoration: underline;
+    text-decoration-style: dashed;
+    text-decoration-color: #aaf;
+}
+
 .dictionaryEntry header h2 {
     display: inline
 }

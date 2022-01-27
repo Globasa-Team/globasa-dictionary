@@ -19,7 +19,7 @@ namespace WorldlangDict;
   <link rel="stylesheet" href="<?php echo $config->templateUri; ?>css/normalize.css">
   <link rel="stylesheet" href="<?php echo $config->templateUri; ?>css/main.css">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <link rel="stylesheet" href="<?php echo $config->templateUri; ?>css/globasa.css?1-19">
+  <link rel="stylesheet" href="<?php echo $config->templateUri; ?>css/globasa.css?1-27">
   <link href="https://fonts.googleapis.com/css?family=Literata|Merriweather&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" integrity="sha256-gsmEoJAws/Kd3CjuOQzLie5Q3yshhvmo7YNtBG7aaEY=" crossorigin="anonymous">
   <meta name="theme-color" content="#fafafa">
@@ -40,6 +40,7 @@ namespace WorldlangDict;
         </a>
     </h1>
         <a href="<?php echo WorldlangDictUtils::makeUri($config, '', $request); ?>"><?php echo $config->getTrans('random word button');?></a> &bull;
+        <a href="https://xwexi.globasa.net/grammar/word-classes"><?php echo $config->getTrans('word classes link');?></a> &bull;
         <a href="<?php echo WorldlangDictUtils::makeUri($config, 'tul/translation-aide', $request); ?>"><?php echo $config->getTrans('translation aide title');?></a> &bull;
         <a href="<?php echo WorldlangDictUtils::makeUri($config, 'lexilari', $request); ?>"><?php echo $config->getTrans('all words button');?></a> &bull;
         <a href="<?php echo WorldlangDictUtils::makeUri($config, 'tul', $request); ?>"><?php echo $config->getTrans('tools button');?></a>
