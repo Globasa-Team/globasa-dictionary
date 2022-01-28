@@ -13,13 +13,11 @@ class SearchView
 
     public static function results($config, $partialMatches, $lang, $request, $page)
     {
-        // var_dump($partialMatches);
         // if found, Ask which they want.
         if (sizeof($partialMatches)) {
             $page->content .= '<ul class="dictionaryList">';
 
             foreach ($partialMatches as $word) {
-                // var_dump($word);
                 if ($lang=='glb') {
                     $page->content .= '<li>'.
                         WorldlangDictUtils::makeLink(
@@ -37,7 +35,7 @@ class SearchView
                         $page->content .= '<li>'.
                             WorldlangDictUtils::makeLink(
                                 $config,
-                                'cel-ruke/'.urlencode($word),
+                                'lexi/'.urlencode($word),
                                 $request,
                                 $config->dictionary->words[$word]->term
                             ).'<br/>'.$def.'</li>';
