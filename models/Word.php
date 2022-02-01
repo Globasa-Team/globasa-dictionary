@@ -260,12 +260,14 @@ class Word
     private function parseEtymology($config, &$d)
     {
         $startsHttp = substr($this->etymology, 0, 7);
+        
         if (strcmp($startsHttp, 'https:/') == 0 || strcmp($startsHttp, 'http://') == 0) {
             $startsHttp = true;
         }
         else {
             $startsHttp = false;
         }
+
 
         $etymology = [];
         if (!empty($this->etymology) && (strpos($this->etymology, '(') === false) && !$startsHttp) {
@@ -343,11 +345,11 @@ class Word
             }
             $this->etymology = implode($etymology);
         }
-        else if ($startsHttp) {
-            $this->etymology = '<a href="'.$this->etymology.'">'.$config->getTrans('etymology link').'</a>';
-        }
+
         $pd = new \Parsedown();
-        $this->etymology = $pd->line($this->etymology);
+        if (!$startsHttp) {
+            $this->etymology = $pd->line($this->etymology);
+        }
     }
 
     private function parseSynAnt($rawWord)

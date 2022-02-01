@@ -61,6 +61,15 @@ class WordView
                 <p class="example">'.sprintf($config->getTrans('Example'), $word->example).'</p>';
         }
         if (!empty($word->etymology)) {
+
+            $startsHttp = substr($word->etymology, 0, 7);
+            
+            if (strcmp($startsHttp, 'https:/') == 0 || strcmp($startsHttp, 'http://') == 0) {
+                $word->etymology = '<a href="'.$word->etymology.'">'.$config->getTrans('etymology link').'</a>';
+            }
+            else {
+            }
+    
             $page->content .='
                 <p class="etymology">'.sprintf($config->getTrans('Etymology'), $word->etymology).'</p>';
         }
