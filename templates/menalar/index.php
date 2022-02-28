@@ -19,7 +19,7 @@ namespace WorldlangDict;
   <link rel="stylesheet" href="<?php echo $config->templateUri; ?>css/normalize.css">
   <link rel="stylesheet" href="<?php echo $config->templateUri; ?>css/main.css">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-  <link rel="stylesheet" href="<?php echo $config->templateUri; ?>css/globasa.css?1-31">
+  <link rel="stylesheet" href="<?php echo $config->templateUri; ?>css/globasa.css?2-28">
   <link href="https://fonts.googleapis.com/css?family=Literata|Merriweather&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" integrity="sha256-gsmEoJAws/Kd3CjuOQzLie5Q3yshhvmo7YNtBG7aaEY=" crossorigin="anonymous">
   <meta name="theme-color" content="#fafafa">
@@ -74,18 +74,18 @@ namespace WorldlangDict;
 
 <footer id="siteFooter" class="w3-container w3-padding-large w3-light-grey w3-opacity">
     <div class="w3-cell-row">
-        <div class="w3-container w3-cell w3-mobile">
+        <div class="w3-container w3-cell w3-mobile" style="width: 10%;">
             <p>C0 <a href="https://www.globasa.net">Globasa.net</a>.<br/>
             A <a href="https://www.partialsolution.ca/">Partial Solution</a>.</p>
         </div>
         <div class="w3-container w3-cell w3-mobile" style="text-align: center;">
-            <p>Currently only English language translations and interface is complete.</p>
             <a href="<?php echo WorldlangDictUtils::changeLangUri($config, $request, 'eng'); ?>">
                 English</a> &bull;
             <a href="<?php echo WorldlangDictUtils::changeLangUri($config, $request, 'spa'); ?>">
                 español</a> &bull;
             <a href="<?php echo WorldlangDictUtils::changeLangUri($config, $request, 'epo'); ?>">
-                Esperanto</a> &bull;
+                Esperanto</a>
+<?php /* Remove I just don't want to delete it.
             <a href="<?php echo WorldlangDictUtils::changeLangUri($config, $request, 'fra'); ?>">
                 français</a> &bull;
             <a href="<?php echo WorldlangDictUtils::changeLangUri($config, $request, 'glb'); ?>">
@@ -94,9 +94,10 @@ namespace WorldlangDict;
                 русский</a> &bull;
             <a href="<?php echo WorldlangDictUtils::changeLangUri($config, $request, 'zho'); ?>">
                 中文</a>
+*/ ?>
         </div>
 
-        <div class="w3-container w3-cell w3-mobile">
+        <div class="w3-container w3-cell w3-mobile" style="width: 10%;">
             <p><a href="https://www.globasa.net/" class="w3-button"><span class="fa fa-link"></span> <?php echo $config->getTrans('globasa link');?></a><br/>
             <a href="https://github.com/ShawnPConroy/WorldlangDict" class="w3-button"><span class="fa fa-github"></span> <?php echo $config->getTrans('github link');?></a><br/>
             <a href="<?php echo WorldlangDictUtils::makeUri(
