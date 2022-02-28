@@ -25,7 +25,13 @@ class SearchView
                             'lexi/'.urlencode($word),
                             $request,
                             $config->dictionary->words[$word]->term
-                        ).'<br/>'.
+                        );
+                    if (isset($config->dictionary->words[$word]->wordClass) && !empty($config->dictionary->words[$word]->wordClass)) {
+                        $page->content .=
+                            '<div class="wordClass">(<a href="https://xwexi.globasa.net/' . $config->lang . '/grammar/word-classes">'.$config->dictionary->words[$word]->wordClass.'</a>)</div>';
+                    }
+                    $page->content .=
+                        '<br/>'.
                         $config->dictionary->words[$word]->translation[$config->lang].
                         '</li>';
                 } else {
