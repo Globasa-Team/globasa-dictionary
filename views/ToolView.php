@@ -168,7 +168,7 @@ class ToolView
         $page->content .= '
             <div class="w3-card w3-container" style="padding: 5px">
                 <form action="'. WorldlangDictUtils::makeUri($config, "tul/translation-aide", $request) .'" method="post">
-                <textarea name="text" placeholder="'.$config->getTrans('translation aide placeholder').'" class="w3-input w3-border w3-light-grey" >'.$words.'</textarea>
+                <textarea name="text" class="w3-input w3-border w3-light-grey" >'.$words.'</textarea>
                 <input type="submit" value="'.$config->getTrans('translation aide translate button').'" class="w3-btn w3-blue-grey" />
                 </form>
             </div>';
