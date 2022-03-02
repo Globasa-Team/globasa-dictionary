@@ -61,7 +61,7 @@ class ToolController
     {
         $transWords = Tool::transAideBulkTranslate($config, $request);
 
-        ToolView::transAideTitle($config, $page);
+        ToolView::transAideTitle($config, $page, $request);
         ToolView::transAideInput($config, $request, $page);
         ToolView::transAideResults($config, $request, $transWords, $page);
 

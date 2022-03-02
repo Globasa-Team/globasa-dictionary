@@ -164,19 +164,11 @@ class ToolView
 
     public static function transAideInput($config, $request, &$page)
     {
+        $words = isset($_REQUEST['text']) ? $_REQUEST['text'] : null;
         $page->content .= '
             <div class="w3-card w3-container" style="padding: 5px">
                 <form action="'. WorldlangDictUtils::makeUri($config, "tul/translation-aide", $request) .'" method="post">
-                <textarea name="text" placeholder="'.$config->getTrans('translation aide placeholder').'" class="w3-input w3-border w3-light-grey" >
-Bimaryen side in calunkursi in hospital.
-Te wawa.
-Bante swal tas te ki te wawa kuseba.
-Bimaryen jawabu ki te le ore banto.
-Insan swal tas te, "Yu le ore keto?"
-Bimaryen jawabu, "Mi le ore: Am no befobi, moyto xa sen bon."
-Insan loga, "Dento sen bon!"
-Bimaryen jawabu, "Mas dento beloga kanhoyen tas medisyen!"
-                </textarea>
+                <textarea name="text" placeholder="'.$config->getTrans('translation aide placeholder').'" class="w3-input w3-border w3-light-grey" >'.$words.'</textarea>
                 <input type="submit" value="'.$config->getTrans('translation aide translate button').'" class="w3-btn w3-blue-grey" />
                 </form>
             </div>';
@@ -191,7 +183,7 @@ Bimaryen jawabu, "Mas dento beloga kanhoyen tas medisyen!"
 
             $result = '<ul>';
             foreach($words as $word) {
-                
+                // TODO: Show something if these is no translation
                 if (!empty($word) && !empty($dic[$word])) {
                     $trans = $dic[$word]->translation['eng'];
                 }
