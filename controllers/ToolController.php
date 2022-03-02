@@ -59,11 +59,11 @@ class ToolController
 
     public static function transAide($config, $request, &$page)
     {
-        $transWords = Tool::transAideBulkTranslate($config, $request);
+        $bulkWords = Tool::transAideBulkTranslate($config, $request);
 
         ToolView::transAideTitle($config, $page, $request);
         ToolView::transAideInput($config, $request, $page);
-        ToolView::transAideResults($config, $request, $transWords, $page);
+        ToolView::transAideResults($config, $request, $bulkWords, $page);
 
         $page->setTitle($config->getTrans('trans-from-glb'));
     }

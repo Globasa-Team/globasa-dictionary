@@ -95,14 +95,35 @@ class Tool
     }
 
     public static function transAideBulkTranslate($config, $request) {
-        $words = isset($_REQUEST['text']) ? strtolower($_REQUEST['text']) : null;
-        // Remove punctuation using PCRE unicode character class for all punctuation characters
-        $words = preg_replace('/\p{P}/', '', $words);
+        $text = isset($_REQUEST['text']) ? strtolower($_REQUEST['text']) : null;
+        $result = [];
+        
+        // Old code that broke text apart by line return
+        // if (!empty($words)) {
+            //     $words = preg_split("@[\s+　]@u", trim($text));
+        // }
+        
+        // Break text up by sentence.
+        
+        if (!empty($text)) {
+            $sentences = preg_split('/(?<=[.?!])\s+(?=[a-z])/i', $text);
+            
+            foreach($sentences as $key=>$sentence) {
+                $sentenceResult = new \stdClass();
+                $sentenceResult->sentence = $sentence;
+    
+                // Remove punctuation using PCRE unicode character class for all punctuation characters
+                $sentence = preg_replace('/\p{P}/', '', $sentence);
+                // Split on whitepace
+                $sentenceResult->words = preg_split("@[\s+　]@u", trim($sentence));
+    
+                $result[] = $sentenceResult;
+            }
 
-        if (!empty($words)) {
-            $words = preg_split("@[\s+　]@u", trim($words));
         }
-        return $words;
+
+        return $result;
+        
     }
 
 

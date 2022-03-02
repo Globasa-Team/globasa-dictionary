@@ -151,6 +151,11 @@ li .wordClass, li .wordClass a, li .wordClass a:link, li .wordClass a:visited {
     margin: 1em;
     text-align: center;
 }
+
+
+.translationAide li {
+    margin-bottom: 1em;
+}
 /*
  Globasa flag colours
  blue #0040a9

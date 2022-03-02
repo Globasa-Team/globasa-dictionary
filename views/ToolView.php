@@ -174,28 +174,33 @@ class ToolView
             </div>';
     }
 
-    public static function transAideResults($config, $request, $words, &$page)
+
+    public static function transAideResults($config, $request, $sentences, &$page)
     {
         $dic = $config->dictionary->words;
         $result = '';
         
-        if (!empty($words)) {
+        if (!empty($sentences)) {
 
-            $result = '<ul>';
-            foreach($words as $word) {
-                // TODO: Show something if these is no translation
-                if (!empty($word) && !empty($dic[$word])) {
-                    $trans = $dic[$word]->translation['eng'];
+            $result = '<ul class="translationAide">';
+            foreach($sentences as $current) {
+                $result .= '<li>'.$current->sentence.'<ul>';
+                foreach($current->words as $word) {
+                    // TODO: Show something if these is no translation
+                    if (!empty($word) && !empty($dic[$word])) {
+                        $trans = $dic[$word]->translation['eng'];
+                    }
+                    else if (!empty($word) && empty($dic[$word])) {
+                        $trans = '[Translation not found]';
+                    }
+                    else {
+                        // Line feed / new paragraph
+                        $result .= '</ul>new line or paragraph?<ul>';
+                        continue;
+                    }
+                    $result .= '<li>'.$word.': '.$trans.'</li>';
                 }
-                else if (!empty($dic[$word])) {
-                    $trans = '[Translation not found]';
-                }
-                else {
-                    // Line feed / new paragraph
-                    $result .= '</ul><ul>';
-                    continue;
-                }
-                $result .= '<li>'.$word.': '.$trans.'</li>';
+                $result .= '</ul></li>';
             }
             $result .= '</ul>';
         }
