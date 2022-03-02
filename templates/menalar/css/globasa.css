@@ -84,9 +84,10 @@ header .wordClass a, header .wordClass a:link, header .wordClass a:visited {
     background-color: inherit;
 }
 
-li .wordClass a, li .wordClass a:link, li .wordClass a:visited {
+li .wordClass, li .wordClass a, li .wordClass a:link, li .wordClass a:visited {
     color: black;
     background-color: inherit;
+    font-size: medium;
 }
 
 .dictionaryEntry header h2 {
@@ -137,7 +138,7 @@ li .wordClass a, li .wordClass a:link, li .wordClass a:visited {
     margin-bottom: 1em;
 }
 
-.dictionaryList a {
+.dictionaryList a:not([class]) {
     font-size: large;
     font-weight: bold;
     text-decoration: none;
