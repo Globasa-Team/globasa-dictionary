@@ -105,8 +105,12 @@ class Tool
         
         // Break text up by sentence.
         
+        // “” ‘’
+        // '/(?<=[.?!"\'])\s+(?=[a-z])/i'
+        // /(?<=[.?!"\'])\s+(?=[a-zA-Z0-9])/
         if (!empty($text)) {
-            $sentences = preg_split('/(?<=[.?!"\'])\s+(?=[a-z])/i', $text);
+            //$sentences = preg_split('/(?<=[.?!"\'])\s+(?=[a-zA-Z0-9"\'])/i', $text);
+            $sentences = preg_split('/(?<=[.?!"\'”’‽])\s+(?=[a-zA-Z0-9"\'“‘])/i', $text);
             
             foreach($sentences as $key=>$sentence) {
                 $sentenceResult = new \stdClass();
@@ -115,6 +119,8 @@ class Tool
 
                 // Remove punctuation using PCRE unicode character class for all punctuation characters
                 $sentence = preg_replace('/\p{P}/', '', $sentence);
+                $sentence = preg_replace('/[“”‘’]/', '', $sentence);
+                
                 // Split on whitepace
                 $sentenceResult->words = preg_split("@[\s+　]@u", trim($sentence));
     
