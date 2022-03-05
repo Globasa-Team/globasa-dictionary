@@ -179,26 +179,43 @@ class ToolView
     {
         $dic = $config->dictionary->words;
         $result = '';
-        
+
         if (!empty($sentences)) {
 
             $result = '<ul class="translationAide">';
             foreach($sentences as $current) {
                 $result .= '<li>'.$current->sentence.'<ul>';
                 foreach($current->words as $word) {
-                    // TODO: Show something if these is no translation
-                    if (!empty($word) && !empty($dic[$word])) {
-                        $trans = $dic[$word]->translation['eng'];
+                    $wordClass = "";
+                    $trans = "";
+                    
+                    if (!ctype_alpha($word)) {
+                        continue;
                     }
-                    else if (!empty($word) && empty($dic[$word])) {
-                        $trans = '[Translation not found]';
+
+                    if (!empty($word) && !empty($dic[$word]) && !empty($dic[$word]->translation[$config->lang])) {
+                        $trans = $dic[$word]->translation[$config->lang];
+                    }
+                    else if (!empty($word) && !empty($dic[$word]) && empty($dic[$word]->translation[$config->lang])) {
+                        $trans = '[Translation not found in this language]';
                     }
                     else {
                         // Line feed / new paragraph
-                        $result .= '</ul>new line or paragraph?<ul>';
-                        continue;
+                        $trans = '[Word not found in dictionary]';
                     }
-                    $result .= '<li>'.$word.': '.$trans.'</li>';
+
+                    if (isset($dic[$word])) {
+                        if (!empty($dic[$word]->wordClass)) {
+                            $wordClass = " <div class=\"wordClass\">({$dic[$word]->wordClass})</div>";
+                        }
+                        $word = WorldlangDictUtils::makeLink(
+                            $config,
+                            'lexi/'.urlencode($word),
+                            $request,
+                            $dic[$word]->term
+                        );
+                    }
+                    $result .= '<li>'.$word.$wordClass.': '.$trans.'</li>';
                 }
                 $result .= '</ul></li>';
             }

@@ -84,10 +84,10 @@ header .wordClass a, header .wordClass a:link, header .wordClass a:visited {
     background-color: inherit;
 }
 
-li .wordClass, li .wordClass a, li .wordClass a:link, li .wordClass a:visited {
+li .wordClass, li .wordClass a, li .wordClass a:link, li .wordClass a:visited, .translationAide li .wordClass {
     color: black;
     background-color: inherit;
-    font-size: medium;
+    font-size: inherit;
 }
 
 .dictionaryEntry header h2 {
@@ -155,6 +155,10 @@ li .wordClass, li .wordClass a, li .wordClass a:link, li .wordClass a:visited {
 
 .translationAide li {
     margin-bottom: 1em;
+}
+
+.translationAide .wordClass {
+    padding-left: 0;
 }
 /*
  Globasa flag colours

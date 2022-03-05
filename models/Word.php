@@ -44,6 +44,11 @@ class Word
         $this->parseSynAnt($rawWords[$wordKey]);
         $this->generateSearchTerms($config->worldlang, $d, $rawWords[$wordKey]['SearchTermsEng']);
         $this->generateIpa($config);
+        // if($this->term == 'tas') {
+
+        //     var_dump($rawWords[$wordKey]);
+        //     var_dump($this);
+        // }
     }
 
     public static function createDictionary($config, $rawWords, $verbose)
