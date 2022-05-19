@@ -79,22 +79,14 @@ namespace WorldlangDict;
             A <a href="https://www.partialsolution.ca/">Partial Solution</a>.</p>
         </div>
         <div class="w3-container w3-cell w3-mobile" style="text-align: center;">
-            <a href="<?php echo WorldlangDictUtils::changeLangUri($config, $request, 'eng'); ?>">
-                English</a> &bull;
-            <a href="<?php echo WorldlangDictUtils::changeLangUri($config, $request, 'spa'); ?>">
-                español</a> &bull;
-            <a href="<?php echo WorldlangDictUtils::changeLangUri($config, $request, 'epo'); ?>">
-                Esperanto</a>
-<?php /* Remove I just don't want to delete it.
-            <a href="<?php echo WorldlangDictUtils::changeLangUri($config, $request, 'fra'); ?>">
-                français</a> &bull;
-            <a href="<?php echo WorldlangDictUtils::changeLangUri($config, $request, 'glb'); ?>">
-                Globasa</a> &bull;
-            <a href="<?php echo WorldlangDictUtils::changeLangUri($config, $request, 'rus'); ?>">
-                русский</a> &bull;
-            <a href="<?php echo WorldlangDictUtils::changeLangUri($config, $request, 'zho'); ?>">
-                中文</a>
-*/ ?>
+        <?php
+        $firstLang = true;
+        foreach($config->userLangs as $curLang=>$curName) {
+            $uri = WorldlangDictUtils::changeLangUri($config, $request, $curLang);
+            if (!$firstLang) echo " &bull; ";
+            else $firstLang = false;
+            echo "<a href=\"{$uri}\">{$curName}</a>";
+        } ?>
         </div>
 
         <div class="w3-container w3-cell w3-mobile" style="width: 10%;">

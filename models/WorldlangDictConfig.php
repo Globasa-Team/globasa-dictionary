@@ -12,6 +12,7 @@ class WorldlangDictConfig
     public $auxLangCap;
     public $worldlang;
     public $worldlangCap;
+    public $userLangs;
     public $templateFolder;
     public $templatePath;
     public $templateUri;
@@ -43,6 +44,10 @@ class WorldlangDictConfig
     {
         $this->worldlang = strtolower($lang);
         $this->worldlangCap = ucfirst($lang);
+    }
+
+    public function setUserLangs($langs) {
+        $this->userLangs = $langs;
     }
 
     public function setTemplate($name, $folder=null)

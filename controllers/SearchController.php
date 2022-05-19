@@ -10,18 +10,20 @@ class SearchController
 
         $partialMatchesWorld = [];
         $partialMatchesNat = [];
-        $page->setTitle($config->getTrans('search result title').": ".$request->options['wterm']." ".$request->options['nterm']);
-
+        
         if (!is_null($request->options)) {
             if (!empty($request->options['wterm'])) {
+                $page->setTitle($config->getTrans('search result title').": ".$request->options['wterm']);
                 $term = strtolower($request->options['wterm']);
                 $partialMatches = SearchController::searchLang($config, $config->dictionary->index['glb'], $config->worldlang, $term);
                 $lang = 'glb';
             } elseif (!empty($request->options['nterm'])) {
+                $page->setTitle($config->getTrans('search result title').": ".$request->options['nterm']);
                 $term = strtolower($request->options['nterm']);
                 $partialMatches = SearchController::searchLang($config, $config->dictionary->index[$request->lang], $request->lang, $term);
                 $lang = $config->lang;
             } else {
+                $page->setTitle($config->getTrans('search result title').": ".$term);
                 WorldlangDictUtils::redirect($config, $request);
             }
         } else {

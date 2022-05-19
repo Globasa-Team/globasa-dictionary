@@ -93,7 +93,7 @@ class ToolView
                     $definition = "";
                 }
                 $result .= '<li><span style="font-weight: bold; font-size: larger;">['.$genWord."]</span><br />".$config->getTrans('homonym terminator conflicting msg').
-                    " ". implode($sources, ', ').$definition."</li>";
+                    " ". implode(', ', $sources).$definition."</li>";
             }
         }
 
