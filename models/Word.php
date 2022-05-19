@@ -1,7 +1,7 @@
 <?php
 namespace WorldlangDict;
 
-define(TRANS_SEPERATORS, ",;:");
+define('TRANS_SEPERATORS', ",;:");
 // Added at home in remote. Add in project. Added offline.
 class Word
 {
