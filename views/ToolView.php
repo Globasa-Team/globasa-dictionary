@@ -71,7 +71,7 @@ class ToolView
     {
         $result = '';
 
-        if (isset($config->dictionary->words[$request->options['candidate']])) {
+        if (isset($request->options['candidate']) && isset($config->dictionary->words[$request->options['candidate']])) {
             $page->content .= "<h3>" .$config->getTrans('homonym terminator word exists title'). "</h3>
                 <p>". sprintf(
                         $config->getTrans('homonym terminator word exists'),

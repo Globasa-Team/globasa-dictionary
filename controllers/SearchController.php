@@ -15,12 +15,12 @@ class SearchController
             if (!empty($request->options['wterm'])) {
                 $page->setTitle($config->getTrans('search result title').": ".$request->options['wterm']);
                 $term = strtolower($request->options['wterm']);
-                $partialMatches = SearchController::searchLang($config, $config->dictionary->index['glb'], $config->worldlang, $term);
+                $partialMatches = SearchController::searchLang($config, $request, $config->dictionary->index['glb'], $config->worldlang, $term);
                 $lang = 'glb';
             } elseif (!empty($request->options['nterm'])) {
                 $page->setTitle($config->getTrans('search result title').": ".$request->options['nterm']);
                 $term = strtolower($request->options['nterm']);
-                $partialMatches = SearchController::searchLang($config, $config->dictionary->index[$request->lang], $request->lang, $term);
+                $partialMatches = SearchController::searchLang($config, $request, $config->dictionary->index[$request->lang], $request->lang, $term);
                 $lang = $config->lang;
             } else {
                 $page->setTitle($config->getTrans('search result title'));
@@ -32,7 +32,7 @@ class SearchController
         SearchView::results($config, $partialMatches, $lang, $request, $page);
     }
 
-    private static function searchLang($config, $dict, $lang, $term)
+    private static function searchLang($config, $request, $dict, $lang, $term)
     {
         $term = strtolower(trim($term));
         // look for exact match
