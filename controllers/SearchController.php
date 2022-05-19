@@ -23,7 +23,7 @@ class SearchController
                 $partialMatches = SearchController::searchLang($config, $config->dictionary->index[$request->lang], $request->lang, $term);
                 $lang = $config->lang;
             } else {
-                $page->setTitle($config->getTrans('search result title').": ".$term);
+                $page->setTitle($config->getTrans('search result title'));
                 WorldlangDictUtils::redirect($config, $request);
             }
         } else {
