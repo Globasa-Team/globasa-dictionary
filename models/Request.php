@@ -43,7 +43,7 @@ class Request
         $this->arguments = [];
 
         if ($requestSize >= 1) {
-            if (in_array($this->path[$requestSkip], $config->userLangs)) {
+            if (isset($config->userLangs[$this->path[$requestSkip]])) {
                 $this->lang = $this->path[$requestSkip];
             }
             if ($requestSize >= 2) {
