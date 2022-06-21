@@ -13,11 +13,12 @@ class SearchView
 
     public static function results($config, $partialMatches, $lang, $request, $page)
     {
-        // if found, Ask which they want.
+        // Show matches
         if (sizeof($partialMatches)) {
             $page->content .= '<ul class="dictionaryList">';
 
             foreach ($partialMatches as $word) {
+                $word = strtolower($word);
                 if ($lang=='glb') {
                     $page->content .= '<li>'.
                         WorldlangDictUtils::makeLink(
