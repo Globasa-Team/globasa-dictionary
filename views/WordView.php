@@ -11,7 +11,7 @@ class WordView
             <header class="w3-container">
                 <h2 id="entryTerm">'.$word->term.'</h2>';
         if (!empty($word->wordClass)) {
-            $page->content .= '<div class="wordClass">(<a href="https://xwexi.globasa.net/' . $config->lang . '/grammar/word-classes">'.$word->wordClass.'</a>)</div>';
+            $page->content .= '<div class="wordClass">(<a href="https://xwexi.globasa.net/' . $config->lang . '/gramati/lexiklase">'.$word->wordClass.'</a>)</div>';
         }
         $page->content .='
                 </header>
