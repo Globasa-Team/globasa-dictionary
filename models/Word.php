@@ -107,7 +107,7 @@ class Word
     {
         $phrase = strtolower($this->term);
         /*
-        c - 'tʃ'
+        c - 't͡ʃ'
         j - 'dʒ'
         r - 'ɾ'
         x - 'ʃ'
@@ -115,9 +115,9 @@ class Word
         h - 'x'
         */
         $pattern     = [ '/c/', '/j/', '/r/', '/x/', '/y/', '/h/' ];
-        $replacement = [ 'tʃ',  'dʒ',   'ɾ',   'ʃ',   'j',   'x'  ];
+        $replacement = [ 't͡ʃ',  'd͡ʒ',   'ɾ',   'ʃ',   'j',   'x'  ];
         $result = preg_replace($pattern, $replacement, $phrase);
-        $result = "http://ipa-reader.xyz/?text=".$result."&voice=Carla";
+        $result = "https://ipa-reader.xyz/?text=".$result."&voice=Ewa";
         $this->ipaLink = $result;
     }
 
