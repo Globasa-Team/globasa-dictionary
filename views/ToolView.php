@@ -19,6 +19,15 @@ class ToolView
 
             <div class="w3-card">
                 <header class="w3-container">
+                    <h2><a href="'.WorldlangDictUtils::makeUri($config, 'tul/ipa-converter', $request).'">'.$config->getTrans('ipa converter title').'</a></h2>
+                </header>
+                <div class="w3-container"><p>'.$config->getTrans('ipa converter description').'</p>
+                </div>
+            </div>
+
+
+            <div class="w3-card">
+                <header class="w3-container">
                     <h2>'.$config->getTrans('candidate check title').'</h2>
                 </header>
                 <p><div class="w3-container">
