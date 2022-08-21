@@ -26,6 +26,7 @@ class ToolController
                 break;
             case 'ipa-converter':
                 $page->setTitle($config->getTrans('ipa converter title'));
+                $page->description = $config->getTrans('ipa converter description');
                 include_once($config->templatePath.'tool-ipa-converter.php');
                 break;
             default:
@@ -43,6 +44,7 @@ class ToolController
         ToolView::minimalPairCheckInput($config, $request, $page);
         ToolView::minimalPairCheck($config, $request, $nearMatches, $page);
         $page->setTitle($config->getTrans('minimum pair title'));
+        $page->description = $config->getTrans('minimum pair description');
     }
     
     public static function homonymCheck($config, $request, &$page)
@@ -52,6 +54,7 @@ class ToolController
         ToolView::homonymCheckInput($config, $request, $page);
         ToolView::homonymCheck($config, $request, $genWords, $page);
         $page->setTitle($config->getTrans('homonym terminator title'));
+        $page->description = $config->getTrans('homonym terminator description');
     }
     
     public static function checkCandidateWord($config, $request, &$page)
@@ -65,6 +68,7 @@ class ToolController
         ToolView::minimalPairCheck($config, $request, $nearMatches, $page);
         
         $page->setTitle($config->getTrans('candidate check title'));
+        $page->description = $config->getTrans('candidate check description');
     }
     
     public static function transAide($config, $request, &$page)
@@ -76,6 +80,7 @@ class ToolController
         ToolView::transAideResults($config, $request, $bulkWords, $page);
         
         $page->setTitle($config->getTrans('translation aide title'));
+        $page->description = $config->getTrans('translation aide description');
     }
     
 }
