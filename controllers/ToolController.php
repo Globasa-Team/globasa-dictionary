@@ -19,12 +19,13 @@ class ToolController
                 ToolController::checkCandidateWord($config, $request, $page);
                 include_once($config->templatePath.'index.php');
                 break;
-            case 'translation-aide':
+            case 'translation-aide': // depracated as of 2022-08-20
+            case 'trasbasatul':
                 ToolController::transAide($config, $request, $page);
                 include_once($config->templatePath.'index.php');
                 break;
             case 'ipa-converter':
-                $page->setTitle($config->getTrans('ipa converter button'));
+                $page->setTitle($config->getTrans('ipa converter title'));
                 include_once($config->templatePath.'tool-ipa-converter.php');
                 break;
             default:
@@ -74,7 +75,7 @@ class ToolController
         ToolView::transAideInput($config, $request, $page);
         ToolView::transAideResults($config, $request, $bulkWords, $page);
         
-        $page->setTitle($config->getTrans('trans-from-glb'));
+        $page->setTitle($config->getTrans('translation aide title'));
     }
     
 }
