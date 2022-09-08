@@ -19,7 +19,7 @@ class ToolController
                 ToolController::checkCandidateWord($config, $request, $page);
                 include_once($config->templatePath.'index.php');
                 break;
-            case 'translation-aide': // depracated as of 2022-08-20
+            case 'translation-aide': // deprecate as of 2022-08-20
             case 'trasbasatul':
                 ToolController::transAide($config, $request, $page);
                 include_once($config->templatePath.'index.php');

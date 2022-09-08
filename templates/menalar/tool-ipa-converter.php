@@ -71,7 +71,7 @@ namespace WorldlangDict;
   <div class="w3-container" style="padding: 5px">
     <h1><?php echo $config->getTrans('ipa converter title');?></h1>
     <p><?php echo $config->getTrans('ipa converter instructions');?></p>
-    <textarea name="globasaInput" id="globasaInput" class="w3-input w3-border w3-light-grey" placeholder="<?php echo $config->getTrans('ipa converter input placeholder');?>"></textarea>
+    <textarea name="globasaInput" id="globasaInput" class="w3-input w3-border w3-light-grey" placeholder="<?php echo $config->getTrans('ipa converter input placeholder');?>">Denwatu hu yu oko ultra yu, denwatu yu ible xoraham ki xanti fe siko intizar denloka.</textarea>
 
     <button onClick="convertToIpa()" class="w3-btn w3-blue-grey"><?php echo $config->getTrans('ipa converter button');?></button>
     
@@ -107,7 +107,7 @@ const MATCH_WORDS_REGEX = /\b\w*[-']*\w*\b/g
 
 // Word matching regex alterantives from https://stackoverflow.com/questions/31910955/regex-to-match-words-with-hyphens-and-or-apostrophes
 
-const VOWELS = ['a', 'e', 'i', 'o', 'u'];
+const NO_SHIFT_CHARS = ['a', 'e', 'i', 'o', 'u', '-']; // Vowels don't shift, but also don't go past a hyphen
 const DOUBLE_SHIFT_LETTERS = ['y', 'w', 'r', 'l' ];
 
 
@@ -188,8 +188,10 @@ function addStressesToText(input) {
   marker before the last vowel in the word.
   
   The stress will shift 0, 1 or 2 slots to the left:
+  - It never passes a dash (NO_SHIFT_CHARS) or word start (pos < 0)
   - If previous character is a vowel or is pos 0, the stress mark doesn't move. 
   - If previous character is y, w, r or l and pos > 1, shift left by 2
+    -- Well it's more complicated than this.
   - else, shift left by 1 (if any other consonant or double shift would be out of bounds.)
 
 */
@@ -203,9 +205,42 @@ function addStressToWord(word, debug = false) {
   const pos = word.slice(0, -1).lastIndexOf(match);
   
   let shift = 0;
-  if ( pos > 0 && !VOWELS.includes(word.charAt(pos-1)) ) {
+  if ( pos > 0 && !NO_SHIFT_CHARS.includes(word.charAt(pos-1)) ) {
     if( pos > 1 && DOUBLE_SHIFT_LETTERS.includes(word.charAt(pos-1)) ) {
+      // is w, y or r, l
       shift = -2;
+
+/*
+
+Notes:
+
+- Adjacent means to the left of the stress vowel (shift of 1).
+
+- 2nd adjacent means to the left of the adjacent letter (shift of 2). (Second order adjacent)
+
+- NO_SHIFT_CHARS means characters that are a vowel or hyphen, limits shifts
+
+- These are before the IPA letters substitution, which doesn't make sense linguistically, but it means the code doesn't have to worry about multicharacter IPA sounds.
+
+
+Rule 4b: the yw exception
+
+when adjacent is y or w:
+
+if 2nd adjacent is y, w or NO_SHIFT_CHARS, then shift -1 (to adjacent)
+else shift -2
+
+Rule 4c: the rl exception
+
+when adjacent is r or l:
+
+if 2nd adjacent is NO_SHIFT_CHAR, shift -1 (adjacent letter)
+else:
+
+if second adjacent letter is (b, d, f, g, k, p, t, v), shift -2 (to second adjacent letter)
+else: shift -1 (to adjacent letter) (when c, x, j, l, m, n, r, s, w, x, y, z)
+*/
+
     }
     else {
       shift = -1;
