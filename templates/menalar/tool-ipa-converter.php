@@ -22,6 +22,7 @@ namespace WorldlangDict;
   <link rel="stylesheet" href="<?php echo $config->templateUri; ?>css/globasa.css?3-04">
   <link href="https://fonts.googleapis.com/css?family=Literata|Merriweather&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" integrity="sha256-gsmEoJAws/Kd3CjuOQzLie5Q3yshhvmo7YNtBG7aaEY=" crossorigin="anonymous">
+  <script src="<?php echo $config->templateUri; ?>js/ipa.js"></script>
   <meta name="theme-color" content="#fafafa">
 </head>
 
@@ -29,9 +30,6 @@ namespace WorldlangDict;
   <!--[if IE]>
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
   <![endif]-->
-
-
-
 
 <div id="siteHeader">
     <h1 id="appTitle">
@@ -67,189 +65,26 @@ namespace WorldlangDict;
 
 
 
+<!--                  -->
+<!-- IPA Conversation -->
+<!--                  -->
+
 <div id="content" class="w3-main">
   <div class="w3-container" style="padding: 5px">
     <h1><?php echo $config->getTrans('ipa converter title');?></h1>
     <p><?php echo $config->getTrans('ipa converter instructions');?></p>
-    <textarea name="globasaInput" id="globasaInput" class="w3-input w3-border w3-light-grey" placeholder="<?php echo $config->getTrans('ipa converter input placeholder');?>">Denwatu hu yu oko ultra yu, denwatu yu ible xoraham ki xanti fe siko intizar denloka.</textarea>
+    <textarea name="globasaInput" id="globasaInput" class="w3-input w3-border w3-light-grey" placeholder="<?php echo $config->getTrans('ipa converter input placeholder');?>"></textarea>
 
-    <button onClick="convertToIpa()" class="w3-btn w3-blue-grey"><?php echo $config->getTrans('ipa converter button');?></button>
+    <button onClick="convertAction()" class="w3-btn w3-green"><?php echo $config->getTrans('ipa converter button');?></button>
+    <button onClick="convertSsmlAction()" class="w3-btn w3-blue-grey"><?php echo $config->getTrans('ipa converter-ssml button');?></button>
     
     <p><?php echo $config->getTrans('ipa converter output label');?><p>
-    <blockquote name="ipaOutput" id="ipaOutput" class="w3-pale-blue" style="white-space: pre-wrap; padding: 5px;"><em><?php echo $config->getTrans('ipa converter ipa placeholder');?></em></blockquote>
-    
+    <textarea name="ipaOutput" id="ipaOutput" class="w3-pale-blue" style="white-space: pre-wrap; padding: 5px;" disabled><?php echo $config->getTrans('ipa converter ipa placeholder');?></textarea>
   </div>
 </div>
 
 
 
-
-<script>
-
-
-// Exceptions to the stress rules: one syllable words that have no stresses
-const WORDS_TO_SKIP = new Set(["ji", "or", "nor", "kam", "mas", "kwas", "ki", "hu", "su", "el", "na", "le", "xa", "kom", "di", "ci", "fe", "in", "ex", "per", "bax", "of", "cel", "hoy", "pas", "tras", "cis", "wey", "fol", "de", "tas", "tem", "pro", "fal", "har", "ton", "yon", "por", "dur"]);
-
-// Globasa latin script to IPA replacement mapping
-const IPA_REPLACEMENTS = [
-  {letter:'c', replacement:'t͡ʃ'},
-  {letter:'j', replacement:'d͡ʒ'},
-  {letter:'r', replacement:'ɾ'},
-  {letter:'x', replacement:'ʃ'},
-  {letter:'y', replacement:'j'},
-  {letter:'h', replacement:'x'}
-]
-
-const STRESS_MARKER = 'ˈ';
-
-const FINAL_VOWEL_REGEX = /[aeiou](?!.*[aeiou])/i
-const MATCH_WORDS_REGEX = /\b\w*[-']*\w*\b/g
-
-// Word matching regex alterantives from https://stackoverflow.com/questions/31910955/regex-to-match-words-with-hyphens-and-or-apostrophes
-
-const NO_SHIFT_CHARS = ['a', 'e', 'i', 'o', 'u', '-']; // Vowels don't shift, but also don't go past a hyphen
-const DOUBLE_SHIFT_LETTERS = ['y', 'w', 'r', 'l' ];
-
-
-/*
-  Converts text in globasaInput (Globasa latin script) to IPA for
-  text to speech applications. Also creates link to reader.
-*/
-function convertToIpa() {
-  let text = document.getElementById("globasaInput").value.toLowerCase();
-  text = replaceLettersWithIPA(addStressesToText(text));
-  document.getElementById("ipaOutput").innerHTML = text;
-  // document.getElementById("ipaLink").href="https://ipa-reader.xyz/?text="+text+"&voice=Ewa";
-}
-
-
-
-/*
-  Simple replacement of letters to IPA
-*/
-function replaceLettersWithIPA(text) {
-  for(let rule of IPA_REPLACEMENTS) {
-    text = text.replaceAll(rule.letter,rule.replacement);
-  }
-  
-  return text;
-}
-
-
-
-/*
-  Takes text that may have paragraph new lines and sentence punctuation,
-  and calls stressVowels() for each word.
-*/
-function addStressesToText(input) {
-
-  let output = "";
-  let previousEnd = 0;
-  
-  const words = input.matchAll(MATCH_WORDS_REGEX);
-
-  for (const word of words) {
-    
-    // Non-words are empty strings
-    if (word[0].length == 0) {
-      continue;
-    }
-    
-    // Get any skipped characters, which would be between words
-    output += input.slice(previousEnd, word.index);
-    // Add stress markers to current work
-    output += addStressToWord(word[0], true);
-    previousEnd = word.index + word[0].length
-  }
-  
-  output += input.slice(previousEnd);
-  
-  return output;
-}
-
-
-
-/*
-  Adds stress markers according to Globasa grammer:
-  
-  If it's on the one-syllable excluded list, do not stress any vowels.
-  If the word ends with a vowel, stress the second last vowel.
-  If it does not end with a vowel, stress the last vowel.
-  
-  If the letter before the selected vowel is a consonant, move the stress
-  left to the consonant, unless it is y, w, r and l. In that case move it
-  two to the left. If that would go beyond the first letter of the word,
-  leave it on the first letter.
-  
-  Algorithm:
-  
-  If the word is on the one syllable excluded list, do nothing. Otherwise,
-  take the word and remove the last letter. Of the remainder, add a stress
-  marker before the last vowel in the word.
-  
-  The stress will shift 0, 1 or 2 slots to the left:
-  - It never passes a dash (NO_SHIFT_CHARS) or word start (pos < 0)
-  - If previous character is a vowel or is pos 0, the stress mark doesn't move. 
-  - If previous character is y, w, r or l and pos > 1, shift left by 2
-    -- Well it's more complicated than this.
-  - else, shift left by 1 (if any other consonant or double shift would be out of bounds.)
-
-*/
-function addStressToWord(word, debug = false) {
-
-  if (WORDS_TO_SKIP.has(word)) {
-    return word;
-  }
-  
-  const match = word.slice(0, -1).match(FINAL_VOWEL_REGEX);
-  const pos = word.slice(0, -1).lastIndexOf(match);
-  
-  let shift = 0;
-  if ( pos > 0 && !NO_SHIFT_CHARS.includes(word.charAt(pos-1)) ) {
-    if( pos > 1 && DOUBLE_SHIFT_LETTERS.includes(word.charAt(pos-1)) ) {
-      // is w, y or r, l
-      shift = -2;
-
-/*
-
-Notes:
-
-- Adjacent means to the left of the stress vowel (shift of 1).
-
-- 2nd adjacent means to the left of the adjacent letter (shift of 2). (Second order adjacent)
-
-- NO_SHIFT_CHARS means characters that are a vowel or hyphen, limits shifts
-
-- These are before the IPA letters substitution, which doesn't make sense linguistically, but it means the code doesn't have to worry about multicharacter IPA sounds.
-
-
-Rule 4b: the yw exception
-
-when adjacent is y or w:
-
-if 2nd adjacent is y, w or NO_SHIFT_CHARS, then shift -1 (to adjacent)
-else shift -2
-
-Rule 4c: the rl exception
-
-when adjacent is r or l:
-
-if 2nd adjacent is NO_SHIFT_CHAR, shift -1 (adjacent letter)
-else:
-
-if second adjacent letter is (b, d, f, g, k, p, t, v), shift -2 (to second adjacent letter)
-else: shift -1 (to adjacent letter) (when c, x, j, l, m, n, r, s, w, x, y, z)
-*/
-
-    }
-    else {
-      shift = -1;
-    }
-  }
-  
-  return word.slice(0, pos+shift) + STRESS_MARKER + word.slice(pos+shift);  
-}
-</script>
 
 
 
