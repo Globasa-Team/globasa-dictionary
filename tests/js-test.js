@@ -6,6 +6,14 @@ const expect = chai.expect;
  * Test stresses
  */
 describe('addStressToWord', () => {
+    it ('should do the new bug', () => {
+        expect(addStressToWord('wangu')).to.equal('ˈwangu'),
+        expect(addStressToWord('kangu')).to.equal('ˈkangu'),
+        // expect(addStressToWord('')).to.equal(''),
+        expect(addStressToWord('manwangu')).to.equal('maˈnwangu'),
+        expect(addStressToWord('femwangu')).to.equal('feˈmwangu'),
+        expect(addStressToWord('yogurtu')).to.equal('yoˈgurtu')
+    }),
     it ('should skip blanks and null', () => {
         expect(addStressToWord('')).to.equal(''),
         expect(addStressToWord(null)).to.equal(''),

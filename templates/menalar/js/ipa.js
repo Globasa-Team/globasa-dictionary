@@ -24,6 +24,7 @@ const ALL_QUOTES_REGEX = /['"“”‘’]/g;
 const SENTENCE_REGEX = /([;:.?!])\s*(?=[a-zA-Zˈt͡ʃd͡ʒɾʃ])/g;
 const PUNCTUATION_REGEX = /[;:.?!]/;
 const FINAL_VOWEL_REGEX = /[aeiou](?!.*[aeiou])/i;
+const GLOBAl_VOWEL_REGEX = /[aeiou]/gi;
 const MATCH_WORDS_REGEX = /\b\w*[-']*\w*\b/g;
 // Word matching regex alterantives from
 // https://stackoverflow.com/questions/31910955/regex-to-match-words-with-hyphens-and-or-apostrophes
@@ -266,7 +267,7 @@ function addStressToWord(word = "") {
     }
 
     // Single vowel rule (or no vowels)
-    var vowels = word.match(/[aeiou]/gi);
+    var vowels = word.match(GLOBAl_VOWEL_REGEX);
     if (vowels === null) {
         return word;
     }
@@ -280,6 +281,12 @@ function addStressToWord(word = "") {
     const adj1 = word.charAt(pos - 1);
     const adj2 = word.charAt(pos - 2);
 
+    // console.log(word);
+    // console.log(pos);
+    // console.log(adj1);
+    // console.log(adj2);
+    // console.log(match);
+    // console.log("");
     // Shift Rules
     let shift = -1;
 
@@ -298,5 +305,10 @@ function addStressToWord(word = "") {
         shift = -2;
     }
 
+    // don't shift beyond the first letter
+    if (pos+shift < 0) {
+        shift = -pos;
+    }
+    
     return word.slice(0, pos + shift) + STRESS_MARKER + word.slice(pos + shift);
 }
