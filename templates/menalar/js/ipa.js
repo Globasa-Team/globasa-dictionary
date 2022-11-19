@@ -3,7 +3,7 @@ const WORDS_TO_SKIP = new Set(["ji", "or", "nor", "kam", "mas", "kwas",
     "ki", "hu", "su", "el", "na", "le", "xa", "kom", "di", "ci", "fe",
     "in", "ex", "per", "bax", "of", "cel", "hoy", "pas", "tras", "cis",
     "wey", "fol", "de", "tas", "tem", "pro", "fal", "har", "ton", "yon",
-    "por", "dur", "ku", "e", "em", ""]);
+    "por", "dur", "ku", "e", "em", "am", ""]);
 
 // Globasa latin script to IPA replacement mapping
 const IPA_REPLACEMENTS = [
