@@ -281,12 +281,6 @@ function addStressToWord(word = "") {
     const adj1 = word.charAt(pos - 1);
     const adj2 = word.charAt(pos - 2);
 
-    // console.log(word);
-    // console.log(pos);
-    // console.log(adj1);
-    // console.log(adj2);
-    // console.log(match);
-    // console.log("");
     // Shift Rules
     let shift = -1;
 
@@ -309,6 +303,6 @@ function addStressToWord(word = "") {
     if (pos+shift < 0) {
         shift = -pos;
     }
-    
+
     return word.slice(0, pos + shift) + STRESS_MARKER + word.slice(pos + shift);
 }

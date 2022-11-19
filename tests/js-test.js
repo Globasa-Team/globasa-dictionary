@@ -6,14 +6,6 @@ const expect = chai.expect;
  * Test stresses
  */
 describe('addStressToWord', () => {
-    it ('should do the new bug', () => {
-        expect(addStressToWord('wangu')).to.equal('ˈwangu'),
-        expect(addStressToWord('kangu')).to.equal('ˈkangu'),
-        // expect(addStressToWord('')).to.equal(''),
-        expect(addStressToWord('manwangu')).to.equal('maˈnwangu'),
-        expect(addStressToWord('femwangu')).to.equal('feˈmwangu'),
-        expect(addStressToWord('yogurtu')).to.equal('yoˈgurtu')
-    }),
     it ('should skip blanks and null', () => {
         expect(addStressToWord('')).to.equal(''),
         expect(addStressToWord(null)).to.equal(''),
@@ -48,7 +40,9 @@ describe('addStressToWord', () => {
     // semivowels
     it ('should shift 2 if semivowels y/w after consonant', () => {
         expect(addStressToWord('daokyen')).to.equal('daoˈkyen'),
-        expect(addStressToWord('daozwen')).to.equal('daoˈzwen')
+        expect(addStressToWord('daozwen')).to.equal('daoˈzwen'),
+        expect(addStressToWord('manwangu')).to.equal('maˈnwangu'),
+        expect(addStressToWord('femwangu')).to.equal('feˈmwangu')
     }),
     it ('should shift 1 if semivowels y/w after vowel or semivowel', () => {
         expect(addStressToWord('daoyyen')).to.equal('daoyˈyen'),
@@ -93,11 +87,19 @@ describe('addStressToWord', () => {
 
     }),
 
+    it ('should not shift pass first letter for r/l/w/y', () => {
+        expect(addStressToWord('wangu')).to.equal('ˈwangu'),
+        expect(addStressToWord('rangu')).to.equal('ˈrangu'),
+        expect(addStressToWord('langu')).to.equal('ˈlangu'),
+        expect(addStressToWord('yangu')).to.equal('ˈyangu')
+    }),
+
     it ('shift 1 if adjacent is consonant', () => {
         expect(addStressToWord('nini')).to.equal('ˈnini')
         expect(addStressToWord('ergotim')).to.equal('ergoˈtim'),
         expect(addStressToWord('akademi')).to.equal('akaˈdemi'),
         expect(addStressToWord('alimxey')).to.equal('alimˈxey'),
+        expect(addStressToWord('yogurtu')).to.equal('yoˈgurtu'),
         expect(addStressToWord('gamibete')).to.equal('gamiˈbete')
     }),
     
