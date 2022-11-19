@@ -99,7 +99,7 @@ function ipaToSsml(text) {
         }
         result += "<phoneme alphabet=\"ipa\" ph=\"" +
                     sentence + "\"></phoneme>" + punctuation;
-        if (sentence.slice(-1) !== ";") {
+        if (punctuation != ";") {
             result += "<break time=\"0.25s\"/>";
         }
     });

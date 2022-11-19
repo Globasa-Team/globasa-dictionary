@@ -157,7 +157,7 @@ describe('replaceLettersWithIPA', () => {
  * SSML
  */
  describe('ipaToSsml', () => {
-    it ('Add prosody tags', () => {
+    it ('should add prosody tags', () => {
         expect(ipaToSsml('')).to.equal('<prosody rate="slow"><phoneme alphabet="ipa" ph=""></phoneme><break time="0.25s"/></prosody>'),
         expect(ipaToSsml('d')).to.equal('<prosody rate="slow"><phoneme alphabet="ipa" ph="d"></phoneme><break time="0.25s"/></prosody>')
     }),
@@ -182,5 +182,13 @@ describe('replaceLettersWithIPA', () => {
     }),
     it ('should change commas to semi colons', () => {
         expect(ipaToSsml('1, 2, 3, 4.')).to.equal('<prosody rate="slow"><phoneme alphabet="ipa" ph="1; 2; 3; 4"></phoneme>.<break time="0.25s"/></prosody>')
+    }),
+    it ('should add break tags except with commas and semi-colons', () => {
+        expect(ipaToSsml('t. w.')).to.equal('<prosody rate="slow"><phoneme alphabet="ipa" ph="t"></phoneme>.<break time="0.25s"/><phoneme alphabet="ipa" ph="w"></phoneme>.<break time="0.25s"/></prosody>'),
+        expect(ipaToSsml('t! w!')).to.equal('<prosody rate="slow"><phoneme alphabet="ipa" ph="t"></phoneme>!<break time="0.25s"/><phoneme alphabet="ipa" ph="w"></phoneme>!<break time="0.25s"/></prosody>'),
+        expect(ipaToSsml('t: w:')).to.equal('<prosody rate="slow"><phoneme alphabet="ipa" ph="t"></phoneme>:<break time="0.25s"/><phoneme alphabet="ipa" ph="w"></phoneme>:<break time="0.25s"/></prosody>'),
+        expect(ipaToSsml('t? w?')).to.equal('<prosody rate="slow"><phoneme alphabet="ipa" ph="t"></phoneme>?<break time="0.25s"/><phoneme alphabet="ipa" ph="w"></phoneme>?<break time="0.25s"/></prosody>'),
+        expect(ipaToSsml('t; w;')).to.equal('<prosody rate="slow"><phoneme alphabet="ipa" ph="t"></phoneme>;<phoneme alphabet="ipa" ph="w"></phoneme>;</prosody>')
     })
+
 });
