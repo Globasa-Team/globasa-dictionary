@@ -16,13 +16,16 @@ const IPA_REPLACEMENTS = [
 ]
 
 const STRESS_MARKER = 'ˈ';
+const DEMARC = '\u001F' // Unicode/ASCII seperator character
 const NO_SHIFT_CHARS = ['a', 'e', 'i', 'o', 'u', '-']; // Vowels don't shift, but also don't go past a hyphen
 const ONSET_CONSONANTS = ['b', 'd', 'f', 'g', 'k', 'p', 't', 'v'];
 const CODA_CONSONANTS = ['c', 'x', 'j', 'l', 'm', 'n', 'r', 's', 'w', 'x', 'y', 'z']
 const SPECIAL_SHIFT_LETTERS = ['y', 'w', 'r', 'l']; // TODO remove
 const ALL_QUOTES_REGEX = /['"“”‘’]/g;
-const SENTENCE_REGEX = /([;:.?!])\s*(?=[a-zA-Zˈt͡ʃd͡ʒɾʃ])/g;
-const PUNCTUATION_REGEX = /[;:.?!]/;
+// IPA is \u0250-\u02AF
+const SENTENCE_REGEX = /([;:.?!…]+)(\s*)(?=[\w\u0250-\u02AF])*/g;
+
+const PUNCTUATION_REGEX = /[;:.?!…]/;
 const FINAL_VOWEL_REGEX = /[aeiou](?!.*[aeiou])/i;
 const GLOBAl_VOWEL_REGEX = /[aeiou]/gi;
 const MATCH_WORDS_REGEX = /\b\w*[-']*\w*\b/g;
@@ -70,7 +73,8 @@ function convertToIpa(text) {
  * Converts IPA text to SSML.
  * 
  * Encapsulate text in prosody tags, and phrases in phoneme phrase
- * tags + break tag. Delete quotes, replace commas with semicolons.
+ * tags + break tag. Change punctuation for better intonation with
+ * the TTS software we use.
  * 
  * <phoneme alphabet=\"ipa\" ph=\"PHRASE\">
  * </phoneme>;<break time=\"0.25s\"/>"
@@ -80,29 +84,33 @@ function convertToIpa(text) {
  */
 function ipaToSsml(text) {
     text = text.replaceAll(',', ";");
+    text = text.replaceAll('...', "…");
     text = text.replace(ALL_QUOTES_REGEX, "");
 
     // Replace ;:.?! punctuation with the punctuation and a pipe. Split on pipe.
     // https://stackoverflow.com/questions/18914629/split-string-into-sentences-in-javascript 
     // This seems to skip white space between sentences.
-    let sentences = text.replace(SENTENCE_REGEX, "$1|").split("|");
+    let sentences = text.replace(SENTENCE_REGEX, DEMARC+"$1"+DEMARC+"$2"+DEMARC).split(DEMARC);
 
     let result = "<prosody rate=\"slow\">"
-    sentences.forEach(sentence => {
-        
-        let punctuation = sentence.slice(-1).match(PUNCTUATION_REGEX);
-        if (punctuation !== null) {
-            sentence = sentence.slice(0, -1);
-            punctuation = punctuation[0];
+    sentences.forEach(segment => {
+        if (segment == '.' || segment == '?' || segment == '!' || segment == ':') {
+            result += segment + '<break time="0.25s"/>';
+        }
+        else if (segment == "..") {
+            result += segment + '<break time="0.5s"/>';
+        }
+        else if (segment == "…") {
+            result += segment + '<break time="1.0s"/>';
+        }
+        else if (segment.trim() == "") {
+            result += segment;
         }
         else {
-            punctuation = "";
+            result += "<phoneme alphabet=\"ipa\" ph=\"" +
+                segment + "\"></phoneme>"
         }
-        result += "<phoneme alphabet=\"ipa\" ph=\"" +
-                    sentence + "\"></phoneme>" + punctuation;
-        if (punctuation != ";") {
-            result += "<break time=\"0.25s\"/>";
-        }
+        
     });
     result += "</prosody>";
 

@@ -14,15 +14,13 @@ namespace WorldlangDict;
   <link rel="manifest" href="site.webmanifest">
   <link rel="apple-touch-icon" href="<?php echo $config->siteUri; ?>globasa-logo.webp">
   <link rel="icon" type="image/png" href="<?php echo $config->siteUri; ?>globasa-logo.webp">
-  <!-- Place favicon.ico in the root directory -->
-
   <link rel="stylesheet" href="<?php echo $config->templateUri; ?>css/normalize.css">
   <link rel="stylesheet" href="<?php echo $config->templateUri; ?>css/main.css">
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   <link rel="stylesheet" href="<?php echo $config->templateUri; ?>css/globasa.css?3-04">
   <link href="https://fonts.googleapis.com/css?family=Literata|Merriweather&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" integrity="sha256-gsmEoJAws/Kd3CjuOQzLie5Q3yshhvmo7YNtBG7aaEY=" crossorigin="anonymous">
-  <script src="<?php echo $config->templateUri; ?>js/ipa.js"></script>
+  <script src="<?php echo $config->templateUri; ?>js/ipa.js?11-28"></script>
   <meta name="theme-color" content="#fafafa">
 </head>
 
