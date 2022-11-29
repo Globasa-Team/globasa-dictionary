@@ -20,7 +20,7 @@ namespace WorldlangDict;
   <link rel="stylesheet" href="<?php echo $config->templateUri; ?>css/globasa.css?3-04">
   <link href="https://fonts.googleapis.com/css?family=Literata|Merriweather&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" integrity="sha256-gsmEoJAws/Kd3CjuOQzLie5Q3yshhvmo7YNtBG7aaEY=" crossorigin="anonymous">
-  <script src="<?php echo $config->templateUri; ?>js/ipa.js?11-28"></script>
+  <script src="<?php echo $config->templateUri; ?>js/ipa.js?11-29"></script>
   <meta name="theme-color" content="#fafafa">
 </head>
 
