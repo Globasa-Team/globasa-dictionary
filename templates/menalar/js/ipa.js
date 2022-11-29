@@ -92,7 +92,7 @@ function ipaToSsml(text) {
     // This seems to skip white space between sentences.
     let sentences = text.replace(SENTENCE_REGEX, DEMARC+"$1"+DEMARC+"$2"+DEMARC).split(DEMARC);
 
-    let result = "<prosody rate=\"slow\">"
+    let result = "<prosody rate=\"slow\">\n"
     sentences.forEach(segment => {
         if (segment == '.' || segment == '?' || segment == '!' || segment == ':') {
             result += segment + '<break time="0.25s"/>';
@@ -103,6 +103,9 @@ function ipaToSsml(text) {
         else if (segment == "…") {
             result += segment + '<break time="1.0s"/>';
         }
+        else if (segment == ";") {
+            result += segment;
+        }
         else if (segment.trim() == "") {
             result += segment;
         }
@@ -112,7 +115,7 @@ function ipaToSsml(text) {
         }
         
     });
-    result += "</prosody>";
+    result += "\n</prosody>";
 
     return result;
 }
