@@ -1,9 +1,9 @@
 // Exceptions to the stress rules: one syllable words that have no stresses
-const WORDS_TO_SKIP = new Set(["ji", "or", "nor", "kam", "mas", "kwas",
-    "ki", "hu", "su", "el", "na", "le", "xa", "kom", "di", "ci", "fe",
-    "in", "ex", "per", "bax", "of", "cel", "hoy", "pas", "tras", "cis",
-    "wey", "fol", "de", "tas", "tem", "pro", "fal", "har", "ton", "yon",
-    "por", "dur", "ku", "e", "em", "am", ""]);
+const WORDS_TO_SKIP = new Set(["am", "bax", "cel", "ci", "cis", "de", "di",
+    "dur", "e", "el", "em", "ex", "fal", "fe", "fol", "ger", "har", "hoy",
+    "hu", "in", "ji", "kam", "ki", "kom", "ku", "kwas", "le", "mas", "na",
+    "nor", "of", "or", "pas", "per", "por", "pro", "su", "tas", "tem", "ton",
+    "tras", "wey", "xa", "yon", ""]);
 
 // Globasa latin script to IPA replacement mapping
 const IPA_REPLACEMENTS = [
@@ -90,7 +90,7 @@ function ipaToSsml(text) {
     // Replace ;:.?! punctuation with the punctuation and a pipe. Split on pipe.
     // https://stackoverflow.com/questions/18914629/split-string-into-sentences-in-javascript 
     // This seems to skip white space between sentences.
-    let sentences = text.replace(SENTENCE_REGEX, DEMARC+"$1"+DEMARC+"$2"+DEMARC).split(DEMARC);
+    let sentences = text.replace(SENTENCE_REGEX, DEMARC + "$1" + DEMARC + "$2" + DEMARC).split(DEMARC);
 
     let result = '<prosody rate="75%"><break time="0.5s"/>\n';
     sentences.forEach(segment => {
@@ -113,7 +113,7 @@ function ipaToSsml(text) {
             result += "<phoneme alphabet=\"ipa\" ph=\"" +
                 segment + "\"></phoneme>"
         }
-        
+
     });
     result += "\n</prosody>";
 
@@ -311,7 +311,7 @@ function addStressToWord(word = "") {
     }
 
     // don't shift beyond the first letter
-    if (pos+shift < 0) {
+    if (pos + shift < 0) {
         shift = -pos;
     }
 
