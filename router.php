@@ -34,7 +34,8 @@ function router($config)
             include_once($config->templatePath.'index.php');
             break;
 
-        case 'search':
+        case 'search': // deprecatd 2022-12-01
+        case 'xerca':
             SearchController::search($config, $request, $page);
             include_once($config->templatePath.'index.php');
             break;

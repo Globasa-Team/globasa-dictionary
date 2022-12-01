@@ -7,15 +7,18 @@ class ToolController
     {
         $arg = isset($request->arguments[0]) ? $request->arguments[0] : '';
         switch ($arg) {
-            case 'homonym-check':
+            case 'homonym-check': // deprecated 2022-12-01
+            case 'samaeskri-lexi':
                 ToolController::homonymCheck($config, $request, $page);
                 include_once($config->templatePath.'index.php');
                 break;
-            case 'minimal-pair-detector':
+            case 'minimal-pair-detector': // deprecated 2022-12-01
+            case 'minimum-duaxey':
                 ToolController::minimalPairCheck($config, $request, $page);
                 include_once($config->templatePath.'index.php');
                 break;
-            case 'candidate-check':
+            case 'candidate-check': // deprecated 2022-12-01
+            case 'kandidato-lexi':
                 ToolController::checkCandidateWord($config, $request, $page);
                 include_once($config->templatePath.'index.php');
                 break;
@@ -24,8 +27,9 @@ class ToolController
                 ToolController::transAide($config, $request, $page);
                 include_once($config->templatePath.'index.php');
                 break;
-            case 'ipa-converter':
-                $page->setTitle($config->getTrans('ipa converter title'));
+            case 'ipa-converter': // deprecated 2022-12-01
+            case 'ifa-trasharufitul':
+                    $page->setTitle($config->getTrans('ipa converter title'));
                 $page->description = $config->getTrans('ipa converter description');
                 include_once($config->templatePath.'tool-ipa-converter.php');
                 break;
