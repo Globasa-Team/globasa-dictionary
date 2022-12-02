@@ -2,6 +2,26 @@
 namespace WorldlangDict;
 
 define('TRANS_SEPERATORS', ",;:");
+
+// Exceptions to the stress rules: one syllable words that have no stresses
+define('WORDS_TO_SKIP', ["am", "bax", "cel", "ci", "cis", "de", "di",
+    "dur", "e", "el", "em", "ex", "fal", "fe", "fol", "ger", "har", "hoy",
+    "hu", "in", "ji", "kam", "ki", "kom", "ku", "kwas", "le", "mas", "na",
+    "nor", "of", "or", "pas", "per", "por", "pro", "su", "tas", "tem", "ton",
+    "tras", "wey", "xa", "yon"]);
+
+define('REPLACE_GLB_REGEX', [ '/c/', '/j/', '/r/', '/x/', '/y/', '/h/' ]);
+define('REPLACE_IPA',      [ 't͡ʃ',  'd͡ʒ',   'ɾ',   'ʃ',   'j',   'x'  ]);
+
+define('STRESS_MARKER', "\u{02C8}");
+define('DEMARC', "\u{001F}"); // Unicode/ASCII seperator character
+define('NO_SHIFT_CHARS', ['a', 'e', 'i', 'o', 'u', '-']); // Don't shift past vowels or hyphens
+define('ONSET_CONSONANTS', ['b', 'd', 'f', 'g', 'k', 'p', 't', 'v']);
+define('CODA_CONSONANTS', ['c', 'x', 'j', 'l', 'm', 'n', 'r', 's', 'w', 'x', 'y', 'z']);
+define('FINAL_VOWEL_REGEX', "/[aeiou](?!.*[aeiou])/i");
+define('GLOBAL_VOWEL_REGEX', "/[aeiou]/i");
+
+
 // Added at home in remote. Add in project. Added offline.
 class Word
 {
@@ -106,6 +126,7 @@ class Word
     private function generateIpa($config)
     {
         $phrase = strtolower($this->term);
+        $phrase = Word::addStressToWord($phrase);
         /*
         c - 't͡ʃ'
         j - 'dʒ'
@@ -114,11 +135,64 @@ class Word
         y - 'j'
         h - 'x'
         */
-        $pattern     = [ '/c/', '/j/', '/r/', '/x/', '/y/', '/h/' ];
-        $replacement = [ 't͡ʃ',  'd͡ʒ',   'ɾ',   'ʃ',   'j',   'x'  ];
-        $result = preg_replace($pattern, $replacement, $phrase);
+        $result = preg_replace(REPLACE_GLB_REGEX, REPLACE_IPA, $phrase);
         $result = "https://ipa-reader.xyz/?text=".$result."&voice=Ewa";
         $this->ipaLink = $result;
+    }
+
+
+
+    // As per docuentation for JavaScript function AddStressToWord():
+    // https://github.com/ShawnPConroy/WorldlangDict/blob/e10709c9fe319d991a9c787f46c2e1cbeaabc2b4/templates/menalar/js/ipa.js#L270
+    public static function addStressToWord($word = null) {
+        // Skip Rule
+        if (in_array($word, WORDS_TO_SKIP)) {
+            return $word;
+        }
+        else if (empty($word)) {
+            return "";
+        }
+        // Single vowel rule (or no vowels)
+        $vowels = preg_match_all(GLOBAL_VOWEL_REGEX, $word);
+        if ($vowels == false) {
+            return $word;
+        }
+        else if ($vowels == 1) {
+            return STRESS_MARKER . $word;
+        }
+        
+        // Vowel Select Rule
+        $wordlet = substr($word, 0, -1);
+        preg_match(FINAL_VOWEL_REGEX, $wordlet, $match);
+        
+        $pos = strrpos($wordlet, $match[0]);
+        $adj1 = $word[$pos - 1];
+        $adj2 = $word[$pos - 2];
+
+        // Shift Rules
+        $shift = -1;
+
+        if ($pos == 0 || in_array($adj1, NO_SHIFT_CHARS)) {
+            $shift = 0;
+        }
+        else if (
+            ($adj1 == 'y' || $adj1 == 'w') &&
+            ($adj2 != 'y' && $adj2 != 'w' && !in_array($adj2, NO_SHIFT_CHARS) )
+        ) {
+            $shift = -2;
+        }
+        else if (($adj1 == 'r' || $adj1 == 'l') &&
+            in_array($adj2, ONSET_CONSONANTS)
+        ) {
+            $shift = -2;
+        }
+
+        // don't shift beyond the first letter
+        if ($pos + $shift < 0) {
+            $shift = - $pos;
+        }
+
+        return substr($word, 0, $pos + $shift) . STRESS_MARKER . substr($word, $pos + $shift);
     }
 
     // Should this be makeRelatedWords ?
