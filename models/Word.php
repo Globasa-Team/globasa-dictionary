@@ -136,7 +136,7 @@ class Word
         h - 'x'
         */
         $result = preg_replace(REPLACE_GLB_REGEX, REPLACE_IPA, $phrase);
-        $result = "https://ipa-reader.xyz/?text=".$result."&voice=Ewa";
+        $result = "http://ipa-reader.xyz/?text=".$result."&voice=Ewa";
         $this->ipaLink = $result;
     }
 
