@@ -5,22 +5,14 @@ class SearchController
 {
     public static function search($config, $request, &$page)
     {
-        $world = $config->dictionary->words;
-        $nat = $config->dictionary->index[$request->lang];
-
-        $partialMatchesWorld = [];
-        $partialMatchesNat = [];
-        
         if (!is_null($request->options)) {
             if (!empty($request->options['wterm'])) {
                 $page->setTitle($config->getTrans('search result title').": ".$request->options['wterm']);
-                $term = strtolower($request->options['wterm']);
-                $partialMatches = SearchController::searchLang($config, $request, $config->dictionary->index['glb'], $config->worldlang, $term);
+                $partialMatches = SearchController::searchLang($config, $request, $config->dictionary->index['glb'], $config->worldlang, $request->options['wterm']);
                 $lang = 'glb';
             } elseif (!empty($request->options['nterm'])) {
                 $page->setTitle($config->getTrans('search result title').": ".$request->options['nterm']);
-                $term = strtolower($request->options['nterm']);
-                $partialMatches = SearchController::searchLang($config, $request, $config->dictionary->index[$request->lang], $request->lang, $term);
+                $partialMatches = SearchController::searchLang($config, $request, $config->dictionary->index[$request->lang], $request->lang, $request->options['wterm']);
                 $lang = $config->lang;
             } else {
                 $page->setTitle($config->getTrans('search result title'));
@@ -35,7 +27,7 @@ class SearchController
     private static function searchLang($config, $request, $dict, $lang, $term)
     {
         $term = strtolower(trim($term));
-        // look for exact match
+        // first, try to look for exact match
         if ($lang == 'glb') {
             if (isset($dict[$term]) && isset($dict[$term][$term])) {
                 WorldlangDictUtils::redirect($config, $request, 'lexi/'.urlencode($term));
@@ -48,12 +40,19 @@ class SearchController
             }
         }
 
-        // look for partial match in index
+        // Finally look for a partial match in index
         $partialMatches = [];
         foreach ($dict as $word=>$data) {
             // insert, replace, delete
             if (levenshtein($term, $word, 1, 1, 1)<2) {
-                $partialMatches[] = $word;
+                if (count($data) == 1) {
+                    $partialMatches[] = $word;
+                }
+                else {
+                    foreach ($data as $cur) {
+                        $partialMatches[] = $cur;
+                    }
+                }
             }
         }
 

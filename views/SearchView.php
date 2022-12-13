@@ -19,6 +19,8 @@ class SearchView
 
             foreach ($partialMatches as $word) {
                 $word = strtolower($word);
+                if (!isset($config->dictionary->words[$word])) continue;
+                
                 if ($lang=='glb') {
                     $page->content .= '<li>'.
                         WorldlangDictUtils::makeLink(
