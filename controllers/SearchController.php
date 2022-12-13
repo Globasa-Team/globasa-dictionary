@@ -3,6 +3,9 @@ namespace WorldlangDict;
 
 class SearchController
 {
+    /**
+     * If exact match is found, redirect. Otherwise show partial matches.
+     */
     public static function search($config, $request, &$page)
     {
         if (!is_null($request->options)) {
@@ -12,7 +15,7 @@ class SearchController
                 $lang = 'glb';
             } elseif (!empty($request->options['nterm'])) {
                 $page->setTitle($config->getTrans('search result title').": ".$request->options['nterm']);
-                $partialMatches = SearchController::searchLang($config, $request, $config->dictionary->index[$request->lang], $request->lang, $request->options['wterm']);
+                $partialMatches = SearchController::searchLang($config, $request, $config->dictionary->index[$request->lang], $request->lang, $request->options['nterm']);
                 $lang = $config->lang;
             } else {
                 $page->setTitle($config->getTrans('search result title'));
@@ -46,11 +49,12 @@ class SearchController
             // insert, replace, delete
             if (levenshtein($term, $word, 1, 1, 1)<2) {
                 if (count($data) == 1) {
-                    $partialMatches[] = $word;
+                    $partialMatches[$word] = $word;
                 }
                 else {
                     foreach ($data as $cur) {
-                        $partialMatches[] = $cur;
+                        $i = ( ($lang == 'glb') ? $cur : $word);
+                        $partialMatches[$i] = $i;
                     }
                 }
             }

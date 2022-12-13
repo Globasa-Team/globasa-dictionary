@@ -84,7 +84,9 @@ header .wordClass a, header .wordClass a:link, header .wordClass a:visited {
     background-color: inherit;
 }
 
-li .wordClass, li .wordClass a, li .wordClass a:link, li .wordClass a:visited, .translationAide li .wordClass {
+li .wordClass, li .wordClass a, li .wordClass a:link, li .wordClass a:visited, .translationAide li .wordClass,
+dt .wordClass, dt .wordClass a, dt .wordClass a:link, dt .wordClass a:visited, .translationAide dt .wordClass
+{
     color: black;
     background-color: inherit;
     font-size: inherit;
@@ -129,20 +131,23 @@ li .wordClass, li .wordClass a, li .wordClass a:link, li .wordClass a:visited, .
     text-decoration: none;
     color: white;
 }
+
 .dictionaryEntry footer a:hover {
     text-decoration: none;
     color: white;
 }
 
-.dictionaryList li {
+.dictionaryList li, .dictionaryList dd {
     margin-bottom: 1em;
+    font-size: large;
 }
 
 .dictionaryList a:not([class]) {
-    font-size: large;
+    font-size: x-large;
     font-weight: bold;
     text-decoration: none;
 }
+
 .feedback {
     width: 100%;
 }
