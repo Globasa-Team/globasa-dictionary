@@ -6,7 +6,7 @@ namespace WorldlangDict;
  */
 function router($config)
 {
-    $page = new Page($config->siteName);
+    $page = new Page($config->getTrans('App Name'));
 
     $request = new Request($config);
 

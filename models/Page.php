@@ -17,6 +17,6 @@ class Page
 
     public function setTitle($title)
     {
-        $this->title = $title . ' - ' . $this->siteName;
+        $this->title = $title . ' &mdash; ' . $this->siteName;
     }
 }
