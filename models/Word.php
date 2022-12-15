@@ -125,19 +125,9 @@ class Word
 
     private function generateIpa($config)
     {
-        $phrase = strtolower($this->term);
-        $phrase = Word::addStressToWord($phrase);
-        /*
-        c - 't͡ʃ'
-        j - 'dʒ'
-        r - 'ɾ'
-        x - 'ʃ'
-        y - 'j'
-        h - 'x'
-        */
-        $result = preg_replace(REPLACE_GLB_REGEX, REPLACE_IPA, $phrase);
-        $result = "http://ipa-reader.xyz/?text=".$result."&voice=Ewa";
-        $this->ipaLink = $result;
+        $phrase = Word::addStressToWord(strtolower($this->term));
+        $this->ipa = preg_replace(REPLACE_GLB_REGEX, REPLACE_IPA, $phrase);
+        $this->ipaLink = "http://ipa-reader.xyz/?text=".$this->ipa."&voice=Ewa";
     }
 
 
