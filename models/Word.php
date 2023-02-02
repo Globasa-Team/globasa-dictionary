@@ -245,7 +245,7 @@ class Word
             while (!empty($tok)) {
                 if ($tok[0] == '_' && $tok[-1] != '_') {
                     $tok .= ','.strtok(constant("TRANS_SEPERATORS"));
-                }
+                } 
 
                 // included all parts, removing parentheses and underscores.
                 $searchTerm = trim(preg_replace('/[\(\)_]/U', '', $tok));     // (_ ... _)
@@ -254,7 +254,7 @@ class Word
 
                 // Remove optional parts by deleting what is inside the
                 // brackets and removing double white space.
-                if (strpos($tok, '(') !== false) {
+                if (strpos($tok, '(') === false) {
                     $searchTerm = preg_replace('/\((.+)\)/U', '', $tok);
                     $searchTerm = preg_replace('/\s\s+/', ' ',$searchTerm);
                     $searchTerm = strtolower(trim($searchTerm));
