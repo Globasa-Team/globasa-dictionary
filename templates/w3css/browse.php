@@ -67,7 +67,50 @@ namespace WorldlangDict;
 
 
 
-<div id="content" class="w3-main">
+<div id="content" class="w3-main class="w3-container"">
+
+
+<!--
+Menu: Browse Dictionary
+URL: /kentanible-menalari
+-->
+
+
+<div class="w3-card">
+    <header class="w3-container w3-black">
+        <h2>Filters</h2>
+    </header>
+    <section class="w3-container w3-blue">
+        <h3 class=" ">By Letter</h3>
+        <div class="w3-bar">
+        <?php foreach (range('a', 'z') as $char) {
+            echo "<input type=\"radio\" name=\"letter\" id=\"letter-{$char}\" value=\"{$char}\" style=\"display:none;\">
+            <label for=\"letter-{$char}\" class=\"w3-bar-item w3-button\" style=\"width: 7.5%\">{$char}</label>";
+        } ?>
+        </div>
+    </section>
+
+    <section class="w3-container w3-green">
+        <h3 class="">By type</h3>
+        <div class="w3-bar ">
+            <input type="radio" name="category" style="display:none;" id="affixes" value="affixes">
+            <label for="affixes" class="w3-bar-item w3-button" style="width:25%;">affixes</label>
+            <input type="radio" name="category" style="display:none;" id="root" value="root">
+            <label for="root" class="w3-bar-item w3-button" style="width:25%;">root words</label>
+            <input type="radio" name="category" style="display:none;" id="derived" value="derived">
+            <label for="derived" class="w3-bar-item w3-button" style="width:25%;">derived words</label>
+            <input type="radio" name="category" style="display:none;" id="all" value="all">
+            <label for="all" class="w3-bar-item w3-button" style="width:25%;">all</label>
+        </div>
+    </section>
+</div>
+
+
+
+
+
+
+
     <?php echo $page->content ?>
 </div> <!-- id="w3-main" -->
 
@@ -102,12 +145,13 @@ namespace WorldlangDict;
     </div>
 </footer>
 
+<!-- 
   <script src="<?php echo $config->templateUri; ?>js/vendor/modernizr-3.7.1.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
   <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.4.1.min.js"><\/script>')</script>
   <script src="<?php echo $config->templateUri; ?>js/plugins.js"></script>
   <script src="<?php echo $config->templateUri; ?>js/main.js"></script>
-
+ -->
 </body>
 
 </html>
