@@ -134,6 +134,28 @@ class WordView
             ';
     }
 
+    
+
+    public static function entryToDtString($config, $request, $word) {
+        $result = '<dt>'.
+            WorldlangDictUtils::makeLink(
+                $config,
+                'lexi/'.urlencode($word->term),
+                $request,
+                $word->term
+            );
+        if (isset($word->wordClass) && !empty($word->wordClass)) {
+            $result .=
+                '<div class="wordClass">(<a href="https://xwexi.globasa.net/' . $config->lang . '/grammar/word-classes">'.$word->wordClass.'</a>)</div>';
+        }
+        $result .=
+            '</dt><dd>'.
+            $word->translation[$config->lang].
+            '</dd>';
+
+        return $result;
+    }
+
     public function addList($config, $request, &$page)
     {
         foreach ($config->dictionary->words as $wordIndex=>$entry) {

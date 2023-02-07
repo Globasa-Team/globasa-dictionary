@@ -17,6 +17,7 @@ include_once 'views/SearchView.php';
 include_once 'views/ToolView.php';
 include_once 'views/WordView.php';
 include_once 'views/FeedbackView.php';
+include_once 'views/BrowseView.php';
 include_once 'controllers/ToolController.php';
 include_once 'controllers/WordController.php';
 include_once 'controllers/SearchController.php';
