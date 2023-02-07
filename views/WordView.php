@@ -137,7 +137,8 @@ class WordView
     
 
     public static function entryToDtString($config, $request, $word) {
-        $result = '<dt>'.
+        $data = " data-class=\"{$word->wordClass}\" data-category=\"{$word->category}\" data-char=\"{$word->term[0]}\" ";
+        $result = "<dt {$data}>".
             WorldlangDictUtils::makeLink(
                 $config,
                 'lexi/'.urlencode($word->term),
@@ -149,7 +150,7 @@ class WordView
                 '<div class="wordClass">(<a href="https://xwexi.globasa.net/' . $config->lang . '/grammar/word-classes">'.$word->wordClass.'</a>)</div>';
         }
         $result .=
-            '</dt><dd>'.
+            '</dt><dd {$data}>'.
             $word->translation[$config->lang].
             '</dd>';
 
