@@ -10,33 +10,33 @@ class ToolController
             case 'homonym-check': // deprecated 2022-12-01
             case 'samaeskri-lexi':
                 ToolController::homonymCheck($config, $request, $page);
-                include_once($config->templatePath.'index.php');
+                include_once($config->templatePath.'view-default.php');
                 break;
             case 'minimal-pair-detector': // deprecated 2022-12-01
             case 'minimum-duaxey':
                 ToolController::minimalPairCheck($config, $request, $page);
-                include_once($config->templatePath.'index.php');
+                include_once($config->templatePath.'view-default.php');
                 break;
             case 'candidate-check': // deprecated 2022-12-01
             case 'kandidato-lexi':
                 ToolController::checkCandidateWord($config, $request, $page);
-                include_once($config->templatePath.'index.php');
+                include_once($config->templatePath.'view-default.php');
                 break;
             case 'translation-aide': // deprecate as of 2022-08-20
             case 'trasbasatul':
                 ToolController::transAide($config, $request, $page);
-                include_once($config->templatePath.'index.php');
+                include_once($config->templatePath.'view-default.php');
                 break;
             case 'ipa-converter': // deprecated 2022-12-01
             case 'ifa-trasharufitul':
                     $page->setTitle($config->getTrans('ipa converter title'));
                 $page->description = $config->getTrans('ipa converter description');
-                include_once($config->templatePath.'tool-ipa-converter.php');
+                include_once($config->templatePath.'view-ipa-converter.php');
                 break;
             default:
                 $page->setTitle($config->getTrans('tools button'));
                 ToolView::toolList($config, $page, $request);
-                include_once($config->templatePath.'index.php');
+                include_once($config->templatePath.'view-default.php');
                 break;
             }
     }
