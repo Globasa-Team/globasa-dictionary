@@ -23,6 +23,8 @@ include_once 'controllers/SearchController.php';
 include_once 'controllers/IndexController.php';
 include_once 'controllers/UpdateController.php';
 include_once 'controllers/FeedbackController.php';
+include_once 'controllers/BrowseController.php';
+include_once 'controllers/TestController.php';
 
 $config = new WorldlangDictConfig();
 include_once 'config.php';

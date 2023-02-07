@@ -252,6 +252,9 @@ class Word
                 $searchTerm = strtolower(trim($searchTerm));
                 $d->index[$lang][$searchTerm][$this->termIndex] = $this->termIndex;
 
+                if (strcmp($searchTerm, "nevertheless") == 0) {echo "<h1>found1: ".$this->termIndex."</h1>";}
+                if (strpos($searchTerm, "nevertheless") !== false) {echo "<h1>found2: ".$this->termIndex.'--'.$searchTerm."</h1>";}
+                if (strpos($this->termIndex, "fe hataya") !== false) {echo "<h1>found3: ".$this->termIndex.'--'.$searchTerm."</h1>";}
                 // Remove optional parts by deleting what is inside the
                 // brackets and removing double white space.
                 if (strpos($tok, '(') !== false) {

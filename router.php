@@ -53,7 +53,14 @@ function router($config)
             WordController::addTags($config, $request, $page);
             include_once($config->templatePath.'index.php');
             break;
-
+        case 'kentanible-menalari':
+            BrowseController::default($config, $request, $page);
+            include_once($config->templatePath.'browse.php');
+            break;
+        case 'test':
+            TestController::helloWorld($config, $request, $page);
+            include_once($config->templatePath.'index.php');
+            break;
         default:
             IndexController::home($config, $request, $page);
             include_once($config->templatePath.'index.php');
