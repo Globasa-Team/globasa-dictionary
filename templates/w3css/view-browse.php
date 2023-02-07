@@ -21,7 +21,7 @@ URL: /kentanible-menalari
 -->
 
 
-<div class="w3-card" style1="display:none;">
+<div class="w3-card" style="display:none;">
     <header class="w3-container w3-black">
         <h2>Filters</h2>
     </header>
