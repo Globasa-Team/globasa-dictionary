@@ -11,9 +11,9 @@ namespace WorldlangDict;
 
 <? require_once($config->templatePath . "partials/page-header.php"); ?>
 
-<div id="content" class="w3-main">
+<main id="content" class="w3-main">
     <?php echo $page->content ?>
-</div> <!-- id="w3-main" -->
+</main>
 
 <? require_once($config->templatePath . "partials/page-footer.php"); ?>
 

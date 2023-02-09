@@ -29,7 +29,7 @@ namespace WorldlangDict;
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
   <![endif]-->
 
-<div id="siteHeader">
+<main id="siteHeader">
     <h1 id="appTitle">
         <a href="<?php echo WorldlangDictUtils::makeUri($config, '', $request); ?>">
             <span class="fa fa-book fa-lg"></span> <?php echo $config->siteName; ?>
@@ -59,7 +59,7 @@ namespace WorldlangDict;
     </form>
 
 
-</div>
+</main>
 
 
 
