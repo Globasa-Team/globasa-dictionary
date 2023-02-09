@@ -137,7 +137,8 @@ class WordView
     
 
     public static function entryToDtString($config, $request, $word) {
-        $data = " data-class=\"{$word->wordClass}\" data-category=\"{$word->category}\" data-char=\"{$word->termIndex[0]}\" ";
+        $letter = ctype_alpha($word->termIndex[0]) ? $word->termIndex[0] : $word->termIndex[1];
+        $data = " data-class=\"{$word->wordClass}\" data-category=\"{$word->category}\" data-char=\"{$letter}\" ";
         $result = "<dt {$data}>".
             WorldlangDictUtils::makeLink(
                 $config,

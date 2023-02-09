@@ -23,8 +23,6 @@ namespace WorldlangDict;
         <section class="w3-container filter">
             <h3><?= $config->getTrans('browse filter by letter header') ?></h3>
             <div class="w3-bar">
-                <!-- <input type="radio" name="letter" id="letter-#" value="#">
-                <label for="letter-#" class="w3-bar-item w3-button">#</label> -->
                 <input type="radio" name="letter" id="letter-a" value="a">
                 <label for="letter-a" class="w3-bar-item w3-button">a</label>
                 <input type="radio" name="letter" id="letter-b" value="b">
@@ -75,8 +73,8 @@ namespace WorldlangDict;
                 <label for="letter-y" class="w3-bar-item w3-button">y</label>
                 <input type="radio" name="letter" id="letter-z" value="z">
                 <label for="letter-z" class="w3-bar-item w3-button">z</label>
-                <!-- <input type="radio" name="letter" id="letter-all" value="all">
-                <label for="letter-all" class="w3-bar-item w3-button">all</label> -->
+                <input type="radio" name="letter" id="letter-all" value="all">
+                <label for="letter-all" class="w3-bar-item w3-button">all</label>
             </div>
         </section>
 

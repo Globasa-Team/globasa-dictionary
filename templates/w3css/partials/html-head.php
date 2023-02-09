@@ -19,7 +19,7 @@ namespace WorldlangDict;
   <link href="https://fonts.googleapis.com/css?family=Literata|Merriweather&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fork-awesome@1.1.7/css/fork-awesome.min.css" integrity="sha256-gsmEoJAws/Kd3CjuOQzLie5Q3yshhvmo7YNtBG7aaEY=" crossorigin="anonymous">
   <script src="<?php echo $config->siteUri; ?>assets/ipa.js?02-08"></script>
-  <script src="<?php echo $config->siteUri; ?>assets/browse.js?02-08"></script>
+  <script src="<?php echo $config->siteUri; ?>assets/browse.js?02-09"></script>
 
   <!-- <meta name="theme-color" content="#fafafa"> -->
 </head>
