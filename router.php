@@ -53,7 +53,8 @@ function router($config)
             WordController::addTags($config, $request, $page);
             include_once($config->templatePath.'view-default.php');
             break;
-        case 'kentanible-menalari':
+        case 'kentanible-menalari': // never publicized
+        case 'abeceli-menalari':
             BrowseController::default($config, $request, $page);
             include_once($config->templatePath.'view-browse.php');
             break;

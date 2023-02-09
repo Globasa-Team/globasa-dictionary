@@ -1,3 +1,10 @@
+:root {
+    /* Globasa flag colours */
+    --glbBlue: #0040a9;
+    --glbGreen: #008113;
+    --shadowColor: #000060; /* Recommended shadow */
+}
+
 body {
     font-family: 'Merriweather', 'Literata', serif;
     font-weight: 500;
@@ -57,12 +64,12 @@ h1, h2, h3, h4, h5, h6 {
 
 #siteHeader .w3-btn {
     background-color: white;
-    color: #008113;
+    color: var(--glbGreen);
 }
 
 #siteHeader a {
     text-decoration: none;
-    color: #0040a9;
+    color: var(--glbBlue);
 }
 
 #siteFooter {
@@ -108,7 +115,7 @@ dt .wordClass, dt .wordClass a, dt .wordClass a:link, dt .wordClass a:visited, .
 
 .dictionaryEntry a, .tags a, .dictionaryList a {
     text-decoration: none;
-    color: #008113;
+    color: var(--glbGreen);
 }
 
 /* Tools stuff */
@@ -119,11 +126,11 @@ dt .wordClass, dt .wordClass a, dt .wordClass a:link, dt .wordClass a:visited, .
 }
 
 .w3-card header {
-    background-color: #0040a9;
+    background-color: var(--glbBlue);
     color: white;
 }
 .feedbackSubmit .w3-btn, .dictionaryEntry footer {
-    background-color: #008113;
+    background-color: var(--glbGreen);
     color: white;
 }
 
@@ -174,31 +181,28 @@ dt .wordClass, dt .wordClass a, dt .wordClass a:link, dt .wordClass a:visited, .
     display: none;
 }
 
-.filter  input[type="radio"]:checked,
-.filter  input[type="radio"]:checked + label
+
+.filter label[for^="letter-"] {
+    width: 7.5%;
+    color: var(--glbBlue);
+}
+
+.filter  input[type="radio"]:checked + label[for^="letter-"]
 {
-  background-color: black;
+  background-color: var(--glbBlue);
   color: white;
   
 }
 
-.filter label[for^="letter-"] {
-    width: 7.5%;
-}
-
 .filter label[for^="cat-"] {
     width: 25%;
+    color: var(--glbGreen);
 }
 
-/*
- Globasa flag colours
- blue #0040a9
- green #008113
- Recommended shadow #000060.
-*/
+.filter  input[type="radio"]:checked + label[for^="cat-"]
+{
+  background-color: var(--glbGreen);
+  color: white;
+  
+}
 
-
-
-/****
- * Test
- ***/
