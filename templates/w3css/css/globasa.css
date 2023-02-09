@@ -165,9 +165,40 @@ dt .wordClass, dt .wordClass a, dt .wordClass a:link, dt .wordClass a:visited, .
 .translationAide .wordClass {
     padding-left: 0;
 }
+
+
+
+
+
+.filter input {
+    display: none;
+}
+
+.filter  input[type="radio"]:checked,
+.filter  input[type="radio"]:checked + label
+{
+  background-color: black;
+  color: white;
+  
+}
+
+.filter label[for^="letter-"] {
+    width: 7.5%;
+}
+
+.filter label[for^="cat-"] {
+    width: 25%;
+}
+
 /*
  Globasa flag colours
  blue #0040a9
  green #008113
  Recommended shadow #000060.
 */
+
+
+
+/****
+ * Test
+ ***/

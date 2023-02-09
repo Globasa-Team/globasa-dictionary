@@ -12,53 +12,42 @@ namespace WorldlangDict;
 <? require_once($config->templatePath . "partials/page-header.php"); ?>
 
 
-<div id="content" class="w3-main w3-container">
+<main id="content" class="w3-main w3-container">
 
+    <h1><?= $config->getTrans('browse title') ?></h1>
 
-<!--
-Menu: Browse Dictionary
-URL: /kentanible-menalari
--->
+    <div class="w3-card">
+        <header class="w3-container w3-black">
+            <h2><?= $config->getTrans('browse filters header') ?></h2>
+        </header>
+        <section class="w3-container w3-blue filter">
+            <h3><?= $config->getTrans('browse filter by letter header') ?></h3>
+            <div class="w3-bar">
+            <?php foreach (range('a', 'z') as $char) {
+                echo "<input type=\"radio\" name=\"letter\" id=\"letter-{$char}\" value=\"{$char}\">
+                <label for=\"letter-{$char}\" class=\"w3-bar-item w3-button\">{$char}</label>";
+            } ?>
+            </div>
+        </section>
 
-
-<div class="w3-card" style="display:none;">
-    <header class="w3-container w3-black">
-        <h2>Filters</h2>
-    </header>
-    <section class="w3-container w3-blue">
-        <h3 class=" ">By Letter</h3>
-        <div class="w3-bar">
-        <?php foreach (range('a', 'z') as $char) {
-            echo "<input type=\"radio\" name=\"letter\" id=\"letter-{$char}\" value=\"{$char}\" style=\"display:none;\">
-            <label for=\"letter-{$char}\" class=\"w3-bar-item w3-button\" style=\"width: 7.5%\">{$char}</label>";
-        } ?>
-        </div>
-    </section>
-
-    <section class="w3-container w3-green">
-        <h3 class="">By type</h3>
-        <div class="w3-bar ">
-            <input type="radio" name="category" style="display:none;" id="affixes" value="affixes">
-            <label for="affixes" class="w3-bar-item w3-button" style="width:25%;">affixes</label>
-            <input type="radio" name="category" style="display:none;" id="root" value="root">
-            <label for="root" class="w3-bar-item w3-button" style="width:25%;">root words</label>
-            <input type="radio" name="category" style="display:none;" id="derived" value="derived">
-            <label for="derived" class="w3-bar-item w3-button" style="width:25%;">derived words</label>
-            <input type="radio" name="category" style="display:none;" id="all" value="all">
-            <label for="all" class="w3-bar-item w3-button" style="width:25%;">all</label>
-        </div>
-    </section>
-</div>
-
-
-
-
-
+        <section class="w3-container w3-green filter">
+            <h3 class=""><?= $config->getTrans('browse filter by category header') ?></h3>
+            <div class="w3-bar ">
+                <input id="cat-affix" type="radio" name="category" value="affix">
+                <label for="cat-affix" class="w3-bar-item w3-button"><?= $config->getTrans('affix') ?></label>
+                <input id="cat-root" type="radio" name="category" value="root">
+                <label for="cat-root" class="w3-bar-item w3-button"><?= $config->getTrans('root word') ?></label>
+                <input id="cat-derived" type="radio" name="category" value="derived">
+                <label for="cat-derived" class="w3-bar-item w3-button"><?= $config->getTrans('derived word') ?></label>
+                <input id="cat-all" type="radio" name="category" value="all">
+                <label for="cat-all" class="w3-bar-item w3-button"><?= $config->getTrans('category all') ?></label>
+            </div>
+        </section>
+    </div>
 
 
     <?php echo $page->content ?>
-</div> <!-- id="w3-main" -->
-
+</main>
 
 <? require_once($config->templatePath . "partials/page-footer.php"); ?>
 

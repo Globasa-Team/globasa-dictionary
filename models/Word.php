@@ -69,7 +69,7 @@ class Word
         $this->generateIpa($config);
     }
 
-    public static function createDictionary($config, $rawWords, $verbose)
+    public static function createDictionary($config, $rawWords)
     {
         $dictionary = new \StdClass();
         $dictionary->index = [];
@@ -83,13 +83,12 @@ class Word
                     $wordKey,
                     $dictionary
                 );
-            if ($verbose && (count($dictionary->words)%100==0)) {
+            if (count($dictionary->words)%500==0) {
                 echo count($dictionary->words)." ";
             }
         }
-        if ($verbose) {
-            echo "<p> ... Saved ".count($dictionary->words)." words.</p>";
-        }
+        echo "</p><footer class=\"w3-container w3-pale-yellow\"><p> ... Saved ".count($dictionary->words)." words.</p></footer>";
+        
         foreach ($dictionary->index as $lang=>$indexList) {
             ksort($dictionary->index[$lang]);
         }
@@ -252,9 +251,6 @@ class Word
                 $searchTerm = strtolower(trim($searchTerm));
                 $d->index[$lang][$searchTerm][$this->termIndex] = $this->termIndex;
 
-                if (strcmp($searchTerm, "nevertheless") == 0) {echo "<h1>found1: ".$this->termIndex."</h1>";}
-                if (strpos($searchTerm, "nevertheless") !== false) {echo "<h1>found2: ".$this->termIndex.'--'.$searchTerm."</h1>";}
-                if (strpos($this->termIndex, "fe hataya") !== false) {echo "<h1>found3: ".$this->termIndex.'--'.$searchTerm."</h1>";}
                 // Remove optional parts by deleting what is inside the
                 // brackets and removing double white space.
                 if (strpos($tok, '(') !== false) {
