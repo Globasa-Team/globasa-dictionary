@@ -36,7 +36,7 @@ namespace WorldlangDict;
                 <input id="cat-affix" type="radio" name="category" value="affix">
                 <label for="cat-affix" class="w3-bar-item w3-button"><?= $config->getTrans('affix') ?></label>
                 <input id="cat-root" type="radio" name="category" value="root">
-                <label for="cat-root" class="w3-bar-item w3-button"><?= $config->getTrans('root word') ?></label>
+                <label for="cat-root" class="w3-bar-item w3-button"><?= $config->getTrans('root') ?></label>
                 <input id="cat-derived" type="radio" name="category" value="derived">
                 <label for="cat-derived" class="w3-bar-item w3-button"><?= $config->getTrans('derived word') ?></label>
                 <input id="cat-all" type="radio" name="category" value="all">
