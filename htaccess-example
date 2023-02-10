@@ -11,4 +11,5 @@ RewriteRule (.*) https://%{HTTP_HOST}/%{REQUEST_URI} [R=301,L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
+# path from web root to index.php file. Include subfolder.
 RewriteRule !^exclude /index.php [L,NC]

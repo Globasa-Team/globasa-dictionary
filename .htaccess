@@ -1,5 +1,4 @@
 RewriteOptions inherit
-# FallbackResource /index.php
 
 RewriteEngine On
 RewriteBase /
@@ -12,8 +11,4 @@ RewriteRule (.*) https://%{HTTP_HOST}/%{REQUEST_URI} [R=301,L]
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
-RewriteRule !^exclude /dict-dev/index.php [L,NC]
-
-
-# Turn on debug error displays
-php_flag display_errors 1
+RewriteRule !^exclude /index.php [L,NC]
