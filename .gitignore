@@ -3,6 +3,7 @@ error_log
 src/config.php
 .php_cs.cache
 config.php
+robots.txt
 
 # Ignore backups
 backup

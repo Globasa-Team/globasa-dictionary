@@ -7,12 +7,12 @@ RewriteBase /
 # HTTPS
 RewriteEngine On
 RewriteCond %{HTTPS} off
-RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [R=301,L]
+RewriteRule (.*) https://%{HTTP_HOST}/%{REQUEST_URI} [R=301,L]
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 
-RewriteRule !^exclude index.php [L,NC]
+RewriteRule !^exclude /dict-dev/index.php [L,NC]
 
 
 # Turn on debug error displays
