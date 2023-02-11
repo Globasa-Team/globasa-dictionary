@@ -85,9 +85,9 @@ namespace WorldlangDict;
                 <label for="cat-affix" class="w3-bar-item w3-button"><?= $config->getTrans('affix') ?></label>
                 <input id="cat-root" type="radio" name="category" value="root">
                 <label for="cat-root" class="w3-bar-item w3-button"><?= $config->getTrans('root') ?></label>
-                <input id="cat-derived" type="radio" name="category" value="derived">
-                <label for="cat-root" class="w3-bar-item w3-button"><?= $config->getTrans('proper noun') ?></label>
                 <input id="cat-proper-noun" type="radio" name="category" value="proper noun">
+                <label for="cat-proper-noun" class="w3-bar-item w3-button"><?= $config->getTrans('proper noun') ?></label>
+                <input id="cat-derived" type="radio" name="category" value="derived">
                 <label for="cat-derived" class="w3-bar-item w3-button"><?= $config->getTrans('derived word') ?></label>
                 <input id="cat-phrase" type="radio" name="category" value="phrase">
                 <label for="cat-phrase" class="w3-bar-item w3-button"><?= $config->getTrans('phrase') ?></label>
