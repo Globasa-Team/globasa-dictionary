@@ -183,8 +183,12 @@ dt .wordClass, dt .wordClass a, dt .wordClass a:link, dt .wordClass a:visited, .
 
 
 .filter label[for^="letter-"] {
-    width: 7.5%;
+    width: 11.1%;
     color: var(--glbBlue);
+}
+
+#letter-all-label {
+    width: auto;
 }
 
 .filter  input[type="radio"]:checked + label[for^="letter-"]
@@ -195,9 +199,16 @@ dt .wordClass, dt .wordClass a, dt .wordClass a:link, dt .wordClass a:visited, .
 }
 
 .filter label[for^="cat-"] {
-    width: 25%;
+    width: 33.3%;
     color: var(--glbGreen);
 }
+
+
+
+/*
+    10.5 * 7 = 70 + 3.5 = 73.5
+    73.5 - 100 = 26.5
+*/
 
 .filter  input[type="radio"]:checked + label[for^="cat-"]
 {

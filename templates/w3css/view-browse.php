@@ -74,7 +74,7 @@ namespace WorldlangDict;
                 <input type="radio" name="letter" id="letter-z" value="z">
                 <label for="letter-z" class="w3-bar-item w3-button">z</label>
                 <input type="radio" name="letter" id="letter-all" value="all">
-                <label for="letter-all" class="w3-bar-item w3-button"><?= $config->getTrans('letter all') ?></label>
+                <label for="letter-all" class="w3-bar-item w3-button" id="letter-all-label"><?= $config->getTrans('letter all') ?></label>
             </div>
         </section>
 
@@ -86,9 +86,11 @@ namespace WorldlangDict;
                 <input id="cat-root" type="radio" name="category" value="root">
                 <label for="cat-root" class="w3-bar-item w3-button"><?= $config->getTrans('root') ?></label>
                 <input id="cat-derived" type="radio" name="category" value="derived">
+                <label for="cat-root" class="w3-bar-item w3-button"><?= $config->getTrans('proper noun') ?></label>
+                <input id="cat-proper-noun" type="radio" name="category" value="proper noun">
                 <label for="cat-derived" class="w3-bar-item w3-button"><?= $config->getTrans('derived word') ?></label>
                 <input id="cat-phrase" type="radio" name="category" value="phrase">
-                <label for="cat-phrase" class="w3-bar-item w3-button"><?= $config->getTrans('category phrase') ?></label>
+                <label for="cat-phrase" class="w3-bar-item w3-button"><?= $config->getTrans('phrase') ?></label>
                 <input id="cat-all" type="radio" name="category" value="all">
                 <label for="cat-all" class="w3-bar-item w3-button"><?= $config->getTrans('category all') ?></label>
             </div>
