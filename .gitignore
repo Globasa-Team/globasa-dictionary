@@ -4,6 +4,7 @@ src/config.php
 .php_cs.cache
 config.php
 robots.txt
+.htaccess
 
 # Ignore backups
 backup
