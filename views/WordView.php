@@ -148,7 +148,7 @@ class WordView
             );
         if (isset($word->wordClass) && !empty($word->wordClass)) {
             $result .=
-                '<div class="wordClass">(<a href="https://xwexi.globasa.net/' . $config->lang . '/grammar/word-classes">'.$word->wordClass.'</a>)</div>';
+                '<div class="wordClass">(<a href="https://xwexi.globasa.net/' . $config->lang . '/gramati/lexiklase">'.$word->wordClass.'</a>)</div>';
         }
         $result .=
             "</dt><dd {$data}>".
