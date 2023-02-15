@@ -131,11 +131,11 @@ dt .wordClass, dt .wordClass a, dt .wordClass a:link, dt .wordClass a:visited, .
     color: white;
 }
 
-header h2 { /* */
+h2 { /* */
     font-size: large;
 }
 
-.w3-card h3 { /* */
+h3 { /* */
     font-size: medium;
 }
 

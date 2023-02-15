@@ -218,7 +218,7 @@ class WordView
             }
             $page->content .= '
                 <div class="w3-card">
-                <header class="w3-container"><h1>'.$term.'</h1></header>
+                <header class="w3-container"><h2>'.$term.'</h2></header>
                     <div class="w3-container">'.
                     $def.
                     $tags.'
