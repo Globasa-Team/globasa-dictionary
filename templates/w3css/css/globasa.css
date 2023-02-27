@@ -99,7 +99,7 @@ dt .wordClass, dt .wordClass a, dt .wordClass a:link, dt .wordClass a:visited, .
     font-size: inherit;
 }
 
-.dictionaryEntry header h2 {
+.w3-card header h2 {
     display: inline;
     font-size: x-large; /* */
 }

@@ -189,7 +189,7 @@ class WordView
 
     public static function tags($config, $request, &$page)
     {
-        $page->content .= '<h1>'.$config->getTrans('tags title').'</h1>';
+        $page->content .= '<h2>'.$config->getTrans('tags title').'</h2>';
 
         if (isset($request->arguments[0]) && isset($config->dictionary->tags[$request->arguments[0]])) {
             $tags[$request->arguments[0]] = $config->dictionary->tags[$request->arguments[0]];
