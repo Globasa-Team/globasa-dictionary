@@ -33,6 +33,7 @@ class Word
     public $etymology;
     public $relatedWords;
     public $ipaLink;
+    public $ipa;
     public $example;
     public $tags;
     public $synonyms;
@@ -122,8 +123,11 @@ class Word
 
     private function generateIpa($config)
     {
-        $phrase = Word::addStressToWord(strtolower($this->term));
-        $this->ipa = preg_replace(REPLACE_GLB_REGEX, REPLACE_IPA, $phrase);
+        $phrase = [];
+        foreach(explode(" ", $this->term) as $cur) {
+            $phrase[]=Word::addStressToWord(strtolower($cur));
+        }
+        $this->ipa = preg_replace(REPLACE_GLB_REGEX, REPLACE_IPA, implode(" ", $phrase));
         $this->ipaLink = "http://ipa-reader.xyz/?text=".$this->ipa."&voice=Ewa";
     }
 
