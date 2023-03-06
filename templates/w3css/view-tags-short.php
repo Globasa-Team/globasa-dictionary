@@ -22,7 +22,7 @@ foreach ($tags as $tag=>$words):
     $exists = isset($config->dictionary->words[$tag]);
 ?>
     <div class="w3-card">
-        <header class="w3-container"><h2><?= $exists ? $config->dictionary->words[$tag]->term : $tag; ?></h2></header>
+        <header class="w3-container"><h2><?= WorldlangDictUtils::makeLink($config, "lexilari/".$tag, $request, $exists ? $config->dictionary->words[$tag]->term : $tag); ?></h2></header>
         <div class="w3-container">
             <? if ($exists) : ?>
             <p><?= $config->dictionary->words[$tag]->translation[$request->lang]; ?></p>
