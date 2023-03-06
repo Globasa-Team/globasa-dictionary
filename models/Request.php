@@ -19,7 +19,7 @@ class Request
     {
         $this->url = $_SERVER['REQUEST_URI'];
         $parsedUrl = parse_url(strtolower($_SERVER['REQUEST_URI']));
-        $this->path = explode('/', $parsedUrl['path']);
+        $this->path = isset($parsedUrl['path']) ? explode('/', $parsedUrl['path']) : [];
 
         if (isset($parsedUrl['query'])) {
             $this->linkQuery = '?'.$parsedUrl['query'];
