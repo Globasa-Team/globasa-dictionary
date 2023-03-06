@@ -48,10 +48,7 @@ function router($config)
         case 'leksilar': // TODO: delete? deprecated 2020/2021?
         case 'lexilar': // TODO: delete? deprecated 2021-11-19
         case 'lexilari':
-            // WordListController::getWordList($config, $request, $config->worldlang, $page);
-            // WordController::addWordList($config, $request, $config->worldlang, $page);
             WordController::addTags($config, $request, $page);
-            // include_once($config->templatePath.'view-tags-short.php'); 
             break;
         case 'kentanible-menalari': // never publicized
         case 'abeceli-menalari':
