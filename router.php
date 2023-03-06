@@ -51,7 +51,7 @@ function router($config)
             // WordListController::getWordList($config, $request, $config->worldlang, $page);
             // WordController::addWordList($config, $request, $config->worldlang, $page);
             WordController::addTags($config, $request, $page);
-            include_once($config->templatePath.'view-default.php');
+            // include_once($config->templatePath.'view-tags-short.php'); 
             break;
         case 'kentanible-menalari': // never publicized
         case 'abeceli-menalari':

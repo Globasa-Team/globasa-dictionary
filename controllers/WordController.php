@@ -41,8 +41,15 @@ class WordController
 
     public static function addTags($config, $request, &$page)
     {
-        WordView::tags($config, $request, $page);
+        // WordView::tags($config, $request, $page);
         $page->setTitle($config->getTrans('tags title'));
+        if (isset($request->arguments[0]) && isset($config->dictionary->tags[$request->arguments[0]])) {
+            $tags[$request->arguments[0]] = $config->dictionary->tags[$request->arguments[0]];
+        } else {
+            $tags = $config->dictionary->tags;
+        }
+        include_once($config->templatePath.'view-tags-short.php');
+
     }
 
     public static function addWordList($config, $request, $listLang, &$page)
