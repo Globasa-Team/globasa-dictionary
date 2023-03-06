@@ -156,14 +156,41 @@ h3 { /* */
 
 .dictionaryList li, .dictionaryList dd {
     margin-bottom: 1em;
-    font-size: large; /* */
+    /* font-size: large;  */
 }
 
 .dictionaryList a:not([class]) {
-    font-size: large; /* */
+    /* font-size: large;  */
     font-weight: bold;
     text-decoration: none;
 }
+
+
+dl.dictionaryList, dl.tags_extended {
+    line-height: 115%;
+    font-size: large;
+}
+
+.tags_extended dt {
+    float:left;
+    padding-right: 0.5em;
+    /* line-height: 110%; */
+}
+
+.tags_extended dd {
+    margin: 0 0 0.2em 0.5em;
+    /* line-height: 110%; */
+}
+
+.tags_extended dd::after {
+    clear: both;
+}
+
+
+
+
+
+
 
 .feedback {
     width: 100%;
