@@ -137,6 +137,8 @@ class WordView
     
 
     public static function entryToDtString($config, $request, $word) {
+        if (empty($word->term)) continue;
+        
         $letter = ctype_alpha($word->termIndex[0]) ? $word->termIndex[0] : $word->termIndex[1];
         $data = " data-class=\"{$word->wordClass}\" data-category=\"{$word->category}\" data-char=\"{$letter}\" ";
         $result = "<dt {$data}>".
