@@ -27,7 +27,7 @@ function router($config)
             error_log("\nfile :".$trace['class'].$trace['type'].$trace['function'].$trace['line']."\n", 3, "debug.log");
         }
     }
-}
+
 
 
     switch ($request->controller) {
