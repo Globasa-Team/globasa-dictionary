@@ -5,8 +5,8 @@ class WorldlangDictUtils
 {
     public static function makeUri($config, $controller, $request)
     {
-        error_log("-\n\nmakeUri has a request as string.\n\n".serialize($request)."\n\n".serialize(debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS)), 3, "debug.log");
         if (is_string($request)) {
+            error_log("-\n\nmakeUri has a request as string.\n\n".serialize($request)."\n\n".serialize(debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS)), 3, "debug.log");
         }
         return $config->siteUri.$config->lang.'/'.$controller.(!is_string($request) ? $request->linkQuery : "");
     }
