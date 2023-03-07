@@ -25,7 +25,7 @@ h1, h2, h3, h4, h5, h6 {
     padding: 5px;
 }
 
-#appTitle a, #appTitle a:link, #appTitle a:visited {
+#appTitle a, #appTitle a:any-link {
     color: black;
 }
 .w3-card {
@@ -86,13 +86,13 @@ h1, h2, h3, h4, h5, h6 {
     text-align: right;
 }
 
-header .wordClass a, header .wordClass a:link, header .wordClass a:visited {
+header .wordClass a:any-link {
     color: white;
     background-color: inherit;
 }
 
-li .wordClass, li .wordClass a, li .wordClass a:link, li .wordClass a:visited, .translationAide li .wordClass,
-dt .wordClass, dt .wordClass a, dt .wordClass a:link, dt .wordClass a:visited, .translationAide dt .wordClass
+li .wordClass, li .wordClass a:any-link, .translationAide li .wordClass,
+dt .wordClass, dt .wordClass a:any-link, .translationAide dt .wordClass
 {
     color: black;
     background-color: inherit;
@@ -101,7 +101,7 @@ dt .wordClass, dt .wordClass a, dt .wordClass a:link, dt .wordClass a:visited, .
 
 .w3-card header h2 {
     display: inline;
-    font-size: x-large; /* */
+    font-size: x-large;
 }
 
 .wordClass {
@@ -114,7 +114,7 @@ dt .wordClass, dt .wordClass a, dt .wordClass a:link, dt .wordClass a:visited, .
     margin-top: 0;
 }
 
-.dictionaryEntry a, .tags a, .dictionaryList a {
+.dictionaryEntry a, .tags a, dl a {
     text-decoration: none;
     color: var(--glbGreen);
 }
@@ -131,11 +131,11 @@ dt .wordClass, dt .wordClass a, dt .wordClass a:link, dt .wordClass a:visited, .
     color: white;
 }
 
-h2 { /* */
+h2 {
     font-size: large;
 }
 
-h3 { /* */
+h3 {
     font-size: medium;
 }
 
@@ -154,7 +154,7 @@ h3 { /* */
     color: white;
 }
 
-.dictionaryList li, .dictionaryList dd {
+dd {
     margin-bottom: 1em;
     /* font-size: large;  */
 }
@@ -166,23 +166,23 @@ h3 { /* */
 }
 
 
-dl.dictionaryList, dl.tags_extended {
-    line-height: 115%;
-    font-size: large;
+dl {
+    line-height: 110%;
 }
 
-.tags_extended dt {
+dt {
     float:left;
     padding-right: 0.5em;
     /* line-height: 110%; */
 }
 
-.tags_extended dd {
-    margin: 0 0 0.2em 0.5em;
+dd {
+    /* margin: 0 0 0.2em 0.5em; */
+    margin-left: 0.2em;
     /* line-height: 110%; */
 }
 
-.tags_extended dd::after {
+dd::after {
     clear: both;
 }
 
@@ -240,13 +240,6 @@ dl.dictionaryList, dl.tags_extended {
     width: 33.3%;
     color: var(--glbGreen);
 }
-
-
-
-/*
-    10.5 * 7 = 70 + 3.5 = 73.5
-    73.5 - 100 = 26.5
-*/
 
 .filter  input[type="radio"]:checked + label[for^="cat-"]
 {
