@@ -37,6 +37,8 @@ class WorldlangDictUtils
 
     public static function redirect($config, $request, $controller="")
     {
+        error_log("\n\n-----".date(DATE_ATOM)."\n", 3, "debug.log");
+        error_log("\nredirect on request:\n".serialize($request)."\n", 3, "debug.log");
         header('Location: '.WorldlangDictUtils::makeUri($config, $controller, $request));
         die();
     }
