@@ -13,7 +13,7 @@ class WorldlangDictUtils
     
 
             foreach($_SERVER as $key=>$cur) {
-                if (!in_array($key, ["UNIQUE_ID", "SCRIPT_URI", "REQUEST_URI", "SCRIPT_NAME", "REDIRECT_UNIQUE_ID", "REDIRECT_SCRIPT_URL", "REDIRECT_SCRIPT_URI", "REDIRECT_URL", "REDIRECT_QUERY_STRING"]) continue;
+                if (!in_array($key, ["UNIQUE_ID", "SCRIPT_URI", "REQUEST_URI", "SCRIPT_NAME", "REDIRECT_UNIQUE_ID", "REDIRECT_SCRIPT_URL", "REDIRECT_SCRIPT_URI", "REDIRECT_URL", "REDIRECT_QUERY_STRING"])) continue;
                 if (is_string($cur)){
                     @error_log("\n_SERVER[{$key}]: ".serialize($cur)."\n", 3, "debug.log");
                 } else {
