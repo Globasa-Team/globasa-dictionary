@@ -11,7 +11,7 @@ class BrowseView
         }
         ksort($listing);
 
-        $page->content .= '<dl class="dictionaryList">'.implode($listing)."</dl>";
+        $page->content .= '<dl class="dictionaryList browse">'.implode($listing)."</dl>";
     }
 
 }

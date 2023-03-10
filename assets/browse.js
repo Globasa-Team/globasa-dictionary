@@ -23,7 +23,7 @@ function filterBrowse() {
       elements[i].style.display = "none";
     }
     else {
-      elements[i].style.display = "";
+      elements[i].style.display = "block";
     }
   }
 }
