@@ -10,7 +10,7 @@ class ToolView
 
             <div class="w3-card">
                 <header class="w3-container">
-                    <h2><a href="'.WorldlangDictUtils::makeUri($config, 'tul/trasbasatul', $request).'">'.$config->getTrans('translation aide title').'</a></h2>
+                    <h2><a href="'.WorldlangDictUtils::makeUri($config, 'tul/basatayti', $request).'">'.$config->getTrans('translation aide title').'</a></h2>
                 </header>
                 <div class="w3-container"><p>'.$config->getTrans('translation aide description').'</p>
                 </div>

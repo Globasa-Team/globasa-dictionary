@@ -23,7 +23,8 @@ class ToolController
                 include_once($config->templatePath.'view-default.php');
                 break;
             case 'translation-aide': // deprecate as of 2022-08-20
-            case 'trasbasatul':
+            case 'trasbasatul': // deprecated prior to 2023-04-11
+            case 'basatayti':
                 ToolController::transAide($config, $request, $page);
                 include_once($config->templatePath.'view-default.php');
                 break;

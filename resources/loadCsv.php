@@ -17,6 +17,12 @@ function loadCsv($file)
         }
         $wordIndex = strtolower(trim($word[0]));
         $dictionary[$wordIndex] = $newWord;
+
+        if (strcmp($wordIndex, "falso") == 0) {
+            var_dump($word);
+            var_dump($newWord);
+            die();
+        }
     }
     return $dictionary;
 }
