@@ -76,10 +76,7 @@ class Word
         $dictionary->index = [];
         $dictionary->words = [];
         $dictionary->derived = [];
-        // if (strcmp($wordKey, "falso") == 0) {
-            var_dump($rawWords['falso']);
-            die();
-        // }
+        
         foreach ($rawWords as $wordKey=>$wordData) {
             $dictionary->words[$wordKey] =
                 new \WorldlangDict\Word(
