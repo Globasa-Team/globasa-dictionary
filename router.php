@@ -15,6 +15,7 @@ function router($config)
     }
     $config->setLang($request->lang);
 
+    /*
     if (is_string($request)) {
         @error_log("\n-----".date(DATE_ATOM)."\n", 3, "debug.log");
         @error_log("\nrouter has a request as string.\n", 3, "debug.log");
@@ -27,50 +28,53 @@ function router($config)
             @error_log("\nfile :".$trace['class'].$trace['type'].$trace['function'].$trace['line']."\n", 3, "debug.log");
         }
     }
+    */
 
 
 
     switch ($request->controller) {
 
-        case 'tule': // TODO: Delete this old term
         case 'tul':
+            $config->dictionary = unserialize(file_get_contents($config->serializedLocation));
             ToolController::run($config, $request, $page);
             break;
 
-        case 'leksi': // TODO: Delete this old term
         case 'lexi':
+            $config->dictionary = unserialize(file_get_contents($config->serializedLocation));
             $word = isset($request->arguments[0]) ? $request->arguments[0] : null;
             WordController::addEntry($config, $request, $word, $page);
             include_once($config->templatePath.'view-default.php');
             break;
 
         case 'cel-ruke':
+            $config->dictionary = unserialize(file_get_contents($config->serializedLocation));
             WordController::addNatWord($config, $request, $config->lang, $page);
             include_once($config->templatePath.'view-default.php');
             break;
 
-        case 'search': // deprecatd 2022-12-01
         case 'xerca':
+            $config->dictionary = unserialize(file_get_contents($config->serializedLocation));
             SearchController::search($config, $request, $page);
             include_once($config->templatePath.'view-default.php');
             break;
 
         case 'am-reporte':
+            $config->dictionary = unserialize(file_get_contents($config->serializedLocation));
             FeedbackController::feedback($config, $request, $page);
             include_once($config->templatePath.'view-default.php');
             break;
 
-        case 'leksilar': // TODO: delete? deprecated 2020/2021?
-        case 'lexilar': // TODO: delete? deprecated 2021-11-19
         case 'lexilari':
+            $config->dictionary = unserialize(file_get_contents($config->serializedLocation));
             WordController::addTags($config, $request, $page);
             break;
-        case 'kentanible-menalari': // never publicized
         case 'abeceli-menalari':
+            $config->dictionary = unserialize(file_get_contents($config->serializedLocation));
             BrowseController::default($config, $request, $page);
             include_once($config->templatePath.'view-browse.php');
             break;
         case 'test':
+            $config->dictionary = unserialize(file_get_contents($config->serializedLocation));
             TestController::helloWorld($config, $request, $page);
             include_once($config->templatePath.'view-default.php');
             break;
