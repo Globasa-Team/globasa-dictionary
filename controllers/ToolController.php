@@ -7,33 +7,32 @@ class ToolController
     {
         $arg = isset($request->arguments[0]) ? $request->arguments[0] : '';
         switch ($arg) {
-            case 'homonym-check': // deprecated 2022-12-01
             case 'samaeskri-lexi':
                 ToolController::homonymCheck($config, $request, $page);
                 include_once($config->templatePath.'view-default.php');
                 break;
-            case 'minimal-pair-detector': // deprecated 2022-12-01
             case 'minimum-duaxey':
                 ToolController::minimalPairCheck($config, $request, $page);
                 include_once($config->templatePath.'view-default.php');
                 break;
-            case 'candidate-check': // deprecated 2022-12-01
             case 'kandidato-lexi':
                 ToolController::checkCandidateWord($config, $request, $page);
                 include_once($config->templatePath.'view-default.php');
                 break;
-            case 'translation-aide': // deprecate as of 2022-08-20
-            case 'trasbasatul': // deprecated prior to 2023-04-11
             case 'basatayti':
                 ToolController::transAide($config, $request, $page);
                 include_once($config->templatePath.'view-default.php');
                 break;
-            case 'ipa-converter': // deprecated 2022-12-01
             case 'ifa-trasharufitul':
-                    $page->setTitle($config->getTrans('ipa converter title'));
+                $page->setTitle($config->getTrans('ipa converter title'));
                 $page->description = $config->getTrans('ipa converter description');
                 include_once($config->templatePath.'view-ipa-converter.php');
                 break;
+            case 'estatisti':
+                $page->setTitle('Estatisti');
+                $page->description = "estatisti";
+                $stats = yaml_parse_file($config->statsFile);
+                include_once($config->templatePath.'view-statistics.php');
             default:
                 $page->setTitle($config->getTrans('tools button'));
                 ToolView::toolList($config, $page, $request);
