@@ -67,7 +67,7 @@ const VALID_WORD_CLASSES = array (
 <section style="">
 <table class="w3-table-all" style="">
   <thead>
-    <tr class="w3-red"><th class="w3-right-align">Language</th><th class="w3-right-align">Words</th></tr>
+    <tr class="w3-purple"><th class="w3-right-align">Language</th><th class="w3-right-align">Words</th></tr>
   </thead>
 <?php
 foreach($stats['source langs'] as $lang=>$count) {?>
@@ -88,14 +88,14 @@ function showClassCount($stats, $class) {
   if (isset($stats['classes'][$class]))
     return($stats['classes'][$class]);
   else
-    return('?');
+    return('␀');
 }
 
 function showClassPercent($stats, $class) {
   if (isset($stats['classes'][$class]))
     return(floor($stats['classes'][$class]/$stats['terms count']*100).'%');
   else
-    return('?');
+    return('∅');
 }
 
 ?>
