@@ -176,7 +176,7 @@ class ToolView
         $words = isset($_REQUEST['text']) ? $_REQUEST['text'] : null;
         $page->content .= '
             <div class="w3-card w3-container" style="padding: 5px">
-                <form action="'. WorldlangDictUtils::makeUri($config, "tul/trasbasatul", $request) .'" method="post">
+                <form action="'. WorldlangDictUtils::makeUri($config, "tul/basatayti", $request) .'" method="post">
                 <textarea name="text" class="w3-input w3-border w3-light-grey" >'.$words.'</textarea>
                 <input type="submit" value="'.$config->getTrans('translation aide translate button').'" class="w3-btn w3-blue-grey" />
                 </form>

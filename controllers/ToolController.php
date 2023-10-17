@@ -33,6 +33,7 @@ class ToolController
                 $page->description = "estatisti";
                 $stats = yaml_parse_file($config->statsFile);
                 include_once($config->templatePath.'view-statistics.php');
+                break;
             default:
                 $page->setTitle($config->getTrans('tools button'));
                 ToolView::toolList($config, $page, $request);
