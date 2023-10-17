@@ -13,15 +13,16 @@ namespace WorldlangDict;
 
 <main id="content" class="w3-main">
 
-<h2><?= $config->getTrans('tags title') ?></h2>
+<h1><?= $config->getTrans('tags title') ?></h1>
+<ul class="w3-ul">
 <?
 foreach ($tags as $tag=>$words):
-    foreach ($words as $i=>$word):
-        $words[$i] = WorldlangDictUtils::makeLink($config, "lexi/".$word, $request, $word);
-    endforeach;
+    // foreach ($words as $i=>$word):
+    //     $words[$i] = WorldlangDictUtils::makeLink($config, "lexi/".$word, $request, $word);
+    // endforeach;
     $exists = isset($config->dictionary->words[$tag]);
 ?>
-    <div class="w3-card">
+    <div class="w3-card" style="display:none;">
         <header class="w3-container"><h2><?= WorldlangDictUtils::makeLink($config, "lexilari/".$tag, $request, $exists ? $config->dictionary->words[$tag]->term : $tag); ?></h2></header>
         <div class="w3-container">
             <? if ($exists) : ?>
@@ -32,8 +33,18 @@ foreach ($tags as $tag=>$words):
             <? endif; ?>
         </div>
     </div>
-<?php endforeach; ?>
 
+    <li class="w3-padding-small">
+            <span class="w3-large"><?= WorldlangDictUtils::makeLink($config, "lexilari/".$tag, $request, $exists ? $config->dictionary->words[$tag]->term : $tag); ?>
+            </span>(<?=count($words) ?>)
+            <? if ($exists) : ?>
+            <?= $config->dictionary->words[$tag]->translation[$request->lang]; ?>
+            <? endif; ?>
+    </li>
+
+
+<?php endforeach; ?>
+</ul>
 </main>
 
 <? require_once($config->templatePath . "partials/page-footer.php"); ?>

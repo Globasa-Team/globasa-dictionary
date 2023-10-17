@@ -41,13 +41,17 @@ class WordController
 
     public static function addTags($config, $request, &$page)
     {
-        $page->setTitle($config->getTrans('tags title'));
+        
         if (isset($request->arguments[0]) && isset($config->dictionary->tags[$request->arguments[0]])) {
+            $page->setTitle('Word Goes Here ' . ' &ndsp; ' . $config->getTrans('tags title'));
+            $config->dictionary = unserialize(file_get_contents($config->serializedLocation));
             $tag = $request->arguments[0];
             $list = $config->dictionary->tags[$tag];
             include_once($config->templatePath.'view-tags-extended.php');
         } else {
-            $tags = $config->dictionary->tags;
+            $page->setTitle($config->getTrans('tags title'));
+            // $config->dictionary = unserialize(file_get_contents($config->serializedLocation));
+            $tags = yaml_parse_file($config->tagFile);
             include_once($config->templatePath.'view-tags-short.php');
         }
 
