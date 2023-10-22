@@ -16,14 +16,31 @@ namespace WorldlangDict;
 
 <main id="content" class="w3-main">
 
-<? $exists = isset($config->dictionary->words[$tag]); ?>
-<h2><?= $exists ? $config->dictionary->words[$tag]->term : $tag; ?> &mdash; <?= $config->getTrans('tags title') ?></h2>
+<? $exists = isset($defs[$tag]); ?>
+<h2><?= $tag; ?> &mdash; <?= $config->getTrans('tags title') ?></h2>
           <? if ($exists) : ?>
-          <p><?= $config->dictionary->words[$tag]->translation[$request->lang]; ?></p>
+          <p><?= $defs[$tag] ?></p>
           <? endif; ?>
-          <? if (!empty($list)):
-              require_once($config->templatePath . "partials/word-dl.php");
-          endif; ?>
+          <? if (!empty($tags[$tag])): ?>
+
+            <dl class="dictionaryList tags_extended">
+            <?php
+            foreach($tags[$tag] as $word):
+                if (!isset($defs[$word])) continue;
+                $def = $defs[$word];
+                
+                ?>
+                <dt><?= WorldlangDictUtils::makeLink(
+                        $config,
+                        'lexi/'.urlencode($tag),
+                        $request,
+                        $word
+                    ); ?></dt>
+                <dd><?= $def ?>
+            </dd>
+            <? endforeach; ?>
+            </dl>
+          <? endif; ?>
 
 </main>
 

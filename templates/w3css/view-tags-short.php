@@ -17,31 +17,16 @@ namespace WorldlangDict;
 <ul class="w3-ul">
 <?
 foreach ($tags as $tag=>$words):
-    // foreach ($words as $i=>$word):
-    //     $words[$i] = WorldlangDictUtils::makeLink($config, "lexi/".$word, $request, $word);
-    // endforeach;
-    $exists = isset($config->dictionary->words[$tag]);
+    $exists = isset($defs[$tag]);
 ?>
-    <div class="w3-card" style="display:none;">
-        <header class="w3-container"><h2><?= WorldlangDictUtils::makeLink($config, "lexilari/".$tag, $request, $exists ? $config->dictionary->words[$tag]->term : $tag); ?></h2></header>
-        <div class="w3-container">
-            <? if ($exists) : ?>
-            <p><?= $config->dictionary->words[$tag]->translation[$request->lang]; ?></p>
-            <? endif; ?>
-            <? if (!empty($words)): ?>
-                <p class="tags"><?= implode(', ', $words); ?> </p>
-            <? endif; ?>
-        </div>
-    </div>
 
     <li class="w3-padding-small">
-            <span class="w3-large"><?= WorldlangDictUtils::makeLink($config, "lexilari/".$tag, $request, $exists ? $config->dictionary->words[$tag]->term : $tag); ?>
+            <span class="w3-large"><?= WorldlangDictUtils::makeLink($config, "lexilari/".$tag, $request, $tag); ?>
             </span>(<?=count($words) ?>)
             <? if ($exists) : ?>
-            <?= $config->dictionary->words[$tag]->translation[$request->lang]; ?>
+            <?= $defs[$tag] ?>
             <? endif; ?>
     </li>
-
 
 <?php endforeach; ?>
 </ul>
