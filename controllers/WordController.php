@@ -46,7 +46,7 @@ class WordController
     
         if (isset($request->arguments[0]) && isset($tags[$request->arguments[0]])) {
             $tag = $request->arguments[0];
-            $page->setTitle($tag . ' &ndsp; ' . $config->getTrans('tags title'));
+            $page->setTitle($tag . ' &mdash; ' . $config->getTrans('tags title'));
             include_once($config->templatePath.'view-tags-extended.php');
         } else {
             $page->setTitle($config->getTrans('tags title'));

@@ -17,10 +17,11 @@ namespace WorldlangDict;
 <main id="content" class="w3-main">
 
 <? $exists = isset($defs[$tag]); ?>
-<h2><?= $tag; ?> &mdash; <?= $config->getTrans('tags title') ?></h2>
+<h1><?= $tag; ?> &mdash; <?= $config->getTrans('tags title') ?></h1>
           <? if ($exists) : ?>
           <p><?= $defs[$tag] ?></p>
           <? endif; ?>
+          <hr/>
           <? if (!empty($tags[$tag])): ?>
 
             <dl class="dictionaryList tags_extended">
