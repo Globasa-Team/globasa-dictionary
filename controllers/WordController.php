@@ -41,13 +41,15 @@ class WordController
 
     public static function addTags($config, $request, &$page)
     {
-        $page->setTitle($config->getTrans('tags title'));
-        if (isset($request->arguments[0]) && isset($config->dictionary->tags[$request->arguments[0]])) {
+        $tags = yaml_parse_file($config->tagFile);
+        $defs = yaml_parse_file($config->api2Path . "min_{$config->lang}.yaml");
+    
+        if (isset($request->arguments[0]) && isset($tags[$request->arguments[0]])) {
             $tag = $request->arguments[0];
-            $list = $config->dictionary->tags[$tag];
+            $page->setTitle($tag . ' &mdash; ' . $config->getTrans('tags title'));
             include_once($config->templatePath.'view-tags-extended.php');
         } else {
-            $tags = $config->dictionary->tags;
+            $page->setTitle($config->getTrans('tags title'));
             include_once($config->templatePath.'view-tags-short.php');
         }
 

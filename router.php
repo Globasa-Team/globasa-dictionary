@@ -65,7 +65,6 @@ function router($config)
             break;
 
         case 'lexilari':
-            $config->dictionary = unserialize(file_get_contents($config->serializedLocation));
             WordController::addTags($config, $request, $page);
             break;
         case 'abeceli-menalari':

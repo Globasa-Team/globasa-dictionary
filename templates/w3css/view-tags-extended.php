@@ -1,5 +1,8 @@
 <?php
 namespace WorldlangDict;
+
+
+
 ?>
 <!doctype html>
 <html class="no-js" lang="">
@@ -13,19 +16,32 @@ namespace WorldlangDict;
 
 <main id="content" class="w3-main">
 
-<h2><?= $config->getTrans('tags title') ?></h2>
-<? $exists = isset($config->dictionary->words[$tag]); ?>
-    <div class="w3-card">
-        <header class="w3-container"><h2><?= $exists ? $config->dictionary->words[$tag]->term : $tag; ?></h2></header>
-        <div class="w3-container">
-            <? if ($exists) : ?>
-            <p><?= $config->dictionary->words[$tag]->translation[$request->lang]; ?></p>
-            <? endif; ?>
-            <? if (!empty($list)):
-                require_once($config->templatePath . "partials/word-dl.php");
-            endif; ?>
-        </div>
-    </div>
+<? $exists = isset($defs[$tag]); ?>
+<h1><?= $tag; ?> &mdash; <?= $config->getTrans('tags title') ?></h1>
+          <? if ($exists) : ?>
+          <p><?= $defs[$tag] ?></p>
+          <? endif; ?>
+          <hr/>
+          <? if (!empty($tags[$tag])): ?>
+
+            <dl class="dictionaryList tags_extended">
+            <?php
+            foreach($tags[$tag] as $word):
+                if (!isset($defs[$word])) continue;
+                $def = $defs[$word];
+                
+                ?>
+                <dt><?= WorldlangDictUtils::makeLink(
+                        $config,
+                        'lexi/'.urlencode($tag),
+                        $request,
+                        $word
+                    ); ?></dt>
+                <dd><?= $def ?>
+            </dd>
+            <? endforeach; ?>
+            </dl>
+          <? endif; ?>
 
 </main>
 
