@@ -33,7 +33,7 @@ namespace WorldlangDict;
                 ?>
                 <dt><?= WorldlangDictUtils::makeLink(
                         $config,
-                        'lexi/'.urlencode($tag),
+                        'lexi/'.urlencode($word),
                         $request,
                         $word
                     ); ?></dt>
