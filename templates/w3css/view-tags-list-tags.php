@@ -25,9 +25,7 @@ foreach ($tags as $tag=>$words):
             <span class="w3-badge w3-tiny w3-blue"><?=count($words) ?></span>
         </dt>
         <dd>
-            <? if ($exists) : ?>
-            <?= $defs[$tag] ?>
-            <? endif; ?>
+            <?= ($exists ? $defs[$tag] : '&nbsp;')  ?>
         </dd>
 
 <?php endforeach; ?>
