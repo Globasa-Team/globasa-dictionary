@@ -41,8 +41,8 @@ class WordController
 
     public static function addTags($config, $request, &$page)
     {
-        $tags = yaml_parse_file($config->tagFile);
-        $defs = yaml_parse_file($config->api2Path . "min_{$config->lang}.yaml");
+        $tags = yaml_parse_file($config->tag_location);
+        $defs = yaml_parse_file($config->min_location . "{$config->lang}.yaml");
     
         if (isset($request->arguments[0]) && isset($tags[$request->arguments[0]])) {
             $tag = $request->arguments[0];
