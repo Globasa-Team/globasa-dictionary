@@ -68,7 +68,6 @@ function router($config)
             WordController::addTags($config, $request, $page);
             break;
         case 'abeceli-menalari':
-            $config->dictionary = unserialize(file_get_contents($config->serializedLocation));
             BrowseController::default($config, $request, $page);
             include_once($config->templatePath.'view-browse.php');
             break;

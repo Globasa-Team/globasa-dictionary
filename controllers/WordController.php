@@ -47,10 +47,10 @@ class WordController
         if (isset($request->arguments[0]) && isset($tags[$request->arguments[0]])) {
             $tag = $request->arguments[0];
             $page->setTitle($tag . ' &mdash; ' . $config->getTrans('tags title'));
-            include_once($config->templatePath.'view-tags-extended.php');
+            include_once($config->templatePath.'view-tags-tag-words.php');
         } else {
             $page->setTitle($config->getTrans('tags title'));
-            include_once($config->templatePath.'view-tags-short.php');
+            include_once($config->templatePath.'view-tags-list-tags.php');
         }
 
     }
