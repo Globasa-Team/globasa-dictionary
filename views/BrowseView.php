@@ -3,11 +3,11 @@
 class BrowseView
 {
 
-    public static function default($config, $dict, $lang, $request, $page)
+    public static function default(object $config, string $lang, object $request, object $page, array $dict)
     {
-        // Show matches
-        foreach ($dict as $term=>$entry) {
-            $listing[$term] = WordView::entryToDtString($config, $request, $entry);
+        $listing = array();
+        foreach ($dict as $term=>$data) {
+            $listing[$term] = WordView::entry_to_dl_pair_string(config:$config, request:$request, term:$term, data:$data);
         }
         ksort($listing);
 

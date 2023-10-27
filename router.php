@@ -69,7 +69,6 @@ function router($config)
             break;
         case 'abeceli-menalari':
             BrowseController::default($config, $request, $page);
-            include_once($config->templatePath.'view-browse.php');
             break;
         case 'test':
             $config->dictionary = unserialize(file_get_contents($config->serializedLocation));

@@ -160,6 +160,35 @@ class WordView
         return $result;
     }
 
+
+    /**
+     * Create a <DD>/<DT> pair based on API2
+     */
+    public static function entry_to_dl_pair_string(object $config, object $request, string $term, array $data) {
+        if (empty($term)) return "";
+
+        $letter = ctype_alpha($term[0]) ? $term[0] : $term[1];
+        $attributes = " data-class=\"{$data['class']}\" data-category=\"{$data['category']}\" data-char=\"{$letter}\" ";
+        $result = "<dt {$attributes}>".
+            WorldlangDictUtils::makeLink(
+                $config,
+                'lexi/'.urlencode($term),
+                $request,
+                $term
+            );
+        if (isset($data['class']) && !empty($data['class'])) {
+            $result .=
+                '<div class="wordClass">(<a href="https://xwexi.globasa.net/' . $config->lang . '/gramati/lexiklase">'.$data['class'].'</a>)</div>';
+        }
+        $result .=
+            "</dt><dd {$attributes}>".
+                $data['translation'].
+            '</dd>';
+
+        return $result;
+    }
+
+    
     public function addList($config, $request, &$page)
     {
         foreach ($config->dictionary->words as $wordIndex=>$entry) {
