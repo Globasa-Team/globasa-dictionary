@@ -3,18 +3,20 @@ namespace WorldlangDict;
 
 class WordController
 {
-    public static function addEntry($config, $request, $term, &$page)
+    public static function addEntry($config, $request, &$page)
     {
-        if (!empty($term)) {
-            if (isset($config->dictionary->words[$term])) {
-                $word = $config->dictionary->words[$term];
-                $page->setTitle($word->term);
-
-                WordView::dictionaryEntry($config, $request, $word, $page);
-            }
+        $term = isset($request->arguments[0]) ? strtolower($request->arguments[0]) : null;
+        $file = $config->api2Path.'terms/'.$term.'.yaml';
+        $exists = file_exists($file);
+        if (!empty($term) && $exists) {
+            $entry = yaml_parse_file($file);
+            $page->setTitle($entry['term']);
+            
+            WordView::dictionaryEntry($config, $request, $entry, $page);
         } else {
             WordController::randomWord($config, $request, $page);
         }
+        include_once($config->templatePath.'view-default.php');
     }
 
     public static function addNatWord($config, $request, $lang, &$page)
@@ -90,7 +92,8 @@ class WordController
 
     public static function randomWord($config, $request, &$page)
     {
-        $wordIndex = array_rand($config->dictionary->words);
+        $index = yaml_parse_file($config->min_location.$config->lang.".yaml");
+        $wordIndex = array_rand($index);
         WorldlangDictUtils::redirect($config, $request, "lexi/".$wordIndex);
         // WordController::addEntry($config, $request, $wordIndex, $page);
         // $page->setTitle("Random word");

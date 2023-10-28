@@ -40,10 +40,7 @@ function router($config)
             break;
 
         case 'lexi':
-            $config->dictionary = unserialize(file_get_contents($config->serializedLocation));
-            $word = isset($request->arguments[0]) ? $request->arguments[0] : null;
-            WordController::addEntry($config, $request, $word, $page);
-            include_once($config->templatePath.'view-default.php');
+            WordController::addEntry($config, $request, $page);
             break;
 
         case 'cel-ruke':

@@ -3,30 +3,30 @@ namespace WorldlangDict;
 
 class WordView
 {
-    public static function dictionaryEntry($config, $request, $word, &$page)
+    public static function dictionaryEntry(object $config, object $request, array $entry, object &$page)
     {
-        $page->description = $word->term . ': ' . htmlspecialchars($word->translation[$config->lang]);
+        $page->description = $entry['term'] . ': ' . htmlspecialchars($entry['raw data']['trans'][$config->lang]);
         $page->content .='
-            <div id="'.$word->term.'" class="dictionaryEntry w3-card" data-search="'./*implode(' ', $word->searchText).*/'" >
+            <div id="'.$entry['term'].'" class="dictionaryEntry w3-card" data-search="'./*implode(' ', $entry['searchText']).*/'" >
             <header class="w3-container">
-                <h2 id="entryTerm">'.$word->term.'</h2>';
-        if (!empty($word->wordClass)) {
-            $page->content .= '<div class="wordClass">(<a href="https://xwexi.globasa.net/' . $config->lang . '/gramati/lexiklase">'.$word->wordClass.'</a>)</div>';
+                <h2 id="entryTerm">'.$entry['term'].'</h2>';
+        if (!empty($entry['word class'])) {
+            $page->content .= '<div class="wordClass">(<a href="https://xwexi.globasa.net/' . $config->lang . '/gramati/lexiklase">'.$entry['word class'].'</a>)</div>';
         }
         $page->content .='
                 </header>
             <div class="w3-container">
             <p class="definition">'.
-                (!empty($word->translation[$config->lang]) ? $word->translation[$config->lang] : sprintf($config->getTrans("Missing Word Translation") ) ).
+                (!empty($entry['raw data']['trans'][$config->lang]) ? $entry['raw data']['trans'][$config->lang] : sprintf($config->getTrans("Missing Word Translation") ) ).
                 '</p>';
-        if (!empty($word->synonyms)) {
+        if (!empty($entry['synonyms'])) {
             $words = [];
-            if (count($word->synonyms) == 1) {
+            if (count($entry['synonyms']) == 1) {
                 $trans = 'synonym sentence';
             } else {
                 $trans = 'synonyms sentence';
             }
-            foreach ($word->synonyms as $cur) {
+            foreach ($entry['synonyms'] as $cur) {
                 $words[] = WorldlangDictUtils::makeLink(
                     $config,
                     'lexi/'.$cur,
@@ -37,14 +37,14 @@ class WordView
             $page->content .='
                 <p>'.sprintf($config->getTrans($trans), implode(', ', $words)).'</p>';
         }
-        if (!empty($word->antonyms)) {
+        if (!empty($entry['antonyms'])) {
             $words = [];
-            if (count($word->antonyms) == 1) {
+            if (count($entry['antonyms']) == 1) {
                 $trans = 'antonym sentence';
             } else {
                 $trans = 'antonyms sentence';
             }
-            foreach ($word->antonyms as $cur) {
+            foreach ($entry['antonyms'] as $cur) {
                 $words[] = WorldlangDictUtils::makeLink(
                     $config,
                     'lexi/'.$cur,
@@ -56,26 +56,26 @@ class WordView
                 <p>'.sprintf($config->getTrans($trans), implode(', ', $words)).'</p>';
         }
 
-        if (!empty($word->example)) {
+        if (!empty($entry['example'])) {
             $page->content .='
-                <p class="example">'.sprintf($config->getTrans('Example'), $word->example).'</p>';
+                <p class="example">'.sprintf($config->getTrans('Example'), $entry['example']).'</p>';
         }
-        if (!empty($word->etymology)) {
+        if (!empty($entry['raw data']['etymology'])) {
 
-            $startsHttp = substr($word->etymology, 0, 7);
+            $startsHttp = substr($entry['raw data']['etymology'], 0, 7);
             
             if (strcmp($startsHttp, 'https:/') == 0 || strcmp($startsHttp, 'http://') == 0) {
-                $word->etymology = '<a href="'.$word->etymology.'">'.$config->getTrans('etymology link').'</a>';
+                $entry['raw data']['etymology'] = '<a href="'.$entry['etymology'].'">'.$config->getTrans('etymology link').'</a>';
             }
             else {
             }
     
             $page->content .='
-                <p class="etymology">'.sprintf($config->getTrans('Etymology'), $word->etymology).'</p>';
+                <p class="etymology">'.sprintf($config->getTrans('Etymology'), $entry['raw data']['etymology']).'</p>';
         }
-        if (!empty($word->relatedWords)) {
-            foreach ($word->relatedWords as $i=>$cur) {
-                $word->relatedWords[$i] = WorldlangDictUtils::makeLink(
+        if (!empty($entry['relatedWords'])) {
+            foreach ($entry['relatedWords'] as $i=>$cur) {
+                $entry['relatedWords'][$i] = WorldlangDictUtils::makeLink(
                     $config,
                     'lexi/'.$cur,
                     $request,
@@ -88,13 +88,13 @@ class WordView
                     $config->getTrans(
                         'Also See Sentence'
                     ),
-                    implode(', ', $word->relatedWords)
+                    implode(', ', $entry['relatedWords'])
                 ).'</p>';
         }
         
-        if (!empty($word->tags)) {
-            foreach ($word->tags as $i=>$tag) {
-                $word->tags[$i] = WorldlangDictUtils::makeLink(
+        if (!empty($entry['tags'])) {
+            foreach ($entry['tags'] as $i=>$tag) {
+                $entry['tags'][$i] = WorldlangDictUtils::makeLink(
                     $config,
                     "lexilari/".$tag,
                     $request,
@@ -104,7 +104,7 @@ class WordView
             $page->content .= '
                 <p class="tags">'.sprintf(
                 $config->getTrans('tags links'),
-                implode(', ', $word->tags)
+                implode(', ', $entry['tags'])
             ).'</p>
                     ';
         }
@@ -112,7 +112,7 @@ class WordView
         $page->content .= '</div>';
         if (isset($request->options['full'])) {
             $page->content .= '<div style="text-align: left; color: black">';
-            foreach ($word->wordSource as $key=>$data) {
+            foreach ($entry['wordSource'] as $key=>$data) {
                 $page->content .= '<p><strong style="color: black">'.$key . '</strong>: '. $data. "</p>";
             }
             $page->content .= '</div>';
@@ -122,13 +122,13 @@ class WordView
             '<footer class="w3-container">
             '.WorldlangDictUtils::makeLink(
                 $config,
-                'lexi/'.$word->term,
+                'lexi/'.$entry['term'],
                 $request,
                 '<span class="fa fa-link"></span> '.
                     $config->getTrans('Word Link')
             ).'
             &bull; '.
-            '<a href="'.$word->ipaLink.'"><span class="fa fa-volume-up"></span> '.$config->getTrans('ipa link').'</a>
+            '<a href="'.$entry['ipa link'].'"><span class="fa fa-volume-up"></span> '.$config->getTrans('ipa link').'</a>
             </footer>
             </div>
             ';
