@@ -84,30 +84,27 @@ class WordView
                 <p class="etymology">'.sprintf($config->getTrans('Etymology'), "").'</p>
                 <ul style="list-style:none;">'.self::list_langs_and_examples($entry['etymology']['natlang']).'</ul>';
         }
+        if (isset($entry['etymology']['am pia oko']) || isset($entry['etymology']['am oko pia'])) {
+            $page->content .='
+            <p class="etymology">'.sprintf($config->getTrans('Etymology'), 'Am oko pia').'</p>
+            <ul style="list-style:none;">'.self::list_langs_and_examples($entry['etymology']['am pia oko']).'</ul>';
+            
+        }
+        if (isset($entry['etymology']['am oko'])) {
+            $page->content .='
+            <p class="etymology">'.sprintf($config->getTrans('Etymology'), 'Am oko').'</p>
+            <ul style="list-style:none;">'.self::list_to_ul($entry['etymology']['am oko']).'</ul>';
+            
+        }
+        if (isset($entry['etymology']['kwasilexi'])) {
+            $page->content .='
+            <p class="etymology">Kwasilexi: </p>
+            <ul style="list-style:none;">'.self::list_langs_and_examples($entry['etymology']['kwasilexi']).'</ul>';
+        }
         if (isset($entry['etymology']['am kompara'])) {
             $page->content .='
                 <p class="etymology">'.sprintf($config->getTrans('Etymology'), "Am kompara").'</p>
                 <ul style="list-style:none;">'.self::list_to_ul($entry['etymology']['am kompara']).'</ul>';
-
-        }
-        if (isset($entry['etymology']['am pia oko'])) {
-            $page->content .='
-                <p class="etymology">'.sprintf($config->getTrans('Etymology'), 'Am pia oko').'</p>
-                <ul style="list-style:none;">'.self::list_langs_and_examples($entry['etymology']['am pia oko']).'</ul>';
-
-        }
-        if (isset($entry['etymology']['am oko'])) {
-            $page->content .='
-                <p class="etymology">'.sprintf($config->getTrans('Etymology'), 'Am oko').'</p>
-                <ul style="list-style:none;">'.self::list_to_ul($entry['etymology']['am oko']).'</ul>';
-
-        }
-        if (isset($entry['etymology']['kwasilexi'])) {
-            $page->content .='
-                <p class="etymology">kwasilexi</p>
-                <ul style="list-style:none;">'.self::list_langs_and_examples($entry['etymology']['kwasilexi']).'</ul>';
-
-
 
         }
         if (isset($entry['etymology']['link'])){
