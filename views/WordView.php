@@ -70,8 +70,50 @@ class WordView
             else {
             }
     
+            // $page->content .='
+            //     <p class="etymology">RAW ETYMOLOGY - '. $entry['raw data']['etymology'].'</p>';
+        }
+        //var_dump($entry['etymology']);
+        if (isset($entry['etymology']['derived'])) {
             $page->content .='
                 <p class="etymology">'.sprintf($config->getTrans('Etymology'), $entry['raw data']['etymology']).'</p>';
+
+        }       
+        if (isset($entry['etymology']['natlang'])) {
+            $page->content .='
+                <p class="etymology">'.sprintf($config->getTrans('Etymology'), "").'</p>
+                <ul style="list-style:none;">'.self::list_langs_and_examples($entry['etymology']['natlang']).'</ul>';
+        }
+        if (isset($entry['etymology']['am kompara'])) {
+            $page->content .='
+                <p class="etymology">'.sprintf($config->getTrans('Etymology'), "Am kompara").'</p>
+                <ul style="list-style:none;">'.self::list_to_ul($entry['etymology']['am kompara']).'</ul>';
+
+        }
+        if (isset($entry['etymology']['am pia oko'])) {
+            $page->content .='
+                <p class="etymology">'.sprintf($config->getTrans('Etymology'), 'Am pia oko').'</p>
+                <ul style="list-style:none;">'.self::list_langs_and_examples($entry['etymology']['am pia oko']).'</ul>';
+
+        }
+        if (isset($entry['etymology']['am oko'])) {
+            $page->content .='
+                <p class="etymology">'.sprintf($config->getTrans('Etymology'), 'Am oko').'</p>
+                <ul style="list-style:none;">'.self::list_to_ul($entry['etymology']['am oko']).'</ul>';
+
+        }
+        if (isset($entry['etymology']['kwasilexi'])) {
+            $page->content .='
+                <p class="etymology">kwasilexi</p>
+                <ul style="list-style:none;">'.self::list_langs_and_examples($entry['etymology']['kwasilexi']).'</ul>';
+
+
+
+        }
+        if (isset($entry['etymology']['link'])){
+            $page->content .='
+                <p class="etymology">'.sprintf($config->getTrans('Etymology'), $entry['etymology']['link']).'</p>';
+
         }
         if (!empty($entry['relatedWords'])) {
             foreach ($entry['relatedWords'] as $i=>$cur) {
@@ -216,6 +258,24 @@ class WordView
                 }
             }
         }
+    }
+
+    private static function list_langs_and_examples(array $list):string {
+        $result = "";
+        foreach($list as $lang=>$example) {
+            $result .= "<li style=\"display:inline-block; margin: 2px;\"><span class=\"w3-tag w3-round w3-dark-grey\" style=\"padding:3px;\">{$lang}";
+            if (!empty($example)) $result .= " <span class=\"w3-tag w3-round w3-border-white w3-light-grey\">{$example}</span>";
+            $result .= "</span></li>";
+        }
+        return $result;
+    }
+
+    private static function list_to_ul(array $list):string {
+        $result = "";
+        foreach($list as $item) {
+            $result .= "<li style=\"display:inline-block; margin: 2px;\"><span class=\"w3-tag w3-round w3-dark-grey\" style=\"padding:3px;\">{$item}</span></li>";
+        }
+        return $result;
     }
 
     public static function tags($config, $request, &$page)
