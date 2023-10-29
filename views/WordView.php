@@ -76,7 +76,7 @@ class WordView
         //var_dump($entry['etymology']);
         if (isset($entry['etymology']['derived'])) {
             $page->content .='
-                <p class="etymology">'.sprintf($config->getTrans('Etymology'), $entry['raw data']['etymology']).'</p>';
+                <p class="etymology">'.sprintf($config->getTrans('Etymology'), $entry['etymology']['derived']).'</p>';
 
         }       
         if (isset($entry['etymology']['natlang'])) {
