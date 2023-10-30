@@ -60,6 +60,9 @@ class WordView
             $page->content .='
                 <p class="example">'.sprintf($config->getTrans('Example'), $entry['example']).'</p>';
         }
+
+        $page->content .= '<p class="etymology">'.sprintf($config->getTrans('Etymology'), "").'</p>';
+
         if (!empty($entry['raw data']['etymology'])) {
 
             $startsHttp = substr($entry['raw data']['etymology'], 0, 7);
@@ -76,40 +79,43 @@ class WordView
         //var_dump($entry['etymology']);
         if (isset($entry['etymology']['derived'])) {
             $page->content .='
-                <p class="etymology">'.sprintf($config->getTrans('Etymology'), $entry['etymology']['derived']).'</p>';
+                <p class="etymology" style="margin-left: 40px;">'.$entry['etymology']['derived'].'</p>';
 
         }       
         if (isset($entry['etymology']['natlang'])) {
             $page->content .='
-                <p class="etymology">'.sprintf($config->getTrans('Etymology'), "").'</p>
                 <ul style="list-style:none;">'.self::list_langs_and_examples($entry['etymology']['natlang']).'</ul>';
         }
-        if (isset($entry['etymology']['am pia oko']) || isset($entry['etymology']['am oko pia'])) {
+        if (isset($entry['etymology']['am pia oko'])) {
             $page->content .='
-            <p class="etymology">'.sprintf($config->getTrans('Etymology'), 'Am oko pia').'</p>
+            <p class="etymology">Am oko pia</p>
             <ul style="list-style:none;">'.self::list_langs_and_examples($entry['etymology']['am pia oko']).'</ul>';
-            
+        }
+        if (isset($entry['etymology']['am oko pia'])) {
+            $page->content .='
+            <p class="etymology">Am oko pia</p>
+            <ul style="list-style:none;">'.self::list_langs_and_examples($entry['etymology']['am oko pia']).'</ul>';
         }
         if (isset($entry['etymology']['am oko'])) {
             $page->content .='
-            <p class="etymology">'.sprintf($config->getTrans('Etymology'), 'Am oko').'</p>
+            <p class="etymology">Am oko</p>
             <ul style="list-style:none;">'.self::list_to_ul($entry['etymology']['am oko']).'</ul>';
             
         }
         if (isset($entry['etymology']['kwasilexi'])) {
             $page->content .='
-            <p class="etymology">Kwasilexi: </p>
+            <p class="etymology">Kwasilexi</p>
             <ul style="list-style:none;">'.self::list_langs_and_examples($entry['etymology']['kwasilexi']).'</ul>';
         }
         if (isset($entry['etymology']['am kompara'])) {
             $page->content .='
-                <p class="etymology">'.sprintf($config->getTrans('Etymology'), "Am kompara").'</p>
+                <p class="etymology">Am kompara</p>
                 <ul style="list-style:none;">'.self::list_to_ul($entry['etymology']['am kompara']).'</ul>';
 
         }
         if (isset($entry['etymology']['link'])){
             $page->content .='
-                <p class="etymology">'.sprintf($config->getTrans('Etymology'), $entry['etymology']['link']).'</p>';
+                <p class="etymology">'.$entry['etymology']['link'].'</p>';
 
         }
         if (!empty($entry['relatedWords'])) {
