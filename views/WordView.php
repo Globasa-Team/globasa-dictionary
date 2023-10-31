@@ -263,7 +263,7 @@ class WordView
         }
     }
 
-    private static function list_langs_and_examples(array $list):string {
+    public static function list_langs_and_examples(array $list):string {
         $result = "";
         foreach($list as $lang=>$example) {
             $result .= "<li style=\"display:inline-block; margin: 2px;\"><span class=\"w3-tag w3-round w3-dark-grey\" style=\"padding:3px;\">{$lang}";
@@ -273,7 +273,7 @@ class WordView
         return $result;
     }
 
-    private static function list_to_ul(array $list):string {
+    public static function list_to_ul(array $list):string {
         $result = "";
         foreach($list as $item) {
             $result .= "<li style=\"display:inline-block; margin: 2px;\"><span class=\"w3-tag w3-round w3-dark-grey\" style=\"padding:3px;\">{$item}</span></li>";

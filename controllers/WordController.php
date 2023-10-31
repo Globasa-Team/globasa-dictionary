@@ -3,20 +3,21 @@ namespace WorldlangDict;
 
 class WordController
 {
-    public static function addEntry($config, $request, &$page)
+    public static function output_entry($config, $request, &$page)
     {
-        $term = isset($request->arguments[0]) ? strtolower($request->arguments[0]) : null;
-        $file = $config->api2Path.'terms/'.$term.'.yaml';
-        $exists = file_exists($file);
-        if (!empty($term) && $exists) {
-            $entry = yaml_parse_file($file);
-            $page->setTitle($entry['term']);
-            
-            WordView::dictionaryEntry($config, $request, $entry, $page);
-        } else {
+        if (!isset($request->arguments[0])) {
             WordController::randomWord($config, $request, $page);
         }
-        include_once($config->templatePath.'view-default.php');
+
+        $term = strtolower($request->arguments[0]);
+        $file = $config->api2Path.'terms/'.$term.'.yaml';
+        if (!file_exists($file)) throw new Error404Exception("Entry Not Found");
+        
+        $entry = yaml_parse_file($file);
+        $page->setTitle($entry['term']);
+        
+        include("views/entry_view.php");
+        
     }
 
     public static function addNatWord($config, $request, $lang, &$page)

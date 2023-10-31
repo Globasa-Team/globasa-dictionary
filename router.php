@@ -27,7 +27,7 @@ function router($config)
                 break;
     
             case 'lexi':
-                WordController::addEntry($config, $request, $page);
+                WordController::output_entry($config, $request, $page);
                 break;
     
             case 'cel-ruke':
