@@ -32,7 +32,7 @@ require_once($config->templatePath . "partials/page-header.php");
 <!--             -->
 <!-- Translation -->
 <!--             -->
-    <div class="w3-container">
+<div class="w3-container">
     <p class="definition"><?
 
  if (!empty($entry['raw data']['trans'][$config->lang])):
@@ -42,6 +42,16 @@ require_once($config->templatePath . "partials/page-header.php");
  endif;
  
  ?></p>
+ 
+ 
+ 
+ <!--             -->
+ <!-- Example     -->
+ <!--             -->
+ <?
+ if (!empty($entry['example'])): ?>
+         <p class="example"><?=sprintf($config->getTrans('Example'), $entry['example'])?></p>
+ <? endif; ?>
     
 
 
@@ -93,16 +103,6 @@ if (!empty($entry['antonyms'])) {
 
 
 
-<!--             -->
-<!-- Example     -->
-<!--             -->
-<?
-if (!empty($entry['example'])): ?>
-        <p class="example"><?=sprintf($config->getTrans('Example'), $entry['example'])?></p>
-<? endif; ?>
-
-
-
 
 <!--             -->
 <!-- Etymology   -->
@@ -120,10 +120,10 @@ if (isset($entry['etymology']['natlang'])): ?>
         <ul style="list-style:none;"><?=WordView::list_langs_and_examples($entry['etymology']['natlang'])?></ul>
 <? endif;
 
-// am pia oko
-if (isset($entry['etymology']['am pia oko'])): ?>
-    <p class="etymology">Am oko pia</p>
-    <ul style="list-style:none;"><?=WordView::list_langs_and_examples($entry['etymology']['am pia oko'])?></ul>
+// kwasilexi
+if (isset($entry['etymology']['kwasilexi'])): ?>
+    <p class="etymology">Kwasilexi</p>
+    <ul style="list-style:none;"><?=WordView::list_langs_and_examples($entry['etymology']['kwasilexi'])?></ul>
 <? endif;
 
 // am oko pia
@@ -135,13 +135,7 @@ if (isset($entry['etymology']['am oko pia'])): ?>
 // am oko
 if (isset($entry['etymology']['am oko'])): ?>
     <p class="etymology">Am oko</p>
-    <ul style="list-style:none;"><?=WordView::list_to_ul($entry['etymology']['am oko'])?>'</ul>
-<? endif;
-
-// kwasilexi
-if (isset($entry['etymology']['kwasilexi'])): ?>
-    <p class="etymology">Kwasilexi</p>
-    <ul style="list-style:none;"><?=WordView::list_langs_and_examples($entry['etymology']['kwasilexi'])?></ul>
+    <ul style="list-style:none;"><?=WordView::list_to_ul($entry['etymology']['am oko'])?></ul>
 <? endif;
 
 // am kompara
