@@ -6,6 +6,7 @@ include_once 'router.php';
 include_once 'resources/downloadFile.php';
 include_once 'resources/loadCsv.php';
 include_once 'resources/Parsedown.php';
+include_once 'resources/404_exception.php';
 include_once 'WorldlangDictUtils.php';
 include_once 'models/WorldlangDictConfig.php';
 include_once 'models/Word.php';
@@ -26,6 +27,7 @@ include_once 'controllers/UpdateController.php';
 include_once 'controllers/FeedbackController.php';
 include_once 'controllers/BrowseController.php';
 include_once 'controllers/TestController.php';
+include_once 'controllers/ErrorController.php';
 
 $config = new WorldlangDictConfig();
 include_once 'config.php';

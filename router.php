@@ -18,51 +18,55 @@ function router($config)
     // log_weird_error($request);
 
 
-
-    switch ($request->controller) {
-
-        case 'tul':
-            $config->dictionary = unserialize(file_get_contents($config->serializedLocation));
-            ToolController::run($config, $request, $page);
-            break;
-
-        case 'lexi':
-            WordController::addEntry($config, $request, $page);
-            break;
-
-        case 'cel-ruke':
-            $config->dictionary = unserialize(file_get_contents($config->serializedLocation));
-            WordController::addNatWord($config, $request, $config->lang, $page);
-            include_once($config->templatePath.'view-default.php');
-            break;
-
-        case 'xerca':
-            $config->dictionary = unserialize(file_get_contents($config->serializedLocation));
-            SearchController::search($config, $request, $page);
-            include_once($config->templatePath.'view-default.php');
-            break;
-
-        case 'am-reporte':
-            $config->dictionary = unserialize(file_get_contents($config->serializedLocation));
-            FeedbackController::feedback($config, $request, $page);
-            include_once($config->templatePath.'view-default.php');
-            break;
-
-        case 'lexilari':
-            WordController::addTags($config, $request, $page);
-            break;
-        case 'abeceli-menalari':
-            BrowseController::default($config, $request, $page);
-            break;
-        case 'test':
-            $config->dictionary = unserialize(file_get_contents($config->serializedLocation));
-            TestController::helloWorld($config, $request, $page);
-            include_once($config->templatePath.'view-default.php');
-            break;
-        default:
-            IndexController::home($config, $request, $page);
-            include_once($config->templatePath.'view-default.php');
-            break;
+    try {
+        switch ($request->controller) {
+    
+            case 'tul':
+                $config->dictionary = unserialize(file_get_contents($config->serializedLocation));
+                ToolController::run($config, $request, $page);
+                break;
+    
+            case 'lexi':
+                throw new Error404Exception("what");
+                WordController::addEntry($config, $request, $page);
+                break;
+    
+            case 'cel-ruke':
+                $config->dictionary = unserialize(file_get_contents($config->serializedLocation));
+                WordController::addNatWord($config, $request, $config->lang, $page);
+                include_once($config->templatePath.'view-default.php');
+                break;
+    
+            case 'xerca':
+                $config->dictionary = unserialize(file_get_contents($config->serializedLocation));
+                SearchController::search($config, $request, $page);
+                include_once($config->templatePath.'view-default.php');
+                break;
+    
+            case 'am-reporte':
+                $config->dictionary = unserialize(file_get_contents($config->serializedLocation));
+                FeedbackController::feedback($config, $request, $page);
+                include_once($config->templatePath.'view-default.php');
+                break;
+    
+            case 'lexilari':
+                WordController::addTags($config, $request, $page);
+                break;
+            case 'abeceli-menalari':
+                BrowseController::default($config, $request, $page);
+                break;
+            case 'test':
+                $config->dictionary = unserialize(file_get_contents($config->serializedLocation));
+                TestController::helloWorld($config, $request, $page);
+                include_once($config->templatePath.'view-default.php');
+                break;
+            default:
+                IndexController::home($config, $request, $page);
+                include_once($config->templatePath.'view-default.php');
+                break;
+        }
+    } catch (Error404Exception $e) {
+        ErrorController::error_404($config, $request, $page);
     }
 }
 
