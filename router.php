@@ -15,20 +15,7 @@ function router($config)
     }
     $config->setLang($request->lang);
 
-    /*
-    if (is_string($request)) {
-        @error_log("\n-----".date(DATE_ATOM)."\n", 3, "debug.log");
-        @error_log("\nrouter has a request as string.\n", 3, "debug.log");
-        @error_log("\nrequest:\n".serialize($request)."\n", 3, "debug.log");
-        @error_log("\nbacktrace:\n".serialize(debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS))."\n", 3, "debug.log");
-
-        foreach(debug_backtrace() as $trace) {
-                
-            @error_log("\nfile :".$trace['file']."\n", 3, "debug.log");
-            @error_log("\nfile :".$trace['class'].$trace['type'].$trace['function'].$trace['line']."\n", 3, "debug.log");
-        }
-    }
-    */
+    // log_weird_error($request);
 
 
 
@@ -76,5 +63,25 @@ function router($config)
             IndexController::home($config, $request, $page);
             include_once($config->templatePath.'view-default.php');
             break;
+    }
+}
+
+
+/**
+ * Logs details about what's happening if the request is a string rather than an array.
+ * Not sure why this happens periodically.
+ */
+function log_weird_error():void {
+    if (is_string($request)) {
+        @error_log("\n-----".date(DATE_ATOM)."\n", 3, "debug.log");
+        @error_log("\nrouter has a request as string.\n", 3, "debug.log");
+        @error_log("\nrequest:\n".serialize($request)."\n", 3, "debug.log");
+        @error_log("\nbacktrace:\n".serialize(debug_backtrace(DEBUG_BACKTRACE_IGNORE_ARGS))."\n", 3, "debug.log");
+
+        foreach(debug_backtrace() as $trace) {
+                
+            @error_log("\nfile :".$trace['file']."\n", 3, "debug.log");
+            @error_log("\nfile :".$trace['class'].$trace['type'].$trace['function'].$trace['line']."\n", 3, "debug.log");
+        }
     }
 }
