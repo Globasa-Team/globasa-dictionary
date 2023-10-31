@@ -27,7 +27,6 @@ function router($config)
                 break;
     
             case 'lexi':
-                throw new Error404Exception("what");
                 WordController::addEntry($config, $request, $page);
                 break;
     
