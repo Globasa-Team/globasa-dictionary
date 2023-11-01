@@ -46,11 +46,15 @@ require_once($config->templatePath . "partials/page-header.php");
  
  
  <!--             -->
- <!-- Example     -->
+ <!-- Examples    -->
  <!--             -->
- <?
- if (!empty($entry['example'])): ?>
-         <p class="example"><?=sprintf($config->getTrans('Example'), $entry['example'])?></p>
+ <? if (!empty($entry['examples'])): ?>
+    <p><?=sprintf($config->getTrans('Example'), "")?></p>
+    <ul class="examples">
+    <? foreach($entry['examples'] as $example): ?>
+        <li><?=$example?></li>
+    <? endforeach; ?>
+    </ul>
  <? endif; ?>
     
 
