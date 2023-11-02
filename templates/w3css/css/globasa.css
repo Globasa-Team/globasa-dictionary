@@ -190,6 +190,20 @@ dd::after {
     display: none;
 }
 
+.translation ul:not(:last-child):after {
+    content: ";";
+}
+
+
+ul.translation li:not(:last-child):after {
+    content: ",";
+}
+
+ul.translation {
+    background-color: #666;
+}
+
+
 
 
 

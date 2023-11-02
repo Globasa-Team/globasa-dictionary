@@ -33,15 +33,21 @@ require_once($config->templatePath . "partials/page-header.php");
 <!-- Translation -->
 <!--             -->
 <div class="w3-container">
-    <p class="definition"><?
+    <ul class="translation"><?
 
- if (!empty($entry['raw data']['trans'][$config->lang])):
-    echo($entry['raw data']['trans'][$config->lang]);
+ if (!empty($entry['trans'][$config->lang])):
+    foreach($entry['trans'][$config->lang] as $group):
+        ?><ul><?    
+        foreach($group as $translation):
+            ?><li><span class="w3-tag w3-round w3-light-grey"><?=$translation?></span></li><?
+        endforeach;
+        ?></ul><?
+    endforeach;
  else:
-    sprintf($config->getTrans("Missing Word Translation") );
+    echo(sprintf($config->getTrans("Missing Word Translation")));
  endif;
  
- ?></p>
+ ?></ul>
  
  
  
@@ -120,33 +126,38 @@ if (isset($entry['etymology']['derived'])): ?>
 <? endif;
 
 // Natlang
-if (isset($entry['etymology']['natlang'])): ?>
-        <ul style="list-style:none;"><?=WordView::list_langs_and_examples($entry['etymology']['natlang'])?></ul>
-<? endif;
+if (isset($entry['etymology']['natlang'])):
+    $list = &$entry['etymology']['natlang'];
+    include($config->templatePath . "partials/entry_language_list.php");
+endif;
 
 // kwasilexi
 if (isset($entry['etymology']['kwasilexi'])): ?>
     <p class="etymology">Kwasilexi</p>
-    <ul style="list-style:none;"><?=WordView::list_langs_and_examples($entry['etymology']['kwasilexi'])?></ul>
-<? endif;
+    <? $list = &$entry['etymology']['kwasilexi'];
+    include($config->templatePath . "partials/entry_language_list.php");
+endif;
 
 // am oko pia
 if (isset($entry['etymology']['am oko pia'])): ?>
     <p class="etymology">Am oko pia</p>
-    <ul style="list-style:none;"><?=WordView::list_langs_and_examples($entry['etymology']['am oko pia'])?></ul>
-<? endif;
+    <? $list = &$entry['etymology']['am oko pia'];
+    include($config->templatePath . "partials/entry_language_list.php");
+endif;
 
 // am oko
 if (isset($entry['etymology']['am oko'])): ?>
     <p class="etymology">Am oko</p>
-    <ul style="list-style:none;"><?=WordView::list_to_ul($entry['etymology']['am oko'])?></ul>
-<? endif;
+    <? $list = &$entry['etymology']['am oko'];
+    include($config->templatePath . "partials/entry_word_list.php");
+endif;
 
 // am kompara
 if (isset($entry['etymology']['am kompara'])): ?>
-        <p class="etymology">Am kompara</p>
-        <ul style="list-style:none;"><?=WordView::list_to_ul($entry['etymology']['am kompara'])?></ul>
-<? endif;
+    <p class="etymology">Am kompara</p>
+    <? $list = &$entry['etymology']['am kompara'];
+    include($config->templatePath . "partials/entry_word_list.php");
+endif;
 
 // link
 if (isset($entry['etymology']['link'])): ?>
