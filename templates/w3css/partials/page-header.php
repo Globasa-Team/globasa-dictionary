@@ -3,11 +3,11 @@ namespace WorldlangDict;
 ?>
 
 <div id="siteHeader">
-    <h1 id="appTitle">
+    <p id="appTitle">
         <a href="<?php echo WorldlangDictUtils::makeUri($config, '', $request); ?>">
             <span class="fa fa-book fa-lg"></span> <?php echo $config->siteName; ?>
         </a>
-    </h1>
+    </p>
     <a href="<?php echo WorldlangDictUtils::makeUri($config, 'abeceli-menalari', $request); ?>"><?= $config->getTrans('browse title') ?></a> &bull;
     <a href="https://xwexi.globasa.net/<?php echo $config->lang;?>/gramati/lexiklase"><?php echo $config->getTrans('word classes link');?></a> &bull;
     <a href="<?php echo WorldlangDictUtils::makeUri($config, 'lexilari', $request); ?>"><?php echo $config->getTrans('all words button');?></a> &bull;
