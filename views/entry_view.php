@@ -21,33 +21,41 @@ require_once($config->templatePath . "partials/page-header.php");
 
 <div id="<?=$entry['term']?>" class="dictionaryEntry w3-card">
     <header class="w3-container">
-        <h2 id="entryTerm"><?=$entry['term']?></h2>
+        <h1 id="entryTerm"><?=$entry['term']?></h1>
 <? if (!empty($entry['word class'])): ?>
-    <div class="wordClass">(<a href="https://xwexi.globasa.net/' . $config->lang . '/gramati/lexiklase"><?=$entry['word class']?></a>)</div>
+    <div class="wordClass">(<a href="https://xwexi.globasa.net/<?=$config->lang;?>/gramati/lexiklase"><?=$entry['word class']?></a>)</div>
 <? endif; ?>
     </header>
 
 
+<div class="w3-container entryContent">
 
 <!--             -->
 <!-- Translation -->
 <!--             -->
-<div class="w3-container">
-    <ul class="translation"><?
+<section class="translation">
+    <p><?
 
  if (!empty($entry['trans'][$config->lang])):
+    $i = 0;
     foreach($entry['trans'][$config->lang] as $group):
-        ?><ul><?    
+        $j = 0;
         foreach($group as $translation):
-            ?><li><span class="w3-tag w3-round w3-light-grey"><?=$translation?></span></li><?
+            ?><span class="w3-tag w3-round w3-light-grey"><?=$translation?></span><?
+            if (++$j < count($group)):
+                ?>, <?
+            endif;
         endforeach;
-        ?></ul><?
+        if (++$i < count($entry['trans'][$config->lang])):
+            ?>; <?
+        endif;
     endforeach;
  else:
     echo(sprintf($config->getTrans("Missing Word Translation")));
  endif;
  
- ?></ul>
+ ?></p>
+</section>
  
  
  
@@ -55,12 +63,14 @@ require_once($config->templatePath . "partials/page-header.php");
  <!-- Examples    -->
  <!--             -->
  <? if (!empty($entry['examples'])): ?>
-    <p><?=sprintf($config->getTrans('Example'), "")?></p>
+    <section>
+    <h2><?=sprintf($config->getTrans('Example'), "")?></h2>
     <ul class="examples">
     <? foreach($entry['examples'] as $example): ?>
         <li><?=$example?></li>
     <? endforeach; ?>
     </ul>
+    </section>
  <? endif; ?>
     
 
@@ -84,7 +94,10 @@ if (!empty($entry['synonyms'])):
             $cur
         );
     } ?>
-        <p><?=sprintf($config->getTrans($trans), implode(', ', $words))?></p>
+    <section>
+    <h2><?=sprintf($config->getTrans($trans), "");?></h2>
+    <?=implode(', ', $words);?>
+    </section>
 <? endif; ?>
 
 
@@ -108,7 +121,10 @@ if (!empty($entry['antonyms'])) {
             $cur
         );
     } ?>
-        <p><?=sprintf($config->getTrans($trans), implode(', ', $words))?></p>
+    <section>
+    <h2><?=sprintf($config->getTrans($trans), "")?></h2>
+    <?=implode(', ', $words)?>
+    </section>
 <? } ?>
 
 
@@ -117,7 +133,8 @@ if (!empty($entry['antonyms'])) {
 <!--             -->
 <!-- Etymology   -->
 <!--             -->
-<p class="etymology"><?= sprintf($config->getTrans('Etymology'), "")?></p>
+<section class="etymology">
+<h2><?= sprintf($config->getTrans('Etymology'), "")?></h2>
 <?
 
 // Derived
@@ -133,37 +150,44 @@ endif;
 
 // kwasilexi
 if (isset($entry['etymology']['kwasilexi'])): ?>
-    <p class="etymology">Kwasilexi</p>
+    <div>
+    <h3>Kwasilexi</h3>
     <? $list = &$entry['etymology']['kwasilexi'];
-    include($config->templatePath . "partials/entry_language_list.php");
-endif;
+    include($config->templatePath . "partials/entry_language_list.php"); ?>
+    </div>
+<? endif;
 
 // am oko pia
 if (isset($entry['etymology']['am oko pia'])): ?>
-    <p class="etymology">Am oko pia</p>
+    <div>
+    <h3>Am oko pia</h3>
     <? $list = &$entry['etymology']['am oko pia'];
-    include($config->templatePath . "partials/entry_language_list.php");
-endif;
+    include($config->templatePath . "partials/entry_language_list.php"); ?>
+    </div>
+<? endif;
 
 // am oko
 if (isset($entry['etymology']['am oko'])): ?>
-    <p class="etymology">Am oko</p>
+    <div>
+    <h3>Am oko</h3>
     <? $list = &$entry['etymology']['am oko'];
-    include($config->templatePath . "partials/entry_word_list.php");
-endif;
+    include($config->templatePath . "partials/entry_word_list.php"); ?>
+    </div>
+<? endif;
 
 // am kompara
 if (isset($entry['etymology']['am kompara'])): ?>
-    <p class="etymology">Am kompara</p>
+    <div>
+    <h3>Am kompara</h3>
     <? $list = &$entry['etymology']['am kompara'];
     include($config->templatePath . "partials/entry_word_list.php");
 endif;
 
 // link
 if (isset($entry['etymology']['link'])): ?>
-        <p class="etymology"><?=$entry['etymology']['link']?></p>;
+        <p><?=$entry['etymology']['link']?></p>;
 <? endif; ?>
-
+</section>
 
 
 <!--                 -->
