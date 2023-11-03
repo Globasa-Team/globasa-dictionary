@@ -2,21 +2,22 @@
     /* Globasa flag colours */
     --glbBlue: #0040a9;
     --glbGreen: #008113;
+    --glbBlueShadeDarker: #003998;
+    --glbBlueTintLighter: #1953b1;
+    --glbGreenShadeDarker: #007411;
+    --glbGreenTintLighter: #198d2a;
     --shadowColor: #000060; /* Recommended shadow */
 }
 
 body {
     font-family: 'Merriweather', 'Literata', serif;
     font-weight: 500;
+    background: rgb(0,64,169);
+    background: linear-gradient(3deg, rgba(0,64,169,1) 05%, rgba(153,192,255,1) 10%, rgba(133,255,151,1) 90%, rgba(0,129,19,1) 95%);     
 }
 
 h1, h2, h3, h4, h5, h6 {
     font-family: inherit;
-}
-
-#main {
-    font-size: large;
-
 }
 
 #content {
@@ -116,7 +117,9 @@ dt .wordClass, dt .wordClass a:any-link, .translationAide dt .wordClass
 }
 
 .entryContent {
-    margin-bottom: 1em;
+    padding-bottom: 1em;
+    background-color: rgba(255,255,255,.5);
+
 }
 
 .dictionaryEntry a, .tags a, dl a {
@@ -147,6 +150,22 @@ h2 {
 
 h3 {
     font-size: medium;
+}
+
+.dictionaryEntry {
+    border-radius: 4px;
+}
+
+.dictionaryEntry footer {
+    border-bottom-left-radius: 4;
+    border-bottom-right-radius: 4;
+    background: linear-gradient(45deg, var(--glbGreenShadeDarker) 30%, var(--glbGreenTintLighter) 70%);
+}
+
+.dictionaryEntry header {
+    border-top-left-radius: 4;
+    border-top-right-radius: 4;
+    background: linear-gradient(45deg, var(--glbBlueShadeDarker) 30%, var(--glbBlueTintLighter) 70%);
 }
 
 .feedbackSubmit .w3-btn, .dictionaryEntry footer {

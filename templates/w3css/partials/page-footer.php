@@ -3,7 +3,7 @@ namespace WorldlangDict;
 ?>
 
 
-<footer id="siteFooter" class="w3-container w3-padding-large w3-light-grey w3-opacity">
+<footer id="siteFooter" class="w3-container w3-padding-large w3-white w3-opacity">
     <div class="w3-cell-row">
         <div class="w3-container w3-cell w3-mobile" style="width: 10%;">
             <p>C0 <a href="https://www.globasa.net">Globasa.net</a>.<br/>
