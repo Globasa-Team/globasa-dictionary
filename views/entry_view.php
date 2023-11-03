@@ -229,7 +229,7 @@ if (isset($entry['etymology']['link'])): ?>
 <footer class="w3-container">
     <?=WorldlangDictUtils::makeLink($config, 'lexi/'.$entry['term'], $request,
         '<span class="fa fa-link"></span> '.$config->getTrans('Word Link')) ?>
-    &bull; <a href="'.$entry['ipa link'].'"><span class="fa fa-volume-up"></span> <?=$config->getTrans('ipa link')?></a>
+    &bull; <a href="<?=$entry['ipa link']?>"><span class="fa fa-volume-up"></span> <?=$config->getTrans('ipa link')?></a>
 </footer>
 
 </div>
