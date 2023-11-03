@@ -8,7 +8,7 @@ class ToolView
         $page->content .= '<h1>'.$config->getTrans('tools button').'</h1>
 
 
-            <div class="w3-card">
+            <div class="w3-card content-bg">
                 <header class="w3-container">
                     <h2><a href="'.WorldlangDictUtils::makeUri($config, 'tul/basatayti', $request).'">'.$config->getTrans('translation aide title').'</a></h2>
                 </header>
@@ -17,7 +17,7 @@ class ToolView
             </div>
 
 
-            <div class="w3-card">
+            <div class="w3-card content-bg">
                 <header class="w3-container">
                     <h2><a href="'.WorldlangDictUtils::makeUri($config, 'tul/ifa-trasharufitul', $request).'">'.$config->getTrans('ipa converter title').'</a></h2>
                 </header>
@@ -26,7 +26,7 @@ class ToolView
             </div>
 
 
-            <div class="w3-card">
+            <div class="w3-card content-bg">
                 <header class="w3-container">
                     <h2>'.$config->getTrans('candidate check title').'</h2>
                 </header>
@@ -39,7 +39,7 @@ class ToolView
                 </div>
             </div>
 
-            <div class="w3-card">
+            <div class="w3-card content-bg">
                 <header class="w3-container">
                     <h2><a href="'.WorldlangDictUtils::makeUri($config, 'tul/samaeskri-lexi', $request).'">'.$config->getTrans('homonym terminator title').'</a></h2>
                 </header>
@@ -47,7 +47,7 @@ class ToolView
                 </div>
             </div>
 
-            <div class="w3-card">
+            <div class="w3-card content-bg">
                 <header class="w3-container">
                     <h2><a href="'.WorldlangDictUtils::makeUri($config, 'tul/minimum-duaxey', $request).'">'.$config->getTrans('minimum pair title').'</a></h2>
                 </header>
@@ -61,7 +61,7 @@ class ToolView
 
     public static function homonymCheckTitle($config, &$page)
     {
-        $page->content .= '<h1>'.$config->getTrans('homonym terminator title').'</h1>'.
+        $page->content .= '<div class="w3-container content-bg"><h1>'.$config->getTrans('homonym terminator title').'</h1>'.
             '<p>'.$config->getTrans('homonym terminator description').'</p>';
     }
 
@@ -111,11 +111,12 @@ class ToolView
         } else {
             $page->content .= "<h3>".$config->getTrans('homonym terminator none found')."</h3>";
         }
+        $page->content .= "</div>";
     }
 
     public static function minimalPairCheckTitle($config, &$page)
     {
-        $page->content .= '<h1>'.$config->getTrans('minimum pair title').'</h1>'.
+        $page->content .= '<div class="w3-container content-bg"><h1>'.$config->getTrans('minimum pair title').'</h1>'.
             '<p>'.$config->getTrans('minimum pair description').'</p>';
     }
 
@@ -162,13 +163,14 @@ class ToolView
         } else {
             $page->content .= $config->getTrans("none found");
         }
+        $page->content .="</div>";
     }
 
     
     public static function transAideTitle($config, &$page)
     {
-        $page->content .= '<h1>'.$config->getTrans('translation aide title').'</h1>'.
-            '<p>'.$config->getTrans('translation aide description').'</p>';
+        $page->content .= '<div class="w3-card w3-container content-bg"><h1>'.$config->getTrans('translation aide title').'</h1>'.
+            '<p>'.$config->getTrans('translation aide description').'</p></div>';
     }
 
     public static function transAideInput($config, $request, &$page)
@@ -191,7 +193,7 @@ class ToolView
 
         if (!empty($sentences)) {
 
-            $result = '<ul class="translationAide">';
+            $result = '<div class="w3-card w3-container content-bg"><ul class="translationAide">';
             foreach($sentences as $current) {
                 $result .= '<li>'.$current->sentence.'<ul>';
                 foreach($current->words as $word) {
@@ -228,7 +230,7 @@ class ToolView
                 }
                 $result .= '</ul></li>';
             }
-            $result .= '</ul>';
+            $result .= '</ul></div>';
         }
 
         if (!empty($result)) {
