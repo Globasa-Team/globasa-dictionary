@@ -13,7 +13,7 @@ body {
     font-family: 'Merriweather', 'Literata', serif;
     font-weight: 500;
     background: rgb(0,64,169);
-    background: linear-gradient(3deg, rgba(0,64,169,1) 05%, rgba(153,192,255,1) 10%, rgba(133,255,151,1) 90%, rgba(0,129,19,1) 95%);     
+    /* background: linear-gradient(3deg, rgba(0,64,169,1) 05%, rgba(153,192,255,1) 10%, rgba(133,255,151,1) 90%, rgba(0,129,19,1) 95%);      */
     min-height: 100vh;
 }
 
@@ -254,13 +254,13 @@ dd::after {
     display: inline-block;
 }
 
-.etymology ul, .translation ul {
+.dictionaryEntry ul {
     list-style: none;
     margin: 0;
     padding: 0;
     display: inline-block;
 }
-.etymology li, .translation li {
+.dictionaryEntry li {
     display:inline-block;
     margin: 2px;
 }

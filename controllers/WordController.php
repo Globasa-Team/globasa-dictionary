@@ -14,6 +14,7 @@ class WordController
         if (!file_exists($file)) throw new Error404Exception("Entry Not Found");
         
         $entry = yaml_parse_file($file);
+        $backlinks = yaml_parse_file($config->api2Path.'backlinks.yaml');
         $page->setTitle($entry['term']);
         
         include("views/entry_view.php");

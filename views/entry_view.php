@@ -193,11 +193,12 @@ if (isset($entry['etymology']['link'])): ?>
 <!--                 -->
 <!-- Related Words   -->
 <!--                 -->
-<? if (!empty($entry['relatedWords'])):
-    foreach ($entry['relatedWords'] as $i=>$cur) {
-        $entry['relatedWords'][$i] = WorldlangDictUtils::makeLink($config, 'lexi/'.$cur, $request, $cur);
-    } ?>
-    <p class="alsosee"><?=sprintf($config->getTrans('Also See Sentence'), implode(', ', $entry['relatedWords']))?></p>
+<? if (!empty($backlinks[$entry['slug']])): ?>
+<section>
+    <h2 class="alsosee"><?=sprintf($config->getTrans('Also See Sentence'), '');?></h2>
+    <? $list = &$backlinks[$entry['slug']];
+    include($config->templatePath . "partials/entry_word_list.php"); ?>
+</section>
 <? endif; ?>
 
 
