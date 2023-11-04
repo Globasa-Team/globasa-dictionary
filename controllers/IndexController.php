@@ -6,5 +6,6 @@ class IndexController
     public static function home($config, $request, &$page)
     {
         // WordController::randomWord($config, $request, $page);
+        include_once($config->templatePath.'view-default.php');
     }
 }

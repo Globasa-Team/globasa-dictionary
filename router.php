@@ -58,7 +58,6 @@ function router($config)
                 break;
             default:
                 IndexController::home($config, $request, $page);
-                include_once($config->templatePath.'view-default.php');
                 break;
         }
     } catch (Error404Exception $e) {
