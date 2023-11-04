@@ -8,6 +8,7 @@ class SearchController
      */
     public static function search($config, $request, &$page)
     {
+        $config->dictionary = unserialize(file_get_contents($config->serializedLocation));
         if (!is_null($request->options)) {
             if (!empty($request->options['wterm'])) {
                 $page->setTitle($config->getTrans('search result title').": ".$request->options['wterm']);
@@ -25,6 +26,7 @@ class SearchController
             WorldlangDictUtils::redirect($config, $request);
         }
         SearchView::results($config, $partialMatches, $lang, $request, $page);
+        include_once($config->templatePath.'view-default.php');
     }
 
     private static function searchLang($config, $request, $dict, $lang, $term)

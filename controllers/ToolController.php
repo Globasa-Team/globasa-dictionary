@@ -5,6 +5,7 @@ class ToolController
 {
     public static function run($config, $request, &$page)
     {
+        $config->dictionary = unserialize(file_get_contents($config->serializedLocation));
         $arg = isset($request->arguments[0]) ? $request->arguments[0] : '';
         switch ($arg) {
             case 'samaeskri-lexi':

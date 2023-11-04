@@ -35,6 +35,7 @@ class WordController
                 $page->setTitle($term.': '.$config->getTrans('natlang search title bar'));
             }
         }
+        include_once($config->templatePath.'view-default.php');
     }
 
     public static function addTags($config, $request, &$page)

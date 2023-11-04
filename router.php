@@ -17,36 +17,23 @@ function router($config)
 
     // log_weird_error($request);
 
-
     try {
         switch ($request->controller) {
-    
             case 'tul':
-                $config->dictionary = unserialize(file_get_contents($config->serializedLocation));
                 ToolController::run($config, $request, $page);
                 break;
-    
             case 'lexi':
                 WordController::output_entry($config, $request, $page);
                 break;
-    
             case 'cel-ruke':
                 WordController::addNatWord($config, $request, $config->lang, $page);
-                include_once($config->templatePath.'view-default.php');
                 break;
-    
             case 'xerca':
-                $config->dictionary = unserialize(file_get_contents($config->serializedLocation));
                 SearchController::search($config, $request, $page);
-                include_once($config->templatePath.'view-default.php');
                 break;
-    
             case 'am-reporte':
-                $config->dictionary = unserialize(file_get_contents($config->serializedLocation));
                 FeedbackController::feedback($config, $request, $page);
-                include_once($config->templatePath.'view-default.php');
                 break;
-    
             case 'lexilari':
                 WordController::addTags($config, $request, $page);
                 break;
