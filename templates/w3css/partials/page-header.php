@@ -2,7 +2,7 @@
 namespace WorldlangDict;
 ?>
 
-<div id="siteHeader"  class="w3-white w3-opacity">
+<div id="siteHeader"  class="w3-white">
     <p id="appTitle">
         <a href="<?php echo WorldlangDictUtils::makeUri($config, '', $request); ?>">
             <span class="fa fa-book fa-lg"></span> <?php echo $config->siteName; ?>

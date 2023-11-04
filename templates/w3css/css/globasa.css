@@ -12,8 +12,7 @@
 body {
     font-family: 'Merriweather', 'Literata', serif;
     font-weight: 500;
-    background: rgb(0,64,169);
-    /* background: linear-gradient(3deg, rgba(0,64,169,1) 05%, rgba(153,192,255,1) 10%, rgba(133,255,151,1) 90%, rgba(0,129,19,1) 95%);      */
+    background: white;
     min-height: 100vh;
 }
 
