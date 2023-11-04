@@ -31,7 +31,6 @@ function router($config)
                 break;
     
             case 'cel-ruke':
-                $config->dictionary = unserialize(file_get_contents($config->serializedLocation));
                 WordController::addNatWord($config, $request, $config->lang, $page);
                 include_once($config->templatePath.'view-default.php');
                 break;

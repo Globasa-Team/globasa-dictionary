@@ -23,20 +23,14 @@ class WordController
 
     public static function addNatWord($config, $request, $lang, &$page)
     {
+        $config->dictionary = unserialize(file_get_contents($config->serializedLocation));
+        
         $term = isset($request->arguments[0]) ? $request->arguments[0] : null;
 
         if (is_null($term)) {
             WorldlangDictUtils::redirect($config, $redirect, "");
         } else {
             if (isset($config->dictionary->index[$lang][$term])) {
-                // foreach ($config->dictionary->index[$lang][$term] as $curMatch) {
-                //     WordView::dictionaryEntry(
-                //         $config,
-                //         $request,
-                //         $config->dictionary->words[$curMatch],
-                //         $page
-                //     );
-                // }
                 SearchView::results($config, $config->dictionary->index[$lang][$term], 'glb', $request, $page);
                 $page->setTitle($term.': '.$config->getTrans('natlang search title bar'));
             }
