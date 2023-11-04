@@ -54,9 +54,7 @@ function router($config)
                 BrowseController::default($config, $request, $page);
                 break;
             case 'test':
-                $config->dictionary = unserialize(file_get_contents($config->serializedLocation));
                 TestController::helloWorld($config, $request, $page);
-                include_once($config->templatePath.'view-default.php');
                 break;
             default:
                 IndexController::home($config, $request, $page);
