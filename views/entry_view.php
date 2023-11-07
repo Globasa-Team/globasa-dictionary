@@ -141,7 +141,7 @@ if (!empty($entry['antonyms'])) {
 
 // Derived
 if (isset($entry['etymology']['derived'])): ?>
-        <p class="derived"><?=$entry['etymology']['derived']?></p>
+        <p class="etymology" style="margin-left: 40px;"><?=$entry['etymology']['derived']?></p>
 <? endif;
 
 // Natlang
