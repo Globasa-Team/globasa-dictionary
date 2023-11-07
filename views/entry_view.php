@@ -30,9 +30,10 @@ require_once($config->templatePath . "partials/page-header.php");
 
 <div class="w3-container entryContent">
 
-<!--             -->
-<!-- Translation -->
-<!--             -->
+<?
+/**
+ * Translation
+ */ ?>
 <section class="translation">
     <p><?
 
@@ -58,11 +59,11 @@ require_once($config->templatePath . "partials/page-header.php");
 </section>
  
  
- 
- <!--             -->
- <!-- Examples    -->
- <!--             -->
- <? if (!empty($entry['examples'])): ?>
+ <?
+ /**
+  * Examples
+  */
+ if (!empty($entry['examples'])): ?>
     <section>
     <h2><?=sprintf($config->getTrans('Example'), "")?></h2>
     <ul class="examples">
@@ -75,10 +76,10 @@ require_once($config->templatePath . "partials/page-header.php");
     
 
 
-<!--             -->
-<!-- Synonyms    -->
-<!--             -->
 <?
+/**
+ * Synonyms
+ */
 if (!empty($entry['synonyms'])):
     $words = [];
     if (count($entry['synonyms']) == 1) {
@@ -102,10 +103,10 @@ if (!empty($entry['synonyms'])):
 
 
 
-<!--             -->
-<!-- Antonyms    -->
-<!--             -->
 <?
+/**
+ * Antonyms
+ */
 if (!empty($entry['antonyms'])) {
     $words = [];
     if (count($entry['antonyms']) == 1) {
@@ -129,10 +130,11 @@ if (!empty($entry['antonyms'])) {
 
 
 
-
-<!--             -->
-<!-- Etymology   -->
-<!--             -->
+<?
+/**
+ * Etymology
+ */
+?>
 <section class="etymology">
 <h2><?= sprintf($config->getTrans('Etymology'), "")?></h2>
 <?
@@ -190,10 +192,11 @@ if (isset($entry['etymology']['link'])): ?>
 </section>
 
 
-<!--                 -->
-<!-- Related Words   -->
-<!--                 -->
-<? if (!empty($backlinks[$entry['slug']])): ?>
+<?
+/**
+ * Related Words
+ */
+if (!empty($backlinks[$entry['slug']])): ?>
 <section>
     <h2 class="alsosee"><?=sprintf($config->getTrans('Also See Sentence'), '');?></h2>
     <? $list = &$backlinks[$entry['slug']];
@@ -202,11 +205,11 @@ if (isset($entry['etymology']['link'])): ?>
 <? endif; ?>
 
 
-
-<!--         -->
-<!-- Tags    -->
-<!--         -->
-<? if (!empty($entry['tags'])):
+<?
+/**
+ * Tags
+ */
+if (!empty($entry['tags'])):
     foreach ($entry['tags'] as $i=>$tag) {
         $entry['tags'][$i] = WorldlangDictUtils::makeLink(
             $config,
@@ -223,10 +226,10 @@ if (isset($entry['etymology']['link'])): ?>
 </div>
 
 
-
-<!--                 -->
-<!-- Entry Footer    -->
-<!--                 -->
+<?
+/**
+ * Entry footer
+ */ ?>
 <footer class="w3-container">
     <?=WorldlangDictUtils::makeLink($config, 'lexi/'.$entry['term'], $request,
         '<span class="fa fa-link"></span> '.$config->getTrans('Word Link')) ?>
