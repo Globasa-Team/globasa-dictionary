@@ -64,13 +64,14 @@ require_once($config->templatePath . "partials/page-header.php");
   * Examples
   */
  if (!empty($entry['examples'])): ?>
-    <section>
+    <section class="examples">
     <h2><?=sprintf($config->getTrans('Example'), "")?></h2>
-    <ul class="examples">
     <? foreach($entry['examples'] as $example): ?>
-        <li><?=$example?></li>
+    <blockquote>
+        <p><?=$example?></p>
+        <? if(isset($false)): ?><cite>&mdash; Source Here</cite><? endif; ?>
+    </blockquote>
     <? endforeach; ?>
-    </ul>
     </section>
  <? endif; ?>
     

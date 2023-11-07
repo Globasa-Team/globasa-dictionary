@@ -163,19 +163,20 @@ h3 {
     border-radius: 4px;
 }
 
-.dictionaryEntry footer {
+.dictionaryEntry > footer {
     border-bottom-left-radius: 4;
     border-bottom-right-radius: 4;
     background: linear-gradient(45deg, var(--glbGreenShadeDarker) 30%, var(--glbGreenTintLighter) 70%);
+    color: white;
 }
 
-.dictionaryEntry header {
+.dictionaryEntry > header {
     border-top-left-radius: 4;
     border-top-right-radius: 4;
     background: linear-gradient(45deg, var(--glbBlueShadeDarker) 30%, var(--glbBlueTintLighter) 70%);
 }
 
-.feedbackSubmit .w3-btn, .dictionaryEntry footer {
+.feedbackSubmit .w3-btn {
     background-color: var(--glbGreen);
     color: white;
 }
@@ -241,6 +242,32 @@ dd::after {
 
 .translation ul > ul li:not(:last-child):after {
     content: ",";
+}
+
+.examples blockquote {
+    position: relative;
+}
+
+.examples p {
+    margin-bottom: 0;
+}
+
+.examples blockquote footer {
+    color: #333;
+}
+
+.dictionaryEntry .examples blockquote::before {
+	position: absolute;
+	z-index: -1;
+	display: block;
+	/* width: 3rem; */
+	/* height: 4rem; */
+	font-size: 8rem;
+	font-family: Georgia, Times, Garamond, serif;
+    color: #ccc;
+    top: -3rem;
+    left: -1rem;
+    content: open-quote;
 }
 
 
