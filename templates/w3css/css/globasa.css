@@ -253,6 +253,10 @@ dd::after {
     display: inline-block;
 }
 
+.etymology .derived {
+    margin-top: 0;
+}
+
 .dictionaryEntry ul {
     list-style: none;
     margin: 0;
