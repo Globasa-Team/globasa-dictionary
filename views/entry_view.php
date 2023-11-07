@@ -153,7 +153,7 @@ endif;
 
 // kwasilexi
 if (isset($entry['etymology']['kwasilexi'])): ?>
-    <div>
+<div>
     <h3>Kwasilexi</h3>
     <? $list = &$entry['etymology']['kwasilexi'];
     include($config->templatePath . "partials/entry_language_list.php"); ?>
@@ -162,33 +162,34 @@ if (isset($entry['etymology']['kwasilexi'])): ?>
 
 // am oko pia
 if (isset($entry['etymology']['am oko pia'])): ?>
-    <div>
+<div>
     <h3>Am oko pia</h3>
     <? $list = &$entry['etymology']['am oko pia'];
     include($config->templatePath . "partials/entry_language_list.php"); ?>
-    </div>
+</div>
 <? endif;
 
 // am oko
 if (isset($entry['etymology']['am oko'])): ?>
-    <div>
+<div>
     <h3>Am oko</h3>
     <? $list = &$entry['etymology']['am oko'];
     include($config->templatePath . "partials/entry_word_list.php"); ?>
-    </div>
+</div>
 <? endif;
 
 // am kompara
 if (isset($entry['etymology']['am kompara'])): ?>
-    <div>
+<div>
     <h3>Am kompara</h3>
     <? $list = &$entry['etymology']['am kompara'];
-    include($config->templatePath . "partials/entry_word_list.php");
-endif;
+    include($config->templatePath . "partials/entry_word_list.php"); ?>
+</div>
+<? endif;
 
 // link
 if (isset($entry['etymology']['link'])): ?>
-        <p><?=$entry['etymology']['link']?></p>;
+<p><?=$entry['etymology']['link']?></p>;
 <? endif; ?>
 </section>
 
