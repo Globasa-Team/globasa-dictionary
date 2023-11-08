@@ -280,7 +280,7 @@ dd::after {
     display: inline-block;
 }
 
-.etymology .derived {
+.etymology .derived, .etymology .apriori {
     margin-top: 0;
 }
 

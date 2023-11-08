@@ -141,6 +141,11 @@ if (!empty($entry['antonyms'])) {
 <?
 
 // Derived
+if (!empty($entry['etymology']['a priori'])): ?>
+    <p class="apriori"><em>a priori</em></p>
+<? endif;
+
+// Derived
 if (isset($entry['etymology']['derived'])): ?>
         <p class="derived"><?=$entry['etymology']['derived']?></p>
 <? endif;
@@ -186,6 +191,7 @@ if (isset($entry['etymology']['am kompara'])): ?>
     include($config->templatePath . "partials/entry_word_list.php"); ?>
 </div>
 <? endif;
+
 
 // link
 if (isset($entry['etymology']['link'])): ?>
