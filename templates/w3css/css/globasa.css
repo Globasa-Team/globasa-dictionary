@@ -191,8 +191,13 @@ h3 {
     color: white;
 }
 
+.dictionaryEntry h1 {
+    font-size: x-large;
+}
+
 .dictionaryEntry h2 {
     display: inline-block;
+    font-size: medium
 }
 
 .dictionaryEntry h3 {

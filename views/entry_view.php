@@ -226,7 +226,10 @@ if (!empty($entry['tags'])):
             $tag
         );
     } ?>
-    <p class="tags"><?=sprintf($config->getTrans('tags links'), implode(', ', $entry['tags']))?></p>
+<section>
+    <h2><?=sprintf($config->getTrans('tags links'), ""); ?></h2>
+    <?= implode(', ', $entry['tags']); ?>
+</section>
 <? endif; ?>
 
 
