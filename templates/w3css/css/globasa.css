@@ -75,10 +75,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #siteFooter {
-    /* bottom: 0px;
-    left: 0px;
-    right: 0px; */
-    /* width: 100vh; */
+    background: white;
+    margin-top: 3em;
+    padding-top: 3em;
+    border-top: dotted 1px #ccc;
 }
 
 .w3-card a:link {
@@ -204,6 +204,10 @@ h3 {
     display: inline-block;
 }
 
+.dictionaryEntry .translation span {
+    margin-bottom: .5em;
+}
+
 dd {
     margin-bottom: 1em;
     /* font-size: large;  */
@@ -238,15 +242,6 @@ dd::after {
 
 .browse dd, .browse dt {
     display: none;
-}
-
-.translation > ul:not(:last-child):after {
-    content: ";";
-}
-
-
-.translation ul > ul li:not(:last-child):after {
-    content: ",";
 }
 
 .examples blockquote {
