@@ -42,7 +42,7 @@ require_once($config->templatePath . "partials/page-header.php");
     foreach($entry['trans'][$config->lang] as $group):
         $j = 0;
         foreach($group as $translation):
-            ?><span class="w3-tag w3-round w3-light-grey"><?=$translation?></span><?
+            ?><span data-class="w3-tag w3-round w3-light-grey"><?=$translation?></span><?
             if (++$j < count($group)):
                 ?>, <?
             endif;
@@ -169,8 +169,11 @@ if (isset($entry['etymology']['kwasilexi'])): ?>
 if (isset($entry['etymology']['am oko pia'])): ?>
 <div>
     <h3>Am oko pia</h3>
-    <? $list = &$entry['etymology']['am oko pia'];
-    include($config->templatePath . "partials/entry_language_list.php"); ?>
+    <?
+    $list = &$entry['etymology']['am oko pia'];
+    $item_class = "w3-tag w3-round w3-dark-grey";
+    include($config->templatePath . "partials/entry_word_list.php");
+    ?>
 </div>
 <? endif;
 
@@ -178,8 +181,12 @@ if (isset($entry['etymology']['am oko pia'])): ?>
 if (isset($entry['etymology']['am oko'])): ?>
 <div>
     <h3>Am oko</h3>
-    <? $list = &$entry['etymology']['am oko'];
-    include($config->templatePath . "partials/entry_word_list.php"); ?>
+    <?
+    $list = &$entry['etymology']['am oko'];
+    $item_class = "w3-tag w3-round w3-dark-grey";
+    include($config->templatePath . "partials/entry_word_list.php");
+    ?>
+    
 </div>
 <? endif;
 
@@ -187,8 +194,11 @@ if (isset($entry['etymology']['am oko'])): ?>
 if (isset($entry['etymology']['am kompara'])): ?>
 <div>
     <h3>Am kompara</h3>
-    <? $list = &$entry['etymology']['am kompara'];
-    include($config->templatePath . "partials/entry_word_list.php"); ?>
+    <?
+    $list = &$entry['etymology']['am kompara'];
+    $item_class = "w3-tag w3-round w3-dark-grey";
+    include($config->templatePath . "partials/entry_word_list.php");
+    ?>
 </div>
 <? endif;
 
@@ -207,8 +217,11 @@ if (isset($entry['etymology']['link'])): ?>
 if (!empty($backlinks[$entry['slug']])): ?>
 <section>
     <h2 class="alsosee"><?=sprintf($config->getTrans('Also See Sentence'), '');?></h2>
-    <? $list = &$backlinks[$entry['slug']];
-    include($config->templatePath . "partials/entry_word_list.php"); ?>
+    <?
+    $list = &$backlinks[$entry['slug']];
+    $item_class = "w3-tag w3-round w3-light-grey";
+    include($config->templatePath . "partials/entry_word_list.php");
+    ?>
 </section>
 <? endif; ?>
 
