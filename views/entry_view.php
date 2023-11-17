@@ -42,7 +42,7 @@ require_once($config->templatePath . "partials/page-header.php");
     foreach($entry['trans'][$config->lang] as $group):
         $j = 0;
         foreach($group as $translation):
-            ?><span data-class="w3-tag w3-round w3-light-grey"><?=$translation?></span><?
+            ?><span class="w3-tag w3-round w3-light-grey"><?=$translation?></span><?
             if (++$j < count($group)):
                 ?>, <?
             endif;
