@@ -32,7 +32,7 @@ class ToolController
             case 'estatisti':
                 $page->setTitle('Estatisti');
                 $page->description = "estatisti";
-                $stats = yaml_parse_file($config->statsFile);
+                $stats = yaml_parse_file($config->stats_location);
                 include_once($config->templatePath.'view-statistics.php');
                 break;
             default:

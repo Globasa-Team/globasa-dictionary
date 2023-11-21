@@ -16,7 +16,7 @@ $page->description = $entry['term'] . ': ' . htmlspecialchars($entry['raw data']
 require_once($config->templatePath . "partials/page-header.php");
 ?>
 
-<main id="content" class="w3-main">
+<main id="content">
 
 
 <div id="<?=$entry['term']?>" class="dictionaryEntry w3-card">

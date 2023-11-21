@@ -11,15 +11,15 @@ namespace WorldlangDict;
 
 <? require_once($config->templatePath . "partials/page-header.php"); ?>
 
-<main id="content" class="w3-main">
+<main id="content">
 
 <h1>Globasa Stats</h1>
 <div class="flexy" style="display:flex; flex-direction: row; gap: 2em;">
 
 
 <!--Lang count-->
-<section style="">
-<table class="w3-table-all" style="">
+<section>
+<table class="w3-table-all">
   <thead>
     <tr class="w3-purple"><th class="w3-right-align">Language</th><th class="w3-right-align">Words</th></tr>
   </thead>

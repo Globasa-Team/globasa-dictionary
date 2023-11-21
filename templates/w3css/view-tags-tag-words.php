@@ -14,7 +14,7 @@ namespace WorldlangDict;
 
 <? require_once($config->templatePath . "partials/page-header.php"); ?>
 
-<main id="content" class="w3-main w3-container content-bg">
+<main id="content" class="w3-container content-bg">
 
 <? $exists = isset($defs[$tag]); ?>
 <h1><?= $tag; ?> &mdash; <?= $config->getTrans('tags title') ?></h1>

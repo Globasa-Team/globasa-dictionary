@@ -17,7 +17,7 @@ namespace WorldlangDict;
 <!-- IPA Conversation -->
 <!--                  -->
 
-<main id="content" class="w3-main">
+<main id="content">
   <div class="w3-container" style="padding: 5px">
     <h1><?php echo $config->getTrans('ipa converter title');?></h1>
     <p><?php echo $config->getTrans('ipa converter instructions');?></p>
