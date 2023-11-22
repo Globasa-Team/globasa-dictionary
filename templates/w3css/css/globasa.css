@@ -2,11 +2,29 @@
     /* Globasa flag colours */
     --glbBlue: #0040a9;
     --glbGreen: #008113;
-    --glbBlueShadeDarker: #003998;
-    --glbBlueTintLighter: #1953b1;
-    --glbGreenShadeDarker: #007411;
-    --glbGreenTintLighter: #198d2a;
     --shadowColor: #000060; /* Recommended shadow */
+
+    --glbGreenShade0: #008113;
+    --glbGreenShade1: #007411;
+    --glbGreenShade2: #00670f;
+    --glbGreenShade3: #005a0d;
+    --glbGreenShade4: #004d0b;
+    --glbGreenShade5: #004009;
+    --glbGreenShade6: #003307;
+    --glbGreenShade7: #002605;
+    --glbGreenShade8: #001903;
+    --glbGreenShade9: #000c01;
+
+    --glbGreenTint0: #008113;
+    --glbGreenTint1: #198d2a;
+    --glbGreenTint2: #329a42;
+    --glbGreenTint3: #4ca659;
+    --glbGreenTint4: #66b371;
+    --glbGreenTint5: #7fc089;
+    --glbGreenTint6: #99cca0;
+    --glbGreenTint7: #b2d9b8;
+    --glbGreenTint8: #cce5cf;
+    --glbGreenTint9: #e5f2e7;
 }
 
 body {
@@ -26,6 +44,7 @@ h1, h2, h3, h4, h5, h6 {
 main {
     margin: auto;
     padding: 5px;
+    box-sizing: border-box;
 }
 
 #appTitle a, #appTitle a:any-link {
@@ -77,11 +96,38 @@ main {
 }
 
 #siteFooter {
-    background: white;
+    background: var(--glbGreenTint9);
     margin-top: auto;
-    padding-top: 3em;
-    border-top: dotted 1px #ccc;
 }
+
+#siteFooter ul {
+    list-style-type: none;
+}
+
+#siteFooter .langs {
+    text-align: center;
+}
+
+#siteFooter .about {
+    text-align: center;
+    padding-top: 1em;
+}
+
+#siteFooter .copyright p {
+    display: inline;
+}
+
+#siteFooter img.cc_license {
+    display: inline-block;
+    margin: 0;
+    max-width: 1.2em;
+    height: auto;
+}
+
+#siteFooter a.badge {
+    text-decoration: none;
+}
+
 
 .w3-card a:link {
     text-decoration: none;
@@ -168,14 +214,14 @@ h3 {
 .dictionaryEntry > footer {
     border-bottom-left-radius: 4;
     border-bottom-right-radius: 4;
-    background: linear-gradient(45deg, var(--glbGreenShadeDarker) 30%, var(--glbGreenTintLighter) 70%);
+    background: linear-gradient(45deg, var(--glbGreenShade1) 30%, var(--glbGreenTint1) 70%);
     color: white;
 }
 
 .dictionaryEntry > header {
     border-top-left-radius: 4;
     border-top-right-radius: 4;
-    background: linear-gradient(45deg, var(--glbBlueShadeDarker) 30%, var(--glbBlueTintLighter) 70%);
+    background: linear-gradient(45deg, var(--glbBlueShade1) 30%, var(--glbBlueTint1) 70%);
 }
 
 .feedbackSubmit .w3-btn {
@@ -212,11 +258,9 @@ h3 {
 
 dd {
     margin-bottom: 1em;
-    /* font-size: large;  */
 }
 
 .dictionaryList a:not([class]) {
-    /* font-size: large;  */
     font-weight: bold;
     text-decoration: none;
 }
@@ -229,13 +273,10 @@ dl {
 dt {
     float:left;
     padding-right: 0.5em;
-    /* line-height: 110%; */
 }
 
 dd {
-    /* margin: 0 0 0.2em 0.5em; */
     margin-left: 0.2em;
-    /* line-height: 110%; */
 }
 
 dd::after {
@@ -262,8 +303,6 @@ dd::after {
 	position: absolute;
 	z-index: -1;
 	display: block;
-	/* width: 3rem; */
-	/* height: 4rem; */
 	font-size: 8rem;
 	font-family: Georgia, Times, Garamond, serif;
     color: #ccc;
@@ -340,7 +379,7 @@ dd::after {
 .filter label[for^="letter-"] {
     width: 11.1%;
     color: var(--glbBlue);
-    font-size: larger; /* */
+    font-size: larger;
 }
 
 #letter-all-label {
@@ -397,5 +436,36 @@ main.welcome img {
 @media (max-width: 50ch) {
     main {
         width: 100%;
+    }
+    #siteFooter {
+        text-align: center;
+    }
+    #siteFooter ul {
+        padding: 0;
+    }
+}
+
+@media (min-width: 600px) {
+    #siteFooter {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0.5em;
+    }
+
+    #siteFooter .langs, #siteFooter .copyright {
+        grid-column: span 4;
+    }
+}
+
+@media (min-width: 50ch) and (max-width: 600px) {
+    #siteFooter {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5em;
+    }
+
+    #siteFooter .langs, #siteFooter .copyright {
+        grid-column: span 2;
+        background-color: #faf;
     }
 }
