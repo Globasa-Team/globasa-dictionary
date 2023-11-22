@@ -16,10 +16,9 @@ $page->description = $entry['term'] . ': ' . htmlspecialchars($entry['raw data']
 require_once($config->templatePath . "partials/page-header.php");
 ?>
 
-<main id="content">
+<main class="dictionaryEntry">
 
 
-<div id="<?=$entry['term']?>" class="dictionaryEntry w3-card">
     <header class="w3-container">
         <h1 id="entryTerm"><?=$entry['term']?></h1>
 <? if (!empty($entry['word class'])): ?>
@@ -259,9 +258,7 @@ if (!empty($entry['tags'])):
         '<span class="fa fa-link"></span> '.$config->getTrans('Word Link')) ?>
     &bull; <a href="<?=$entry['ipa link']?>"><span class="fa fa-volume-up"></span> <?=$config->getTrans('ipa link')?></a>
 </footer>
-
-</div>
-    
+ 
 </main>
 
 <? require_once($config->templatePath . "partials/page-footer.php"); ?>

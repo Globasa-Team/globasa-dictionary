@@ -4,6 +4,30 @@
     --glbGreen: #008113;
     --shadowColor: #000060; /* Recommended shadow */
 
+
+    --glbBlueShade0: #0040a9;
+    --glbBlueShade1: #003998;
+    --glbBlueShade2: #003387;
+    --glbBlueShade3: #002c76;
+    --glbBlueShade4: #002665;
+    --glbBlueShade5: #002054;
+    --glbBlueShade6: #001943;
+    --glbBlueShade7: #001332;
+    --glbBlueShade8: #000c21;
+    --glbBlueShade9: #000610;
+    
+    --glbBlueTint0: #0040a9;
+    --glbBlueTint1: #1953b1;
+    --glbBlueTint2: #3266ba;
+    --glbBlueTint3: #4c79c2;
+    --glbBlueTint4: #668ccb;
+    --glbBlueTint5: #7f9fd4;
+    --glbBlueTint6: #99b2dc;
+    --glbBlueTint7: #b2c5e5;
+    --glbBlueTint8: #ccd8ed;
+    --glbBlueTint9: #e5ebf6;
+    
+
     --glbGreenShade0: #008113;
     --glbGreenShade1: #007411;
     --glbGreenShade2: #00670f;
@@ -208,20 +232,25 @@ h3 {
 }
 
 .dictionaryEntry {
-    border-radius: 4px;
+    border-radius: 8px;
+    box-shadow: 0 5px 5px 0 #ccc, 0 5px 5px 0 #ccc;
+    padding: 0;
 }
 
 .dictionaryEntry > footer {
-    border-bottom-left-radius: 4;
-    border-bottom-right-radius: 4;
-    background: linear-gradient(45deg, var(--glbGreenShade1) 30%, var(--glbGreenTint1) 70%);
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+    background-color: var(--glbGreen);
+    background: linear-gradient(45deg, var(--glbGreenShade2) 30%, var(--glbGreenTint2) 70%);
     color: white;
 }
 
 .dictionaryEntry > header {
-    border-top-left-radius: 4;
-    border-top-right-radius: 4;
-    background: linear-gradient(45deg, var(--glbBlueShade1) 30%, var(--glbBlueTint1) 70%);
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+    background-color: var(--glbBlue);
+    background: linear-gradient(45deg, var(--glbBlueShade2) 30%, var(--glbBlueTint2) 70%);
+    color: white;
 }
 
 .feedbackSubmit .w3-btn {
@@ -436,7 +465,8 @@ main.welcome img {
 @media (max-width: 50ch) {
     main {
         width: 100%;
-    }
+        margin: 3px auto;
+}
     #siteFooter {
         text-align: center;
     }
@@ -466,6 +496,5 @@ main.welcome img {
 
     #siteFooter .langs, #siteFooter .copyright {
         grid-column: span 2;
-        background-color: #faf;
     }
 }
