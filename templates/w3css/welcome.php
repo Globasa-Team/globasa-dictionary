@@ -11,8 +11,8 @@ namespace WorldlangDict;
 
 <? require_once($config->templatePath . "partials/page-header.php"); ?>
 
-<main class="welcome">
-    <img src="https://www.globasa.net/user/pages/02.home/01._greetings-hero/hero-talking0-beige.svg" alt="Salom! Xanti! Bonata! Yu kepul?">
+<main>
+  &nbsp;
 </main>
 
 <? require_once($config->templatePath . "partials/page-footer.php"); ?>

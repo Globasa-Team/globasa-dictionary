@@ -436,23 +436,14 @@ dd::after {
 
 
 .welcome {
-    background-color: #e2d9cc;
+    background-image: url(https://cdn.globasa.net/logo/glb_flower_transparent_128.png),
+11                        linear-gradient(to left, var(--glbBlueTint8), var(--glbGreenTint8));
+    background-position: center;
+    background-repeat: no-repeat;
+    
 }
 
-.welcome main {
-    background-color: #e2d9cc;
-    width: 100%;
-    text-align: center;
-    margin: auto;
-    padding: 0;
-}
 
-main.welcome img {
-    margin: 0;
-    max-width: 300px;
-    object-fit: cover;
-    border-bottom: solid 2px #333;
-}
 
 
 
@@ -476,8 +467,7 @@ main.welcome img {
 
 @media (min-width: 51ch) and (max-width: 600px) {
     main {
-        width: 100%;
-        margin: 3px 0;
+        margin: 2em 5px;
     }
     #siteFooter {
         display: grid;
@@ -492,8 +482,7 @@ main.welcome img {
 
 @media (max-width: 51ch) {
     main {
-        width: 100%;
-        margin: 3px 0;
+        margin: 2em 5px;
 }
     #siteFooter {
         text-align: center;

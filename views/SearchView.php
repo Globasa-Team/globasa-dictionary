@@ -11,19 +11,26 @@ class SearchView
             $request->options['nterm'].'</h3>';
     }
 
-    public static function results($config, $partialMatches, $lang, $request, $page)
+    public static function results(WorldlangDictConfig $config, $matches, $lang, $request, $page)
     {
         // Show matches
-        if (sizeof($partialMatches)) {
+        if (sizeof($matches)) {
             
-            foreach ($partialMatches as $word) {
+            foreach ($matches as $word) {
                 $word = strtolower($word);
-                
                 if ($lang=='glb') {
-                    $listing[$word] = WordView::entryToDtString($config, $request, $config->dictionary->words[$word]);
+                    if (!file_exists($config->api2Path."terms/{$word}.yaml")) {
+                        continue;
+                    }
+                    $entry = yaml_parse_file($config->api2Path."terms/{$word}.yaml");
+                    $listing[$word] = WordView::entry_to_dt_string($config, $request, $entry);
                 } else {
                     foreach($config->dictionary->index[$lang][$word] as $word) {
-                        $listing[$word] = WordView::entryToDtString($config, $request, $config->dictionary->words[$word]);
+                        if (!file_exists($config->api2Path."terms/{$word}.yaml")) {
+                            continue;
+                        }
+                        $entry = yaml_parse_file($config->api2Path."terms/{$word}.yaml");
+                        $listing[$word] = WordView::entry_to_dt_string($config, $request, $entry);
                     }
                 }
             }
