@@ -437,7 +437,7 @@ dd::after {
 
 .welcome {
     background-image: url(https://cdn.globasa.net/logo/glb_flower_transparent_128.png),
-11                        linear-gradient(to left, var(--glbBlueTint8), var(--glbGreenTint8));
+                      linear-gradient(to left, var(--glbBlueTint8), var(--glbGreenTint8));
     background-position: center;
     background-repeat: no-repeat;
     
