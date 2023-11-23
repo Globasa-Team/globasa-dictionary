@@ -7,8 +7,7 @@ class SearchView
     {
         $page->content .= '<h3 style="color: black">'.
             $config->getTrans('search result title').': '.
-            $request->options['wterm'].' '.
-            $request->options['nterm'].'</h3>';
+            implode($request->options).'</h3>';
     }
 
     public static function results(WorldlangDictConfig $config, array $matches, string $lang, Request $request, $page)
@@ -17,22 +16,11 @@ class SearchView
         if (sizeof($matches)) {
             
             foreach ($matches as $word) {
-                $word = strtolower($word);
-                if ($lang=='glb') {
-                    if (!file_exists($config->api2Path."terms/{$word}.yaml")) {
-                        continue;
-                    }
-                    $entry = yaml_parse_file($config->api2Path."terms/{$word}.yaml");
-                    $listing[$word] = WordView::entry_to_dt_string($config, $request, $entry);
-                } else {
-                    foreach($config->dictionary->index[$lang][$word] as $word) {
-                        if (!file_exists($config->api2Path."terms/{$word}.yaml")) {
-                            continue;
-                        }
-                        $entry = yaml_parse_file($config->api2Path."terms/{$word}.yaml");
-                        $listing[$word] = WordView::entry_to_dt_string($config, $request, $entry);
-                    }
+                if (!file_exists($config->api2Path."terms/{$word}.yaml")) {
+                    continue;
                 }
+                $entry = yaml_parse_file($config->api2Path."terms/{$word}.yaml");
+                $listing[$word] = WordView::entry_to_dt_string($config, $request, $entry);
             }
             ksort($listing);
 

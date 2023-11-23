@@ -27,33 +27,6 @@ class SearchController
         include_once($config->templatePath.'view-default.php');
 
         return;
-
-        die();
-
-        if (!is_null($request->options)) {
-            if (!empty($request->options['wterm'])) {
-                // $config->dictionary = unserialize(file_get_contents($config->serializedLocation));
-                $index = yaml_parse_file($config->index_location);
-                $page->setTitle($config->getTrans('search result title').": ".$request->options['wterm']);
-                $partialMatches = SearchController::searchLang($config, $request, $config->worldlang, $request->options['wterm']);
-                $lang = 'glb';
-            } elseif (!empty($request->options['nterm'])) {
-                $config->dictionary = unserialize(file_get_contents($config->serializedLocation));
-                // $natlang_index = $config->search_terms_location.$request->lang.".yaml";
-                $page->setTitle($config->getTrans('search result title').": ".$request->options['nterm']);
-                $partialMatches = SearchController::searchLang($config, $request, $request->lang, $request->options['nterm']);
-                $lang = $config->lang;
-            } else {
-                $page->setTitle($config->getTrans('search result title'));
-                WorldlangDictUtils::redirect($config, $request);
-            }
-        } else {
-            WorldlangDictUtils::redirect($config, $request);
-        }
-
-        // If not redirected, show term
-        SearchView::results($config, $partialMatches, $lang, $request, $page);
-        include_once($config->templatePath.'view-default.php');
     }
 
 
@@ -99,10 +72,37 @@ class SearchController
 
 
 
+
+
+
+    /**
+     * Do a partial match search through the Globasa index.
+     */
+    private static function natlang_levenshtein_search(string $term, string $lang, array &$terms) {
+        // Finally look for a partial match in index
+        $partialMatches = [];
+        foreach ($terms as $key=>$data) {
+            if (levenshtein($term, $key, 1, 1, 1)<2) {
+                if (empty($data)) {
+                    $partialMatches[$key] = $key;
+                }
+                else {
+                    foreach($data as $hit) {
+                        $partialMatches[$key] = $hit;
+                    }
+                }
+            }
+        }
+
+        return $partialMatches;
+    }
+
+
+
     /**
      * Search natlang for term.
      */
-    private static function natlang_term_search(object $config, string $lang, string $term, object $request):string {
+    private static function natlang_term_search(object $config, string $lang, string $term, object $request):array {
         // check if file exists
         if (!file_exists($config->search_terms_location.$lang.".yaml")) {
             throw new Error404Exception("Entry Language Not Found");
@@ -116,8 +116,7 @@ class SearchController
                 WorldlangDictUtils::redirect($config, $request, 'cel-ruke/'.urlencode($term));
             }
         }
-        $partial_matches="";
-        return $partial_matches;
+        return self::natlang_levenshtein_search(term:$term, lang:$lang, terms:$terms);
     }
 
 
