@@ -22,7 +22,7 @@ class WordView
         }
         $result .=
             "</dt><dd {$data}>".
-            $entry['raw data']['trans'][$config->lang].
+            $entry['trans html'][$config->lang].
             '</dd>';
 
         return $result;

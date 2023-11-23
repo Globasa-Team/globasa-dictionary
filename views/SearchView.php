@@ -11,7 +11,7 @@ class SearchView
             $request->options['nterm'].'</h3>';
     }
 
-    public static function results(WorldlangDictConfig $config, $matches, $lang, $request, $page)
+    public static function results(WorldlangDictConfig $config, array $matches, string $lang, Request $request, $page)
     {
         // Show matches
         if (sizeof($matches)) {
