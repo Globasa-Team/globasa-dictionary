@@ -436,23 +436,14 @@ dd::after {
 
 
 .welcome {
-    background-color: #e2d9cc;
+    background-image: url(https://cdn.globasa.net/logo/glb_flower_transparent_128.png),
+                        linear-gradient(to left, var(--glbBlueTint8), var(--glbGreenTint8));
+    background-position: center;
+    background-repeat: no-repeat;
+    
 }
 
-.welcome main {
-    background-color: #e2d9cc;
-    width: 100%;
-    text-align: center;
-    margin: auto;
-    padding: 0;
-}
 
-main.welcome img {
-    margin: 0;
-    max-width: 300px;
-    object-fit: cover;
-    border-bottom: solid 2px #333;
-}
 
 
 
