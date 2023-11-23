@@ -17,7 +17,7 @@ namespace WorldlangDict;
 
     <section class="about">
             <img src="https://cdn.globasa.net/logo/glb_flower_transparent_44.webp" alt="Globasa Logo" />
-            <p>Globasa Menalari<br/>
+            <p>Menalari fe Globasa<br/>
             <em>Basa de Globayen</em></p>
     </section>
 
