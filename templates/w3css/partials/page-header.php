@@ -18,14 +18,10 @@ namespace WorldlangDict;
     <form action="<?php echo WorldlangDictUtils::makeUri($config, "xerca", $request); ?>" method="get">
     <div class="w3-cell-row">
         <div class="w3-container w3-cell">
-            <input type="text" name="wTerm" placeholder="<?php echo $config->getTrans('search worldlang placeholder');?>" class="w3-input w3-border" value="<?php if (!empty($request->options['wterm'])) {
-    echo $request->options['wterm'];
-} ?>" />
+            <input type="text" name="glb" placeholder="<?php echo $config->getTrans('search worldlang placeholder');?>" class="w3-input w3-border" value="" />
         </div>
         <div class="w3-container w3-cell">
-            <input type="text" name="nTerm" placeholder="<?php echo $config->getTrans('search natlang placeholder');?>" class="w3-input w3-border" value="<?php if (!empty($request->options['wterm'])) {
-    echo $request->options['nterm'];
-} ?>" />
+            <input type="text" name="<?=$request->lang; ?>" placeholder="<?php echo $config->getTrans('search natlang placeholder');?>" class="w3-input w3-border" value="" />
         </div>
         <div class="w3-container w3-cell w3-cell-middle">
             <input type="submit" value="<?php echo $config->getTrans('search button');?>" class="w3-btn" />
