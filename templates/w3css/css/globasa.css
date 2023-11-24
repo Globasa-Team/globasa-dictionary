@@ -2,10 +2,7 @@
     /* Globasa flag colours */
     --glbBlue: #0040a9;
     --glbGreen: #008113;
-    --shadowColor: #000060; /* Recommended shadow */
 
-
-    --glbBlueShade0: #0040a9;
     --glbBlueShade1: #003998;
     --glbBlueShade2: #003387;
     --glbBlueShade3: #002c76;
@@ -16,7 +13,6 @@
     --glbBlueShade8: #000c21;
     --glbBlueShade9: #000610;
     
-    --glbBlueTint0: #0040a9;
     --glbBlueTint1: #1953b1;
     --glbBlueTint2: #3266ba;
     --glbBlueTint3: #4c79c2;
@@ -26,9 +22,7 @@
     --glbBlueTint7: #b2c5e5;
     --glbBlueTint8: #ccd8ed;
     --glbBlueTint9: #e5ebf6;
-    
 
-    --glbGreenShade0: #008113;
     --glbGreenShade1: #007411;
     --glbGreenShade2: #00670f;
     --glbGreenShade3: #005a0d;
@@ -39,7 +33,6 @@
     --glbGreenShade8: #001903;
     --glbGreenShade9: #000c01;
 
-    --glbGreenTint0: #008113;
     --glbGreenTint1: #198d2a;
     --glbGreenTint2: #329a42;
     --glbGreenTint3: #4ca659;
@@ -281,7 +274,7 @@ h3 {
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
     background-color: var(--glbGreen);
-    background: linear-gradient(45deg, var(--glbGreenShade2) 30%, var(--glbGreenTint2) 70%);
+    background: linear-gradient(45deg, var(--glbGreen) 30%, var(--glbGreenTint1) 70%);
     color: white;
 }
 
@@ -289,7 +282,7 @@ h3 {
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
     background-color: var(--glbBlue);
-    background: linear-gradient(45deg, var(--glbBlueShade2) 30%, var(--glbBlueTint2) 70%);
+    background: linear-gradient(45deg, var(--glbBlue) 30%, var(--glbBlueTint1) 70%);
     color: white;
 }
 
@@ -476,8 +469,6 @@ dd::after {
 
 
 .welcome {
-    /* background-image: url(https://cdn.globasa.net/logo/glb_flower_transparent_128.png), */
-                      /* linear-gradient(to left, var(--glbBlueTint8), var(--glbGreenTint8)); */
     background-position: center;
     background-repeat: no-repeat;
 }
