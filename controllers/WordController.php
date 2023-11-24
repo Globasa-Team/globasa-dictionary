@@ -6,9 +6,9 @@ class WordController
     public static function output_entry($config, $request, &$page)
     {
         if (!isset($request->arguments[0])) {
-            WordController::randomWord($config, $request, $page);
+            throw new Error404Exception("Bad Request");
         }
-
+        
         $term = strtolower($request->arguments[0]);
         $file = $config->api2Path.'terms/'.$term.'.yaml';
         if (!file_exists($file)) throw new Error404Exception("Entry Not Found");
@@ -20,21 +20,24 @@ class WordController
         include("views/entry_view.php");
         
     }
-
+    
     public static function addNatWord($config, $request, $lang, &$page)
     {
-        $config->dictionary = unserialize(file_get_contents($config->serializedLocation));
-        
+        if (!file_exists($config->search_terms_location.$lang.".yaml")) {
+            throw new Error404Exception("Language not availble");
+        }
+        $search_terms = yaml_parse_file($config->search_terms_location.$lang.".yaml");
+
         $term = isset($request->arguments[0]) ? $request->arguments[0] : null;
 
         if (is_null($term)) {
-            WorldlangDictUtils::redirect($config, $redirect, "");
-        } else {
-            if (isset($config->dictionary->index[$lang][$term])) {
-                SearchView::results($config, $config->dictionary->index[$lang][$term], 'glb', $request, $page);
-                $page->setTitle($term.': '.$config->getTrans('natlang search title bar'));
-            }
+            WorldlangDictUtils::redirect($config, $request, "");
         }
+        if (isset($search_terms[$term])) {
+            SearchView::results($config, $search_terms[$term], 'glb', $request, $page);
+            $page->setTitle($term.': '.$config->getTrans('natlang search title bar'));
+        }
+        
         include_once($config->templatePath.'view-default.php');
     }
 
