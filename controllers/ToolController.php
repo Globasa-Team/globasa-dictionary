@@ -5,7 +5,6 @@ class ToolController
 {
     public static function run($config, $request, &$page)
     {
-        $config->dictionary = unserialize(file_get_contents($config->serializedLocation));
         $arg = isset($request->arguments[0]) ? $request->arguments[0] : '';
         switch ($arg) {
             case 'samaeskri-lexi':
@@ -45,6 +44,7 @@ class ToolController
     
     public static function minimalPairCheck($config, $request, &$page)
     {
+        $config->dictionary = unserialize(file_get_contents($config->serializedLocation));
         $nearMatches = Tool::minimalPairCheck($config, $request);
         ToolView::minimalPairCheckTitle($config, $page);
         ToolView::minimalPairCheckInput($config, $request, $page);
@@ -55,6 +55,7 @@ class ToolController
     
     public static function homonymCheck($config, $request, &$page)
     {
+        $config->dictionary = unserialize(file_get_contents($config->serializedLocation));
         $genWords = Tool::homonymCheck($config, $request);
         ToolView::homonymCheckTitle($config, $page);
         ToolView::homonymCheckInput($config, $request, $page);
@@ -65,6 +66,7 @@ class ToolController
     
     public static function checkCandidateWord($config, $request, &$page)
     {
+        $config->dictionary = unserialize(file_get_contents($config->serializedLocation));
         ToolView::homonymCheckTitle($config, $page);
         $genWords = Tool::homonymCheck($config, $request);
         ToolView::homonymCheck($config, $request, $genWords, $page);
@@ -79,6 +81,7 @@ class ToolController
     
     public static function transAide($config, $request, &$page)
     {
+        $config->dictionary = unserialize(file_get_contents($config->serializedLocation));
         $bulkWords = Tool::transAideBulkTranslate($config, $request);
 
         ToolView::transAideTitle($config, $page, $request);
