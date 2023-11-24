@@ -91,6 +91,10 @@ main {
     font-size: 36px;
 }
 
+#appTitle {
+    margin: 0;
+}
+
 #siteHeader a:any-link {
     text-decoration: none;
     color: var(--glbGreenShade6);
@@ -98,7 +102,7 @@ main {
 }
 
 #siteHeader .w3-cell-row {
-    background-color: var(--glbGreenShade6);
+    background-color: var(--glbGreenShade5);
     color: white;
     margin: 5px 0 0 0;
     padding: 5px 10px;
@@ -154,7 +158,7 @@ main {
 
 #siteFooter .langs, #siteFooter .langs a:any-link {
     text-align: center;
-    background-color: var(--glbBlueShade4);
+    background-color: var(--glbBlueShade6);
     color: var(--glbBlueTint9);
 }
 
@@ -472,14 +476,18 @@ dd::after {
 
 
 .welcome {
-    background-image: url(https://cdn.globasa.net/logo/glb_flower_transparent_128.png),
-                      linear-gradient(to left, var(--glbBlueTint8), var(--glbGreenTint8));
+    /* background-image: url(https://cdn.globasa.net/logo/glb_flower_transparent_128.png), */
+                      /* linear-gradient(to left, var(--glbBlueTint8), var(--glbGreenTint8)); */
     background-position: center;
     background-repeat: no-repeat;
-    
 }
 
-
+.welcome main {
+    background-image: url(https://cdn.globasa.net/logo/glb_flower_transparent_128.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 30svh;
+}
 
 
 
