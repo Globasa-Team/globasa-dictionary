@@ -87,8 +87,7 @@ main {
     color: inherit;
     text-align: center;
     padding: 0;
-    padding-top: 1px;
-    margin: 0;
+    margin: 0 0 2em 0;
 }
 
 #siteHeader input {
@@ -121,7 +120,7 @@ main {
 
 #siteFooter {
     background: var(--glbGreenTint9);
-    margin-top: auto;
+    margin: 2em 0 0 0;
 }
 
 #siteFooter ul {
@@ -467,7 +466,7 @@ dd::after {
 
 @media (min-width: 51ch) and (max-width: 600px) {
     main {
-        margin: 2em 5px;
+        margin-inline: 5px;
     }
     #siteFooter {
         display: grid;
@@ -482,7 +481,7 @@ dd::after {
 
 @media (max-width: 51ch) {
     main {
-        margin: 2em 5px;
+        margin-inline: 5px;
 }
     #siteFooter {
         text-align: center;
