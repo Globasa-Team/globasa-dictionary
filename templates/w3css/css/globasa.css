@@ -54,7 +54,7 @@
 body {
     font-family: 'Merriweather', 'Literata', serif;
     font-weight: 500;
-    background: white;
+    background: linear-gradient(to left, var(--glbBlueTint8), var(--glbGreenTint8));
     min-height: 100vh;
     margin: 0;
     display: flex;
@@ -71,23 +71,37 @@ main {
     box-sizing: border-box;
 }
 
-#appTitle a, #appTitle a:any-link {
-    color: black;
-    font-size: 36px;
-}
-.w3-card {
-    font-weight: 500;
-    margin-bottom: 25px;
-    margin-top: 25px;
-}
+
+
+/**             **/
+/** site header **/
+/**             **/
 
 #siteHeader {
     width: 100%;
-    background-color: inherit;
+    background-color: var(--glbGreenTint9);
     color: inherit;
     text-align: center;
     padding: 0;
     margin: 0 0 2em 0;
+}
+
+#appTitle a, #appTitle a:any-link {
+    color: var(--glbGreenShade7);
+    font-size: 36px;
+}
+
+#siteHeader a:any-link {
+    text-decoration: none;
+    color: var(--glbGreenShade6);
+    white-space: nowrap;
+}
+
+#siteHeader .w3-cell-row {
+    background-color: var(--glbGreenShade6);
+    color: white;
+    margin: 5px 0 0 0;
+    padding: 5px 10px;
 }
 
 #siteHeader input {
@@ -101,39 +115,56 @@ main {
     margin: 0;
 }
 
-#siteHeader .w3-cell-row {
-    background-color: #666;
-    color: white;
-    margin: 5px 0 0 0;
-    padding: 5px 10px;
-}
-
 #siteHeader .w3-btn {
     background-color: white;
-    color: var(--glbGreen);
+    color: var(--glbGreenShade7);
 }
 
-#siteHeader a {
-    text-decoration: none;
-    color: var(--glbBlue);
-}
+
+/* .w3-card {
+    font-weight: 500;
+    margin-bottom: 25px;
+    margin-top: 25px;
+} */
+
+
+
+
+
+/**             **/
+/** Site Footer **/
+/**             **/
+
 
 #siteFooter {
-    background: var(--glbGreenTint9);
+    background: var(--glbBlueTint9);
     margin: 2em 0 0 0;
+    color: black;
+}
+
+#siteFooter a:any-link {
+    color: var(--glbBlueShade6);
+    text-decoration: none;
 }
 
 #siteFooter ul {
     list-style-type: none;
+    padding: 0;
 }
 
-#siteFooter .langs {
+#siteFooter .langs, #siteFooter .langs a:any-link {
     text-align: center;
+    background-color: var(--glbBlueShade4);
+    color: var(--glbBlueTint9);
 }
 
 #siteFooter .about {
     text-align: center;
     padding-top: 1em;
+}
+
+#siteFooter .copyright {
+    padding: 3px;
 }
 
 #siteFooter .copyright p {
@@ -150,6 +181,12 @@ main {
 #siteFooter a.badge {
     text-decoration: none;
 }
+
+#siteFooter
+
+
+
+
 
 
 .w3-card a:link {
