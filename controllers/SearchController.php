@@ -119,46 +119,4 @@ class SearchController
         return self::natlang_levenshtein_search(term:$term, lang:$lang, terms:$terms);
     }
 
-
-    /**
-     * Deprecated DELETE!
-     */
-    private static function searchLang($config, $request, $lang, $term)
-    {
-        $index = $config->search_terms_location.$lang.".yaml";
-        
-        $term = strtolower(trim($term));
-        // first, try to look for exact match
-        if ($lang == 'glb') {
-
-            if (isset($dict[$term]) && isset($dict[$term][$term])) {
-                WorldlangDictUtils::redirect($config, $request, 'lexi/'.urlencode($term));
-            } elseif (isset($dict[$term])) {
-                return $dict[$term];
-            }
-        } else {
-            if (isset($dict[$term])) {
-                WorldlangDictUtils::redirect($config, $request, 'cel-ruke/'.urlencode($term));
-            }
-        }
-
-        // Finally look for a partial match in index
-        $partialMatches = [];
-        foreach ($dict as $word=>$data) {
-            // insert, replace, delete
-            if (levenshtein($term, $word, 1, 1, 1)<2) {
-                if (count($data) == 1) {
-                    $partialMatches[$word] = $word;
-                }
-                else {
-                    foreach ($data as $cur) {
-                        $i = ( ($lang == 'glb') ? $cur : $word);
-                        $partialMatches[$i] = $i;
-                    }
-                }
-            }
-        }
-
-        return $partialMatches;
-    }
 }
