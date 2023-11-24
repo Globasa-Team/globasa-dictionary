@@ -6,14 +6,14 @@ class WordController
     public static function output_entry($config, $request, &$page)
     {
         if (!isset($request->arguments[0])) {
-            throw new Error404Exception("Bad Request");
+            self::randomWord($config, $request, $page);
         }
         
         $term = strtolower($request->arguments[0]);
         $file = $config->api2Path.'terms/'.$term.'.yaml';
         if (!file_exists($file)) throw new Error404Exception("Entry Not Found");
-        
         $entry = yaml_parse_file($file);
+
         $backlinks = yaml_parse_file($config->api2Path.'backlinks.yaml');
         $page->setTitle($entry['term']);
         
