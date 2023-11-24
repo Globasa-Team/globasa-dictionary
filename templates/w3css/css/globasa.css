@@ -54,7 +54,7 @@
 body {
     font-family: 'Merriweather', 'Literata', serif;
     font-weight: 500;
-    background: linear-gradient(to left, var(--glbBlueTint8), var(--glbGreenTint8));
+    background: white;
     min-height: 100vh;
     margin: 0;
     display: flex;
