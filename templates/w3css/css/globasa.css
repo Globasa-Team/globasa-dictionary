@@ -291,6 +291,13 @@ h3 {
     color: white;
 }
 
+
+
+
+/**                  **/
+/** Dictionary Entry **/
+/**                  **/
+
 .dictionaryEntry footer a {
     text-decoration: none;
     color: white;
@@ -431,42 +438,62 @@ dd::after {
 
 
 
+/*#region Alphabetical Dictionary Browser */
 
+.filter div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 2px;
+}
+
+.filter label {
+    flex-shrink: 0;
+    flex-grow: 0;
+    text-align: center;
+    padding: 1px;
+    box-sizing: border-box;
+}
+
+.filter.alphabet label {
+    width: 3ch;
+    color: var(--glbBlue);
+    font-size: larger;
+}
+
+.filter.categories label {
+    color: var(--glbGreen);
+}
+
+.filter label:last-of-type {
+    flex-grow: 1;
+}
 
 .filter input {
     display: none;
 }
 
-
-.filter label[for^="letter-"] {
-    width: 11.1%;
-    color: var(--glbBlue);
-    font-size: larger;
-}
-
-#letter-all-label {
-    width: auto;
-}
-
-.filter  input[type="radio"]:checked + label[for^="letter-"]
+.filter input[type="radio"]:checked + label[for^="letter-"]
 {
-  background-color: var(--glbBlue);
+  background-color: var(--glbBlueShade5);
   color: white;
   
-}
-
-.filter label[for^="cat-"] {
-    width: 33.3%;
-    color: var(--glbGreen);
 }
 
 .filter  input[type="radio"]:checked + label[for^="cat-"]
 {
-  background-color: var(--glbGreen);
+  background-color: var(--glbGreenShade5);
   color: white;
   
 }
+/*#endregion*/
 
+
+
+
+/**              **/
+/** Welcome view **/
+/**              **/
 
 .welcome {
     background-position: center;
@@ -483,11 +510,20 @@ dd::after {
 
 
 
+/**                   **/
+/** Responsive Design **/
+/**                   **/
 
+/* Wide Screen */
 @media (min-width: 600px) {
     main {
         width: 50ch;
     }
+
+    .filter.categories label {
+        width: 33%;
+    }
+    
     #siteFooter {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
@@ -499,11 +535,16 @@ dd::after {
     }
 }
 
-
+/* Medium Screen */
 @media (min-width: 51ch) and (max-width: 600px) {
     main {
         margin-inline: 5px;
     }
+
+    .filter label {
+        width: 49%;
+    }
+
     #siteFooter {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -515,13 +556,20 @@ dd::after {
     }
 }
 
+/* Narrow Screen */
 @media (max-width: 51ch) {
     main {
         margin-inline: 5px;
-}
+    }
+
+    .filter label {
+        width: 100%;
+    }
+
     #siteFooter {
         text-align: center;
     }
+
     #siteFooter ul {
         padding: 0;
     }
