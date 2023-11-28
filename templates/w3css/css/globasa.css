@@ -44,6 +44,7 @@
     --glbGreenTint9: #e5f2e7;
 
     --flowerSVG: url(https://cdn.globasa.net/graphics/flower/globasa-flower.svg);
+    --flagSVG: url(https://cdn.globasa.net/graphics/flag/glb_flag.svg);
 }
 
 body {
@@ -108,7 +109,7 @@ main {
 }
 
 #siteHeader .w3-cell-row {
-    background-color: var(--glbGreenShade5);
+    background-color: var(--glbGreenShade4);
     color: white;
     margin: 5px 0 0 0;
     padding: 5px 10px;
@@ -118,6 +119,7 @@ main {
     width: 100%;
     display: inline-block;
     margin: 0;
+    border: 0;
 }
 
 #siteHeader .w3-cell {
@@ -135,7 +137,12 @@ main {
 /*#region   Site Footer */
 
 #siteFooter {
-    background-color: var(--glbBlueTint9);
+    background-color: var(--glbBlueTint8);
+    /* background-image: var(--flagSVG);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-blend-mode: soft-light; */
     margin: 2em 0 0 0;
     color: black;
 }
@@ -152,7 +159,7 @@ main {
 
 #siteFooter .langs, #siteFooter .langs a:any-link {
     text-align: center;
-    background-color: var(--glbBlueShade6);
+    background-color: var(--glbBlueShade4);
     color: var(--glbBlueTint9);
 }
 
@@ -492,7 +499,7 @@ dd::after {
     background-image: var(--flowerSVG);
     background-repeat: no-repeat;
     background-position: center;
-    min-height: 30svh;
+    min-height: max(30svh, 250px);
 }
 /*#endregion*/
 
