@@ -42,6 +42,8 @@
     --glbGreenTint7: #b2d9b8;
     --glbGreenTint8: #cce5cf;
     --glbGreenTint9: #e5f2e7;
+
+    --flowerSVG: url(https://cdn.globasa.net/graphics/flower/globasa-flower.svg);
 }
 
 body {
@@ -58,6 +60,17 @@ h1, h2, h3, h4, h5, h6 {
     font-family: inherit;
 }
 
+
+h2 {
+    font-size: large;
+}
+
+h3 {
+    font-size: medium;
+}
+
+
+
 main {
     margin: auto;
     padding: 5px;
@@ -65,7 +78,7 @@ main {
 }
 
 
-
+/*#region   Site Header */
 /**             **/
 /** site header **/
 /**             **/
@@ -116,25 +129,13 @@ main {
     background-color: white;
     color: var(--glbGreenShade7);
 }
+/*#endregion*/
 
 
-/* .w3-card {
-    font-weight: 500;
-    margin-bottom: 25px;
-    margin-top: 25px;
-} */
-
-
-
-
-
-/**             **/
-/** Site Footer **/
-/**             **/
-
+/*#region   Site Footer */
 
 #siteFooter {
-    background: var(--glbBlueTint9);
+    background-color: var(--glbBlueTint9);
     margin: 2em 0 0 0;
     color: black;
 }
@@ -179,16 +180,14 @@ main {
     text-decoration: none;
 }
 
-#siteFooter
-
-
-
-
+/*#endregion*/
 
 
 .w3-card a:link {
     text-decoration: none;
 }
+
+/*#region   Dictionary Entry */
 
 .dictionaryEntry .status {
     margin: 0;
@@ -239,31 +238,6 @@ dt .wordClass, dt .wordClass a:any-link, .translationAide dt .wordClass
     display: inline-block;
     margin: 0;
 }
-
-.content-bg {
-    background-color: rgba(255,255,255,.7);
-}
-
-/* Tools stuff */
-.w3-container textarea {
-    display: block;
-    width: 100%;
-    height: 20em;
-}
-
-.w3-card header {
-    background-color: var(--glbBlue);
-    color: white;
-}
-
-h2 {
-    font-size: large;
-}
-
-h3 {
-    font-size: medium;
-}
-
 .dictionaryEntry {
     border-radius: 8px;
     box-shadow: 0 5px 5px 0 #ccc, 0 5px 5px 0 #ccc;
@@ -290,13 +264,6 @@ h3 {
     background-color: var(--glbGreen);
     color: white;
 }
-
-
-
-
-/**                  **/
-/** Dictionary Entry **/
-/**                  **/
 
 .dictionaryEntry footer a {
     text-decoration: none;
@@ -325,14 +292,34 @@ h3 {
     margin-bottom: .5em;
 }
 
-dd {
-    margin-bottom: 1em;
-}
-
 .dictionaryList a:not([class]) {
     font-weight: bold;
     text-decoration: none;
 }
+
+/*#endregion*/
+
+
+
+
+.content-bg {
+    background-color: rgba(255,255,255,.7);
+}
+
+/* Tools stuff */
+.w3-container textarea {
+    display: block;
+    width: 100%;
+    height: 20em;
+}
+
+.w3-card header {
+    background-color: var(--glbBlue);
+    color: white;
+}
+
+
+
 
 
 dl {
@@ -345,6 +332,7 @@ dt {
 }
 
 dd {
+    margin-bottom: 1em;
     margin-left: 0.2em;
 }
 
@@ -355,66 +343,6 @@ dd::after {
 .browse dd, .browse dt {
     display: none;
 }
-
-.examples blockquote {
-    position: relative;
-}
-
-.examples p {
-    margin-bottom: 0;
-}
-
-.examples blockquote footer {
-    color: #333;
-}
-
-.dictionaryEntry .examples blockquote::before {
-	position: absolute;
-	z-index: -1;
-	display: block;
-	font-size: 8rem;
-	font-family: Georgia, Times, Garamond, serif;
-    color: #ccc;
-    top: -3rem;
-    left: -1rem;
-    content: open-quote;
-}
-
-
-.etymology h2 {
-    display: block;
-}
-
-.etymology p {
-    margin-bottom: none;
-    display: inline-block;
-}
-
-.etymology .derived, .etymology .apriori {
-    margin-top: 0;
-}
-
-.dictionaryEntry ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: inline-block;
-}
-.dictionaryEntry li {
-    display:inline-block;
-    margin: 2px;
-}
-
-.etymology span {
-    padding: 3px;
-}
-
-.etymology li > span {
-    border-radius: 7px;
-}
-
-
-
 
 
 
@@ -486,11 +414,71 @@ dd::after {
   color: white;
   
 }
+
+
+
+.dictionaryEntry .examples blockquote {
+    position: relative;
+}
+
+.dictionaryEntry .examples p {
+    margin-bottom: 0;
+}
+
+.dictionaryEntry .examples blockquote footer {
+    color: #333;
+}
+
+.dictionaryEntry .examples blockquote::before {
+	position: absolute;
+	z-index: -1;
+	display: block;
+	font-size: 8rem;
+	font-family: Georgia, Times, Garamond, serif;
+    color: #ccc;
+    top: -3rem;
+    left: -1rem;
+    content: open-quote;
+}
+
+
+.etymology h2 {
+    display: block;
+}
+
+.etymology p {
+    margin-bottom: none;
+    display: inline-block;
+}
+
+.etymology .derived, .etymology .apriori {
+    margin-top: 0;
+}
+
+.dictionaryEntry ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+}
+.dictionaryEntry li {
+    display:inline-block;
+    margin: 2px;
+}
+
+.etymology span {
+    padding: 3px;
+}
+
+.etymology li > span {
+    border-radius: 7px;
+}
+
 /*#endregion*/
 
 
 
-
+/*#region Welcome View */
 /**              **/
 /** Welcome view **/
 /**              **/
@@ -501,12 +489,12 @@ dd::after {
 }
 
 .welcome main {
-    background-image: url(https://cdn.globasa.net/logo/glb_flower_transparent_128.png);
+    background-image: var(--flowerSVG);
     background-repeat: no-repeat;
     background-position: center;
     min-height: 30svh;
 }
-
+/*#endregion*/
 
 
 
