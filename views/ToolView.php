@@ -59,61 +59,6 @@ class ToolView
         ';
     }
 
-    public static function homonymCheckTitle($config, &$page)
-    {
-        $page->content .= '<div class="w3-container content-bg"><h1>'.$config->getTrans('homonym terminator title').'</h1>'.
-            '<p>'.$config->getTrans('homonym terminator description').'</p>';
-    }
-
-    public static function homonymCheckInput($config, $request, &$page)
-    {
-        $page->content .= '
-            <div class="w3-card w3-container" style="padding: 5px">
-                <form action="'. WorldlangDictUtils::makeUri($config, "tul/samaeskri-lexi", $request) .'" method="get">
-                <input name="candidate" placeholder="'.$config->getTrans('homonym terminator new placeholder').'" class="w3-input w3-border w3-light-grey" style="max-width: 400px; display:inline-block; margin-right: 10px;" />
-                <input type="submit" value="'.$config->getTrans('homonym terminator new button').'" class="w3-btn w3-blue-grey" />
-                </form>
-            </div>';
-    }
-
-    public static function homonymCheck($config, $request, $genList, &$page)
-    {
-        $result = '';
-
-        if (isset($request->options['candidate']) && isset($config->dictionary->words[$request->options['candidate']])) {
-            $page->content .= "<h3>" .$config->getTrans('homonym terminator word exists title'). "</h3>
-                <p>". sprintf(
-                        $config->getTrans('homonym terminator word exists'),
-                        WorldlangDictUtils::makeLink(
-                            $config,
-                            'lexi/'.$request->options['candidate'],
-                            $request,
-                            $request->options['candidate']
-                        )
-                    )."</p>
-                ";
-        }
-        foreach ($genList as $genWord=>$sources) {
-            // Show all or only show ones related to the root.
-            if (sizeof($sources)>1 && (!isset($request->options['candidate']) || isset($sources[$request->options['candidate']]))) {
-                if (isset($config->dictionary->words[$genWord])) {
-                    $definition = '</br>'.$config->dictionary->words[$genWord]->translation['eng'];
-                } else {
-                    $definition = "";
-                }
-                $result .= '<li><span style="font-weight: bold; font-size: larger;">['.$genWord."]</span><br />".$config->getTrans('homonym terminator conflicting msg').
-                    " ". implode(', ', $sources).$definition."</li>";
-            }
-        }
-
-        if (!empty($result)) {
-            $page->content .= "<ul>".$result."</ul>";
-        } else {
-            $page->content .= "<h3>".$config->getTrans('homonym terminator none found')."</h3>";
-        }
-        $page->content .= "</div>";
-    }
-
     public static function minimalPairCheckTitle($config, &$page)
     {
         $page->content .= '<div class="w3-container content-bg"><h1>'.$config->getTrans('minimum pair title').'</h1>'.

@@ -70,8 +70,6 @@ h3 {
     font-size: medium;
 }
 
-
-
 main {
     margin: auto;
     padding: 5px;
@@ -304,6 +302,64 @@ dt .wordClass, dt .wordClass a:any-link, .translationAide dt .wordClass
     text-decoration: none;
 }
 
+
+.dictionaryEntry .examples blockquote {
+    position: relative;
+}
+
+.dictionaryEntry .examples p {
+    margin-bottom: 0;
+}
+
+.dictionaryEntry .examples blockquote footer {
+    color: #333;
+}
+
+.dictionaryEntry .examples blockquote::before {
+	position: absolute;
+	z-index: -1;
+	display: block;
+	font-size: 8rem;
+	font-family: Georgia, Times, Garamond, serif;
+    color: #ccc;
+    top: -3rem;
+    left: -1rem;
+    content: open-quote;
+}
+
+
+.etymology h2 {
+    display: block;
+}
+
+.etymology p {
+    margin-bottom: none;
+    display: inline-block;
+}
+
+.etymology .derived, .etymology .apriori {
+    margin-top: 0;
+}
+
+.dictionaryEntry ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+}
+.dictionaryEntry li {
+    display:inline-block;
+    margin: 2px;
+}
+
+.etymology span {
+    padding: 3px;
+}
+
+.etymology li > span {
+    border-radius: 7px;
+}
+
 /*#endregion*/
 
 
@@ -421,68 +477,42 @@ dd::after {
   color: white;
   
 }
+/*#endregion*/
 
 
 
-.dictionaryEntry .examples blockquote {
-    position: relative;
-}
+/*#region Homonym Checker */
 
-.dictionaryEntry .examples p {
-    margin-bottom: 0;
-}
-
-.dictionaryEntry .examples blockquote footer {
-    color: #333;
-}
-
-.dictionaryEntry .examples blockquote::before {
-	position: absolute;
-	z-index: -1;
-	display: block;
-	font-size: 8rem;
-	font-family: Georgia, Times, Garamond, serif;
-    color: #ccc;
-    top: -3rem;
-    left: -1rem;
-    content: open-quote;
-}
-
-
-.etymology h2 {
-    display: block;
-}
-
-.etymology p {
-    margin-bottom: none;
-    display: inline-block;
-}
-
-.etymology .derived, .etymology .apriori {
-    margin-top: 0;
-}
-
-.dictionaryEntry ul {
-    list-style: none;
-    margin: 0;
+main.homonym ul {
+    list-style-type: none;
     padding: 0;
-    display: inline-block;
-}
-.dictionaryEntry li {
-    display:inline-block;
-    margin: 2px;
 }
 
-.etymology span {
+main.homonym li {
+    margin-bottom: 0.5em;
+}
+
+.homonym header {
+    font-weight: bold;
+    color: var(--glbGreenShade7);
+    background-color: var(--glbGreenTint9);
+    font-size: larger;
     padding: 3px;
 }
 
-.etymology li > span {
-    border-radius: 7px;
+.homonym section {
+    padding: 3px;
+}
+
+.hl {
+    background-color: var(--glbBlueTint9);
+    color: black;
+    border-radius: 4px;
+    display: inline-block;
+    margin-inline: 4px;
 }
 
 /*#endregion*/
-
 
 
 /*#region Welcome View */

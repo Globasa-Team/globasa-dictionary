@@ -8,7 +8,7 @@ class ToolController
         $arg = isset($request->arguments[0]) ? $request->arguments[0] : '';
         switch ($arg) {
             case 'samaeskri-lexi':
-                ToolController::homonymCheck($config, $request, $page);
+                Homonym_controller::check($config, $request, $page);
                 include_once($config->templatePath.'view-default.php');
                 break;
             case 'minimum-duaxey':
@@ -51,17 +51,6 @@ class ToolController
         ToolView::minimalPairCheck($config, $request, $nearMatches, $page);
         $page->setTitle($config->getTrans('minimum pair title'));
         $page->description = $config->getTrans('minimum pair description');
-    }
-    
-    public static function homonymCheck($config, $request, &$page)
-    {
-        $config->dictionary = unserialize(file_get_contents($config->serializedLocation));
-        $genWords = Tool::homonymCheck($config, $request);
-        ToolView::homonymCheckTitle($config, $page);
-        ToolView::homonymCheckInput($config, $request, $page);
-        ToolView::homonymCheck($config, $request, $genWords, $page);
-        $page->setTitle($config->getTrans('homonym terminator title'));
-        $page->description = $config->getTrans('homonym terminator description');
     }
     
     public static function checkCandidateWord($config, $request, &$page)
