@@ -14,6 +14,7 @@ require_once 'models/Request.php';
 require_once 'models/Page.php';
 require_once 'models/Tool.php';
 require_once 'models/Homonym.php';
+require_once 'models/Minimal_pair.php';
 require_once 'views/IndexView.php';
 require_once 'views/SearchView.php';
 require_once 'views/ToolView.php';
@@ -29,6 +30,7 @@ require_once 'controllers/BrowseController.php';
 require_once 'controllers/TestController.php';
 require_once 'controllers/ErrorController.php';
 require_once 'controllers/Homonym_controller.php';
+require_once 'controllers/Minimal_pair_controller.php';
 require_once 'controllers/ToolController.php';
 
 $config = new WorldlangDictConfig();

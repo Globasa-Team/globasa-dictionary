@@ -9,13 +9,12 @@ class ToolController
         switch ($arg) {
             case 'samaeskri-lexi':
                 Homonym_controller::check($config, $request, $page);
-                include_once($config->templatePath.'view-default.php');
                 break;
             case 'minimum-duaxey':
-                ToolController::minimalPairCheck($config, $request, $page);
-                include_once($config->templatePath.'view-default.php');
+                Minimal_pair_controller::check($config, $request, $page);
                 break;
             case 'kandidato-lexi':
+                die("Under maintenance. Please use the homonym check and minimum pair check sperately.");
                 ToolController::checkCandidateWord($config, $request, $page);
                 include_once($config->templatePath.'view-default.php');
                 break;
@@ -40,17 +39,6 @@ class ToolController
                 include_once($config->templatePath.'view-default.php');
                 break;
             }
-    }
-    
-    public static function minimalPairCheck($config, $request, &$page)
-    {
-        $config->dictionary = unserialize(file_get_contents($config->serializedLocation));
-        $nearMatches = Tool::minimalPairCheck($config, $request);
-        ToolView::minimalPairCheckTitle($config, $page);
-        ToolView::minimalPairCheckInput($config, $request, $page);
-        ToolView::minimalPairCheck($config, $request, $nearMatches, $page);
-        $page->setTitle($config->getTrans('minimum pair title'));
-        $page->description = $config->getTrans('minimum pair description');
     }
     
     public static function checkCandidateWord($config, $request, &$page)
