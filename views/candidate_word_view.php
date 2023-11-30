@@ -11,14 +11,15 @@ namespace WorldlangDict;
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
   <![endif]-->
 
-<?
+<? require_once($config->templatePath . "partials/page-header.php"); ?>
 
-require_once($config->templatePath . "partials/page-header.php");
-?>
+<article class="homonyms">
+<? require('views/homonym_view_part.php'); ?>
+</article>
 
-<main class="minimal_pairs">
+<article class="minimal_pairs">
 <? require('views/minimal_pair_view_part.php'); ?>
-</main>
+</article>
 
 <? require_once($config->templatePath . "partials/page-footer.php"); ?>
 
