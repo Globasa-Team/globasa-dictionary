@@ -31,6 +31,7 @@ require_once 'controllers/TestController.php';
 require_once 'controllers/ErrorController.php';
 require_once 'controllers/Homonym_controller.php';
 require_once 'controllers/Minimal_pair_controller.php';
+require_once 'controllers/Candidate_word_controller.php';
 require_once 'controllers/ToolController.php';
 
 $config = new WorldlangDictConfig();

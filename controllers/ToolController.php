@@ -14,9 +14,7 @@ class ToolController
                 Minimal_pair_controller::check($config, $request, $page);
                 break;
             case 'kandidato-lexi':
-                die("Under maintenance. Please use the homonym check and minimum pair check sperately.");
-                ToolController::checkCandidateWord($config, $request, $page);
-                include_once($config->templatePath.'view-default.php');
+                Candidate_word_controller::check($config, $request, $page);
                 break;
             case 'basatayti':
                 ToolController::transAide($config, $request, $page);
