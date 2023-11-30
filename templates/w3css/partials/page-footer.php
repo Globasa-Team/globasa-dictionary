@@ -31,10 +31,10 @@ namespace WorldlangDict;
     </ul></section>
     
     <section><ul>
-        <li><a href="https://globasa.net/eng/">🔗 Globasa</a></li>
-        <li><a href="https://xwexi.globasa.net/eng/">🔰 Xwexi</a></li>
-        <li><a href="https://doxo.globasa.net/eng/">📖 Doxo</a></li>
-        <li><a href="https://menalari.globasa.net/eng/">📔 Menalari</a></li>
+        <li><a href="https://globasa.net/<?=$request->lang;?>/">🔗 Globasa</a></li>
+        <li><a href="https://xwexi.globasa.net/<?=$request->lang;?>/">🔰 Xwexi</a></li>
+        <li><a href="https://doxo.globasa.net/<?=$request->lang;?>/">📖 Doxo</a></li>
+        <li><a href="https://menalari.globasa.net/<?=$request->lang;?>/">📔 Menalari</a></li>
     </ul></section>
 
     <section><ul>
