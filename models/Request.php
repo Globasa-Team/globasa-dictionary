@@ -22,7 +22,8 @@ class Request
         $this->path = isset($parsedUrl['path']) ? explode('/', $parsedUrl['path']) : [];
 
         if (isset($parsedUrl['query'])) {
-            $this->linkQuery = '?'.$parsedUrl['query'];
+            //$this->linkQuery = '?'.$parsedUrl['query'];
+            $this->linkQuery = '';
             parse_str($parsedUrl['query'], $this->options);
         } else {
             $this->linkQuery = '';
