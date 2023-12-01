@@ -5,7 +5,8 @@ class WorldlangDictUtils
 {
     public static function makeUri($config, $controller, $request)
     {
-        if (is_string($request)) {
+        // disable error debug logging
+        if (false && is_string($request)) {
             @error_log("\n\n-----".date(DATE_ATOM)."\n", 3, "debug.log");
             @error_log("\nmakeUri has a request as string.\n", 3, "debug.log");
             @error_log("\nrequest:\n".serialize($request)."\n", 3, "debug.log");
