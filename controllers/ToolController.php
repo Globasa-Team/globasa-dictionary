@@ -39,32 +39,6 @@ class ToolController
             }
     }
     
-    public static function checkCandidateWord($config, $request, &$page)
-    {
-        $config->dictionary = unserialize(file_get_contents($config->serializedLocation));
-        ToolView::homonymCheckTitle($config, $page);
-        $genWords = Tool::homonymCheck($config, $request);
-        ToolView::homonymCheck($config, $request, $genWords, $page);
-        
-        ToolView::minimalPairCheckTitle($config, $page);
-        $nearMatches = Tool::minimalPairCheck($config, $request);
-        ToolView::minimalPairCheck($config, $request, $nearMatches, $page);
-        
-        $page->setTitle($config->getTrans('candidate check title'));
-        $page->description = $config->getTrans('candidate check description');
-    }
-    
-    public static function transAide($config, $request, &$page)
-    {
-        $config->dictionary = unserialize(file_get_contents($config->serializedLocation));
-        $bulkWords = Tool::transAideBulkTranslate($config, $request);
 
-        ToolView::transAideTitle($config, $page, $request);
-        ToolView::transAideInput($config, $request, $page);
-        ToolView::transAideResults($config, $request, $bulkWords, $page);
-        
-        $page->setTitle($config->getTrans('translation aide title'));
-        $page->description = $config->getTrans('translation aide description');
-    }
     
 }
