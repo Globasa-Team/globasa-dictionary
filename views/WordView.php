@@ -34,7 +34,10 @@ class WordView
      */
     public static function entry_to_dl_pair_string(object $config, object $request, string $term, array $data) {
         if (empty($term)) return "";
-
+// category shoudl chagne proper noun to proper word
+        if (strcmp($data['category'], "proper noun") == 0) {
+            $data['category'] = "proper word";
+        }
         $letter = ctype_alpha($term[0]) ? $term[0] : $term[1];
         $attributes = " data-class=\"{$data['class']}\" data-category=\"{$data['category']}\" data-char=\"{$letter}\" ";
         $result = "<dt {$attributes}>".
