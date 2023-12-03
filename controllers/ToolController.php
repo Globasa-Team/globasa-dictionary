@@ -17,7 +17,7 @@ class ToolController
                 Candidate_word_controller::check($config, $request, $page);
                 break;
             case 'basatayti':
-                ToolController::transAide($config, $request, $page);
+                Translation_aid_controller::default($config, $request, $page);
                 include_once($config->templatePath.'view-default.php');
                 break;
             case 'ifa-trasharufitul':
@@ -38,18 +38,4 @@ class ToolController
                 break;
             }
     }
-    
-    public static function transAide($config, $request, &$page)
-    {
-        $config->dictionary = unserialize(file_get_contents($config->serializedLocation));
-        $bulkWords = Tool::transAideBulkTranslate($config, $request);
-
-        ToolView::transAideTitle($config, $page, $request);
-        ToolView::transAideInput($config, $request, $page);
-        ToolView::transAideResults($config, $request, $bulkWords, $page);
-        
-        $page->setTitle($config->getTrans('translation aide title'));
-        $page->description = $config->getTrans('translation aide description');
-    }
-    
 }
