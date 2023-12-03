@@ -17,7 +17,7 @@ class ToolController
                 Candidate_word_controller::check($config, $request, $page);
                 break;
             case 'basatayti':
-                ToolController::transAide($config, $request, $page);
+                Translation_aid_controller::default($config, $request, $page);
                 include_once($config->templatePath.'view-default.php');
                 break;
             case 'ifa-trasharufitul':
