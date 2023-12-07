@@ -16,13 +16,13 @@ namespace WorldlangDict;
 
     <h1><?= $config->getTrans('browse title') ?></h1>
 
-    <div class="w3-card">
-        <header class="w3-container">
+    <div class="filter">
+        <header>
             <h2><?= $config->getTrans('browse filters header') ?></h2>
         </header>
-        <section class="filter alphabet">
+        <section class="alphabet">
             <h3><?= $config->getTrans('browse filter by letter header') ?></h3>
-            <div class="">
+            <div>
                 <input type="radio" name="letter" id="letter-a" value="a">
                 <label for="letter-a" class="">a</label>
                 <input type="radio" name="letter" id="letter-b" value="b">
@@ -74,11 +74,11 @@ namespace WorldlangDict;
                 <input type="radio" name="letter" id="letter-z" value="z">
                 <label for="letter-z" class="">z</label>
                 <input type="radio" name="letter" id="letter-all" value="all">
-                <label for="letter-all" class="" id="letter-all-label"><?= $config->getTrans('letter all') ?></label>
+                <label for="letter-all" class="filter-all" id="letter-all-label"><?= $config->getTrans('letter all') ?></label>
             </div>
         </section>
 
-        <section class="filter categories">
+        <section class="categories">
             <h3 class=""><?= $config->getTrans('browse filter by category header') ?></h3>
             <div>
                 <input id="cat-affix" type="radio" name="category" value="affix">
@@ -92,7 +92,7 @@ namespace WorldlangDict;
                 <input id="cat-phrase" type="radio" name="category" value="phrase">
                 <label for="cat-phrase" class=""><?= $config->getTrans('phrase') ?></label>
                 <input id="cat-all" type="radio" name="category" value="all">
-                <label for="cat-all" class=""><?= $config->getTrans('category all') ?></label>
+                <label for="cat-all" class="filter-all"><?= $config->getTrans('category all') ?></label>
             </div>
         </section>
     </div>

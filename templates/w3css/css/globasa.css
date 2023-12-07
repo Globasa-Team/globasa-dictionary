@@ -431,47 +431,56 @@ dd::after {
 
 /*#region Alphabetical Dictionary Browser */
 
-.filter div {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    gap: 2px;
+.filter {
+    display: grid;
+    grid-template-columns: 2;
+    column-gap: 2em;
+    background-color: var(--glbGreenTint8);
+    border: solid 1px var(--glbGreenTint6);
+    border-radius: 1em;
+    padding: 3px;
 }
 
-.filter label {
-    flex-shrink: 0;
-    flex-grow: 0;
+.filter header {
+    grid-column: span 2;
+    font-weight: bold;
+}
+
+.filter h2 {
+    margin: 0;
     text-align: center;
-    padding: 1px;
-    box-sizing: border-box;
 }
 
-.filter.alphabet label {
-    width: 3ch;
-    color: var(--glbBlue);
+.filter .alphabet div {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.filter .alphabet label {
     font-size: larger;
+    text-align: center;
 }
 
-.filter.categories label {
+.filter .categories label {
+    display: block;
     color: var(--glbGreen);
 }
 
-.filter label:last-of-type {
-    flex-grow: 1;
+.filter .alphabet label:last-of-type {
+    grid-column: span 5;
+}
+
+.filter label {
+    padding: 5px;
+    box-sizing: border-box;    
 }
 
 .filter input {
     display: none;
 }
 
+.filter input[type="radio"]:checked + label[for^="cat-"],
 .filter input[type="radio"]:checked + label[for^="letter-"]
-{
-  background-color: var(--glbBlueShade5);
-  color: white;
-  
-}
-
-.filter  input[type="radio"]:checked + label[for^="cat-"]
 {
   background-color: var(--glbGreenShade5);
   color: white;
@@ -581,8 +590,7 @@ form.tool input[type="submit"] {
         width: 50ch;
     }
 
-    .filter.categories label {
-        width: 33%;
+    .filter {
     }
     
     form.tool {
@@ -606,8 +614,7 @@ form.tool input[type="submit"] {
         margin-inline: 5px;
     }
 
-    .filter label {
-        width: 49%;
+    .filter {
     }
 
     form.tool {
@@ -631,8 +638,8 @@ form.tool input[type="submit"] {
         margin-inline: 5px;
     }
 
-    .filter label {
-        width: 100%;
+    .filter {
+        display: block;
     }
 
     form.tool input[type="submit"] {
