@@ -55,6 +55,7 @@ body {
     margin: 0;
     display: flex;
     flex-direction: column;
+    vertical-align: text-top;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -75,7 +76,6 @@ main, article {
     padding: 5px;
     box-sizing: border-box;
 }
-
 
 /*#region   Site Header */
 /**             **/
@@ -106,11 +106,14 @@ main, article {
     white-space: nowrap;
 }
 
-#siteHeader .w3-cell-row {
+#siteHeader form {
     background-color: var(--glbGreenShade4);
     color: white;
     margin: 5px 0 0 0;
-    padding: 5px 10px;
+    padding: 5px;
+}
+
+#siteHeader form > * {
 }
 
 #siteHeader input {
@@ -120,12 +123,7 @@ main, article {
     border: 0;
 }
 
-#siteHeader .w3-cell {
-    padding: 0 3px;
-    margin: 0;
-}
-
-#siteHeader .w3-btn {
+#siteHeader input[type=submit] {
     background-color: white;
     color: var(--glbGreenShade7);
 }
@@ -136,11 +134,6 @@ main, article {
 
 #siteFooter {
     background-color: var(--glbBlueTint8);
-    /* background-image: var(--flagSVG);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-blend-mode: soft-light; */
     margin: 2em 0 0 0;
     color: black;
 }
@@ -228,13 +221,7 @@ dt .wordClass, dt .wordClass a:any-link, .translationAide dt .wordClass
     margin-top: 0;
 }
 
-.entryContent {
-    padding-bottom: 1em;
-    background-color: rgba(255,255,255,.5);
-
-}
-
-.dictionaryEntry a, .tags a, dl a {
+.dictionaryEntry a:any-link, .tags a:any-link, dl a:any-link {
     text-decoration: none;
     color: var(--glbGreen);
 }
@@ -516,11 +503,29 @@ dd::after {
 .hl {
     background-color: var(--glbBlueTint9);
     color: black;
-    border-radius: 4px;
     display: inline-block;
+    border-radius: 4px;
     margin-inline: 4px;
+    padding: 4px;
 }
 
+
+.etymology .lang_list li {
+    display: inline-block;
+    text-align: center;
+    padding: 4px;
+    border-radius: 8px;
+    background-color: var(--glbBlueTint9);
+    color: var(--glbBlueShade7);
+}
+
+.etymology .lang_list li .hl {
+    background-color: var(--glbGreenTint8);
+    color: black;
+    display: block;
+    margin-inline: 0;
+    border: solid 1px var(--glbGreenTint7);
+}
 /*#endregion*/
 
 
@@ -586,6 +591,13 @@ form.tool input[type="submit"] {
 
 /* Wide Screen */
 @media (min-width: 600px) {
+
+    #siteHeader form {
+        display: grid;
+        grid-template-columns: 1fr 1fr 300px;
+        gap: 5px;
+    }
+
     main, article {
         width: 50ch;
     }
@@ -610,6 +622,12 @@ form.tool input[type="submit"] {
 
 /* Medium Screen */
 @media (min-width: 51ch) and (max-width: 600px) {
+    #siteHeader form {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 5px;
+    }
+
     main, article {
         margin-inline: 5px;
     }
@@ -642,6 +660,12 @@ form.tool input[type="submit"] {
         display: block;
     }
 
+    form {
+        display: grid;
+        grid-template-columns: auto ;
+        gap: 0.5em;
+    }
+
     form.tool input[type="submit"] {
         display: block;
         width: fit-content;
@@ -655,4 +679,120 @@ form.tool input[type="submit"] {
     #siteFooter ul {
         padding: 0;
     }
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: black;
+        color: white;
+    }
+
+    .hl {
+        background-color: var(--glbBlueShade7);
+        color: white;
+    }
+
+    .dictionaryEntry {
+        box-shadow: 0 5px 5px 0 #111, 0 5px 5px 0 #111;
+    }
+
+    .dictionaryEntry > footer {
+        background-color: var(--glbGreen);
+        background: linear-gradient(45deg, var(--glbGreenShade5) 30%, var(--glbGreenShade4) 70%);
+        color: white;
+    }
+    
+    .dictionaryEntry > header {
+        background-color: var(--glbBlue);
+        background: linear-gradient(45deg, var(--glbBlueShade5) 30%, var(--glbBlueShade4) 70%);
+        color: white;
+    }
+    
+    .dictionaryEntry > * {
+        padding-inline: 5px;
+    }
+    .dictionaryEntry a:any-link, .tags a:any-link, dl a:any-link {
+        color: var(--glbGreenTint6);
+    }
+    
+    .dictionaryEntry .examples blockquote::before {
+        color: #333;
+    }
+
+    
+    .etymology .lang_list li {
+        background-color: var(--glbBlueShade7);
+        color: var(--glbBlueTint9);
+    }
+    
+    .etymology .lang_list li .hl {
+        background-color: var(--glbGreenShade6);
+        border: solid 1px var(--glbGreenSHade7);
+        color: white;
+    }
+
+
+
+    /* Site Footer */
+
+    
+    #siteHeader {
+        background-color: var(--glbGreenShade7);
+    }
+
+    #appTitle a, #appTitle a:any-link {
+        color: var(--glbGreenTint9);
+    }
+
+    #siteHeader a:any-link {
+        color: var(--glbGreenTint9);
+    }
+
+    #siteHeader .w3-cell-row {
+        background-color: var(--glbGreenShade4);
+        color: white;
+    }
+
+    #siteHeader .w3-btn {
+        background-color: var(--glbGreenShade7);
+        color: white;
+    }
+
+    #siteHeader input {
+        background-color: var(--glbGreenShade7);
+        color: white;
+    }
+
+    #siteHeader input::placeholder {
+        color: darkgrey;
+        opacity: 1; /* Firefox */
+    }
+
+
+    /* Site Footer */
+
+    #siteFooter {
+        background-color: var(--glbBlueShade6);
+        color: white;
+    }
+    
+    #siteFooter a:any-link {
+        color: var(--glbBlueTint8);
+    }
+    
+    #siteFooter .langs, #siteFooter .langs a:any-link {
+        /* background-color: var(--glbBlueShade4); */
+        color: var(--glbBlueTint9);
+    }
+    
+}
+
+
+
+details.debug {
+    width: 60ch; margin: auto;
+}
+
+details.debug summary {
+    text-align: center;
 }

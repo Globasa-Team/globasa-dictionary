@@ -19,15 +19,13 @@ require_once($config->templatePath . "partials/page-header.php");
 <main class="dictionaryEntry">
 
 
-    <header class="w3-container">
+    <header>
         <h1 id="entryTerm"><?=$entry['term']?></h1>
 <? if (!empty($entry['word class'])): ?>
     <div class="wordClass">(<a href="https://xwexi.globasa.net/<?=$config->lang;?>/gramati/lexiklase"><?=$entry['word class']?></a>)</div>
 <? endif; ?>
     </header>
 
-
-<div class="w3-container entryContent">
 
 <?
 /**
@@ -41,7 +39,7 @@ require_once($config->templatePath . "partials/page-header.php");
     foreach($entry['trans'][$config->lang] as $group):
         $j = 0;
         foreach($group as $translation):
-            ?><span class="w3-tag w3-round w3-light-grey"><?=$translation?></span><?
+            ?><span class="hl"><?=$translation?></span><?
             if (++$j < count($group)):
                 ?>, <?
             endif;
@@ -170,7 +168,7 @@ if (isset($entry['etymology']['am oko pia'])): ?>
     <h3>Am oko pia</h3>
     <?
     $list = &$entry['etymology']['am oko pia'];
-    $item_class = "w3-tag w3-round w3-dark-grey";
+    $item_class = "hl";
     include($config->templatePath . "partials/entry_word_list.php");
     ?>
 </div>
@@ -182,7 +180,7 @@ if (isset($entry['etymology']['am oko'])): ?>
     <h3>Am oko</h3>
     <?
     $list = &$entry['etymology']['am oko'];
-    $item_class = "w3-tag w3-round w3-dark-grey";
+    $item_class = "hl";
     include($config->templatePath . "partials/entry_word_list.php");
     ?>
     
@@ -195,7 +193,7 @@ if (isset($entry['etymology']['am kompara'])): ?>
     <h3>Am kompara</h3>
     <?
     $list = &$entry['etymology']['am kompara'];
-    $item_class = "w3-tag w3-round w3-dark-grey";
+    $item_class = "hl";
     include($config->templatePath . "partials/entry_word_list.php");
     ?>
 </div>
@@ -218,7 +216,7 @@ if (!empty($backlinks[$entry['slug']])): ?>
     <h2 class="alsosee"><?=sprintf($config->getTrans('Also See Sentence'), '');?></h2>
     <?
     $list = &$backlinks[$entry['slug']];
-    $item_class = "w3-tag w3-round w3-light-grey";
+    $item_class = "hl";
     include($config->templatePath . "partials/entry_word_list.php");
     ?>
 </section>
@@ -246,20 +244,32 @@ if (!empty($entry['tags'])):
 
 
 
-</div>
-
-
 <?
 /**
  * Entry footer
  */ ?>
-<footer class="w3-container">
+<footer>
     <?=WorldlangDictUtils::makeLink($config, 'lexi/'.$entry['term'], $request,
         '<span class="fa fa-link"></span> '.$config->getTrans('Word Link')) ?>
     &bull; <a href="<?=$entry['ipa link']?>"><span class="fa fa-volume-up"></span> <?=$config->getTrans('ipa link')?></a>
 </footer>
  
 </main>
+
+<? if (isset($config->debugging) && $config->debugging) : ?>
+<details class="debug">
+    <summary>🔍 Entry Inspector</summary>
+    <pre>
+        <?=yaml_emit($entry);?>
+    </pre>
+</details>
+<details class="debug">
+    <summary>🔍 Backlink Inspector</summary>
+    <pre>
+        <?=yaml_emit($backlinks[$entry['slug']]);?>
+    </pre>
+</details>
+<? endif; ?>
 
 <? require_once($config->templatePath . "partials/page-footer.php"); ?>
 
