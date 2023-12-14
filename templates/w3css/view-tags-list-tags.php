@@ -11,7 +11,7 @@ namespace WorldlangDict;
 
 <? require_once($config->templatePath . "partials/page-header.php"); ?>
 
-<main id="content" class="w3-container content-bg">
+<main id="content" class="w3-container">
 
 <h1><?= $config->getTrans('tags title') ?></h1>
 <dl class="">

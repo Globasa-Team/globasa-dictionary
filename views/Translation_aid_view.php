@@ -13,7 +13,7 @@ namespace WorldlangDict;
 
 <main class="translation_aid">
 
-    <div class="w3-card w3-container content-bg"><h1><?=$config->getTrans('translation aide title');?></h1>
+    <div class="w3-card w3-container"><h1><?=$config->getTrans('translation aide title');?></h1>
     <p><?=$config->getTrans('translation aide description');?></p></div>
 
 <? $words = isset($_REQUEST['text']) ? $_REQUEST['text'] : null; ?>
@@ -25,7 +25,7 @@ namespace WorldlangDict;
     </div>
 <? if (!empty($sentences)) : ?>
 
-    <div class="w3-card w3-container content-bg"><ul class="translationAide">
+    <div class="w3-card w3-container"><ul class="translationAide">
     <? foreach($sentences as $current) : ?>
         <li><?=$current->sentence;?><ul>
         <? foreach($current->words as $word) :

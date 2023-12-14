@@ -354,10 +354,6 @@ dt .wordClass, dt .wordClass a:any-link, .translationAide dt .wordClass
 
 
 
-.content-bg {
-    background-color: rgba(255,255,255,.7);
-}
-
 /* Tools stuff */
 .w3-container textarea {
     display: block;

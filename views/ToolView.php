@@ -8,7 +8,7 @@ class ToolView
         $page->content .= '<h1>'.$config->getTrans('tools button').'</h1>
 
 
-            <div class="w3-card content-bg">
+            <div class="w3-card">
                 <header class="w3-container">
                     <h2><a href="'.WorldlangDictUtils::makeUri($config, 'tul/basatayti', $request).'">'.$config->getTrans('translation aide title').'</a></h2>
                 </header>
@@ -17,7 +17,7 @@ class ToolView
             </div>
 
 
-            <div class="w3-card content-bg">
+            <div class="w3-card">
                 <header class="w3-container">
                     <h2><a href="'.WorldlangDictUtils::makeUri($config, 'tul/ifa-trasharufitul', $request).'">'.$config->getTrans('ipa converter title').'</a></h2>
                 </header>
@@ -26,7 +26,7 @@ class ToolView
             </div>
 
 
-            <div class="w3-card content-bg">
+            <div class="w3-card">
                 <header class="w3-container">
                     <h2>'.$config->getTrans('candidate check title').'</h2>
                 </header>
@@ -39,7 +39,7 @@ class ToolView
                 </div>
             </div>
 
-            <div class="w3-card content-bg">
+            <div class="w3-card">
                 <header class="w3-container">
                     <h2><a href="'.WorldlangDictUtils::makeUri($config, 'tul/samaeskri-lexi', $request).'">'.$config->getTrans('homonym terminator title').'</a></h2>
                 </header>
@@ -47,7 +47,7 @@ class ToolView
                 </div>
             </div>
 
-            <div class="w3-card content-bg">
+            <div class="w3-card">
                 <header class="w3-container">
                     <h2><a href="'.WorldlangDictUtils::makeUri($config, 'tul/minimum-duaxey', $request).'">'.$config->getTrans('minimum pair title').'</a></h2>
                 </header>
