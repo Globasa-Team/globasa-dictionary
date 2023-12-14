@@ -420,8 +420,8 @@ dd::after {
     display: grid;
     grid-template-columns: 2;
     column-gap: 2em;
-    background-color: var(--glbGreenTint8);
-    border: solid 1px var(--glbGreenTint6);
+    background-color: var(--glbGreenShade8);
+    border: solid 1px var(--glbGreenShade6);
     border-radius: 1em;
     padding: 3px;
 }
@@ -448,7 +448,7 @@ dd::after {
 
 .filter .categories label {
     display: block;
-    color: var(--glbGreen);
+    color: var(--glbGreenTint7);
 }
 
 .filter .alphabet label:last-of-type {
@@ -765,11 +765,13 @@ form.tool input[type="submit"] {
     #siteHeader input {
         background-color: var(--glbGreenShade7);
         color: white;
+        text-align: center;
     }
 
     #siteHeader input::placeholder {
         color: darkgrey;
         opacity: 1; /* Firefox */
+        text-align: center;
     }
 
 
