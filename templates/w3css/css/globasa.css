@@ -106,10 +106,13 @@ main, article {
     white-space: nowrap;
 }
 
-#siteHeader form {
+#siteHeader section.search {
     background-color: var(--glbGreenShade4);
     color: white;
-    margin: 5px 0 0 0;
+}
+
+#siteHeader form {
+    margin: 5px auto 0 auto;
     padding: 5px;
 }
 
@@ -233,6 +236,11 @@ dt .wordClass, dt .wordClass a:any-link, .translationAide dt .wordClass
     border-radius: 8px;
     box-shadow: 0 5px 5px 0 #ccc, 0 5px 5px 0 #ccc;
     padding: 0;
+}
+
+    
+.dictionaryEntry > * {
+    padding-inline: 5px;
 }
 
 .dictionaryEntry > footer {
@@ -588,8 +596,14 @@ form.tool input[type="submit"] {
 
     #siteHeader form {
         display: grid;
-        grid-template-columns: 1fr 1fr 300px;
+        grid-template-columns: 1fr 1fr/*1fr 300px*/;
         gap: 5px;
+        width: 50ch;
+        margin-inline: auto;
+    }
+
+    #siteHeader form input[type=submit] {
+        grid-column: span 2;
     }
 
     main, article {
@@ -618,13 +632,16 @@ form.tool input[type="submit"] {
 @media (min-width: 51ch) and (max-width: 600px) {
     #siteHeader form {
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-columns: 1fr 1fr/*1fr 300px*/;
         gap: 5px;
+        width: 50ch;
+        margin-inline: auto;
     }
 
-    main, article {
-        margin-inline: 5px;
+    #siteHeader form input[type=submit] {
+        grid-column: span 2;
     }
+
 
     .filter {
     }
@@ -701,10 +718,7 @@ form.tool input[type="submit"] {
         background: linear-gradient(45deg, var(--glbBlueShade5) 30%, var(--glbBlueShade4) 70%);
         color: white;
     }
-    
-    .dictionaryEntry > * {
-        padding-inline: 5px;
-    }
+
     .dictionaryEntry a:any-link, .tags a:any-link, dl a:any-link {
         color: var(--glbGreenTint6);
     }
@@ -727,7 +741,7 @@ form.tool input[type="submit"] {
 
 
 
-    /* Site Footer */
+    /* Site Header */
 
     
     #siteHeader {
@@ -742,7 +756,7 @@ form.tool input[type="submit"] {
         color: var(--glbGreenTint9);
     }
 
-    #siteHeader .w3-cell-row {
+    /* #siteHeader .w3-cell-row {
         background-color: var(--glbGreenShade4);
         color: white;
     }
@@ -750,7 +764,7 @@ form.tool input[type="submit"] {
     #siteHeader .w3-btn {
         background-color: var(--glbGreenShade7);
         color: white;
-    }
+    } */
 
     #siteHeader input {
         background-color: var(--glbGreenShade7);
@@ -784,7 +798,7 @@ form.tool input[type="submit"] {
 
 
 details.debug {
-    width: 60ch; margin: auto;
+    width: 50ch; margin: auto;
 }
 
 details.debug summary {
