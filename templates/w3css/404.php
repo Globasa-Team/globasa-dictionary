@@ -14,10 +14,8 @@ header("HTTP/1.0 404 Not Found");
 
 
 
-<main id="content" class="w3-main">
-  <div class="w3-container" style="padding: 5px">
-    <h1>404: Page Not Found</h1>
-  </div>
+<main>
+  <h1>404: Page Not Found</h1>
 </main>
 
 

@@ -57,12 +57,6 @@ class WordController
 
     }
 
-    public static function addWordList($config, $request, $listLang, &$page)
-    {
-        // $list = new WordList($config, $listLang);
-        $page->setTitle($config->getTrans('all words button'));
-        WordView::addList($config, $request, $page);
-    }
 
     public static function getWordList($config, $request, $listLang, &$page)
     {
