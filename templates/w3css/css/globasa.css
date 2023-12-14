@@ -113,9 +113,6 @@ main, article {
     padding: 5px;
 }
 
-#siteHeader form > * {
-}
-
 #siteHeader input {
     width: 100%;
     display: inline-block;
@@ -257,12 +254,7 @@ dt .wordClass, dt .wordClass a:any-link, .translationAide dt .wordClass
     color: white;
 }
 
-.dictionaryEntry footer a {
-    text-decoration: none;
-    color: white;
-}
-
-.dictionaryEntry footer a:hover {
+.dictionaryEntry footer a:any-link {
     text-decoration: none;
     color: white;
 }
