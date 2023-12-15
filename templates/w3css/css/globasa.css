@@ -740,11 +740,11 @@ form.tool input[type="submit"] {
     }
 
     #siteHeader .search {
-        background-color: var(--glbGreenShade4);
+        /* background-color: var(--glbGreenShade4); */
     }
 
     #siteHeader input[type=text] {
-        background-color: var(--glbGreenTint9);
+        background-color: white;
         color: var(--glbGreenShade7);
         border: solid 1px var(--glbGreenTint5);
     }
