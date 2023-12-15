@@ -54,7 +54,9 @@ require_once($config->templatePath . "partials/page-header.php");
  
  ?></p>
 </section>
- 
+<section class="ipa">
+    <p>IPA: <?=$entry['ipa'];?></p>
+</section>
  
  <?
  /**
