@@ -870,11 +870,23 @@ form.tool input[type="submit"] {
         color: var(--glbGreenTint9);
     }
 
+    #siteHeader {
+        background-color: var(--glbGreenShade8);
+    }
+
+    #appTitle a, #appTitle a:any-link {
+        color: var(--glbGreenTint9);
+    }
+
     #siteHeader a:any-link {
         color: var(--glbGreenTint9);
     }
 
 
+    #siteHeader .search {
+        background-color: var(--glbGreenShade6);
+        color: white;
+    }
     #siteHeader input[type=text] {
         background-color: var(--glbGreenShade8);
         color: white;
