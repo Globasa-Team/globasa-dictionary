@@ -10,15 +10,16 @@ class SearchController
     public static function search(object $config, object $request, Page &$page)
     {
         $partial_matches = null;
-        if (empty($request->options)) {
-            WorldlangDictUtils::redirect($config, $request);
-        } elseif (!empty($request->options['glb'])) {
+        if (!empty($request->options['glb'])) {
             $lang = "glb";
             $partial_matches = self::globasa_term_search(config:$config, term:$request->options['glb'], page:$page, request:$request);
         } else {
             $lang = array_key_first($request->options);
             if (strcmp($lang, "glb")===0) {
                 $lang = array_key_last($request->options);
+            }
+            if (empty($request->options[$lang])) {
+                WorldlangDictUtils::redirect($config, $request);
             }
             $term = $request->options[$lang];
             $partial_matches = self::natlang_term_search($config, $lang, $term, $page);
