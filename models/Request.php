@@ -40,7 +40,7 @@ class Request
 
         // Let's get to the request content!
         $this->lang = $config->lang;
-        $this->controller = 'index';
+        $this->controller = '';
         $this->arguments = [];
 
         if ($requestSize >= 1) {

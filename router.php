@@ -43,9 +43,11 @@ function router($config)
             case 'test':
                 TestController::helloWorld($config, $request, $page);
                 break;
-            default:
+            case '':
                 IndexController::home($config, $request, $page);
                 break;
+            default:
+                throw new Error404Exception("Invalid controller");
         }
     } catch (Error404Exception $e) {
         ErrorController::error_404($config, $request, $page);
