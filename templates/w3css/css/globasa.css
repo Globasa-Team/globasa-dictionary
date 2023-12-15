@@ -50,7 +50,6 @@
 body {
     font-family: 'Merriweather', 'Literata', serif;
     font-weight: 500;
-    background: white;
     min-height: 100vh;
     margin: 0;
     display: flex;
@@ -84,7 +83,6 @@ main, article {
 
 #siteHeader {
     width: 100%;
-    background-color: var(--glbGreenTint9);
     color: inherit;
     text-align: center;
     padding: 0;
@@ -92,7 +90,6 @@ main, article {
 }
 
 #appTitle a, #appTitle a:any-link {
-    color: var(--glbGreenShade7);
     font-size: 36px;
 }
 
@@ -102,13 +99,7 @@ main, article {
 
 #siteHeader a:any-link {
     text-decoration: none;
-    color: var(--glbGreenShade6);
     white-space: nowrap;
-}
-
-#siteHeader section.search {
-    background-color: var(--glbGreenShade4);
-    color: white;
 }
 
 #siteHeader form {
@@ -121,25 +112,19 @@ main, article {
     display: inline-block;
     margin: 0;
     border: 0;
+    text-align: center;
 }
 
-#siteHeader input[type=submit] {
-    background-color: white;
-    color: var(--glbGreenShade7);
-}
 /*#endregion*/
 
 
 /*#region   Site Footer */
 
 #siteFooter {
-    background-color: var(--glbBlueTint8);
     margin: 2em 0 0 0;
-    color: black;
 }
 
 #siteFooter a:any-link {
-    color: var(--glbBlueShade6);
     text-decoration: none;
 }
 
@@ -150,8 +135,6 @@ main, article {
 
 #siteFooter .langs, #siteFooter .langs a:any-link {
     text-align: center;
-    background-color: var(--glbBlueShade4);
-    color: var(--glbBlueTint9);
 }
 
 #siteFooter .about {
@@ -225,7 +208,6 @@ dt .wordClass, dt .wordClass a:any-link, .translationAide dt .wordClass
 
 .dictionaryEntry a:any-link, .tags a:any-link, dl a:any-link {
     text-decoration: none;
-    color: var(--glbGreen);
 }
 
 .dictionaryEntry h1 {
@@ -234,7 +216,6 @@ dt .wordClass, dt .wordClass a:any-link, .translationAide dt .wordClass
 }
 .dictionaryEntry {
     border-radius: 8px;
-    box-shadow: 0 5px 5px 0 #ccc, 0 5px 5px 0 #ccc;
     padding: 0;
 }
 
@@ -246,17 +227,11 @@ dt .wordClass, dt .wordClass a:any-link, .translationAide dt .wordClass
 .dictionaryEntry > footer {
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
-    background-color: var(--glbGreen);
-    background: linear-gradient(45deg, var(--glbGreen) 30%, var(--glbGreenTint1) 70%);
-    color: white;
 }
 
 .dictionaryEntry > header {
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
-    background-color: var(--glbBlue);
-    background: linear-gradient(45deg, var(--glbBlue) 30%, var(--glbBlueTint1) 70%);
-    color: white;
 }
 
 .feedbackSubmit .w3-btn {
@@ -294,14 +269,11 @@ dt .wordClass, dt .wordClass a:any-link, .translationAide dt .wordClass
 
 .dictionaryEntry .examples blockquote {
     position: relative;
+    z-index: 1;
 }
 
 .dictionaryEntry .examples p {
     margin-bottom: 0;
-}
-
-.dictionaryEntry .examples blockquote footer {
-    color: #333;
 }
 
 .dictionaryEntry .examples blockquote::before {
@@ -310,7 +282,6 @@ dt .wordClass, dt .wordClass a:any-link, .translationAide dt .wordClass
 	display: block;
 	font-size: 8rem;
 	font-family: Georgia, Times, Garamond, serif;
-    color: #ccc;
     top: -3rem;
     left: -1rem;
     content: open-quote;
@@ -420,8 +391,6 @@ dd::after {
     display: grid;
     grid-template-columns: 2;
     column-gap: 2em;
-    background-color: var(--glbGreenTint8);
-    border: solid 1px var(--glbGreenTint6);
     border-radius: 1em;
     padding: 3px;
 }
@@ -464,13 +433,6 @@ dd::after {
     display: none;
 }
 
-.filter input[type="radio"]:checked + label[for^="cat-"],
-.filter input[type="radio"]:checked + label[for^="letter-"]
-{
-  background-color: var(--glbGreenShade5);
-  color: white;
-  
-}
 /*#endregion*/
 
 
@@ -488,8 +450,6 @@ dd::after {
 
 .homonyms header {
     font-weight: bold;
-    color: var(--glbGreenShade7);
-    background-color: var(--glbGreenTint9);
     font-size: larger;
     padding: 3px;
 }
@@ -499,8 +459,6 @@ dd::after {
 }
 
 .hl {
-    background-color: var(--glbBlueTint9);
-    color: black;
     display: inline-block;
     border-radius: 4px;
     margin-inline: 4px;
@@ -513,16 +471,12 @@ dd::after {
     text-align: center;
     padding: 4px;
     border-radius: 8px;
-    background-color: var(--glbBlueTint9);
-    color: var(--glbBlueShade7);
 }
 
 .etymology .lang_list li .hl {
-    background-color: var(--glbGreenTint8);
     color: black;
     display: block;
     margin-inline: 0;
-    border: solid 1px var(--glbGreenTint7);
 }
 /*#endregion*/
 
@@ -530,36 +484,25 @@ dd::after {
 
 
 /*#region form panels */
-form.panel {
-}
 
 form.tool input[type="text"] {
    display: inline-block;
    width: 100%;
    padding: 3px;
-   border: solid 1px var(--glbGreenShade5);
-   background-color: var(--glbGreenTint8);
-   color: var(--glbGreenShade8);
    font-size: large;
-   outline-color: var(--glbBlueTint5);
    box-sizing: border-box;
    height: 2.5rem;
    margin: 0;
 }
 
 form.tool input[type="submit"] {
-    background-color: var(--glbGreenShade2);
     border: none;
-    color: var(--glbGreenTint9);
     box-sizing: border-box;
     height: 2.5rem;
     margin: 0;
     cursor: pointer;
 }
 
-.tool_input input[type="submit"]:hover {
-    background-color: var(--glbGreenShade9);
-}
 /*#endregion*/
 
 
@@ -688,29 +631,158 @@ form.tool input[type="submit"] {
     }
 }
 
-@media (prefers-color-scheme: dark) {
+
+/* Light mode & Dark mode */
+
+@media (prefers-color-scheme: light) {
     body {
-        background-color: black;
-        color: white;
+        background-color: white;
+        color: black;
     }
 
     .hl {
-        background-color: var(--glbBlueShade7);
-        color: white;
+        background-color: var(--glbBlueTint9);
+        color: black;
     }
 
+
     .dictionaryEntry {
-        box-shadow: 0 5px 5px 0 #111, 0 5px 5px 0 #111;
+        background-color: var(--glbGreenTint9);
+        box-shadow: 0 5px 5px 0 #ccc, 0 5px 5px 0 #ccc;
     }
 
     .dictionaryEntry > footer {
         background-color: var(--glbGreen);
-        background: linear-gradient(45deg, var(--glbGreenShade5) 30%, var(--glbGreenShade4) 70%);
+        background: linear-gradient(45deg, var(--glbGreen) 30%, var(--glbGreenTint1) 70%);
         color: white;
     }
     
     .dictionaryEntry > header {
         background-color: var(--glbBlue);
+        background: linear-gradient(45deg, var(--glbBlue) 30%, var(--glbBlueTint1) 70%);
+        color: white;
+    }
+
+    .dictionaryEntry a:any-link, .tags a:any-link, dl a:any-link {
+        text-decoration: none;
+    }
+
+    .dictionaryEntry .examples blockquote footer {
+        color: #333;
+    }
+    
+    .dictionaryEntry .examples blockquote::before {
+        color: var(--glbGreenTint7);
+    }
+
+    .etymology .lang_list li {
+        background-color: var(--glbBlueTint9);
+        color: var(--glbBlueShade7);
+    }
+    
+    .etymology .lang_list li .hl {
+        background-color: var(--glbGreenTint8);
+        border: solid 1px var(--glbGreenTint7);
+        color: black;
+    }
+
+    .filter {
+        background-color: var(--glbGreenTint8);
+        border: solid 1px var(--glbGreenTint6);
+    }
+    
+    .filter .categories label {
+        color: var(--glbGreen);
+    }
+    
+    .filter input[type="radio"]:checked + label[for^="cat-"],
+    .filter input[type="radio"]:checked + label[for^="letter-"]
+    {
+        background-color: var(--glbGreenShade5);
+        color: white;
+    }
+
+
+    form.tool input[type="text"] {
+        border: solid 1px var(--glbGreenShade5);
+        background-color: var(--glbGreenTint8);
+        color: var(--glbGreenShade8);
+        outline-color: var(--glbBlueTint5);
+    }
+    
+    form.tool input[type="submit"] {
+        background-color: var(--glbGreenShade2);
+        color: var(--glbGreenTint9);
+    }
+    
+    .tool_input input[type="submit"]:hover {
+        background-color: var(--glbGreenShade9);
+    }
+
+    .homonyms header {
+        color: var(--glbGreenShade7);
+        background-color: var(--glbGreenTint9);
+    }
+    
+
+    /* Site Header */
+
+    #appTitle a, #appTitle a:any-link {
+        color: var(--glbGreenShade7);
+    }
+
+    #siteHeader a:any-link {
+        color: var(--glbGreenShade6);
+    }
+
+    #siteHeader input[type=text] {
+        background-color: var(--glbGreenTint8);
+        color: var(--glbGreenShade7);
+    }
+
+    #siteHeader input[type=submit] {
+        background-color: var(--glbGreenTint6);
+        color: var(--glbGreenShade7);
+    }
+
+
+    /* Site Footer */
+
+    #siteFooter {
+        background-color: var(--glbBlueTint8);
+        color: black;
+    }
+
+    #siteFooter a:any-link {
+        color: var(--glbBlueShade6);
+    }
+    
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #0a0a0a;
+        color: white;
+    }
+
+    .hl {
+        background-color: var(--glbBlueShade6);
+        color: white;
+    }
+
+    .dictionaryEntry {
+        background-color: #121212;
+        box-shadow: 0 5px 5px 0 #111, 0 5px 5px 0 #111;
+    }
+
+    .dictionaryEntry > footer {
+        background-color: var(--glbGreenShade5);
+        background: linear-gradient(45deg, var(--glbGreenShade5) 30%, var(--glbGreenShade4) 70%);
+        color: white;
+    }
+    
+    .dictionaryEntry > header {
+        background-color: var(--glbBlueShade5);
         background: linear-gradient(45deg, var(--glbBlueShade5) 30%, var(--glbBlueShade4) 70%);
         color: white;
     }
@@ -722,7 +794,11 @@ form.tool input[type="submit"] {
     .dictionaryEntry .examples blockquote::before {
         color: #333;
     }
-
+    
+    .dictionaryEntry .examples blockquote::before {
+        color: var(--glbGreenShade7);
+    }
+    
     
     .etymology .lang_list li {
         background-color: var(--glbBlueShade7);
@@ -742,17 +818,41 @@ form.tool input[type="submit"] {
     }
 
     .filter .categories label {
-        display: block;
         color: var(--glbGreenTint7);
     }
 
-    /* Site Header */
-
+    .filter input[type="radio"]:checked + label[for^="cat-"],
+    .filter input[type="radio"]:checked + label[for^="letter-"]
+    {
+      background-color: var(--glbGreenShade5);
+      color: white;
+      
+    }
     
-    #siteHeader {
+    form.tool input[type="text"] {
+        border: solid 1px var(--glbGreenShade5);
+        background-color: var(--glbGreenShade8);
+        color: var(--glbGreenShade8);
+        outline-color: var(--glbBlueTint5);
+    }
+    
+    form.tool input[type="submit"] {
         background-color: var(--glbGreenShade7);
+        color: var(--glbGreenTint7);
+    }
+    
+    .tool_input input[type="submit"]:hover {
+        background-color: var(--glbGreenShade9);
     }
 
+    .homonyms header {
+        color: var(--glbGreenTint9);
+        background-color: var(--glbGreenShade8);
+    }
+    
+
+    /* Site Header */
+    
     #appTitle a, #appTitle a:any-link {
         color: var(--glbGreenTint9);
     }
@@ -761,20 +861,15 @@ form.tool input[type="submit"] {
         color: var(--glbGreenTint9);
     }
 
-    /* #siteHeader .w3-cell-row {
-        background-color: var(--glbGreenShade4);
+
+    #siteHeader input[type=text] {
+        background-color: var(--glbGreenShade8);
         color: white;
     }
 
-    #siteHeader .w3-btn {
+    #siteHeader input[type=submit] {
         background-color: var(--glbGreenShade7);
-        color: white;
-    } */
-
-    #siteHeader input {
-        background-color: var(--glbGreenShade7);
-        color: white;
-        text-align: center;
+        color: var(--glbGreenTint7);
     }
 
     #siteHeader input::placeholder {
@@ -793,11 +888,6 @@ form.tool input[type="submit"] {
     
     #siteFooter a:any-link {
         color: var(--glbBlueTint8);
-    }
-    
-    #siteFooter .langs, #siteFooter .langs a:any-link {
-        /* background-color: var(--glbBlueShade4); */
-        color: var(--glbBlueTint9);
     }
     
 }
