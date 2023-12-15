@@ -420,8 +420,8 @@ dd::after {
     display: grid;
     grid-template-columns: 2;
     column-gap: 2em;
-    background-color: var(--glbGreenShade8);
-    border: solid 1px var(--glbGreenShade6);
+    background-color: var(--glbGreenTint8);
+    border: solid 1px var(--glbGreenTint6);
     border-radius: 1em;
     padding: 3px;
 }
@@ -448,7 +448,7 @@ dd::after {
 
 .filter .categories label {
     display: block;
-    color: var(--glbGreenTint7);
+    color: var(--glbGreen);
 }
 
 .filter .alphabet label:last-of-type {
@@ -736,6 +736,15 @@ form.tool input[type="submit"] {
     }
 
 
+    .filter {
+        background-color: var(--glbGreenShade8);
+        border: solid 1px var(--glbGreenShade6);
+    }
+
+    .filter .categories label {
+        display: block;
+        color: var(--glbGreenTint7);
+    }
 
     /* Site Header */
 
