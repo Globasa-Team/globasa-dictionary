@@ -647,7 +647,7 @@ form.tool input[type="submit"] {
 
 
     .dictionaryEntry {
-        background-color: var(--glbGreenTint9);
+        background-color: white;
         box-shadow: 0 5px 5px 0 #ccc, 0 5px 5px 0 #ccc;
     }
 
@@ -664,7 +664,7 @@ form.tool input[type="submit"] {
     }
 
     .dictionaryEntry a:any-link, .tags a:any-link, dl a:any-link {
-        text-decoration: none;
+        color: var(--glbGreen)
     }
 
     .dictionaryEntry .examples blockquote footer {
@@ -672,7 +672,7 @@ form.tool input[type="submit"] {
     }
     
     .dictionaryEntry .examples blockquote::before {
-        color: var(--glbGreenTint7);
+        color: var(--glbGreenTint9);
     }
 
     .etymology .lang_list li {
@@ -728,7 +728,7 @@ form.tool input[type="submit"] {
     /* Site Header */
 
     #siteHeader {
-        background-color: var(--glbGreenTint8);
+        background-color: var(--glbGreenTint9);
     }
 
     #appTitle a, #appTitle a:any-link {
@@ -824,6 +824,11 @@ form.tool input[type="submit"] {
         color: white;
     }
 
+
+
+    .dictionaryList {
+
+    }
 
     .filter {
         background-color: var(--glbGreenShade8);
