@@ -136,7 +136,7 @@ if (!empty($entry['antonyms'])) {
 <h2><?= sprintf($config->getTrans('Etymology'), "")?></h2>
 <?
 
-// Derived
+// A priori
 if (!empty($entry['etymology']['a priori'])): ?>
     <p class="apriori"><em>a priori</em></p>
 <? endif;

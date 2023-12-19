@@ -26,10 +26,7 @@ class Search_controller
             $term = $request->options[$lang];
             $results = self::natlang_term_search($config, $lang, $term, $page);
         }
-        
         require_once('views/search_results_view.php');
-        // SearchView::results($config, $partial_matches, $lang, $request, $page);
-        // include_once($config->templatePath.'view-default.php');
 
         return;
     }

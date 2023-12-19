@@ -52,5 +52,3 @@ endif; ?>
 </body>
 
 </html>
-        
-entry_to_dt_string

@@ -18,7 +18,6 @@ class Tool_controller
                 break;
             case 'basatayti':
                 Translation_aid_controller::default($config, $request, $page);
-                include_once($config->templatePath.'view-default.php');
                 break;
             case 'ifa-trasharufitul':
                 $page->setTitle($config->getTrans('ipa converter title'));
@@ -35,6 +34,6 @@ class Tool_controller
                 $page->setTitle($config->getTrans('tools button'));
                 include_once('views/features_view.php');
                 break;
-            }
+        }
     }
 }

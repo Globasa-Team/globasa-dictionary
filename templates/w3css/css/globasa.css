@@ -648,12 +648,6 @@ form input[type="submit"], button {
         color: black;
     }
 
-    .hl {
-        background-color: var(--glbBlueTint9);
-        color: black;
-    }
-
-
     .dictionaryEntry {
         background-color: white;
         box-shadow: 0 5px 5px 0 #ccc, 0 5px 5px 0 #ccc;
@@ -746,6 +740,15 @@ form input[type="submit"], button {
     }
 
 
+    .hl {
+        background-color: var(--glbBlueTint9);
+        color: black;
+    }
+
+    a.hl:any-link {
+        color: var(--glbBlueShade5);
+    }
+
     /* Site Header */
 
     #siteHeader {
@@ -759,10 +762,6 @@ form input[type="submit"], button {
 
     #siteHeader a:any-link {
         color: var(--glbGreenShade6);
-    }
-
-    #siteHeader .search {
-        /* background-color: var(--glbGreenShade4); */
     }
 
     #siteHeader input[type=text] {

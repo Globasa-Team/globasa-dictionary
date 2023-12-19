@@ -11,7 +11,7 @@ class Translation_aid_controller
         $sentences = Translation_aid::transAideBulkTranslate($config, $request);
         $page->setTitle($config->getTrans('translation aide title'));
         $page->description = $config->getTrans('translation aide description');
-        include('views/translation_aid_view.php');
+        require_once('views/translation_aid_view.php');
     }
 
 }
