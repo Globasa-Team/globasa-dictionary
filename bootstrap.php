@@ -25,7 +25,7 @@ require_once 'controllers/Homonym_controller.php';
 require_once 'controllers/Minimal_pair_controller.php';
 require_once 'controllers/Candidate_word_controller.php';
 require_once 'controllers/Translation_aide_controller.php';
-require_once 'controllers/Index_controller.php';
+require_once 'controllers/Welcome_controller.php';
 require_once 'controllers/Tags_controller.php';
 require_once 'controllers/ToolController.php';
 

@@ -44,7 +44,7 @@ function router($config)
                 TestController::helloWorld($config, $request, $page);
                 break;
             case '':
-                Index_controller::home($config, $request, $page);
+                Welcome_controller::home($config, $request, $page);
                 break;
             default:
                 throw new Error404Exception("Invalid controller");

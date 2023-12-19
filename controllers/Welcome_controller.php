@@ -1,10 +1,10 @@
 <?php
 namespace WorldlangDict;
 
-class Index_controller
+class Welcome_controller
 {
     public static function home($config, $request, &$page)
     {
-        include_once('views/welcome.php');
+        include_once('views/welcome_view.php');
     }
 }
