@@ -3,6 +3,6 @@ namespace WorldlangDict;
 /**
  * Define a custom exception class
  */
-class Error404Exception extends \Exception {
+class Error_404_exception extends \Exception {
 
 }

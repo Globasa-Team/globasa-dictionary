@@ -50,7 +50,7 @@ function router($config)
                 throw new Error404Exception("Invalid controller");
         }
     } catch (Error404Exception $e) {
-        ErrorController::error_404($config, $request, $page);
+        Error_controller::error_404($config, $request, $page);
     }
 }
 
