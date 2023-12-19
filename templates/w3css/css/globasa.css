@@ -202,9 +202,8 @@ dt .wordClass, dt .wordClass a:any-link, .translationAide dt .wordClass
     text-decoration: none;
 }
 
-.dictionaryEntry h1, .dictionaryEntry h2 {
-    display: inline-block;
-    margin: 0;
+.dictionaryEntry h1 {
+    font-weight: normal;
 }
 
 .dictionaryEntry h1, .dictionaryEntry h2 {
