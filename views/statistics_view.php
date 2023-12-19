@@ -19,13 +19,13 @@ namespace WorldlangDict;
 
 <!--Lang count-->
 <section>
-<table class="w3-table-all">
+<table>
   <thead>
-    <tr class="w3-purple"><th class="w3-right-align">Language</th><th class="w3-right-align">Words</th></tr>
+    <tr><th>Language</th><th>Words</th></tr>
   </thead>
 <?php
 foreach($stats['source langs'] as $lang=>$count) {?>
-    <tr><td class="w3-right-align"><?=$lang?></td><td class="w3-right-align"><?=$count?></td></tr>
+    <tr><td><?=$lang?></td><td><?=$count?></td></tr>
 <?}?>
 </table>
 </section>
@@ -38,14 +38,14 @@ foreach($stats['source langs'] as $lang=>$count) {?>
 
 
 <!--Word categoy (affix, etc)-->
-<table class="w3-table-all">
+<table>
   <thead>
-    <tr class="w3-red"><th class="w3-right-align">Word Category</th><th class="w3-right-align">Words</th></tr>
+    <tr><th>Word Category</th><th>Words</th></tr>
   </thead>
   <tbody>
 <?php
 foreach($stats['categories'] as $name=>$count) {?>
-    <tr><td class="w3-right-align"><?=$name?></td><td class="w3-right-align"><?=$count?></td></tr>
+    <tr><td><?=$name?></td><td><?=$count?></td></tr>
 <?}?>
 </tbody>
 </table>

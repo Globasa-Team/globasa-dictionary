@@ -21,6 +21,9 @@ class WordController
         
     }
     
+    /**
+     * Show reverse lookup. Eg, searching ENG: child.
+     */
     public static function addNatWord($config, $request, $lang, &$page)
     {
         if (!file_exists($config->search_terms_location.$lang.".yaml")) {
@@ -33,28 +36,13 @@ class WordController
         if (is_null($term)) {
             WorldlangDictUtils::redirect($config, $request, "");
         }
-        if (isset($search_terms[$term])) {
-            SearchView::results($config, $search_terms[$term], 'glb', $request, $page);
-            $page->setTitle($term.': '.$config->getTrans('natlang search title bar'));
+        if (!isset($search_terms[$term])) {
+            throw new Error404Exception("Word not found");
         }
-        
-        include_once($config->templatePath.'view-default.php');
-    }
-
-    public static function addTags($config, $request, &$page)
-    {
-        $tags = yaml_parse_file($config->tag_location);
-        $defs = yaml_parse_file($config->min_location . "{$config->lang}.yaml");
-    
-        if (isset($request->arguments[0]) && isset($tags[$request->arguments[0]])) {
-            $tag = $request->arguments[0];
-            $page->setTitle($tag . ' &mdash; ' . $config->getTrans('tags title'));
-            include_once($config->templatePath.'view-tags-tag-words.php');
-        } else {
-            $page->setTitle($config->getTrans('tags title'));
-            include_once($config->templatePath.'view-tags-list-tags.php');
-        }
-
+        $page->setTitle($term.': '.$config->getTrans('natlang search title bar'));
+        $results = &$search_terms[$term];
+        // SearchView::results($config, $search_terms[$term], 'glb', $request, $page);
+        require_once("views/search_results_view.php");
     }
 
 

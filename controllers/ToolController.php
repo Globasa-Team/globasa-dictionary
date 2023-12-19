@@ -23,18 +23,17 @@ class ToolController
             case 'ifa-trasharufitul':
                 $page->setTitle($config->getTrans('ipa converter title'));
                 $page->description = $config->getTrans('ipa converter description');
-                include_once($config->templatePath.'view-ipa-converter.php');
+                include_once('views/ipa_converter_view.php');
                 break;
             case 'estatisti':
                 $page->setTitle('Estatisti');
                 $page->description = "estatisti";
                 $stats = yaml_parse_file($config->stats_location);
-                include_once($config->templatePath.'view-statistics.php');
+                include_once('views/view_statistics.php');
                 break;
             default:
                 $page->setTitle($config->getTrans('tools button'));
-                ToolView::toolList($config, $page, $request);
-                include_once($config->templatePath.'view-default.php');
+                include_once('views/features_view.php');
                 break;
             }
     }

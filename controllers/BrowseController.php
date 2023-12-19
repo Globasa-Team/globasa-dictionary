@@ -7,8 +7,7 @@ class BrowseController
     {
         $page->setTitle("Globasa translation dictionary");
         $dict = yaml_parse_file($config->basic_location.$request->lang.".yaml");
-        BrowseView::default(config:$config, lang:$request->lang, request:$request, page:$page, dict:$dict);
-        include_once($config->templatePath.'view-browse.php');
+        require_once('views/browse_view.php');
     }
 
 

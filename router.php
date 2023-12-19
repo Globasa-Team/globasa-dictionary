@@ -35,7 +35,7 @@ function router($config)
                 FeedbackController::feedback($config, $request, $page);
                 break;
             case 'lexilari':
-                WordController::addTags($config, $request, $page);
+                Tags_controller::addTags($config, $request, $page);
                 break;
             case 'abeceli-menalari':
                 BrowseController::default($config, $request, $page);
@@ -44,7 +44,7 @@ function router($config)
                 TestController::helloWorld($config, $request, $page);
                 break;
             case '':
-                IndexController::home($config, $request, $page);
+                Index_controller::home($config, $request, $page);
                 break;
             default:
                 throw new Error404Exception("Invalid controller");
