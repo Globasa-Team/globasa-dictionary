@@ -222,7 +222,7 @@ dt .wordClass, dt .wordClass a:any-link, .translationAide dt .wordClass
     padding-inline: 1em;
 }
 
-.dictionaryEntry > section {
+.dictionaryEntry > section, .dictionaryEntry > footer {
     padding-inline: 3px;
 }
 
