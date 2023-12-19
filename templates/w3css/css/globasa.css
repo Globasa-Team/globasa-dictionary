@@ -54,7 +54,6 @@ body {
     margin: 0;
     display: flex;
     flex-direction: column;
-    vertical-align: text-top;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -203,7 +202,7 @@ dt .wordClass, dt .wordClass a:any-link, .translationAide dt .wordClass
     text-decoration: none;
 }
 
-.dictionaryEntry h1 {
+.dictionaryEntry h1, .dictionaryEntry h2 {
     display: inline-block;
     margin: 0;
 }
@@ -214,7 +213,11 @@ dt .wordClass, dt .wordClass a:any-link, .translationAide dt .wordClass
 
     
 .dictionaryEntry > * {
-    padding-inline: 5px;
+    padding-inline: 1em;
+}
+
+.dictionaryEntry > section {
+    margin-block: 1em;
 }
 
 .dictionaryEntry > footer {
@@ -246,7 +249,7 @@ dt .wordClass, dt .wordClass a:any-link, .translationAide dt .wordClass
     font-size: medium
 }
 
-.dictionaryEntry h3 {
+.dictionaryEntry div:not(.kwasilexi) h3 {
     display: inline-block;
 }
 
@@ -485,8 +488,9 @@ main.tags {
 .etymology .lang_list li {
     display: inline-block;
     text-align: center;
-    padding: 4px;
+    padding: 2px;
     border-radius: 8px;
+    vertical-align: top;
 }
 
 .etymology .lang_list li .hl {
@@ -684,7 +688,6 @@ form input[type="submit"], button {
     
     .etymology .lang_list li .hl {
         background-color: white;
-        border: solid 1px var(--glbGreenTint7);
         color: black;
     }
 
@@ -746,14 +749,13 @@ form input[type="submit"], button {
     }
 
     a.hl:any-link {
-        color: var(--glbBlueShade5);
+        color: var(--glbBlueShade7);
     }
 
     /* Site Header */
 
     #siteHeader {
         background-color: var(--glbGreenTint9);
-        border-bottom: 0.5em solid var(--glbGreenShade4);
     }
 
     #appTitle a, #appTitle a:any-link {
@@ -767,7 +769,6 @@ form input[type="submit"], button {
     #siteHeader input[type=text] {
         background-color: white;
         color: var(--glbGreenShade7);
-        border: solid 1px var(--glbGreenTint5);
     }
 
     #siteHeader input[type=submit] {

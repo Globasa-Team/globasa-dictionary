@@ -154,7 +154,7 @@ endif;
 
 // kwasilexi
 if (isset($entry['etymology']['kwasilexi'])): ?>
-<div>
+<div class="kwasilexi">
     <h3>Kwasilexi</h3>
     <? $list = &$entry['etymology']['kwasilexi'];
     include($config->templatePath . "partials/entry_language_list.php"); ?>
