@@ -1,6 +1,13 @@
 <?php
 namespace WorldlangDict;
 
+$trans = [];
+foreach($entry['trans'][$config->lang] as $trans_group) {
+    $trans[] = implode(", ", $trans_group);
+}
+$trans = implode("; ", $trans);
+
+$page->description = $entry['term'] . ': ' . htmlspecialchars($trans);
 ?>
 <!doctype html>
 <html class="no-js" lang="">
@@ -10,11 +17,7 @@ namespace WorldlangDict;
     <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
   <![endif]-->
 
-<?
-$page->description = $entry['term'] . ': ' . htmlspecialchars($entry['raw data']['trans'][$config->lang]);
-
-require_once($config->templatePath . "partials/page-header.php");
-?>
+<? require_once($config->templatePath . "partials/page-header.php"); ?>
 
 <main class="dictionaryEntry">
 
