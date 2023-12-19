@@ -20,28 +20,28 @@ function router($config)
     try {
         switch ($request->controller) {
             case 'tul':
-                ToolController::run($config, $request, $page);
+                Tool_controller::run($config, $request, $page);
                 break;
             case 'lexi':
-                WordController::output_entry($config, $request, $page);
+                Word_controller::output_entry($config, $request, $page);
                 break;
             case 'cel-ruke':
-                WordController::addNatWord($config, $request, $config->lang, $page);
+                Word_controller::addNatWord($config, $request, $config->lang, $page);
                 break;
             case 'xerca':
-                SearchController::search($config, $request, $page);
+                Search_controller::search($config, $request, $page);
                 break;
             case 'am-reporte':
-                FeedbackController::feedback($config, $request, $page);
+                Feedback_controller::feedback($config, $request, $page);
                 break;
             case 'lexilari':
                 Tags_controller::addTags($config, $request, $page);
                 break;
             case 'abeceli-menalari':
-                BrowseController::default($config, $request, $page);
+                Browse_controller::default($config, $request, $page);
                 break;
             case 'test':
-                TestController::helloWorld($config, $request, $page);
+                Test_controller::helloWorld($config, $request, $page);
                 break;
             case '':
                 Welcome_controller::home($config, $request, $page);

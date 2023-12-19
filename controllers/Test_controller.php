@@ -1,7 +1,7 @@
 <?php
 namespace WorldlangDict;
 
-class TestController
+class Test_controller
 {
     public static function helloWorld($config, $request, &$page)
     {

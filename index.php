@@ -1,5 +1,5 @@
 <?php
 namespace WorldlangDict;
 
-include_once 'bootstrap.php';
+include_once 'init.php';
 router($config);

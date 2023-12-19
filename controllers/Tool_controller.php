@@ -1,7 +1,7 @@
 <?php
 namespace WorldlangDict;
 
-class ToolController
+class Tool_controller
 {
     public static function run($config, $request, &$page)
     {

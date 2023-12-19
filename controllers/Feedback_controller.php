@@ -1,6 +1,6 @@
 <?php namespace WorldlangDict;
 
-class FeedbackController
+class Feedback_controller
 {
     public static function feedback($config, $request, $page)
     {

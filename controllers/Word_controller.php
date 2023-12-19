@@ -1,7 +1,7 @@
 <?php
 namespace WorldlangDict;
 
-class WordController
+class Word_controller
 {
     public static function output_entry($config, $request, &$page)
     {

@@ -1,7 +1,7 @@
 <?php
 namespace WorldlangDict;
 
-class SearchController
+class Search_controller
 {
 
     /**

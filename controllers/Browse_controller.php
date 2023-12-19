@@ -1,7 +1,7 @@
 <?php
 namespace WorldlangDict;
 
-class BrowseController
+class Browse_controller
 {
     public static function default(object $config, object $request, object &$page)
     {
