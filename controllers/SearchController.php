@@ -110,7 +110,7 @@ class SearchController
     private static function natlang_term_search(object $config, string $lang, string $term, object $request):array {
         // check if file exists
         if (!file_exists($config->search_terms_location.$lang.".yaml")) {
-            throw new Error404Exception("Entry Language Not Found");
+            throw new Error_404_Exception("Entry Language Not Found");
         }
         $terms = yaml_parse_file($config->search_terms_location.$lang.".yaml");
 

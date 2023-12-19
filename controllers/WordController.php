@@ -11,7 +11,7 @@ class WordController
         
         $term = strtolower($request->arguments[0]);
         $file = $config->api2Path.'terms/'.$term.'.yaml';
-        if (!file_exists($file)) throw new Error404Exception("Entry Not Found");
+        if (!file_exists($file)) throw new Error_404_Exception("Entry Not Found");
         $entry = yaml_parse_file($file);
 
         $backlinks = yaml_parse_file($config->api2Path.'backlinks.yaml');
@@ -27,7 +27,7 @@ class WordController
     public static function addNatWord($config, $request, $lang, &$page)
     {
         if (!file_exists($config->search_terms_location.$lang.".yaml")) {
-            throw new Error404Exception("Language not availble");
+            throw new Error_404_Exception("Language not availble");
         }
         $search_terms = yaml_parse_file($config->search_terms_location.$lang.".yaml");
 
@@ -37,7 +37,7 @@ class WordController
             WorldlangDictUtils::redirect($config, $request, "");
         }
         if (!isset($search_terms[$term])) {
-            throw new Error404Exception("Word not found");
+            throw new Error_404_Exception("Word not found");
         }
         $page->setTitle($term.': '.$config->getTrans('natlang search title bar'));
         $results = &$search_terms[$term];

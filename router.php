@@ -47,9 +47,9 @@ function router($config)
                 Welcome_controller::home($config, $request, $page);
                 break;
             default:
-                throw new Error404Exception("Invalid controller");
+                throw new Error_404_Exception("Invalid controller");
         }
-    } catch (Error404Exception $e) {
+    } catch (Error_404_Exception $e) {
         Error_controller::error_404($config, $request, $page);
     }
 }
