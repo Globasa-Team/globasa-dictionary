@@ -202,18 +202,28 @@ dt .wordClass, dt .wordClass a:any-link, .translationAide dt .wordClass
     text-decoration: none;
 }
 
-.dictionaryEntry h1, .dictionaryEntry h2 {
+.dictionaryEntry h1 {
     display: inline-block;
     margin: 0;
 }
+
+.dictionaryEntry h2, .dictionaryEntry h3 {
+    display: inline-block;
+    margin: 1em;
+}
+
 .dictionaryEntry {
     border-radius: 8px;
     padding: 0;
 }
 
     
-.dictionaryEntry > * {
+.dictionaryEntry > header, .dictionaryEntry > footer {
     padding-inline: 1em;
+}
+
+.dictionaryEntry > section {
+    padding-inline: 3px;
 }
 
 .dictionaryEntry > section {
@@ -247,10 +257,6 @@ dt .wordClass, dt .wordClass a:any-link, .translationAide dt .wordClass
 .dictionaryEntry h2 {
     display: inline-block;
     font-size: medium
-}
-
-.dictionaryEntry div:not(.kwasilexi) h3 {
-    display: inline-block;
 }
 
 .dictionaryEntry .translation span {
