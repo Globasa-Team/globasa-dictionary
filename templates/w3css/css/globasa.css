@@ -750,6 +750,7 @@ form input[type="submit"], button {
 
     #siteHeader {
         background-color: var(--glbGreenTint9);
+        border-bottom: 0.5em solid var(--glbGreenShade4);
     }
 
     #appTitle a, #appTitle a:any-link {
