@@ -226,7 +226,7 @@ dt .wordClass, dt .wordClass a:any-link, .translationAide dt .wordClass
 }
 
 .dictionaryEntry > section {
-    margin-block: 1em;
+    padding-block: 1em;
 }
 
 .dictionaryEntry > footer {
