@@ -6,7 +6,7 @@ require_once 'router.php';
 require_once 'resources/downloadFile.php';
 require_once 'resources/loadCsv.php';
 require_once 'resources/Parsedown.php';
-require_once 'resources/error_404_exception.php';
+require_once 'resources/Error_404_exception.php';
 require_once 'WorldlangDictUtils.php';
 require_once 'models/WorldlangDictConfig.php';
 require_once 'models/Request.php';
