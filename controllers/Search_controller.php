@@ -13,8 +13,8 @@ class Search_controller
         $term = "";
         if (!empty($request->options['glb'])) {
             $lang = "glb";
-            $term = $request->options['glb'];
-            $results = self::globasa_term_search(config:$config, term:$request->options['glb'], page:$page, request:$request);
+            $term = trim($request->options['glb']);
+            $results = self::globasa_term_search(config:$config, term:$term, page:$page, request:$request);
         } else {
             $lang = array_key_first($request->options);
             if (strcmp($lang, "glb")===0) {
@@ -23,7 +23,7 @@ class Search_controller
             if (empty($request->options[$lang])) {
                 WorldlangDictUtils::redirect($config, $request);
             }
-            $term = $request->options[$lang];
+            $term = trim($request->options[$lang]);
             $results = self::natlang_term_search($config, $lang, $term, $page);
         }
         require_once('views/search_results_view.php');
