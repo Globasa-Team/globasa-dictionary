@@ -230,7 +230,7 @@ dt .wordClass, dt .wordClass a:any-link, .translationAide dt .wordClass
 }
 
 .dictionaryEntry > section {
-    padding-block: 1em;
+    margin-block: 1em;
 }
 
 .dictionaryEntry > footer {
@@ -646,6 +646,22 @@ form input[type="submit"], button {
 
     main, article {
         margin-inline: 5px;
+    }
+
+    .etymology ul.lang_list {
+        display: block;
+    }
+
+    .etymology .lang_list li {
+        display: block;
+        margin: 2px;
+        text-align: left;
+    }
+
+    .etymology .lang_list li .hl {
+        color: black;
+        display: inline-block;
+        margin-inline: 0;
     }
 
     .filter {
