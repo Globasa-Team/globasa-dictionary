@@ -62,6 +62,7 @@ h1, h2, h3, h4, h5, h6 {
 
 h1 {
     margin-top: 0;
+    text-align: center;
 }
 
 h2 {
@@ -578,6 +579,10 @@ form input[type="submit"], button {
     main, article {
         width: 50ch;
     }
+
+    h1 {
+        font-size: x-large;
+    }
     
     form.tool {
         display: flex;
@@ -613,6 +618,9 @@ form input[type="submit"], button {
         width: 50ch;
     }
     
+    h1 {
+        font-size: x-large;
+    }
 
     form.tool {
         display: flex;
@@ -632,7 +640,7 @@ form input[type="submit"], button {
 /* Narrow Screen */
 @media (max-width: 51ch) {
     h1 {
-        font-size: large;
+        font-size: x-large;
         margin: 0 0 1em 0;
     }
 
