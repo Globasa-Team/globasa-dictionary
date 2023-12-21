@@ -11,7 +11,7 @@
 
 <main>
 
-<h1><?=$term.': '.$config->getTrans('natlang search title bar')?></h1>
+<h1><?=$config->getTrans('search result title')?>: <?=$term?></h1>
 
 <? if (sizeof($results)) : ?>
 <dl class="dictionaryList">

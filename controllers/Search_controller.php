@@ -26,6 +26,7 @@ class Search_controller
             $term = trim($request->options[$lang]);
             $results = self::natlang_term_search($config, $lang, $term, $page);
         }
+        $page->setTitle($config->getTrans('search result title').': '.$term);
         require_once('views/search_results_view.php');
 
         return;

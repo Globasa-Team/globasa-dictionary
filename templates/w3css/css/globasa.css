@@ -60,6 +60,9 @@ h1, h2, h3, h4, h5, h6 {
     font-family: inherit;
 }
 
+h1 {
+    margin-top: 0;
+}
 
 h2 {
     font-size: large;
@@ -71,7 +74,7 @@ h3 {
 
 main, article {
     margin: auto;
-    padding: 5px;
+    padding-inline: 5px;
     box-sizing: border-box;
 }
 
@@ -606,6 +609,11 @@ form input[type="submit"], button {
     }
 
 
+    main, article {
+        width: 50ch;
+    }
+    
+
     form.tool {
         display: flex;
     }
@@ -625,7 +633,7 @@ form input[type="submit"], button {
 @media (max-width: 51ch) {
     h1 {
         font-size: large;
-        margin: 0;
+        margin: 0 0 1em 0;
     }
 
     main, article {
