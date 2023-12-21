@@ -623,6 +623,11 @@ form input[type="submit"], button {
 
 /* Narrow Screen */
 @media (max-width: 51ch) {
+    h1 {
+        font-size: large;
+        margin: 0;
+    }
+
     main, article {
         margin-inline: 5px;
     }
