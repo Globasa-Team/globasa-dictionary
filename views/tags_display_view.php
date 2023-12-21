@@ -1,8 +1,5 @@
 <?php
 namespace WorldlangDict;
-
-
-
 ?>
 <!doctype html>
 <html class="no-js" lang="">
@@ -17,7 +14,7 @@ namespace WorldlangDict;
 <main class="tags">
 
 <? $exists = isset($defs[$tag]); ?>
-<h1><?= $tag; ?> &mdash; <?= $config->getTrans('tags title') ?></h1>
+<h1><?= $config->getTrans('single tag view') ?>: <?= $tag; ?></h1>
   <? if ($exists) : ?>
   <p><?= $defs[$tag] ?></p>
   <? endif; ?>

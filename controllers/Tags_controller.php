@@ -9,7 +9,7 @@ class Tags_controller {
     
         if (isset($request->arguments[0]) && isset($tags[$request->arguments[0]])) {
             $tag = $request->arguments[0];
-            $page->setTitle($tag . ' &mdash; ' . $config->getTrans('tags title'));
+            $page->setTitle($tag . ' &mdash; ' . $config->getTrans('single tag view'));
             include_once('views/tags_display_view.php');
         } else {
             $page->setTitle($config->getTrans('tags title'));
