@@ -222,6 +222,39 @@ if (!empty($backlinks[$entry['slug']])): ?>
     include($config->templatePath . "partials/entry_word_list.php");
     ?>
 </section>
+<? endif;
+
+
+if (array_key_exists('also see', $entry)): ?>
+<section class="alsosee">
+    
+    <details>
+        <summary>
+            <h2><?=sprintf($config->getTrans('Also See Sentence'), '');?></h2>
+            <? $first = true;
+            foreach(array_keys($entry['also see']) as $term) :
+                if (!$first) echo(", ");
+                $first = false;
+                ?><a href="<?= WorldlangDictUtils::makeUri($config, 'lexi/'.$term, $request); ?>"><?=$term;?></a><?
+            endforeach;
+
+            ?> [+]
+        </summary>
+        <dl style="margin-inline-start:2em;">
+            <?
+        foreach($entry['also see'] as $a_term=>$trans) {?>
+        <div>
+            <dt><a href="<?= WorldlangDictUtils::makeUri($config, 'lexi/'.$a_term, $request); ?>"><?=$a_term;?></a></dt>
+            <dd><?=$trans[$request->lang];?></dd>
+        </div>
+        <? } ?>
+        </dl>
+    </details>
+    <?
+    // $item_class = "hl";
+    // include($config->templatePath . "partials/entry_word_list.php");
+    ?>
+</section>
 <? endif; ?>
 
 

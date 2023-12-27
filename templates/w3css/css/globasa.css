@@ -323,6 +323,15 @@ dt .wordClass, dt .wordClass a:any-link, .translationAide dt .wordClass
     border-radius: 7px;
 }
 
+.alsosee summary {
+    display: block;
+}
+
+.alsosee dl {
+    margin-left: 1em;
+}
+
+
 /*#endregion*/
 
 
@@ -891,7 +900,6 @@ form input[type="submit"], button {
         border: solid 1px var(--glbGreenSHade7);
         color: white;
     }
-
 
     .tags dl {
         column-rule: 3px solid #111;
