@@ -502,7 +502,8 @@ main.tags {
 .hl {
     display: inline-block;
     border-radius: 4px;
-    margin-inline: 4px;
+    margin-left: 4px;
+    margin-top: 5px;
     padding: 4px;
 }
 

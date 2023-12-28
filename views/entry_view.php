@@ -235,7 +235,7 @@ if (array_key_exists('also see', $entry)): ?>
             foreach(array_keys($entry['also see']) as $term) :
                 if (!$first) echo(", ");
                 $first = false;
-                ?><a href="<?= WorldlangDictUtils::makeUri($config, 'lexi/'.$term, $request); ?>"><?=$term;?></a><?
+                ?><a href="<?= WorldlangDictUtils::makeUri($config, 'lexi/'.$term, $request); ?>" class="hl"><?=$term;?></a><?
             endforeach;
 
             ?> [+]
