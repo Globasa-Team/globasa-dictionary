@@ -181,21 +181,9 @@ header .wordClass a:any-link {
     background-color: inherit;
 }
 
-/*  Delete this doesn't do anything but wreck dark mode.
-
-li .wordClass, li .wordClass a:any-link, .translationAide li .wordClass,
-dt .wordClass, dt .wordClass a:any-link, .translationAide dt .wordClass
-{
-    color: black;
-    background-color: inherit;
-    font-size: inherit;
-} */
-
-
 .wordClass {
     display: inline;
     font-style: italic;
-    padding-left: .5em;
 }
 
 #entryTerm {
@@ -370,9 +358,12 @@ dl div {
     margin-bottom: 1em;
 }
 
-.dictionaryList a:not([class]) {
+.translation_aid dl {
+    margin-left: 1em;
+}
+
+dt a {
     font-weight: bold;
-    text-decoration: none;
 }
 
 .tags dl {
@@ -726,7 +717,7 @@ form input[type="submit"], button {
     }
 
     .dictionaryEntry a:any-link, .tags a:any-link, dl a:any-link {
-        color: var(--glbGreen)
+        color: var(--glbBlue)
     }
 
     .dictionaryEntry .examples blockquote footer {
@@ -844,10 +835,6 @@ form input[type="submit"], button {
         color: var(--glbBlueShade6);
     }
 
-    #siteFooter .langs,  #siteFooter .langs a:any-link {
-        background-color: var(--glbBlueShade4);
-        color: var(--glbBlueTint9);    }
-    
 }
 
 @media (prefers-color-scheme: dark) {
@@ -1005,12 +992,6 @@ form input[type="submit"], button {
     
     #siteFooter a:any-link {
         color: var(--glbBlueTint8);
-    }
-
-    
-    #siteFooter .langs, #siteFooter .langs a:any-link {
-        background-color: var(--glbBlueShade4);
-        color: var(--glbBlueTint9);
     }
     
 }

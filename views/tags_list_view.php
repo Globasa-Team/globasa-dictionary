@@ -22,10 +22,10 @@ foreach ($tags as $tag=>$words):
   <div>
     <dt>
         <span><?= WorldlangDictUtils::makeLink($config, "lexilari/".$tag, $request, $tag); ?></span>
-        <span class="hl"><?=count($words) ?></span>
     </dt>
     <dd>
         <?= ($exists ? $defs[$tag] : '&nbsp;')  ?>
+        <span class="hl"><?=count($words) ?></span>
     </dd>
   </div>
 <?php endforeach; ?>

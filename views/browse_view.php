@@ -112,9 +112,13 @@
                 $term
             );?>
 <? if (isset($data['class']) && !empty($data['class'])) : ?>
-            <span class="wordClass">(<a href="https://xwexi.globasa.net/<?=$config->lang;?>/gramati/lexiklase"><?=$data['class'];?></a>)</span>
+            
 <? endif; ?>
-        </dt><dd <?=$attributes;?>><?=$data['translation']?></dd>
+        </dt>
+        <dd <?=$attributes;?>>
+            <span class="wordClass">(<a href="https://xwexi.globasa.net/<?=$config->lang;?>/gramati/lexiklase"><?=$data['class'];?></a>)</span>
+            <?=$data['translation']?>
+        </dd>
     </div>
 <? endforeach; ?>
 

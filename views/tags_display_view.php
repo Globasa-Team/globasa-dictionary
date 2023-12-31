@@ -27,8 +27,8 @@ namespace WorldlangDict;
         if (!isset($defs[$word])) continue;
         $def = $defs[$word];
         
-        ?>
-        <div>
+      ?>
+      <div>
         <dt><?= WorldlangDictUtils::makeLink(
                 $config,
                 'lexi/'.urlencode($word),
@@ -37,7 +37,7 @@ namespace WorldlangDict;
             ); ?></dt>
         <dd><?= $def ?>
         </dd>
-        </div>
+      </div>
     <? endforeach; ?>
     </dl>
   <? endif; ?>

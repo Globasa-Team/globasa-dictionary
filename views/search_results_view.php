@@ -14,7 +14,7 @@
 <h1><?=$config->getTrans('search result title')?>: <?=$term?></h1>
 
 <? if (sizeof($results)) : ?>
-<dl class="dictionaryList">
+<dl>
     
     <? foreach ($results as $word) :
         if (!file_exists($config->api2Path."terms/{$word}.yaml")) {

@@ -24,9 +24,9 @@ namespace WorldlangDict;
     </form>
 <? if (!empty($sentences)) : ?>
 
-    <div><ul class="translationAide">
     <? foreach($sentences as $current) : ?>
-        <li><?=$current->sentence;?><ul>
+        <h3><?=$current->sentence;?></h3>
+            <dl>
         <? foreach($current->words as $word) :
             $wordClass = "";
             $trans = "";
@@ -54,11 +54,13 @@ namespace WorldlangDict;
                     $word
                 );
             } ?>
-            <li><?=$word.': '.$trans;?></li>
+            <div>
+                <dt><?=$word;?></dt>
+                <dd><?=$trans;?></dt>
+            </div>
         <? endforeach; ?>
-        </ul></li>
+        </dl>
     <? endforeach; ?>
-    </ul></div>
 <? endif;?>
 
 
