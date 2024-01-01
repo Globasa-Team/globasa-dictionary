@@ -1,6 +1,9 @@
 <?php
 namespace WorldlangDict;
 
+define("GLB_CODE", "art-x-globasa");
+define("GLB_ATTR", "lang=\"art-x-globasa\"");
+
 /* Source files */
 require_once 'router.php';
 require_once 'resources/downloadFile.php';

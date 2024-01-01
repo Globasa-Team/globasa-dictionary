@@ -81,23 +81,18 @@ $page->description = $entry['term'] . ': ' . htmlspecialchars($trans);
  * Synonyms
  */
 if (!empty($entry['synonyms'])):
-    $words = [];
-    if (count($entry['synonyms']) == 1) {
-        $trans = 'synonym sentence';
-    } else {
-        $trans = 'synonyms sentence';
-    }
-    foreach ($entry['synonyms'] as $cur) {
-        $words[] = WorldlangDictUtils::makeLink(
-            $config,
-            'lexi/'.$cur,
-            $request,
-            $cur
-        );
-    } ?>
+    $trans =  (count($entry['synonyms']) == 1) ? 'synonym sentence' : 'synonyms sentence';
+    ?>
     <section>
-    <h2><?=sprintf($config->getTrans($trans), "");?></h2>
-    <?=implode(', ', $words);?>
+        <h2><?=sprintf($config->getTrans($trans), "");?></h2>
+        <?
+        foreach ($entry['synonyms'] as $cur) :
+            ?><a href="<?=WorldlangDictUtils::makeUri(
+                        $config,
+                        'lexi/'.$cur,
+                        $request
+                    );?>" lang="<?=GLB_CODE;?>" class="hl"><?=$cur;?></a><?
+        endforeach; ?>
     </section>
 <? endif; ?>
 
@@ -107,26 +102,21 @@ if (!empty($entry['synonyms'])):
 /**
  * Antonyms
  */
-if (!empty($entry['antonyms'])) {
-    $words = [];
-    if (count($entry['antonyms']) == 1) {
-        $trans = 'antonym sentence';
-    } else {
-        $trans = 'antonyms sentence';
-    }
-    foreach ($entry['antonyms'] as $cur) {
-        $words[] = WorldlangDictUtils::makeLink(
-            $config,
-            'lexi/'.$cur,
-            $request,
-            $cur
-        );
-    } ?>
+if (!empty($entry['antonyms'])):
+    $trans =  (count($entry['antonyms']) == 1) ? 'antonym sentence' : 'antonyms sentence';
+    ?>
     <section>
-    <h2><?=sprintf($config->getTrans($trans), "")?></h2>
-    <?=implode(', ', $words)?>
+        <h2><?=sprintf($config->getTrans($trans), "");?></h2>
+        <?
+        foreach ($entry['antonyms'] as $cur) :
+            ?><a href="<?=WorldlangDictUtils::makeUri(
+                        $config,
+                        'lexi/'.$cur,
+                        $request
+                    );?>" lang="<?=GLB_CODE;?>" class="hl"><?=$cur;?></a><?
+        endforeach; ?>
     </section>
-<? } ?>
+<? endif; ?>
 
 
 
@@ -146,7 +136,7 @@ if (!empty($entry['etymology']['a priori'])): ?>
 
 // Derived
 if (isset($entry['etymology']['derived'])): ?>
-        <p class="derived"><?=$entry['etymology']['derived']?></p>
+    <p class="derived"><?=$entry['etymology']['derived']?></p>
 <? endif;
 
 // Natlang
@@ -168,11 +158,11 @@ if (isset($entry['etymology']['kwasilexi'])): ?>
 if (isset($entry['etymology']['am oko pia'])): ?>
 <div>
     <h3>Am oko pia</h3>
-    <?
-    $list = &$entry['etymology']['am oko pia'];
-    $item_class = "hl";
-    include($config->templatePath . "partials/entry_word_list.php");
-    ?>
+    <ul>
+    <? foreach($entry['etymology']['am oko pia'] as $item): ?>
+        <li class="hl"><?=$item;?></a></li>
+    <? endforeach; ?>
+    </ul>
 </div>
 <? endif;
 
@@ -180,12 +170,11 @@ if (isset($entry['etymology']['am oko pia'])): ?>
 if (isset($entry['etymology']['am oko'])): ?>
 <div>
     <h3>Am oko</h3>
-    <?
-    $list = &$entry['etymology']['am oko'];
-    $item_class = "hl";
-    include($config->templatePath . "partials/entry_word_list.php");
-    ?>
-    
+    <ul>
+    <? foreach($entry['etymology']['am oko'] as $item): ?>
+        <li><a href="../lexi/<?=$item;?>" class="hl" lang="<?=GLB_CODE;?>"><?=$item;?></a></li>
+    <? endforeach; ?>
+    </ul>
 </div>
 <? endif;
 
@@ -193,11 +182,11 @@ if (isset($entry['etymology']['am oko'])): ?>
 if (isset($entry['etymology']['am kompara'])): ?>
 <div>
     <h3>Am kompara</h3>
-    <?
-    $list = &$entry['etymology']['am kompara'];
-    $item_class = "hl";
-    include($config->templatePath . "partials/entry_word_list.php");
-    ?>
+    <ul>
+    <? foreach($entry['etymology']['am kompara'] as $item): ?>
+        <li><a href="../lexi/<?=$item;?>" class="hl" lang="<?=GLB_CODE;?>"><?=$item;?></a></li>
+    <? endforeach; ?>
+    </ul>
 </div>
 <? endif;
 
@@ -213,17 +202,6 @@ if (isset($entry['etymology']['link'])): ?>
 /**
  * Related Words
  */
-if (!empty($backlinks[$entry['slug']])): ?>
-<section>
-    <h2 class="alsosee"><?=sprintf($config->getTrans('Also See Sentence'), '');?></h2>
-    <?
-    $list = &$backlinks[$entry['slug']];
-    $item_class = "hl";
-    include($config->templatePath . "partials/entry_word_list.php");
-    ?>
-</section>
-<? endif;
-
 
 if (array_key_exists('also see', $entry)): ?>
 <section class="alsosee">
@@ -231,11 +209,9 @@ if (array_key_exists('also see', $entry)): ?>
     <details>
         <summary>
             <h2><?=sprintf($config->getTrans('Also See Sentence'), '');?></h2>
-            <? $first = true;
+            <?
             foreach(array_keys($entry['also see']) as $term) :
-                if (!$first) echo(", ");
-                $first = false;
-                ?><a href="<?= WorldlangDictUtils::makeUri($config, 'lexi/'.$term, $request); ?>" class="hl"><?=$term;?></a><?
+                ?><a href="<?= WorldlangDictUtils::makeUri($config, 'lexi/'.$term, $request); ?>" lang="<?=GLB_CODE;?>" class="hl"><?=$term;?></a><?
             endforeach;
 
             ?> [+]
@@ -250,10 +226,6 @@ if (array_key_exists('also see', $entry)): ?>
         <? } ?>
         </dl>
     </details>
-    <?
-    // $item_class = "hl";
-    // include($config->templatePath . "partials/entry_word_list.php");
-    ?>
 </section>
 <? endif; ?>
 

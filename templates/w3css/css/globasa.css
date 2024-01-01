@@ -490,7 +490,7 @@ main.tags {
     padding: 3px;
 }
 
-.hl {
+.hl, .derived a:any-link {
     display: inline-block;
     border-radius: 4px;
     margin-left: 4px;
@@ -791,12 +791,19 @@ form input[type="submit"], button {
 
 
     .hl {
-        background-color: var(--glbBlueTint9);
+        background-color: var(--glbGreenTint9);
         color: black;
     }
 
+    
     a.hl:any-link {
         color: var(--glbBlueShade7);
+    }
+
+    
+    a.hl:lang(art-x-globasa), .derived a:any-link {
+        background-color: var(--glbBlueTint9);
+        color: var(--glbBlueShade5);
     }
 
     /* Site Header */
