@@ -20,11 +20,9 @@ foreach ($tags as $tag=>$words):
     $exists = isset($defs[$tag]);
 ?>
   <div>
-    <dt>
-        <span><?= WorldlangDictUtils::makeLink($config, "lexilari/".$tag, $request, $tag); ?></span>
-    </dt>
+    <dt><?= WorldlangDictUtils::makeLink($config, "lexilari/".$tag, $request, $tag); ?></dt>
     <dd>
-        <?= ($exists ? $defs[$tag] : '&nbsp;')  ?>
+        <?=($exists ? $defs[$tag] : '&nbsp;'); ?>
         <span class="hl"><?=count($words) ?></span>
     </dd>
   </div>

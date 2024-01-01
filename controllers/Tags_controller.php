@@ -13,7 +13,7 @@ class Tags_controller {
             include_once('views/tags_display_view.php');
         } else {
             $page->setTitle($config->getTrans('tags title'));
-            include_once('views/tags_list_view.php');
+            include_once('views/tags_default_view.php');
         }
     }
 }
