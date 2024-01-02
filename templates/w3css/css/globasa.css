@@ -585,6 +585,16 @@ form input[type="submit"], button {
         font-size: x-large;
     }
     
+    .etymology .lang_list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1em;
+    }
+
+    .lang_list li {
+        flex-grow: 1;
+    }
+
     form.tool {
         display: flex;
     }
@@ -623,6 +633,16 @@ form input[type="submit"], button {
         font-size: x-large;
     }
 
+    .etymology .lang_list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1em;
+    }
+
+    .lang_list li {
+        flex-grow: 1;
+    }
+
     form.tool {
         display: flex;
     }
@@ -657,6 +677,7 @@ form input[type="submit"], button {
         display: block;
         margin: 2px;
         text-align: left;
+        border: none;
     }
 
     .etymology .lang_list li .hl {
@@ -729,12 +750,16 @@ form input[type="submit"], button {
     }
 
     .etymology .lang_list li {
-        background-color: var(--glbGreenTint8);
+        /* background-color: var(--glbGreenTint8); */
+        background-color: white;
         color: black;
+        border: solid 1px var(--glbGreenTint7);
     }
     
     .etymology .lang_list li .hl {
-        background-color: white;
+        /* background-color: white; */
+        /* border: solid 1px var(--glbGreen); */
+        background-color: var(--glbGreenTint8);
         color: black;
     }
 
@@ -803,8 +828,22 @@ form input[type="submit"], button {
     
     a.hl:lang(art-x-globasa), .derived a:any-link {
         background-color: var(--glbBlueTint9);
-        color: var(--glbBlueShade5);
+        color: var(--glbBlueShade7);
     }
+
+    .hl.encap {
+        background-color: white;
+        color: black;
+        border: solid 1px var(--glbGreenTint9);
+    }
+
+    a.hl.encap:lang(art-x-globasa):any-link {
+        background-color: white;
+        color: var(--glbBlueShade3);
+        border: solid 1px var(--glbBlueTint9);
+    }
+
+
 
     /* Site Header */
 
