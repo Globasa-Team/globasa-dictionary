@@ -91,7 +91,7 @@ if (!empty($entry['synonyms'])):
                         $config,
                         'lexi/'.$cur,
                         $request
-                    );?>" lang="<?=GLB_CODE;?>" class="hl"><?=$cur;?></a><?
+                    );?>" lang="<?=GLB_CODE;?>"><?=$cur;?></a><?
         endforeach; ?>
     </section>
 <? endif; ?>
@@ -113,7 +113,7 @@ if (!empty($entry['antonyms'])):
                         $config,
                         'lexi/'.$cur,
                         $request
-                    );?>" lang="<?=GLB_CODE;?>" class="hl"><?=$cur;?></a><?
+                    );?>" lang="<?=GLB_CODE;?>"><?=$cur;?></a><?
         endforeach; ?>
     </section>
 <? endif; ?>
@@ -160,7 +160,7 @@ if (isset($entry['etymology']['am oko pia'])): ?>
     <h3>Am oko pia</h3>
     <ul>
     <? foreach($entry['etymology']['am oko pia'] as $item): ?>
-        <li class="hl"><?=$item;?></a></li>
+        <li><?=$item;?></a></li>
     <? endforeach; ?>
     </ul>
 </div>
@@ -172,7 +172,7 @@ if (isset($entry['etymology']['am oko'])): ?>
     <h3>Am oko</h3>
     <ul>
     <? foreach($entry['etymology']['am oko'] as $item): ?>
-        <li><a href="../lexi/<?=$item;?>" class="hl" lang="<?=GLB_CODE;?>"><?=$item;?></a></li>
+        <li><a href="../lexi/<?=$item;?>" lang="<?=GLB_CODE;?>"><?=$item;?></a></li>
     <? endforeach; ?>
     </ul>
 </div>
@@ -184,7 +184,7 @@ if (isset($entry['etymology']['am kompara'])): ?>
     <h3>Am kompara</h3>
     <ul>
     <? foreach($entry['etymology']['am kompara'] as $item): ?>
-        <li><a href="../lexi/<?=$item;?>" class="hl" lang="<?=GLB_CODE;?>"><?=$item;?></a></li>
+        <li><a href="../lexi/<?=$item;?>" lang="<?=GLB_CODE;?>"><?=$item;?></a></li>
     <? endforeach; ?>
     </ul>
 </div>
@@ -211,7 +211,7 @@ if (array_key_exists('also see', $entry)): ?>
             <h2><?=sprintf($config->getTrans('Also See Sentence'), '');?></h2>
             <?
             foreach(array_keys($entry['also see']) as $term) :
-                ?><a href="<?= WorldlangDictUtils::makeUri($config, 'lexi/'.$term, $request); ?>" lang="<?=GLB_CODE;?>" class="hl"><?=$term;?></a><?
+                ?><a href="<?= WorldlangDictUtils::makeUri($config, 'lexi/'.$term, $request); ?>" lang="<?=GLB_CODE;?>"><?=$term;?></a> <?
             endforeach;
 
             ?> [+]
