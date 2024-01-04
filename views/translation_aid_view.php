@@ -46,18 +46,20 @@ namespace WorldlangDict;
                 $trans = '[Word not found in dictionary]';
             }
 
-            if (isset($dict[$word])) {
-                $word = WorldlangDictUtils::makeLink(
-                    $config,
-                    'lexi/'.urlencode($word),
-                    $request,
-                    $word
-                );
-            } ?>
+            if (isset($dict[$word])) : ?>
             <div>
-                <dt><?=$word;?></dt>
-                <dd><?=$trans;?></dt>
+                <dt><?=WorldlangDictUtils::makeLink(
+                        $config,
+                        'lexi/'.urlencode($word),
+                        $request,
+                        $word
+                    );?></dt>
+                <dd>
+                    <em>(<a href="https://xwexi.globasa.net/<?=$request->lang;?>/gramati/lexiklase"><?=$dict[$word]['class'];?></a>)</em>&nbsp;
+                    <?=$dict[$word]['translation'];?>                    
+                </dd>
             </div>
+            <? endif; ?>
         <? endforeach; ?>
         </dl>
     <? endforeach; ?>
