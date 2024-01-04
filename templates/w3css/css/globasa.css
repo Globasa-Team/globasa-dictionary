@@ -826,7 +826,7 @@ form input[type="submit"], button {
     }
 
     
-    a.hl:lang(art-x-globasa), .derived a:any-link {
+    a.hl:lang(art-x-globasa) {
         background-color: var(--glbBlueTint9);
         color: var(--glbBlueShade7);
     }

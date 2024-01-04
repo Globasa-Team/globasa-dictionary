@@ -23,7 +23,7 @@ namespace WorldlangDict;
 
     <section><ul>
         <li><a href="<?php echo WorldlangDictUtils::makeUri($config, 'abeceli-menalari', $request); ?>"><?= $config->getTrans('browse title') ?></a></li>
-        <li><a href="https://xwexi.globasa.net/<?php echo $config->lang;?>/gramati/lexiklase"><?php echo $config->getTrans('word classes link');?></a></li>
+        <li><a href="https://xwexi.globasa.net/<?=$request->lang;?>/gramati/lexiklase"><?php echo $config->getTrans('word classes link');?></a></li>
         <li><a href="<?php echo WorldlangDictUtils::makeUri($config, 'lexilari', $request); ?>"><?php echo $config->getTrans('all words button');?></a></li>
         <li><a href="<?php echo WorldlangDictUtils::makeUri($config, 'tul/basatayti', $request); ?>"><?php echo $config->getTrans('translation aide title');?></a></li>
         <li><a href="<?php echo WorldlangDictUtils::makeUri($config, 'lexi', $request); ?>"><?php echo $config->getTrans('random word button');?></a></li>
@@ -50,8 +50,8 @@ namespace WorldlangDict;
     <section class="copyright">  
         <a xmlns:dct="http://purl.org/dc/terms/" rel="license" class="cc_license badge"
             href="http://creativecommons.org/publicdomain/zero/1.0/">
-            <img src="https://xwexi.globasa.net/user/themes/globasa-learn2-theme/images/cc_blue_x2.png" alt="CC0" class="cc_license"/>
-            <img src="https://xwexi.globasa.net/user/themes/globasa-learn2-theme/images/zero_blue_x2.png" alt="CC0" class="cc_license"/>
+            <img src="https://cdn.globasa.net/graphics/site_graphics/cc_blue_x2.png" alt="CC0" class="cc_license"/>
+            <img src="https://cdn.globasa.net/graphics/site_graphics/cc_zero_blue_x2.png" alt="CC0" class="cc_license"/>
         </a>
         <p xmlns:dct="http://purl.org/dc/terms/" class="cc_license">
             To the extent possible under law, <a rel="dct:publisher" href="https://globasa.net/"><span property="dct:title">the Globasa Team</span></a> has waived all copyright and related or neighboring rights to this site content. Built on a <a href="https://partialsolution.ca">Partial Solution</a>.

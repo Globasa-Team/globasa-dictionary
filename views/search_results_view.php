@@ -24,18 +24,20 @@
         $entry = yaml_parse_file($config->api2Path."terms/{$word}.yaml");
         if (empty($entry['term'])) return ""; ?>
         <div>
-        <dt {$data}><?
+        <dt><?
             echo(WorldlangDictUtils::makeLink(
                 $config,
                 'lexi/'.urlencode($entry['slug']),
                 $request,
                 $entry['term']
             ));
-        if (isset($entry['word class']) && !empty($entry['word class'])) :
-            ?><span class="wordClass">(<a href="https://xwexi.globasa.net/'<?=$config->lang;?>'/gramati/lexiklase"><?=$entry['word class'];?></a>)</span><?
-        endif;
         ?></dt>
-        <dd><?=$entry['trans html'][$config->lang];?></dd>
+        <dd>
+            <? if (isset($entry['word class']) && !empty($entry['word class'])) :
+                ?> <span class="wordClass">(<a href="https://xwexi.globasa.net/'<?=$request->lang;?>'/gramati/lexiklase"><?=$entry['word class'];?></a>)</span>&nbsp; <?
+            endif; ?>
+            <?=$entry['trans html'][$request->lang];?>
+        </dd>
         </div>
 <? endforeach; ?>
 </dl>

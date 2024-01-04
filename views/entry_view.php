@@ -25,7 +25,7 @@ $page->description = $entry['term'] . ': ' . htmlspecialchars($trans);
     <header>
         <h1 id="entryTerm"><?=$entry['term']?></h1>
 <? if (!empty($entry['word class'])): ?>
-    <div class="wordClass">(<a href="https://xwexi.globasa.net/<?=$config->lang;?>/gramati/lexiklase"><?=$entry['word class']?></a>)</div>
+    <div class="wordClass">(<a href="https://xwexi.globasa.net/<?=$request->lang;?>/gramati/lexiklase"><?=$entry['word class']?></a>)</div>
 <? endif; ?>
     </header>
 
@@ -37,9 +37,9 @@ $page->description = $entry['term'] . ': ' . htmlspecialchars($trans);
 <section class="translation">
     <p><?
 
- if (!empty($entry['trans'][$config->lang])):
+ if (!empty($entry['trans'][$request->lang])):
     $i = 0;
-    foreach($entry['trans'][$config->lang] as $group):
+    foreach($entry['trans'][$request->lang] as $group):
         $j = 0;
         foreach($group as $translation):
             ?><span class="hl"><?=$translation?></span><?
@@ -47,7 +47,7 @@ $page->description = $entry['term'] . ': ' . htmlspecialchars($trans);
                 ?>, <?
             endif;
         endforeach;
-        if (++$i < count($entry['trans'][$config->lang])):
+        if (++$i < count($entry['trans'][$request->lang])):
             ?>; <?
         endif;
     endforeach;

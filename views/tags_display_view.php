@@ -16,7 +16,10 @@ namespace WorldlangDict;
 <? $exists = isset($defs[$tag]); ?>
 <h1><?= $config->getTrans('single tag view') ?>: <?= $tag; ?></h1>
   <? if ($exists) : ?>
-  <p><?= $defs[$tag] ?></p>
+  <p>
+    <em>(<a href="https://xwexi.globasa.net/<?=$request->lang;?>/gramati/lexiklase"><?= $defs[$tag]['class'];?></a>)</em>&nbsp;
+    <?= $defs[$tag]['translation'] ?>
+  </p>
   <? endif; ?>
   <hr/>
   <? if (!empty($tags[$tag])): ?>
@@ -35,7 +38,9 @@ namespace WorldlangDict;
                 $request,
                 $word
             ); ?></dt>
-        <dd><?= $def ?>
+        <dd>
+        <em>(<a href="https://xwexi.globasa.net/<?=$request->lang;?>/gramati/lexiklase"><?=$defs[$word]['class'];?></a>)</em>&nbsp;
+        <?=$defs[$word]['translation'];?>
         </dd>
       </div>
     <? endforeach; ?>
