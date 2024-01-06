@@ -737,8 +737,8 @@ form input[type="submit"], button {
         color: white;
     }
 
-    .dictionaryEntry a:any-link, .tags a:any-link, dl a:any-link {
-        color: var(--glbBlue)
+    .dictionaryEntry a:any-link, .tags a:any-link, dl a:any-link, li.hl.encap {
+        color: var(--glbBlueShade3)
     }
 
     .dictionaryEntry .examples blockquote footer {
