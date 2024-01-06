@@ -218,12 +218,28 @@ if (array_key_exists('also see', $entry)): ?>
         </summary>
         <dl style="margin-inline-start:2em;">
             <?
-        foreach($entry['also see'] as $a_term=>$trans) {?>
-        <div>
-            <dt><a href="<?= WorldlangDictUtils::makeUri($config, 'lexi/'.$a_term, $request); ?>"><?=$a_term;?></a></dt>
-            <dd><?=$trans[$request->lang];?></dd>
-        </div>
-        <? } ?>
+        foreach($entry['also see'] as $a_term=>$data) :?>
+            <? if (isset($data['class'])) : ?>
+            <div>
+                <dt><?=WorldlangDictUtils::makeLink(
+                        $config,
+                        'lexi/'.urlencode($a_term),
+                        $request,
+                        $a_term
+                    );?></dt>
+                <dd>
+                    <em>(<a href="https://xwexi.globasa.net/<?=$request->lang;?>/gramati/lexiklase"><?=$data['class'];?></a>)</em>&nbsp;
+                    <?=$data['trans'][$request->lang];?>
+                </dd>
+            </div>
+            <? else: ?>
+
+            <div>
+                <dt><a href="<?= WorldlangDictUtils::makeUri($config, 'lexi/'.$a_term, $request); ?>"><?=$a_term;?></a></dt>
+                <dd><?=$data[$request->lang];?></dd>
+            </div>
+            <? endif; ?>
+        <? endforeach; ?>
         </dl>
     </details>
 </section>
@@ -268,12 +284,6 @@ if (!empty($entry['tags'])):
     <summary>🔍 Entry Inspector</summary>
     <pre>
         <?=yaml_emit($entry);?>
-    </pre>
-</details>
-<details class="debug">
-    <summary>🔍 Backlink Inspector</summary>
-    <pre>
-        <?=yaml_emit($backlinks[$entry['slug']]);?>
     </pre>
 </details>
 <? endif; ?>
