@@ -872,6 +872,12 @@ form input[type="submit"], button {
 
     /* Site Footer */
 
+    #siteFooter .langs,  #siteFooter .langs a:any-link {
+        background-color: var(--glbBlueShade4);
+        color: var(--glbBlueTint9);
+    }
+
+
     #siteFooter {
         background-color: var(--glbBlueTint8);
         color: black;
