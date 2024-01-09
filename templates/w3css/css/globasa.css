@@ -380,12 +380,12 @@ dt a {
     font-weight: bold;
 }
 
-.tags dl {
+.tags dl, #natlangs_language dl {
     column-width: 30ch;
 }
 
 
-main.tags {
+main.tags, #natlangs_language {
     width: 100%;
 }
 
@@ -794,7 +794,7 @@ form input[type="submit"], button {
     }
 
 
-    .tags dl {
+    .tags dl, #natlangs_language dl {
         column-rule: 3px solid #eee;
     }
     
@@ -955,7 +955,7 @@ form input[type="submit"], button {
         color: white;
     }
 
-    .tags dl {
+    .tags dl, #natlangs_language dl {
         column-rule: 3px solid #111;
     }
 
