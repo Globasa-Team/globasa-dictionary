@@ -339,7 +339,21 @@ textarea {
 
 
 
+/* Reports stuff */
 
+#parse_report {
+    max-width: 100ch;
+}
+
+#parse_report ol {
+    /* font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
+    font-family: monospace;
+    font-size: large;
+}
+
+#parse_report li + li {
+    margin-top: 1em;
+}
 
 dl {
     line-height: 110%;
