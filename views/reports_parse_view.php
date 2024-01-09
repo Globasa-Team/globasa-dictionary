@@ -1,5 +1,9 @@
 <?php
+
 namespace WorldlangDict;
+
+// todo: i18n
+
 ?>
 <!doctype html>
 <html class="no-js" lang="">
