@@ -23,8 +23,8 @@ namespace WorldlangDict;
 <table>
 <? foreach($data as $cur) { ?>
   <tr>
-    <td><strong><?= $cur['term']; ?></strong><br/><?= $cur['type']; ?></td>
-    <td><?= $cur['message']; ?><br/><?= substr($cur['timestamp'], 0, 10); ?></td>
+    <td><strong><?= $cur['term']; ?></strong><br/><?= $cur['type']; ?><br/><?= substr($cur['timestamp'], 0, 10); ?></td>
+    <td><?= $cur['message']; ?></td>
   </tr>
 <? } ?>
 </table>
