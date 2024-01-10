@@ -8,7 +8,7 @@ class Natlangs_controller
     {
         $arg = isset($request->arguments[0]) ? $request->arguments[0] : '';
 
-        // todo: i18n
+        // TODO: i18n
         $page->description = "Natlangs sources for Globasa words";
         $page->title = "Natlangs";
 
