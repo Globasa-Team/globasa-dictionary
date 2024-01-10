@@ -17,4 +17,4 @@ backups/
 
 # Ignore dev stuff
 notes.md
-todo.md
+todo*.md
