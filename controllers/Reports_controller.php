@@ -17,6 +17,11 @@ class Reports_controller
                 $data = yaml_parse_file($config->api2Path.'reports/parse_report.yaml');
                 require_once('views/reports_parse_view.php');
                 break;
+            case 'changelog':
+                require_once('models/Changelog.php');
+                $data = Changelog::recent_changes($config);
+                require_once('views/reports_changelog_view.php');
+                break;
             case '':
                 require_once('views/reports_default_view.php');
                 break;

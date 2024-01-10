@@ -613,6 +613,37 @@ form input[type="submit"], button {
         display: flex;
     }
 
+    #changelog_report {
+        min-width: 600px;
+    }
+
+    #changelog_report table {
+        border-collapse: collapse;
+        width: 100%;
+    }
+    #changelog_report tr {
+        border-bottom: solid 3px grey;
+        margin-bottom: 1em;
+        padding-top: 1em;
+    }
+
+    #changelog_report td {
+        border-bottom: solid 3px grey;
+        padding: 1em 0;
+
+    }
+
+
+    #changelog_report thead tr th:first-child,
+    #changelog_report tbody tr td:first-child {
+      width: 20em;
+      min-width: 8em;
+      max-width: 8em;
+      word-break: break-all;
+    }
+
+
+
     #siteFooter {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
@@ -661,6 +692,20 @@ form input[type="submit"], button {
         display: flex;
     }
     
+
+    #changelog_report td {
+        display: block;
+        padding-top: 1em;
+    }
+
+
+    #changelog_report td:first-child {
+        border-top: solid 1px grey;
+    }
+    #changelog_report td:last-child {
+        padding-bottom: 1em;
+    }
+
     #siteFooter {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -714,6 +759,18 @@ form input[type="submit"], button {
         display: block;
         width: fit-content;
         margin: 0 0 0 auto;    
+    }
+
+    #changelog_report td {
+        display: block;
+        padding-top: 1em;
+    }
+
+    #changelog_report td:first-child {
+        border-top: solid 1px grey;
+    }
+    #changelog_report td:last-child {
+        padding-bottom: 1em;
     }
 
     #siteFooter {
