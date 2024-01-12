@@ -2,6 +2,11 @@
 
 namespace WorldlangDict;
 
+
+define('OFFICIAL_NATLANGS', array('Doycisa','Englisa','Espanisa','Fransesa','Rusisa','Arabisa','Parsisa','Swahilisa','Turkisa','Hindisa','Telugusa','Indonesisa','Pilipinasa','Putunhwa','Hangusa','Niponsa','Vyetnamsa'));
+
+
+
 class Natlangs_controller
 {
     public static function run($config, $request, $page)

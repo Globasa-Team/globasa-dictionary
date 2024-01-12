@@ -20,7 +20,11 @@ namespace WorldlangDict;
 
 
 <ul>
-<? foreach($data['source langs'] as $natlang=>$count) { ?>
+<? foreach($data['source langs'] as $natlang=>$count) {
+  if (!in_array($natlang, OFFICIAL_NATLANGS)) {
+    continue;  
+  }
+  ?>
   <li><strong><?= WorldlangDictUtils::makeLink($config, "natlangs/".$natlang, $request, $natlang); ?></a></strong> (<?= $count; ?>)</li>
 <? } ?>
 </ul>
