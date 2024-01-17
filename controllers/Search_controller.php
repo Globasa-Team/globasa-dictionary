@@ -83,15 +83,21 @@ class Search_controller
      */
     private static function natlang_levenshtein_search(string $term, string $lang, array &$terms) {
         // Finally look for a partial match in index
+        
+        // Convert term to ASCII for `levenshtein()`.
+        // Turns multibyte accent characters to ?
+        $term = mb_convert_encoding($term, "ASCII");
+        
         $partialMatches = [];
         foreach ($terms as $key=>$data) {
-            if (levenshtein($term, $key, 1, 1, 1)<2) {
+            if (levenshtein($term, mb_convert_encoding($key, "ASCII"), 1, 1, 1)<2) {
                 if (empty($data)) {
                     $partialMatches[$key] = $key;
                 }
                 else {
                     foreach($data as $hit) {
                         $partialMatches[$key] = $hit;
+                        // TODO: Is this overwritting some results?
                     }
                 }
             }
@@ -108,7 +114,7 @@ class Search_controller
     private static function natlang_term_search(object $config, string $lang, string $term, object $request):array {
         // check if file exists
         if (!file_exists($config->search_terms_location.$lang.".yaml")) {
-            throw new Error_404_Exception("Entry Language Not Found");
+            throw new Error_404_Exception("Search Language Not Found");
         }
         $terms = yaml_parse_file($config->search_terms_location.$lang.".yaml");
 
