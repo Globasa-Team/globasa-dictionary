@@ -136,7 +136,7 @@ if (!empty($entry['etymology']['a priori'])): ?>
 
 // Derived
 if (isset($entry['etymology']['derived'])): ?>
-    <p class="derived"><?=$entry['etymology']['derived']?></p>
+    <p class="derived"><?=$entry['etymology']['derived html']?></p>
 <? endif;
 
 // Natlang
