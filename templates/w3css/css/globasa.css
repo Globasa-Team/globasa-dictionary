@@ -380,12 +380,12 @@ dt a {
     font-weight: bold;
 }
 
-.tags dl, #natlangs_language dl {
+.tags dl, #natlangs_language dl, #natlang_browse dl {
     column-width: 30ch;
 }
 
 
-main.tags, #natlangs_language {
+main.tags, #natlangs_language, #natlang_browse {
     width: 100%;
 }
 
@@ -859,7 +859,7 @@ form input[type="submit"], button {
     }
 
 
-    .tags dl, #natlangs_language dl {
+    .tags dl, #natlangs_language dl, #natlang_browse dl {
         column-rule: 3px solid #eee;
     }
     
@@ -1020,7 +1020,7 @@ form input[type="submit"], button {
         color: white;
     }
 
-    .tags dl, #natlangs_language dl {
+    .tags dl, #natlangs_language dl, #natlang_browse {
         column-rule: 3px solid #111;
     }
 
@@ -1037,9 +1037,8 @@ form input[type="submit"], button {
     .filter input[type="radio"]:checked + label[for^="cat-"],
     .filter input[type="radio"]:checked + label[for^="letter-"]
     {
-      background-color: var(--glbGreenShade5);
-      color: white;
-      
+        background-color: var(--glbGreenShade5);
+        color: white;
     }
     
     main input[type="text"], main textarea {
