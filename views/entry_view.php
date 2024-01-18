@@ -140,7 +140,7 @@ if (isset($entry['etymology']['derived'])): ?>
 <p class="derived"><?
     foreach($entry['etymology']['derived'] as $part) {
         if ($part === ' + ' || $part === '+') { // TODO: remove one
-            ?><?= $part; ?><?
+            ?> <?= $part; ?> <?
         } elseif ($part === ',' || $part === ', ') { // TODO: remove one
             ?><?= $part; ?> <?
         } else {

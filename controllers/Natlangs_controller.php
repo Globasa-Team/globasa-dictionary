@@ -23,9 +23,9 @@ class Natlangs_controller
                 require_once('views/natlangs_default_view.php');
                 break;
             default:
-                if (file_exists($config->api2Path.'etymologies_'.$arg.'.yaml')) {
+                if (file_exists($config->api2Path.'etymologies\etymology_'.$arg.'.yaml')) {
                     // todo: security on $arg
-                    $data = yaml_parse_file($config->api2Path.'etymologies_'.$arg.'.yaml');
+                    $data = yaml_parse_file($config->api2Path.'etymologies\etymology_'.$arg.'.yaml');
                     $dict = yaml_parse_file($config->basic_location.$request->lang.'.yaml');
                     require_once('views/natlangs_language_view.php');
                 } else {
