@@ -141,15 +141,13 @@ if (isset($entry['etymology']['derived'])): ?>
     foreach($entry['etymology']['derived'] as $part) {
         if ($part === ' + ' || $part === '+') { // TODO: remove one
             ?><?= $part; ?><?
-        } elseif ($part === '.' || $part === '. ') { // TODO: remove one
+        } elseif ($part === ',' || $part === ', ') { // TODO: remove one
             ?><?= $part; ?> <?
         } else {
             ?><a href="../lexi/<?= $part; ?>"><?= $part; ?></a><?
         }
     }
     ?></p>
-<? elseif (isset($entry['etymology']['derived html'])): ?>
-    <p class="derived"><?=$entry['etymology']['derived html']?></p>
 <? endif;
 
 
