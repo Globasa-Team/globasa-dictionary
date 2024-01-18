@@ -134,10 +134,24 @@ if (!empty($entry['etymology']['a priori'])): ?>
     <p class="apriori"><em>a priori</em></p>
 <? endif;
 
+
 // Derived
 if (isset($entry['etymology']['derived'])): ?>
+<p class="derived"><?
+    foreach($entry['etymology']['derived'] as $part) {
+        if ($part === ' + ' || $part === '+') { // TODO: remove one
+            ?><?= $part; ?><?
+        } elseif ($part === '.' || $part === '. ') { // TODO: remove one
+            ?><?= $part; ?> <?
+        } else {
+            ?><a href="../lexi/<?= $part; ?>"><?= $part; ?></a><?
+        }
+    }
+    ?></p>
+<? elseif (isset($entry['etymology']['derived html'])): ?>
     <p class="derived"><?=$entry['etymology']['derived html']?></p>
 <? endif;
+
 
 // Natlang
 if (isset($entry['etymology']['natlang'])):
