@@ -4,7 +4,7 @@ namespace WorldlangDict;
 <!doctype html>
 <html class="no-js" lang="<?= $request->lang; ?>">
 <? require_once($config->templatePath . "partials/html-head.php"); ?>
-<body>
+<body class="welcome">
 
 
 <? require_once($config->templatePath . "partials/page-header.php"); ?>
