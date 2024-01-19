@@ -36,18 +36,28 @@ $page->description = $entry['term'] . ': ' . htmlspecialchars($trans);
     <p><?
 
 if (!empty($entry['trans'][$request->lang])):
-    $i = 0;
+    $gstart = true;
+    
     foreach($entry['trans'][$request->lang] as $group):
-        $j = 0;
-        foreach($group as $translation):
-            ?><a href="<?= WorldlangDictUtils::makeUri($config, 'cel-ruke/'.$translation, $request) ?>" class="hl"><?=$translation?></a><?
-            if (++$j < count($group)):
-                ?>, <?
-            endif;
-        endforeach;
-        if (++$i < count($entry['trans'][$request->lang])):
+        if (!$gstart) :
             ?>; <?
         endif;
+        $gstart = false;
+        $tstart = true;
+        
+        
+        foreach($group as $translation):
+            if (!$tstart) :
+                ?>, <?
+            endif;
+            $tstart = false;
+
+            if (!str_contains($translation, '<')) :
+                ?><a href="<?= WorldlangDictUtils::makeUri($config, 'cel-ruke/'.$translation, $request) ?>" class="hl"><?=$translation?></a><?
+            else:
+                ?><span class="hl"><?=$translation?></span><?
+        endif;
+        endforeach;
     endforeach;
 else:
     echo(sprintf($config->getTrans("Missing Word Translation")));
