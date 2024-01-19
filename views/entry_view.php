@@ -40,7 +40,7 @@ if (!empty($entry['trans'][$request->lang])):
     foreach($entry['trans'][$request->lang] as $group):
         $j = 0;
         foreach($group as $translation):
-            ?><span class="hl"><?=$translation?></span><?
+            ?><a href="<?= WorldlangDictUtils::makeUri($config, 'cel-ruke/'.$translation, $request) ?>" class="hl"><?=$translation?></a><?
             if (++$j < count($group)):
                 ?>, <?
             endif;

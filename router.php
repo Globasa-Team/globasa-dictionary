@@ -47,6 +47,7 @@ function router($config)
             case 'natlang-abeceli':
                 require_once('controllers/Natlang_browse_controller.php');
                 Natlang_browse_controller::default($config, $request, $page);
+                break;
             case 'reports':
                 require_once('controllers/Reports_controller.php');
                 Reports_controller::run($config, $request, $page);
