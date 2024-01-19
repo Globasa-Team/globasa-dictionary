@@ -62,6 +62,16 @@ function router($config)
         }
     } catch (Error_404_Exception $e) {
         Error_controller::error_404($config, $request, $page);
+    } catch (Error_loading_data_exception $e) {
+        Error_controller::data_error($config, $request, $page);
+    } catch (Error_invalid_request_exception $e) {
+        Error_controller::invalid_request($config, $request, $page);
+    } catch(\Throwable $t) {
+        if ($config->debugging) {
+            var_dump($t);
+            die();
+        }
+        Error_controller::wtf($config, $request, $page);
     }
 }
 
