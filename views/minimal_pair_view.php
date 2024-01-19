@@ -1,15 +1,11 @@
 <?php
 namespace WorldlangDict;
 ?>
-
-
 <!doctype html>
-<html class="no-js" lang="">
+<html class="no-js" lang="<?= $request->lang; ?>">
 <? require_once($config->templatePath . "partials/html-head.php"); ?>
-<body id="htmlBody">
-  <!--[if IE]>
-    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-  <![endif]-->
+<body>
+
 
 <?
 

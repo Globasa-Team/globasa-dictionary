@@ -1,6 +1,7 @@
 <?php
 namespace WorldlangDict;
 
+// Create page description metadata
 $trans = [];
 foreach($entry['trans'][$config->lang] as $trans_group) {
     $trans[] = implode(", ", $trans_group);
@@ -10,12 +11,9 @@ $trans = implode("; ", $trans);
 $page->description = $entry['term'] . ': ' . htmlspecialchars($trans);
 ?>
 <!doctype html>
-<html class="no-js" lang="">
+<html class="no-js" lang="<?= $request->lang; ?>">
 <? require_once($config->templatePath . "partials/html-head.php"); ?>
-<body id="htmlBody">
-  <!--[if IE]>
-    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-  <![endif]-->
+<body>
 
 <? require_once($config->templatePath . "partials/page-header.php"); ?>
 
@@ -37,7 +35,7 @@ $page->description = $entry['term'] . ': ' . htmlspecialchars($trans);
 <section class="translation">
     <p><?
 
- if (!empty($entry['trans'][$request->lang])):
+if (!empty($entry['trans'][$request->lang])):
     $i = 0;
     foreach($entry['trans'][$request->lang] as $group):
         $j = 0;
@@ -51,18 +49,18 @@ $page->description = $entry['term'] . ': ' . htmlspecialchars($trans);
             ?>; <?
         endif;
     endforeach;
- else:
+else:
     echo(sprintf($config->getTrans("Missing Word Translation")));
- endif;
- 
- ?></p>
+endif;
+
+?></p>
 </section>
- 
- <?
- /**
+
+<?
+/**
   * Examples
   */
- if (!empty($entry['examples'])): ?>
+if (!empty($entry['examples'])): ?>
     <section class="examples">
     <h2><?=sprintf($config->getTrans('Example'), "")?></h2>
     <? foreach($entry['examples'] as $example): ?>
@@ -72,7 +70,7 @@ $page->description = $entry['term'] . ': ' . htmlspecialchars($trans);
     </blockquote>
     <? endforeach; ?>
     </section>
- <? endif; ?>
+<? endif; ?>
     
 
 
