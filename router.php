@@ -40,7 +40,7 @@ function router($config)
             case 'abeceli-menalari':
                 Browse_controller::default($config, $request, $page);
                 break;
-            case 'natlangs':
+            case 'estatisti-fe-lexiasel':
                 require_once('controllers/Natlangs_controller.php');
                 Natlangs_controller::run($config, $request, $page);
                 break;

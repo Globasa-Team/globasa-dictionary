@@ -14,7 +14,7 @@ namespace WorldlangDict;
 
 <main id="natlangs">
 
-<h1><?=$config->getTrans('natlangs title');?></h1>
+<h1><?=$config->getTrans('natlangs language view title');?></h1>
 
 
 <ul>
