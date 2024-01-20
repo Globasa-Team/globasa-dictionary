@@ -18,12 +18,12 @@ namespace WorldlangDict;
 
 
 <ul>
-<? foreach($data['source langs'] as $natlang=>$count) {
-  if (!in_array($natlang, OFFICIAL_NATLANGS)) {
+<? foreach($data['etymology source percent'] as $natlang=>$percent) {
+  if (!in_array($natlang, OFFICIAL_SOURCE_NATLANGS)) {
     continue;  
   }
   ?>
-  <li><strong><?= WorldlangDictUtils::makeLink($config, "natlangs/".$natlang, $request, $natlang); ?></a></strong> (<?= $count; ?>)</li>
+  <li><strong><?= WorldlangDictUtils::makeLink($config, "natlangs/".$natlang, $request, $natlang); ?></a></strong>: <?= $percent; ?>%</li>
 <? } ?>
 </ul>
 

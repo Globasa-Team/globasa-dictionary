@@ -391,6 +391,13 @@ main.tags, #natlangs_language, #natlang_browse {
 
 
 
+#natlangs {
+    font-size: larger;
+    line-height: 2;
+}
+
+
+
 .feedback {
     width: 100%;
 }

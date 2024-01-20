@@ -3,6 +3,7 @@ namespace WorldlangDict;
 
 define("GLB_CODE", "art-x-globasa");
 define("GLB_ATTR", "lang=\"art-x-globasa\"");
+define('OFFICIAL_SOURCE_NATLANGS', array('Doycisa','Englisa','Espanisa','Fransesa','Rusisa','Arabisa','Parsisa','Swahilisa','Turkisa','Hindisa','Telugusa','Indonesisa','Pilipinasa','Putunhwa','Hangusa','Niponsa','Vyetnamsa'));
 
 /* Source files */
 require_once 'router.php';

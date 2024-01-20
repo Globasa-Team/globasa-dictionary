@@ -22,8 +22,13 @@ namespace WorldlangDict;
     <tr><th>Language</th><th>Words</th></tr>
   </thead>
 <?php
-foreach($stats['source langs'] as $lang=>$count) {?>
-    <tr><td><?=$lang?></td><td><?=$count?></td></tr>
+arsort($stats['source langs']);
+foreach($stats['source langs'] as $natlang=>$count) {
+  if (!in_array($natlang, OFFICIAL_SOURCE_NATLANGS)) {
+    continue;  
+  }
+  ?>
+    <tr><td><?=$natlang?></td><td><?= round($count/$stats['terms count']*100, 1); ?>%</td></tr>
 <?}?>
 </table>
 </section>
