@@ -130,6 +130,29 @@ if (!empty($entry['antonyms'])):
 
 <?
 /**
+ * Tags
+ */
+if (!empty($entry['tags'])):
+    foreach ($entry['tags'] as $i=>$tag) {
+        $entry['tags'][$i] = WorldlangDictUtils::makeLink(
+            $config,
+            "lexilari/".$tag,
+            $request,
+            $tag
+        );
+    } ?>
+<section>
+    <h2><?=sprintf($config->getTrans('tags links'), ""); ?></h2>
+    <?= implode(', ', $entry['tags']); ?>
+</section>
+<? endif; ?>
+
+
+
+
+
+<?
+/**
  * Etymology
  */
 ?>
@@ -266,25 +289,24 @@ if (array_key_exists('also see', $entry)): ?>
 <? endif; ?>
 
 
+
 <?
 /**
- * Tags
+ * Rhyming
  */
-if (!empty($entry['tags'])):
-    foreach ($entry['tags'] as $i=>$tag) {
-        $entry['tags'][$i] = WorldlangDictUtils::makeLink(
-            $config,
-            "lexilari/".$tag,
-            $request,
-            $tag
-        );
-    } ?>
-<section>
-    <h2><?=sprintf($config->getTrans('tags links'), ""); ?></h2>
-    <?= implode(', ', $entry['tags']); ?>
+if (array_key_exists('rhymes', $entry)) :
+?>
+<section class="rhymes">
+    <h2><?= sprintf($config->getTrans('entry entry rhyming words'), "")?></h2>
+    <ul>
+<? foreach($entry['rhymes'] as $rhyme) : ?>
+        <li class="hl" lang="<?=GLB_CODE;?>"><?=
+            WorldlangDictUtils::makeLink($config, "lexi/".$rhyme, $request, $rhyme);
+            ?></li>
+<? endforeach; ?>
+    </ul>
 </section>
-<? endif; ?>
-
+<? endif; // rhymes ?>
 
 
 <?
@@ -296,7 +318,7 @@ if (!empty($entry['tags'])):
         '<span class="fa fa-link"></span> '.$config->getTrans('Word Link')) ?>
     &bull; <a href="<?=$entry['ipa link']?>"><span class="fa fa-volume-up"></span> <?=$config->getTrans('ipa link')?></a>
 </footer>
- 
+
 </main>
 
 <? if (isset($config->debugging) && $config->debugging) : ?>
