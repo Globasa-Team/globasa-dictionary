@@ -15,14 +15,13 @@ namespace WorldlangDict;
 
 <main id="natlangs_language">
 
-<h1><?= $arg; ?></h1>
-<p>Words that are taken from this language.</p>
+<h1><?= sprintf($config->getTrans('natlangs language view title'), ucwords($arg)); ?></h1>
 
 <dl>
 <? foreach($data as $term) { ?>
 
     <div>
-        <dt><?=
+        <dt lang="<?= GLB_CODE; ?>"><?=
             WorldlangDictUtils::makeLink(
                 $config,
                 'lexi/'.urlencode($term),

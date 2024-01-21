@@ -14,7 +14,7 @@ namespace WorldlangDict;
 
 <main id="natlangs">
 
-<h1><?=$config->getTrans('natlangs language view title');?></h1>
+<h1><?=$config->getTrans('natlangs title');?></h1>
 
 
 <ul>
@@ -23,7 +23,7 @@ namespace WorldlangDict;
     continue;  
   }
   ?>
-  <li><strong><?= WorldlangDictUtils::makeLink($config, "natlangs/".$natlang, $request, $natlang); ?></a></strong>: <?= $percent; ?>%</li>
+  <li><strong><?= WorldlangDictUtils::makeLink($config, "estatisti-fe-lexiasel/".$natlang, $request, $natlang); ?></a></strong>: <?= $percent; ?>%</li>
 <? } ?>
 </ul>
 

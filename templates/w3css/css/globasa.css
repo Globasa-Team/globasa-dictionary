@@ -73,6 +73,11 @@ h3 {
     font-size: medium;
 }
 
+a:any-link {
+    color: var(--glbBlueShade3);
+    text-decoration: none;
+}
+
 main, article {
     margin: auto;
     padding-inline: 5px;

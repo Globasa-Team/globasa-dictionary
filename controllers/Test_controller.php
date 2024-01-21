@@ -9,6 +9,6 @@ class Test_controller
         // WordController::randomWord($config, $request, $page);
         $page->setTitle("Globasa translation dictionary");
         $page->content = "Hello, world!";
-        include_once($config->templatePath.'view-default.php');
+        include_once('views/default_view.php');
     }
 }
