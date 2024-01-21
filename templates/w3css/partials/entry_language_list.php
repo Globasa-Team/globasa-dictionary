@@ -1,8 +1,16 @@
-<ul class="lang_list">
-<?php foreach($list as $lang=>$example): ?>
-    <li class="hl"><? echo($lang);
+<ul class="lang_listx">
+<?php
+$lstart = true;
+foreach($list as $lang=>$example):
+    if (!$lstart) :
+        ?>; <?
+    endif;
+    $lstart = false;
+    
+    ?>
+    <li class="" style="display: inline"><span class="hl encap blue"><? echo($lang); ?></span><?
     if (!empty($example)):
-        ?> <span class="hl"><?=$example?></span><?
+        ?> <span class=""><?=$example?></span><?
     endif;
     ?></li><?
 endforeach; ?>
