@@ -294,7 +294,8 @@ if (array_key_exists('also see', $entry)): ?>
 /**
  * Rhyming
  */
-if (array_key_exists('rhymes', $entry)) :
+// TODO: remove getTrans check
+if (array_key_exists('rhymes', $entry) && !empty($config->getTrans('entry entry rhyming words'))) :
 ?>
 <section class="rhymes">
     <h2><?= sprintf($config->getTrans('entry entry rhyming words'), "")?></h2>
