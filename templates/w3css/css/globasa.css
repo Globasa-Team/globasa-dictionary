@@ -268,7 +268,7 @@ header .wordClass a:any-link {
     list-style: none;
     margin: 0;
     padding: 0;
-    display: inline-block;
+    display: inline;
 }
 .entry li {
     display:inline-block;
@@ -786,13 +786,13 @@ textarea {
 
 @media (prefers-color-scheme: light) {
     body {
-        background-color: #fdfdfd;
+        background-color: white;
         color: black;
     }
-
+    
     .entry {
-        background-color: white;
-        box-shadow: 0 5px 5px 0 #f5f5f5, 0 5px 5px 0 #f5f5f5;
+        background-color: #fafafa;
+        /* box-shadow: 0 5px 5px 0 #f5f5f5, 0 5px 5px 0 #f5f5f5; */
     }
 
     .entry > footer {
@@ -959,7 +959,7 @@ textarea {
 
     .entry {
         background-color: #121212;
-        box-shadow: 0 5px 5px 0 #111, 0 5px 5px 0 #111;
+        /* box-shadow: 0 5px 5px 0 #111, 0 5px 5px 0 #111; */
     }
 
     .entry > footer {

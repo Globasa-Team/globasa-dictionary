@@ -300,11 +300,10 @@ if (array_key_exists('also see', $entry)): ?>
 /**
  * Rhyming
  */
-// TODO: remove getTrans check
-if (array_key_exists('rhymes', $entry) && $config->getTrans('entry entry rhyming words') !== "[Missing Translation]") :
+if (array_key_exists('rhymes', $entry)) :
 ?>
 <section class="rhymes">
-    <h2><?= sprintf($config->getTrans('entry entry rhyming words'), "")?></h2>
+    <h2><?= sprintf($config->getTrans('entry rhyming words'), "")?></h2>
     <ul>
 <? foreach($entry['rhymes'] as $rhyme) : ?>
         <li class="hl" lang="<?=GLB_CODE;?>"><?=
@@ -314,6 +313,7 @@ if (array_key_exists('rhymes', $entry) && $config->getTrans('entry entry rhyming
     </ul>
 </section>
 <? endif; // rhymes ?>
+
 
 
 <?
