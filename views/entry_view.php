@@ -252,7 +252,6 @@ if (isset($entry['etymology']['link'])): ?>
  * Derived Words
  */
 
-
 if (array_key_exists('derived terms', $entry)): ?>
 <section class="derived_words">
     <details>
@@ -340,7 +339,7 @@ if (array_key_exists('also see', $entry)): ?>
 
 
 
-<?
+<? // TODO: remove
 /**
  * Rhyming
  */
@@ -357,6 +356,56 @@ if (array_key_exists('rhymes', $entry)) :
     </ul>
 </section>
 <? endif; // rhymes ?>
+
+
+
+<?
+/**
+ * Rhyming
+ */
+if (array_key_exists('rhyme trans', $entry)): ?>
+<section class="rhymes">
+    <details>
+        <summary>
+            <h2><?=sprintf($config->getTrans('entry rhyming words'), '');?></h2>
+            <?
+            foreach(array_keys($entry['rhyme trans']) as $term) :
+                ?><a href="<?= WorldlangDictUtils::makeUri($config, 'lexi/'.$term, $request); ?>" class="hl encap" lang="<?=GLB_CODE;?>"><?=$term;?></a> <?
+            endforeach;
+
+            ?> <span class="hl green">[+]</span>
+        </summary>
+        <h2><?=sprintf($config->getTrans('entry rhyming words'), '');?></h2>
+        <dl>
+<?
+        foreach($entry['rhyme trans'] as $a_term=>$data) :
+            if (isset($data['class'])) : ?>
+            <div>
+                <dt><?=WorldlangDictUtils::makeLink(
+                        $config,
+                        'lexi/'.urlencode($a_term),
+                        $request,
+                        $a_term
+                    );?></dt>
+                <dd>
+                    <em>(<a href="https://xwexi.globasa.net/<?=$request->lang;?>/gramati/lexiklase"><?=$data['word class'];?></a>)</em>&nbsp;
+                    <?=$data['trans'][$request->lang];?> 
+                </dd>
+            </div>
+            <? else: ?>
+
+            <div>
+                <dt><a href="<?= WorldlangDictUtils::makeUri($config, 'lexi/'.$a_term, $request); ?>"><?=$a_term;?></a></dt>
+                <dd><?=$data[$request->lang];?></dd>
+            </div>
+            <? endif; ?>
+        <? endforeach; ?>
+        </dl>
+    </details>
+</section>
+<? endif; ?>
+        
+
 
 
 

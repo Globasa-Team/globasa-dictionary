@@ -286,7 +286,7 @@ header .wordClass a:any-link {
     padding-top: 3px; /* Needed to keep alignment with hl terms */
 }
 
-.derived_words dl {
+.entry dl {
     margin-left: 1em;
 }
 
