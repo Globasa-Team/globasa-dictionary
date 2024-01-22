@@ -17,13 +17,13 @@ $page->description = $entry['term'] . ': ' . htmlspecialchars($trans);
 
 <? require_once($config->templatePath . "partials/page-header.php"); ?>
 
-<main class="dictionaryEntry">
+<main class="entry">
 
 
     <header>
-        <h1 id="entryTerm"><?=$entry['term']?></h1>
+        <h1><?=$entry['term']?></h1>
 <? if (!empty($entry['word class'])): ?>
-    <div class="wordClass">(<a href="https://xwexi.globasa.net/<?=$request->lang;?>/gramati/lexiklase"><?=$entry['word class']?></a>)</div>
+        <div class="wordClass">(<a href="https://xwexi.globasa.net/<?=$request->lang;?>/gramati/lexiklase"><?=$entry['word class']?></a>)</div>
 <? endif; ?>
     </header>
 
@@ -99,7 +99,7 @@ if (!empty($entry['synonyms'])):
                         $config,
                         'lexi/'.$cur,
                         $request
-                    );?>" class="hl encap" lang="<?=GLB_CODE;?>"><?=$cur;?></a><?
+                    );?>" class="hl encap" lang="<?=GLB_CODE;?>"><?=$cur;?></a> <?
         endforeach; ?>
     </section>
 <? endif; ?>
@@ -121,7 +121,7 @@ if (!empty($entry['antonyms'])):
                         $config,
                         'lexi/'.$cur,
                         $request
-                    );?>" class="hl encap" lang="<?=GLB_CODE;?>"><?=$cur;?></a><?
+                    );?>" class="hl encap" lang="<?=GLB_CODE;?>"><?=$cur;?></a> <?
         endforeach; ?>
     </section>
 <? endif; ?>
@@ -183,18 +183,23 @@ if (isset($entry['etymology']['derived'])): ?>
 
 
 // Natlang
-if (isset($entry['etymology']['natlang'])):
+if (isset($entry['etymology']['natlang'])): ?>
+<div class="natlang">
+<?
     $list = &$entry['etymology']['natlang'];
     include($config->templatePath . "partials/entry_language_list.php");
-endif;
+?>
+</div>
+<? endif; ?>
 
+<?
 // kwasilexi
 if (isset($entry['etymology']['kwasilexi'])): ?>
 <div class="kwasilexi">
     <h3>Kwasilexi</h3>
     <? $list = &$entry['etymology']['kwasilexi'];
     include($config->templatePath . "partials/entry_language_list.php"); ?>
-    </div>
+</div>
 <? endif;
 
 // am oko pia
@@ -238,12 +243,13 @@ if (isset($entry['etymology']['am kompara'])): ?>
 if (isset($entry['etymology']['link'])): ?>
 <p><?=$entry['etymology']['link']?></p>;
 <? endif; ?>
+
 </section>
 
 
 <?
 /**
- * Related Words
+ * Derived Words
  */
 
 if (array_key_exists('also see', $entry)): ?>

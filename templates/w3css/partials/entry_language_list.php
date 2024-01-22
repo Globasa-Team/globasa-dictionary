@@ -1,16 +1,16 @@
-<ul class="lang_listx">
+<?
+
+namespace WorldlangDict;
+
+
+?>
+<ul class="lang_list">
 <?php
 $lstart = true;
-foreach($list as $lang=>$example):
-    if (!$lstart) :
-        ?>; <?
-    endif;
-    $lstart = false;
-    
-    ?>
-    <li class="" style="display: inline"><span class="hl encap blue"><? echo($lang); ?></span><?
+foreach($list as $lang=>$example): ?>
+    <li><a href="<?= WorldlangDictUtils::makeUri($config, "estatisti-fe-lexiasel/".$lang, $request); ?>" class="hl encap"><?= $lang; ?></a><?
     if (!empty($example)):
-        ?> <span class=""><?=$example?></span><?
+        ?> <span>(<?=$example?>)</span><?
     endif;
     ?></li><?
 endforeach; ?>

@@ -1,3 +1,6 @@
+/*#region   Root                                */
+/********  ------------------------------------ */
+
 :root {
     /* Globasa flag colours */
     --glbBlue: #0040a9;
@@ -84,282 +87,6 @@ main, article {
     box-sizing: border-box;
 }
 
-/*#region   Site Header */
-/**             **/
-/** site header **/
-/**             **/
-
-#siteHeader {
-    width: 100%;
-    color: inherit;
-    text-align: center;
-    padding: 0;
-    margin: 0 0 2em 0;
-}
-
-#appTitle a, #appTitle a:any-link {
-    font-size: 36px;
-}
-
-#appTitle {
-    margin: 0;
-}
-
-#siteHeader a:any-link {
-    text-decoration: none;
-    white-space: nowrap;
-}
-
-#siteHeader form {
-    margin: 5px auto 0 auto;
-    padding: 5px;
-}
-
-#siteHeader input {
-    width: 100%;
-    display: inline-block;
-    margin: 0;
-    border: 0;
-    text-align: center;
-}
-
-/*#endregion*/
-
-
-/*#region   Site Footer */
-
-#siteFooter {
-    margin: 2em 0 0 0;
-}
-
-#siteFooter a:any-link {
-    text-decoration: none;
-}
-
-#siteFooter ul {
-    list-style-type: none;
-    padding: 0;
-}
-
-#siteFooter .langs, #siteFooter .langs a:any-link {
-    text-align: center;
-}
-
-#siteFooter .about {
-    text-align: center;
-    padding-top: 1em;
-}
-
-#siteFooter .copyright {
-    padding: 3px;
-}
-
-#siteFooter .copyright p {
-    display: inline;
-}
-
-#siteFooter img.cc_license {
-    display: inline-block;
-    margin: 0;
-    max-width: 1.2em;
-    height: auto;
-}
-
-#siteFooter a.badge {
-    text-decoration: none;
-}
-
-/*#endregion*/
-
-
-
-/*#region   Dictionary Entry */
-
-.dictionaryEntry .status {
-    margin: 0;
-    padding: 0;
-    text-align: right;
-}
-
-header .wordClass a:any-link {
-    color: white;
-    background-color: inherit;
-}
-
-.wordClass {
-    display: inline;
-    font-style: italic;
-}
-
-#entryTerm {
-    margin-top: 0;
-}
-
-.dictionaryEntry a:any-link, .tags a:any-link, dl a:any-link {
-    text-decoration: none;
-}
-
-.dictionaryEntry h1 {
-    font-weight: normal;
-}
-
-.dictionaryEntry h1, .dictionaryEntry h2 {
-    display: inline-block;
-    margin: 0;
-}
-
-.dictionaryEntry {
-    border-radius: 8px;
-    padding: 0;
-}
-
-    
-.dictionaryEntry > header {
-    padding-inline: 1em;
-}
-
-.dictionaryEntry > section, .dictionaryEntry > footer {
-    padding-inline: 5px;
-}
-
-.dictionaryEntry > section {
-    margin-block: 1em;
-}
-
-.dictionaryEntry > footer {
-    border-bottom-left-radius: 8px;
-    border-bottom-right-radius: 8px;
-}
-
-.dictionaryEntry > header {
-    border-top-left-radius: 8px;
-    border-top-right-radius: 8px;
-}
-
-.feedbackSubmit {
-    background-color: var(--glbGreen);
-    color: white;
-}
-
-.dictionaryEntry footer a:any-link {
-    text-decoration: none;
-    color: white;
-}
-
-.dictionaryEntry h1 {
-    font-size: x-large;
-}
-
-.dictionaryEntry h2 {
-    display: inline-block;
-    font-size: medium
-}
-
-.dictionaryEntry div:not(.kwasilexi) h3 {
-    display: inline-block;
-}
-
-.dictionaryEntry .translation span {
-    margin-bottom: .5em;
-}
-
-.dictionaryEntry .examples blockquote {
-    position: relative;
-    z-index: 1;
-}
-
-.dictionaryEntry .examples p {
-    margin-bottom: 0;
-}
-
-.dictionaryEntry .examples blockquote::before {
-	position: absolute;
-	z-index: -1;
-	display: block;
-	font-size: 8rem;
-	font-family: Georgia, Times, Garamond, serif;
-    top: -3rem;
-    left: -1rem;
-    content: open-quote;
-}
-
-
-.etymology h2 {
-    display: block;
-}
-
-.etymology p {
-    margin-bottom: none;
-    display: inline-block;
-}
-
-.etymology .derived, .etymology .apriori {
-    margin-top: 0;
-}
-
-.dictionaryEntry ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: inline-block;
-}
-.dictionaryEntry li {
-    display:inline-block;
-    margin: 2px;
-}
-
-.etymology span {
-    padding: 3px;
-}
-
-.etymology li > span {
-    border-radius: 7px;
-}
-
-.alsosee summary {
-    display: block;
-}
-
-.alsosee dl {
-    margin-left: 1em;
-}
-
-
-/*#endregion*/
-
-
-
-
-/* Tools stuff */
-textarea {
-    display: block;
-    width: 100%;
-    height: 20em;
-}
-
-.tool header {
-    background-color: var(--glbBlue);
-    color: white;
-}
-
-
-
-/* Reports stuff */
-
-#parse_report {
-    max-width: 100ch;
-}
-
-#parse_report ol {
-    /* font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
-    font-family: monospace;
-    font-size: large;
-}
-
-#parse_report li + li {
-    margin-top: 1em;
-}
-
 dl {
     line-height: 110%;
 }
@@ -394,13 +121,211 @@ main.tags, #natlangs_language, #natlang_browse {
     width: 100%;
 }
 
+.hl {
+    display: inline-block;
+    border-radius: 4px;
+    margin-left: 0px;
+    margin-top: 2px;
+    padding: 0px 4px;
+}
 
+
+
+/*#endregion*/
+
+
+
+
+/*#region   Entry                               */
+/********  ------------------------------------ */
+
+.entry .status {
+    margin: 0;
+    padding: 0;
+    text-align: right;
+}
+
+header .wordClass a:any-link {
+    color: white;
+    background-color: inherit;
+}
+
+.wordClass {
+    display: inline;
+    font-style: italic;
+}
+
+.entry h1 {
+    margin-top: 0;
+    font-weight: normal;
+}
+
+.entry a:any-link, .tags a:any-link, dl a:any-link {
+    text-decoration: none;
+}
+
+.entry h1, .entry h2 {
+    display: inline-block;
+    margin: 0;
+}
+
+.entry {
+    border-radius: 8px;
+    padding: 0;
+}
+
+    
+.entry > header {
+    padding-inline: 1em;
+}
+
+.entry > section, .entry > footer {
+    padding-inline: 5px;
+}
+
+.entry > section {
+    margin-block: 1em;
+}
+
+.entry > footer {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.entry > header {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+}
+
+.feedbackSubmit {
+    background-color: var(--glbGreen);
+    color: white;
+}
+
+.entry footer a:any-link {
+    text-decoration: none;
+    color: white;
+}
+
+.entry h1 {
+    font-size: x-large;
+}
+
+.entry h2 {
+    display: inline-block;
+    font-size: medium
+}
+
+.entry h3 {
+    display: inline-block;
+}
+
+.entry .translation span {
+    margin-bottom: .5em;
+}
+
+.entry .examples blockquote {
+    position: relative;
+    z-index: 1;
+}
+
+.entry .examples p {
+    margin-bottom: 0;
+}
+
+.entry .examples blockquote::before {
+	position: absolute;
+	z-index: -1;
+	display: block;
+	font-size: 8rem;
+	font-family: Georgia, Times, Garamond, serif;
+    top: -3rem;
+    left: -1rem;
+    content: open-quote;
+}
+
+
+.etymology .derived, .etymology .apriori, .etymology .natlang {
+    margin: 0;
+    display: inline;
+}
+
+
+.etymology .lang_list {
+    display: inline;
+}
+
+.etymology .lang_list li {
+    display: inline;
+}
+
+.etymology .lang_list span {
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+.entry ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+}
+.entry li {
+    display:inline-block;
+    margin: 2px;
+}
+
+
+.alsosee summary {
+    display: block;
+}
+
+.alsosee dl {
+    margin-left: 1em;
+}
+
+
+/*#endregion*/
+
+
+
+
+/*#region   Reports                             */
+/********  ------------------------------------ */
+
+#parse_report {
+    max-width: 100ch;
+}
+
+#parse_report ol {
+    /* font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
+    font-family: monospace;
+    font-size: large;
+}
+
+#parse_report li + li {
+    margin-top: 1em;
+}
+
+/*#endregion*/
+
+
+
+
+/*#region   Natlangs                            */
+/********  ------------------------------------ */
 
 #natlangs {
     line-height: 2;
 }
 
+/*#endregion*/
 
+
+
+
+/*#region   Feedback                            */
+/********  ------------------------------------ */
 
 .feedback {
     width: 100%;
@@ -411,8 +336,13 @@ main.tags, #natlangs_language, #natlang_browse {
     text-align: center;
 }
 
+/*#endregion*/
 
-/*#region Translation Aid */
+
+
+
+/*#region   Translation Aid                     */
+/********  ------------------------------------ */
 
 .translationAide li {
     margin-bottom: 1em;
@@ -426,7 +356,9 @@ main.tags, #natlangs_language, #natlang_browse {
 
 
 
-/*#region Alphabetical Dictionary Browser */
+
+/*#region   Features                            */
+/********  ------------------------------------ */
 
 #features h2 {
     margin-bottom: 0;
@@ -443,7 +375,10 @@ main.tags, #natlangs_language, #natlang_browse {
 /*#endregion*/
 
 
-/*#region Alphabetical Dictionary Browser */
+
+
+/*#region   Alphabetical Dictionary Browser     */
+/********  ------------------------------------ */
 
 .filter {
     display: grid;
@@ -494,7 +429,10 @@ main.tags, #natlangs_language, #natlang_browse {
 /*#endregion*/
 
 
-/*#region Homonym Checker */
+
+
+/*#region   Homonym Checker                     */
+/********  ------------------------------------- */
 
 .homonyms ul {
     list-style-type: none;
@@ -515,33 +453,13 @@ main.tags, #natlangs_language, #natlang_browse {
     padding: 3px;
 }
 
-.hl, .derived a:any-link {
-    display: inline-block;
-    border-radius: 4px;
-    margin-left: 0px;
-    margin-top: 5px;
-    padding: 4px;
-}
-
-
-.etymology .lang_list li {
-    display: inline-block;
-    text-align: center;
-    padding: 2px;
-    margin: 0;
-    border-radius: 8px;
-    vertical-align: top;
-}
-
-.etymology .lang_list li .hl {
-    color: black;
-    display: block;
-    margin-inline: 0;
-}
 /*#endregion*/
 
 
-/*#region form panels */
+
+
+/*#region   Form panels & Tools                 */
+/********  ------------------------------------ */
 
 form input[type="text"] {
     display: inline-block;
@@ -561,13 +479,26 @@ form input[type="submit"], button {
     cursor: pointer;
 }
 
+/* Tools stuff */
+textarea {
+    display: block;
+    width: 100%;
+    height: 20em;
+}
+
+.tool header {
+    background-color: var(--glbBlue);
+    color: white;
+}
+
+
 /*#endregion*/
 
 
-/*#region Welcome View */
-/**              **/
-/** Welcome view **/
-/**              **/
+
+
+/*#region   Welcome View                        */
+/*******  ------------------------------------- */
 
 .welcome {
     background-position: center;
@@ -580,7 +511,100 @@ form input[type="submit"], button {
     background-position: center;
     min-height: max(30svh, 250px);
 }
+
 /*#endregion*/
+
+
+
+
+/*#region   Site Header                         */
+/********  ------------------------------------ */
+
+#siteHeader {
+    width: 100%;
+    color: inherit;
+    text-align: center;
+    padding: 0;
+    margin: 0 0 2em 0;
+}
+
+#appTitle a, #appTitle a:any-link {
+    font-size: 36px;
+}
+
+#appTitle {
+    margin: 0;
+}
+
+#siteHeader a:any-link {
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+#siteHeader form {
+    margin: 5px auto 0 auto;
+    padding: 5px;
+}
+
+#siteHeader input {
+    width: 100%;
+    display: inline-block;
+    margin: 0;
+    border: 0;
+    text-align: center;
+}
+
+/*#endregion*/
+
+
+
+
+/*#region   Site Footer                         */
+/********  ------------------------------------ */
+
+#siteFooter {
+    margin: 2em 0 0 0;
+}
+
+#siteFooter a:any-link {
+    text-decoration: none;
+}
+
+#siteFooter ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#siteFooter .langs, #siteFooter .langs a:any-link {
+    text-align: center;
+}
+
+#siteFooter .about {
+    text-align: center;
+    padding-top: 1em;
+}
+
+#siteFooter .copyright {
+    padding: 3px;
+}
+
+#siteFooter .copyright p {
+    display: inline;
+}
+
+#siteFooter img.cc_license {
+    display: inline-block;
+    margin: 0;
+    max-width: 1.2em;
+    height: auto;
+}
+
+#siteFooter a.badge {
+    text-decoration: none;
+}
+
+/*#endregion*/
+
 
 
 
@@ -611,18 +635,6 @@ form input[type="submit"], button {
         font-size: x-large;
     }
     
-    .etymology .lang_list {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 1em;
-    }
-
-    .lang_list li {
-        flex-grow: 1;
-        flex-shrink: 0;
-        flex-basis: 0;
-    }
-
     form.tool {
         display: flex;
     }
@@ -650,10 +662,10 @@ form input[type="submit"], button {
 
     #changelog_report thead tr th:first-child,
     #changelog_report tbody tr td:first-child {
-      width: 20em;
-      min-width: 8em;
-      max-width: 8em;
-      word-break: break-all;
+        width: 20em;
+        min-width: 8em;
+        max-width: 8em;
+        word-break: break-all;
     }
 
 
@@ -690,18 +702,6 @@ form input[type="submit"], button {
     
     h1 {
         font-size: x-large;
-    }
-
-    .etymology .lang_list {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5em;
-    }
-
-    .lang_list li {
-        flex-grow: 1;
-        flex-shrink: 0;
-        flex-basis: 0;
     }
 
     form.tool {
@@ -742,26 +742,6 @@ form input[type="submit"], button {
 
     main, article {
         margin-inline: 5px;
-    }
-
-    .etymology ul.lang_list {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        flex-wrap: wrap;
-        gap: 2px;
-    }
-
-    .etymology .lang_list li {
-        display: block;
-        text-align: left;
-        border: none;
-
-    }
-
-    .etymology .lang_list li .hl {
-        color: black;
-        display: inline-block;
-        margin-inline: 0;
     }
 
     .filter {
@@ -810,48 +790,34 @@ form input[type="submit"], button {
         color: black;
     }
 
-    .dictionaryEntry {
+    .entry {
         background-color: white;
         box-shadow: 0 5px 5px 0 #f5f5f5, 0 5px 5px 0 #f5f5f5;
     }
 
-    .dictionaryEntry > footer {
+    .entry > footer {
         background-color: var(--glbGreen);
         background: linear-gradient(45deg, var(--glbGreen) 30%, var(--glbGreenTint1) 70%);
         color: white;
     }
     
-    .dictionaryEntry > header {
+    .entry > header {
         background-color: var(--glbBlue);
         background: linear-gradient(45deg, var(--glbBlue) 30%, var(--glbBlueTint1) 70%);
         color: white;
     }
 
-    .dictionaryEntry a:any-link, .tags a:any-link, dl a:any-link, li.hl.encap, span.encap.blue {
+    .entry a:any-link, .tags a:any-link, dl a:any-link, .hl.encap, .hl.encap:any-link {
         color: var(--glbBlueShade3);
         border-color: var(--glbBlueTint8)
     }
 
-    .dictionaryEntry .examples blockquote footer {
+    .entry .examples blockquote footer {
         color: #333;
     }
     
-    .dictionaryEntry .examples blockquote::before {
+    .entry .examples blockquote::before {
         color: var(--glbGreenTint9);
-    }
-
-    .etymology .lang_list li {
-        /* background-color: var(--glbGreenTint8); */
-        background-color: white;
-        color: black;
-        border: solid 1px var(--glbGreenTint7);
-    }
-    
-    .etymology .lang_list li .hl {
-        /* background-color: white; */
-        /* border: solid 1px var(--glbGreen); */
-        background-color: var(--glbGreenTint8);
-        color: black;
     }
 
     .filter {
@@ -991,47 +957,36 @@ form input[type="submit"], button {
         color: white;
     }
 
-    .dictionaryEntry {
+    .entry {
         background-color: #121212;
         box-shadow: 0 5px 5px 0 #111, 0 5px 5px 0 #111;
     }
 
-    .dictionaryEntry > footer {
+    .entry > footer {
         background-color: var(--glbGreenShade5);
         background: linear-gradient(45deg, var(--glbGreenShade5) 30%, var(--glbGreenShade4) 70%);
         color: white;
     }
     
-    .dictionaryEntry > header {
+    .entry > header {
         background-color: var(--glbBlueShade5);
         background: linear-gradient(45deg, var(--glbBlueShade5) 30%, var(--glbBlueShade4) 70%);
         color: white;
     }
 
-    .dictionaryEntry a:any-link, .tags a:any-link, dl a:any-link {
+    .entry a:any-link, .tags a:any-link, dl a:any-link {
         color: var(--glbGreenTint6);
     }
     
-    .dictionaryEntry .examples blockquote::before {
+    .entry .examples blockquote::before {
         color: #333;
     }
     
-    .dictionaryEntry .examples blockquote::before {
+    .entry .examples blockquote::before {
         color: var(--glbGreenShade7);
     }
     
     
-    .etymology .lang_list li {
-        background-color: var(--glbBlueShade7);
-        color: var(--glbBlueTint9);
-    }
-    
-    .etymology .lang_list li .hl {
-        background-color: var(--glbGreenShade6);
-        border: solid 1px var(--glbGreenSHade7);
-        color: white;
-    }
-
     .tags dl, #natlangs_language dl, #natlang_browse {
         column-rule: 3px solid #111;
     }
@@ -1066,7 +1021,7 @@ form input[type="submit"], button {
         border: none;
     }
     
-    main /*.tool_input*/ input[type="submit"]:hover {
+    main input[type="submit"]:hover {
         background-color: var(--glbGreenShade9);
     }
 
