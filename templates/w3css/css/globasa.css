@@ -276,14 +276,19 @@ header .wordClass a:any-link {
 }
 
 
-.alsosee summary {
-    display: block;
+.entry details, .entry summary {
+    display: inline;
+}
+.entry details[open] summary {
+    display: none;
+}
+.entry details[open] h2 {
+    padding-top: 3px; /* Needed to keep alignment with hl terms */
 }
 
-.alsosee dl {
+.derived_words dl {
     margin-left: 1em;
 }
-
 
 /*#endregion*/
 
@@ -807,9 +812,8 @@ textarea {
         color: white;
     }
 
-    .entry a:any-link, .tags a:any-link, dl a:any-link, .hl.encap, .hl.encap:any-link {
+    .entry a:any-link, .tags a:any-link, dl a:any-link {
         color: var(--glbBlueShade3);
-        border-color: var(--glbBlueTint8)
     }
 
     .entry .examples blockquote footer {
@@ -872,18 +876,12 @@ textarea {
     }
 
 
-    .hl {
+    .hl.green, .hl.green:any-link {
         background-color: var(--glbGreenTint9);
-        color: black;
+        color: var(--glbGreenShade6);
     }
-
     
-    a.hl:any-link {
-        color: var(--glbBlueShade7);
-    }
-
-    
-    a.hl:lang(art-x-globasa) {
+    .hl.blue, .hl.blue:any-link {
         background-color: var(--glbBlueTint9);
         color: var(--glbBlueShade7);
     }
@@ -891,16 +889,18 @@ textarea {
     .hl.encap {
         background-color: white;
         color: black;
-        border: solid 1px var(--glbGreenTint8);
+        border: solid 1px #aaa;
     }
 
-    a.hl.encap:lang(art-x-globasa):any-link {
-        background-color: white;
+    .encap.green, .encap.green:any-link {
+        color: var(--glbGreenShade3);
+        border-color: #aaa;
+    }
+
+    .encap.blue, .encap.blue:any-link {
         color: var(--glbBlueShade3);
-        border: solid 1px var(--glbBlueTint9);
+        border-color: #aaa;
     }
-
-
 
     /* Site Header */
 
