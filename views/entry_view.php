@@ -252,12 +252,59 @@ if (isset($entry['etymology']['link'])): ?>
  * Derived Words
  */
 
+
+if (array_key_exists('derived terms', $entry)): ?>
+    <section class="alsosee">
+        
+        <details>
+            <summary>
+                <h2><?=sprintf($config->getTrans('derived word list'), '');?></h2>
+                <?
+                foreach(array_keys($entry['derived terms']) as $term) :
+                    ?><a href="<?= WorldlangDictUtils::makeUri($config, 'lexi/'.$term, $request); ?>" class="hl encap" lang="<?=GLB_CODE;?>"><?=$term;?></a> <?
+                endforeach;
+    
+                ?> [+]
+            </summary>
+            <dl style="margin-inline-start:2em;">
+                <?
+            foreach($entry['derived terms'] as $a_term=>$data) :?>
+                <? if (isset($data['class'])) : ?>
+                <div>
+                    <dt><?=WorldlangDictUtils::makeLink(
+                            $config,
+                            'lexi/'.urlencode($a_term),
+                            $request,
+                            $a_term
+                        );?></dt>
+                    <dd>
+                        <em>(<a href="https://xwexi.globasa.net/<?=$request->lang;?>/gramati/lexiklase"><?=$data['class'];?></a>)</em>&nbsp;
+                        <?=$data['trans'][$request->lang];?>
+                    </dd>
+                </div>
+                <? else: ?>
+    
+                <div>
+                    <dt><a href="<?= WorldlangDictUtils::makeUri($config, 'lexi/'.$a_term, $request); ?>"><?=$a_term;?></a></dt>
+                    <dd><?=$data[$request->lang];?></dd>
+                </div>
+                <? endif; ?>
+            <? endforeach; ?>
+            </dl>
+        </details>
+    </section>
+    <? endif; ?>
+    
+    
+
+
+<? // TODO: remove also see duplicate
 if (array_key_exists('also see', $entry)): ?>
 <section class="alsosee">
     
     <details>
         <summary>
-            <h2><?=sprintf($config->getTrans('Also See Sentence'), '');?></h2>
+            <h2><?=sprintf($config->getTrans('derived word list'), '');?></h2>
             <?
             foreach(array_keys($entry['also see']) as $term) :
                 ?><a href="<?= WorldlangDictUtils::makeUri($config, 'lexi/'.$term, $request); ?>" class="hl encap" lang="<?=GLB_CODE;?>"><?=$term;?></a> <?
