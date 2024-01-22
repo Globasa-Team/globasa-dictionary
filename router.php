@@ -73,8 +73,7 @@ function router($config)
         Error_controller::invalid_request($config, $request, $page);
     } catch(\Throwable $t) {
         if ($config->debugging) {
-            var_dump($t);
-            die();
+            Error_controller::debug($config, $request, $page, $t);
         }
         Error_controller::wtf($config, $request, $page);
     }
