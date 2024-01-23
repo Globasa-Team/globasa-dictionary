@@ -249,10 +249,14 @@ header .wordClass a:any-link {
 }
 
 .etymology .derived, .etymology .apriori, .etymology .natlang {
+    margin-top: 1em;
+    display: block;
+}
+
+.etymology .derived:first-of-type, .etymology .apriori:first-of-type, .etymology .natlang:first-of-type {
     margin: 0;
     display: inline;
 }
-
 
 .etymology .lang_list {
     display: inline;
