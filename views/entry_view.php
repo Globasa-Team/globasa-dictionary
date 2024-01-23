@@ -267,21 +267,21 @@ if (array_key_exists('derived terms', $entry)): ?>
         <h2><?=sprintf($config->getTrans('derived word list'), '');?></h2>
         <dl>
 <?
-        foreach($entry['derived terms'] as $a_term=>$data) :
-            if (isset($data['class'])) : ?>
+        foreach($entry['derived terms'] as $a_term=>$data) : ?>
             <div>
                 <dt><?=WorldlangDictUtils::makeLink(
-                        $config,
-                        'lexi/'.urlencode($a_term),
-                        $request,
-                        $a_term
-                    );?></dt>
+                    $config,
+                    'lexi/'.urlencode($a_term),
+                    $request,
+                    $a_term
+                );?></dt>
                 <dd>
+                <? if (isset($data['class'])) : ?>
                     <em>(<a href="https://xwexi.globasa.net/<?=$request->lang;?>/gramati/lexiklase"><?=$data['class'];?></a>)</em>&nbsp;
+                <? else: ?>
                     <?=$data['trans'][$request->lang];?> 
                 </dd>
             </div>
-            <? else: ?>
 
             <div>
                 <dt><a href="<?= WorldlangDictUtils::makeUri($config, 'lexi/'.$a_term, $request); ?>"><?=$a_term;?></a></dt>
@@ -294,53 +294,11 @@ if (array_key_exists('derived terms', $entry)): ?>
 </section>
 <? endif;
 
-// TODO: remove duplicate after transition
-if (array_key_exists('also see', $entry)): ?>
-<section class="derived_words">
-    <details>
-        <summary>
-            <h2><?=sprintf($config->getTrans('derived word list'), '');?></h2>
-            <?
-            foreach(array_keys($entry['also see']) as $term) :
-                ?><a href="<?= WorldlangDictUtils::makeUri($config, 'lexi/'.$term, $request); ?>" class="hl encap" lang="<?=GLB_CODE;?>"><?=$term;?></a> <?
-            endforeach;
-
-            ?> <span class="hl green">[+]</span>
-        </summary>
-        <h2><?=sprintf($config->getTrans('derived word list'), '');?></h2>
-        <dl>
-<?
-        foreach($entry['also see'] as $a_term=>$data) :
-            if (isset($data['class'])) : ?>
-            <div>
-                <dt><?=WorldlangDictUtils::makeLink(
-                        $config,
-                        'lexi/'.urlencode($a_term),
-                        $request,
-                        $a_term
-                    );?></dt>
-                <dd>
-                    <em>(<a href="https://xwexi.globasa.net/<?=$request->lang;?>/gramati/lexiklase"><?=$data['class'];?></a>)</em>&nbsp;
-                    <?=$data['trans'][$request->lang];?> 
-                </dd>
-            </div>
-            <? else: ?>
-
-            <div>
-                <dt><a href="<?= WorldlangDictUtils::makeUri($config, 'lexi/'.$a_term, $request); ?>"><?=$a_term;?></a></dt>
-                <dd><?=$data[$request->lang];?></dd>
-            </div>
-            <? endif; ?>
-        <? endforeach; ?>
-        </dl>
-    </details>
-</section>
-<? endif; ?>
 
 
 
 
-<?
+
 /**
  * Rhyming
  */
