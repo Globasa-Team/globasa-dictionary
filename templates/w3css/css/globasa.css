@@ -286,14 +286,21 @@ header .wordClass a:any-link {
 .entry details[open] summary.hide  {
     display: none;
 }
-.entry details[open] {
+.entry div:not(.derived) details[open] {
     display: inline;
 }
+
+.entry div.derived details[open] {
+    display: block;
+}
+
+
 .entry details[open] h2 {
     padding-top: 3px; /* Needed to keep alignment with hl terms */
 }
 
 .entry dl {
+    display: block;
     margin-left: 1em;
 }
 
