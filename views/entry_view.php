@@ -339,25 +339,6 @@ if (array_key_exists('also see', $entry)): ?>
 
 
 
-<? // TODO: remove
-/**
- * Rhyming
- */
-if (array_key_exists('rhymes', $entry)) :
-?>
-<section class="rhymes">
-    <h2><?= sprintf($config->getTrans('entry rhyming words'), "")?></h2>
-    <ul>
-<? foreach($entry['rhymes'] as $rhyme) : ?>
-        <li class="hl encap" lang="<?=GLB_CODE;?>"><?=
-            WorldlangDictUtils::makeLink($config, "lexi/".$rhyme, $request, $rhyme);
-            ?></li>
-<? endforeach; ?>
-    </ul>
-</section>
-<? endif; // rhymes ?>
-
-
 
 <?
 /**
