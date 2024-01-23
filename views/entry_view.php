@@ -360,7 +360,7 @@ if (array_key_exists('rhyme trans', $entry)): ?>
         <dl>
 <?
         foreach($entry['rhyme trans'] as $a_term=>$data) :
-            if (isset($data['class'])) : ?>
+            if (isset($data['word class'])) : ?>
             <div>
                 <dt><?=WorldlangDictUtils::makeLink(
                         $config,
