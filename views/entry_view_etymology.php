@@ -79,6 +79,7 @@ if (isset($entry['etymology']['kwasilexi'])): ?>
 <? endif;
 
 // am oko pia
+// TODO: Remove when am oko pia removed from spreadsheet.
 if (isset($entry['etymology']['am oko pia'])): ?>
 <div>
     <h3>Am oko pia</h3>

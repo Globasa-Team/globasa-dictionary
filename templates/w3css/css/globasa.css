@@ -76,11 +76,6 @@ h3 {
     font-size: medium;
 }
 
-a:any-link {
-    color: var(--glbBlueShade3);
-    text-decoration: none;
-}
-
 main, article {
     margin: auto;
     padding-inline: 5px;
@@ -161,7 +156,7 @@ header .wordClass a:any-link {
 }
 
 .entry a:any-link, .tags a:any-link, dl a:any-link {
-    text-decoration: none;
+    color: var(--glbBlueTint7);
 }
 
 .entry h1, .entry h2 {
@@ -654,6 +649,11 @@ textarea {
         width: 50ch;
     }
 
+    a:any-link {
+        color: var(--glbBlueShade3);
+        text-decoration: none;
+    }
+
     h1 {
         font-size: x-large;
     }
@@ -970,9 +970,35 @@ textarea {
         color: white;
     }
 
-    .hl {
-        background-color: var(--glbBlueShade6);
+    a:any-link {
+        color: var(--glbBlueTint3);
+        text-decoration: none;
+    }
+
+    .hl.green, .hl.green:any-link {
+        background-color: var(--glbGreenShade7);
+        color: var(--glbGreenTint5);
+    }
+    
+    .hl.blue, .hl.blue:any-link {
+        background-color: var(--glbBlueShade7);
+        color: var(--glbBlueTint7);
+    }
+
+    .hl.encap {
+        background-color: black;
         color: white;
+        border: solid 1px #555;
+    }
+
+    .encap.green, .encap.green:any-link {
+        color: var(--glbGreenTint3);
+        border-color: #555;
+    }
+
+    .encap.blue, .encap.blue:any-link {
+        color: var(--glbBlueTint3);
+        border-color: #555;
     }
 
     .entry {
@@ -981,8 +1007,8 @@ textarea {
     }
 
     .entry > footer {
-        background-color: var(--glbGreenShade5);
-        background: linear-gradient(45deg, var(--glbGreenShade5) 30%, var(--glbGreenShade4) 70%);
+        background-color: var(--glbGreenShade6);
+        background: linear-gradient(45deg, var(--glbGreenShade6) 30%, var(--glbGreenShade7) 70%);
         color: white;
     }
     
@@ -992,9 +1018,6 @@ textarea {
         color: white;
     }
 
-    .entry a:any-link, .tags a:any-link, dl a:any-link {
-        color: var(--glbGreenTint6);
-    }
     
     .entry .examples blockquote::before {
         color: #333;
@@ -1103,6 +1126,11 @@ textarea {
     #siteFooter {
         background-color: var(--glbBlueShade6);
         color: white;
+    }
+
+    #siteFooter .langs,  #siteFooter .langs a:any-link {
+        background-color: var(--glbBlueTint4);
+        color: var(--glbBlueShade9);
     }
     
     #siteFooter a:any-link {
