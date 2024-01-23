@@ -359,8 +359,7 @@ if (array_key_exists('rhyme trans', $entry)): ?>
         <h2><?=sprintf($config->getTrans('entry rhyming words'), '');?></h2>
         <dl>
 <?
-        foreach($entry['rhyme trans'] as $a_term=>$data) :
-            if (isset($data['word class'])) : ?>
+        foreach($entry['rhyme trans'] as $a_term=>$data) : ?>
             <div>
                 <dt><?=WorldlangDictUtils::makeLink(
                         $config,
@@ -369,17 +368,12 @@ if (array_key_exists('rhyme trans', $entry)): ?>
                         $a_term
                     );?></dt>
                 <dd>
+                <? if (isset($data['word class'])) : ?>
                     <em>(<a href="https://xwexi.globasa.net/<?=$request->lang;?>/gramati/lexiklase"><?=$data['word class'];?></a>)</em>&nbsp;
-                    <?=$data['trans'][$request->lang];?> 
+                <? endif; ?>
+                    <?=$data[$request->lang];?> 
                 </dd>
             </div>
-            <? else: ?>
-
-            <div>
-                <dt><a href="<?= WorldlangDictUtils::makeUri($config, 'lexi/'.$a_term, $request); ?>"><?=$a_term;?></a></dt>
-                <dd><?=$data[$request->lang];?></dd>
-            </div>
-            <? endif; ?>
         <? endforeach; ?>
         </dl>
     </details>
