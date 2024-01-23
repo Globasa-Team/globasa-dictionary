@@ -244,6 +244,9 @@ header .wordClass a:any-link {
     content: open-quote;
 }
 
+.etymology h2 {
+    padding-top: 3px; /* Needed to keep alignment with hl expander */
+}
 
 .etymology .derived, .etymology .apriori, .etymology .natlang {
     margin: 0;
@@ -279,8 +282,12 @@ header .wordClass a:any-link {
 .entry details, .entry summary {
     display: inline;
 }
-.entry details[open] summary {
+
+.entry details[open] summary.hide  {
     display: none;
+}
+.entry details[open] {
+    display: inline;
 }
 .entry details[open] h2 {
     padding-top: 3px; /* Needed to keep alignment with hl terms */

@@ -155,96 +155,8 @@ if (!empty($entry['tags'])):
 /**
  * Etymology
  */
+require_once('views/entry_view_etymology.php');
 ?>
-<section class="etymology">
-<h2><?= sprintf($config->getTrans('Etymology'), "")?></h2>
-<?
-
-// A priori
-if (!empty($entry['etymology']['a priori'])): ?>
-    <p class="apriori"><em>a priori</em></p>
-<? endif;
-
-
-// Derived
-if (isset($entry['etymology']['derived'])): ?>
-<p class="derived"><?
-    foreach($entry['etymology']['derived'] as $part) {
-        if ($part === ' + ' || $part === '+') { // TODO: remove one
-            ?> <?= $part; ?> <?
-        } elseif ($part === ',' || $part === ', ') { // TODO: remove one
-            ?><?= $part; ?> <?
-        } else {
-            ?><a href="../lexi/<?= $part; ?>"><?= $part; ?></a><?
-        }
-    }
-    ?></p>
-<? endif;
-
-
-// Natlang
-if (isset($entry['etymology']['natlang'])): ?>
-<div class="natlang">
-<?
-    $list = &$entry['etymology']['natlang'];
-    include($config->templatePath . "partials/entry_language_list.php");
-?>
-</div>
-<? endif; ?>
-
-<?
-// kwasilexi
-if (isset($entry['etymology']['kwasilexi'])): ?>
-<div class="kwasilexi">
-    <h3>Kwasilexi</h3>
-    <? $list = &$entry['etymology']['kwasilexi'];
-    include($config->templatePath . "partials/entry_language_list.php"); ?>
-</div>
-<? endif;
-
-// am oko pia
-if (isset($entry['etymology']['am oko pia'])): ?>
-<div>
-    <h3>Am oko pia</h3>
-    <ul>
-    <? foreach($entry['etymology']['am oko pia'] as $item): ?>
-        <li class="hl encap"><?=$item;?></li>
-    <? endforeach; ?>
-    </ul>
-</div>
-<? endif;
-
-// am oko
-if (isset($entry['etymology']['am oko'])): ?>
-<div>
-    <h3>Am oko</h3>
-    <ul>
-    <? foreach($entry['etymology']['am oko'] as $item): ?>
-        <li><a href="../lexi/<?=$item;?>" class="hl encap" lang="<?=GLB_CODE;?>"><?=$item;?></a></li>
-    <? endforeach; ?>
-    </ul>
-</div>
-<? endif;
-
-// am kompara
-if (isset($entry['etymology']['am kompara'])): ?>
-<div>
-    <h3>Am kompara</h3>
-    <ul>
-    <? foreach($entry['etymology']['am kompara'] as $item): ?>
-        <li><a href="../lexi/<?=$item;?>" class="hl encap" lang="<?=GLB_CODE;?>"><?=$item;?></a></li>
-    <? endforeach; ?>
-    </ul>
-</div>
-<? endif;
-
-
-// link
-if (isset($entry['etymology']['link'])): ?>
-<p><?=$entry['etymology']['link']?></p>;
-<? endif; ?>
-
-</section>
 
 
 <?
@@ -255,7 +167,7 @@ if (isset($entry['etymology']['link'])): ?>
 if (array_key_exists('derived terms', $entry)): ?>
 <section class="derived_words">
     <details>
-        <summary>
+        <summary class="hide">
             <h2><?=sprintf($config->getTrans('derived word list'), '');?></h2>
             <?
             foreach(array_keys($entry['derived terms']) as $term) :
@@ -278,16 +190,10 @@ if (array_key_exists('derived terms', $entry)): ?>
                 <dd>
                 <? if (isset($data['class'])) : ?>
                     <em>(<a href="https://xwexi.globasa.net/<?=$request->lang;?>/gramati/lexiklase"><?=$data['class'];?></a>)</em>&nbsp;
-                <? else: ?>
-                    <?=$data['trans'][$request->lang];?> 
+                <? endif; ?>
+                    <?=$data['trans'][$request->lang];?>
                 </dd>
             </div>
-
-            <div>
-                <dt><a href="<?= WorldlangDictUtils::makeUri($config, 'lexi/'.$a_term, $request); ?>"><?=$a_term;?></a></dt>
-                <dd><?=$data[$request->lang];?></dd>
-            </div>
-            <? endif; ?>
         <? endforeach; ?>
         </dl>
     </details>
@@ -305,7 +211,7 @@ if (array_key_exists('derived terms', $entry)): ?>
 if (array_key_exists('rhyme trans', $entry)): ?>
 <section class="rhymes">
     <details>
-        <summary>
+        <summary class="hide">
             <h2><?=sprintf($config->getTrans('entry rhyming words'), '');?></h2>
             <?
             foreach(array_keys($entry['rhyme trans']) as $term) :
