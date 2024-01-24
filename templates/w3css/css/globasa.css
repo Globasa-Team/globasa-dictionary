@@ -213,6 +213,7 @@ main.tags, #natlangs_language, #natlang_browse {
 
 .entry h3 {
     display: inline-block;
+    font-weight: normal;
 }
 
 .entry .translation span {
