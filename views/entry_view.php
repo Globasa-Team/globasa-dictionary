@@ -25,7 +25,7 @@ $page->description = $entry['term'] . ': ' . htmlspecialchars($trans);
 <? if (!empty($entry['word class'])): ?>
         <div class="wordClass">(<a href="https://xwexi.globasa.net/<?=$request->lang;?>/gramati/lexiklase"><?=$entry['word class']?></a>)</div>
 <? endif; ?>
-        &nbsp; <a href="<?=$entry['ipa link']?>"><span class="fa fa-volume-up"></span> <?=$config->getTrans('ipa link')?></a>
+        &nbsp; <a href="<?=$entry['ipa link']?>"><span class="fa fa-volume-up"></span></a>
     </header>
 
 
@@ -244,7 +244,7 @@ if (array_key_exists('rhyme trans', $entry)): ?>
     </details>
 </section>
 <? endif; ?>
-        
+
 
 
 
@@ -256,7 +256,6 @@ if (array_key_exists('rhyme trans', $entry)): ?>
 <footer>
     <?=WorldlangDictUtils::makeLink($config, 'lexi/'.$entry['term'], $request,
         '<span class="fa fa-link"></span> '.$config->getTrans('Word Link')) ?>
-    &bull; <a href="<?=$entry['ipa link']?>"><span class="fa fa-volume-up"></span> <?=$config->getTrans('ipa link')?></a>
 </footer>
 
 </main>
