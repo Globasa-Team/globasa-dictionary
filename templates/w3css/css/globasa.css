@@ -140,7 +140,7 @@ main.tags, #natlangs_language, #natlang_browse {
     text-align: right;
 }
 
-header .wordClass a:any-link {
+.entry header a:any-link {
     color: white;
     background-color: inherit;
 }

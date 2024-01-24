@@ -118,7 +118,8 @@ if (isset($entry['etymology']['am kompara'])): ?>
 
 // link
 if (isset($entry['etymology']['link'])): ?>
-<p><?=$entry['etymology']['link']?></p>;
+<p><?= $config->getTrans('etymology link') ?></p>
+<p><a href="<?=$entry['etymology']['link']?>"><?=$entry['etymology']['link']?></a></p>
 <? endif; ?>
 
 </section>

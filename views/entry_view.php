@@ -25,6 +25,7 @@ $page->description = $entry['term'] . ': ' . htmlspecialchars($trans);
 <? if (!empty($entry['word class'])): ?>
         <div class="wordClass">(<a href="https://xwexi.globasa.net/<?=$request->lang;?>/gramati/lexiklase"><?=$entry['word class']?></a>)</div>
 <? endif; ?>
+        &nbsp; <a href="<?=$entry['ipa link']?>"><span class="fa fa-volume-up"></span> <?=$config->getTrans('ipa link')?></a>
     </header>
 
 
