@@ -68,21 +68,9 @@ endif;
 </section>
 
 <?
-/**
-  * Examples
-  */
-if (!empty($entry['examples'])): ?>
-    <section class="examples">
-    <h2><?=sprintf($config->getTrans('Example'), "")?></h2>
-    <? foreach($entry['examples'] as $example): ?>
-    <blockquote>
-        <p><?=$example?></p>
-        <? if(isset($false)): ?><cite>&mdash; Source Here</cite><? endif; ?>
-    </blockquote>
-    <? endforeach; ?>
-    </section>
-<? endif; ?>
-    
+if (!empty($entry['examples']))
+    require_once('views/entry_view_examples.php');
+?>
 
 
 <?
@@ -158,6 +146,24 @@ if (!empty($entry['tags'])):
  */
 require_once('views/entry_view_etymology.php');
 ?>
+
+
+
+<?
+/**
+ * Natlang similar words
+ */
+
+if (isset($entry['etymology']['natlang similar'])): ?>
+<div>
+    <h2>Am oko pia</h2>
+    <ul>
+    <? foreach($entry['etymology']['natlang similar'] as $item): ?>
+        <li class="hl encap"><?=$item;?></li>
+    <? endforeach; ?>
+    </ul>
+</div>
+<? endif; ?>
 
 
 <?

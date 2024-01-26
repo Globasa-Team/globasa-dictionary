@@ -78,17 +78,6 @@ if (isset($entry['etymology']['kwasilexi'])): ?>
 </div>
 <? endif;
 
-// natlang similar
-if (isset($entry['etymology']['natlang similar'])): ?>
-<div>
-    <h3>Am oko pia</h3>
-    <ul>
-    <? foreach($entry['etymology']['natlang similar'] as $item): ?>
-        <li class="hl encap"><?=$item;?></li>
-    <? endforeach; ?>
-    </ul>
-</div>
-<? endif;
 
 // am oko
 if (isset($entry['etymology']['am oko'])): ?>
