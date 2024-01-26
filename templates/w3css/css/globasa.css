@@ -59,6 +59,10 @@ body {
     flex-direction: column;
 }
 
+a:any-link {
+    text-decoration: none;
+}
+
 h1, h2, h3, h4, h5, h6 {
     font-family: inherit;
 }
@@ -198,7 +202,6 @@ main.tags, #natlangs_language, #natlang_browse {
 }
 
 .entry footer a:any-link {
-    text-decoration: none;
     color: white;
 }
 
@@ -556,7 +559,6 @@ textarea {
 }
 
 #siteHeader a:any-link {
-    text-decoration: none;
     white-space: nowrap;
 }
 
@@ -583,10 +585,6 @@ textarea {
 
 #siteFooter {
     margin: 2em 0 0 0;
-}
-
-#siteFooter a:any-link {
-    text-decoration: none;
 }
 
 #siteFooter ul {
@@ -652,7 +650,6 @@ textarea {
 
     a:any-link {
         color: var(--glbBlueShade3);
-        text-decoration: none;
     }
 
     h1 {
@@ -973,7 +970,6 @@ textarea {
 
     a:any-link {
         color: var(--glbBlueTint3);
-        text-decoration: none;
     }
 
     .hl.green, .hl.green:any-link {
