@@ -68,8 +68,8 @@ endif;
 </section>
 
 <?
-if (!empty($entry['examples']))
-    require_once('views/entry_view_examples.php');
+// if (!empty($entry['examples']))
+//     require_once('views/entry_view_examples.php');
 ?>
 
 
