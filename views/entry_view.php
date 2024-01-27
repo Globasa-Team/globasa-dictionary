@@ -156,7 +156,7 @@ require_once('views/entry_view_etymology.php');
 
 if (isset($entry['etymology']['natlang similar'])): ?>
 <div>
-    <h2>Am oko pia</h2>
+    <h2><?= $config->getTrans('entry natlang similar header'); ?></h2>
     <ul>
     <? foreach($entry['etymology']['natlang similar'] as $item): ?>
         <li class="hl encap"><?=$item;?></li>
