@@ -80,7 +80,7 @@ if (isset($entry['etymology']['kwasilexi'])): ?>
 // am oko
 if (isset($entry['etymology']['am oko'])): ?>
 <div>
-    <h3><?= $config->getTrans('entry etymology am oko header'); ?></h3>
+    <h3><?= $config->getTrans('entry etymology am oko header'); ?>:</h3>
     <ul>
     <? foreach($entry['etymology']['am oko'] as $item): ?>
         <li><a href="../lexi/<?=$item;?>" class="hl encap" lang="<?=GLB_CODE;?>"><?=$item;?></a></li>
