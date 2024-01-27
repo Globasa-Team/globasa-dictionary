@@ -252,7 +252,7 @@ main.tags, #natlangs_language, #natlang_browse {
     display: block;
 }
 
-.etymology .derived:first-of-type, .etymology .apriori:first-of-type, .etymology .natlang:first-of-type {
+.etymology .derived:first-of-type, .etymology .apriori:first-of-type, .etymology .natlang:first-of-type, .etymology .am_oko:first-of-type {
     margin: 0;
     display: inline;
 }

@@ -153,16 +153,18 @@ require_once('views/entry_view_etymology.php');
 /**
  * Natlang similar words
  */
-
+// TODO should not be in etymology
 if (isset($entry['etymology']['natlang similar'])): ?>
-<div>
+<section>
     <h2><?= $config->getTrans('entry natlang similar header'); ?>:</h2>
+    <?
+        
+        
+        $list = &$entry['etymology']['natlang similar'];
+        include($config->templatePath . "partials/entry_language_list.php");
+    ?>
     <ul>
-    <? foreach($entry['etymology']['natlang similar'] as $item): ?>
-        <li class="hl encap"><?=$item;?></li>
-    <? endforeach; ?>
-    </ul>
-</div>
+</section>
 <? endif; ?>
 
 
