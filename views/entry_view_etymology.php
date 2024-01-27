@@ -28,10 +28,10 @@ foreach($entry['etymology']['derived trans'] as $data) :
         ?><a href="../lexi/<?= $data['text']; ?>"><?= $data['text']; ?></a><?
     endif;
 endforeach;
-?> <details><summary class="hide"><span class="hl green">[+]</span></summary>
-<dl>
+?>
+    <dl>
 <? foreach($entry['etymology']['derived trans'] as $data) :
-    if ($data['text'] !== '+' && $data['text'] !== ',') : ?>
+    if (isset($data['trans'])) : ?>
         <div>
         <dt><?=WorldlangDictUtils::makeLink(
                     $config,
@@ -45,14 +45,12 @@ endforeach;
         <? endif; ?>
             <?=$data['trans'][$request->lang];?>
         </dd>
-
         </div>
         
         <?
     endif;
 endforeach; ?>
-</dl>
-</details>
+    </dl>
 </div>
 <? endif;
 
