@@ -718,7 +718,7 @@ textarea {
 
 
     main, article {
-        max-width: 50ch;
+        width: 50ch;
     }
     
     h1 {
