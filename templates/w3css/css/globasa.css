@@ -662,6 +662,10 @@ textarea {
         display: flex;
     }
 
+    .entry {
+        line-height: 2.0;
+    }
+
     #changelog_report {
         min-width: 600px;
     }
