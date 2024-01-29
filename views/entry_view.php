@@ -53,7 +53,7 @@ if (!empty($entry['trans'][$request->lang])):
             endif;
             $tstart = false;
 
-            if (!str_contains($translation, '<')) :
+            if (!str_contains($translation, '<a')) :
                 ?><a href="<?= WorldlangDictUtils::makeUri($config, 'cel-ruke/'.$translation, $request) ?>" class="hl green"><?=$translation?></a><?
             else:
                 ?><span class="hl"><?=$translation?></span><?
