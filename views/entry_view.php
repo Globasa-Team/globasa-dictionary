@@ -153,7 +153,6 @@ require_once('views/entry_view_etymology.php');
 /**
  * Natlang similar words
  */
-// TODO should not be in etymology
 if (isset($entry['etymology']['natlang similar'])): ?>
 <section>
     <h2><?= $config->getTrans('entry natlang similar header'); ?>:</h2>
