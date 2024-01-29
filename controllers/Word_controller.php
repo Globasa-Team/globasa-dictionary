@@ -32,6 +32,11 @@ class Word_controller
 
         $term = isset($request->arguments[0]) ? $request->arguments[0] : null;
 
+        // Check for translator note, and remove
+        if (str_contains($term, '(')) {
+            $term = trim(substr($term, 0, strpos($term, '(')));
+        }
+
         if (is_null($term)) {
             WorldlangDictUtils::redirect($config, $request, "");
         }
