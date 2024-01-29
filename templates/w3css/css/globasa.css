@@ -84,7 +84,7 @@ main, article {
     margin: auto;
     padding-inline: 5px;
     box-sizing: border-box;
-    max-height: 999999px; /* Chromium’s Text Autosizer / Booster */
+    max-height: 999999px; /* Fix Chromium’s Text Autosizer / Booster */
 }
 
 dl {
@@ -728,7 +728,8 @@ textarea {
 
 
     main, article {
-        width: 50ch;
+        width: 100%;
+        max-width: 50ch;
     }
     
     h1 {
