@@ -217,6 +217,7 @@ main.tags, #natlangs_language, #natlang_browse {
 .entry h3 {
     display: inline-block;
     font-weight: normal;
+    margin-bottom: 0;
 }
 
 .entry .translation span {
@@ -532,6 +533,7 @@ textarea {
     background-repeat: no-repeat;
     background-position: center;
     min-height: max(30svh, 250px);
+    width: 100%;
 }
 
 /*#endregion*/
