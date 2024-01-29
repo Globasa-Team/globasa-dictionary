@@ -84,6 +84,7 @@ main, article {
     margin: auto;
     padding-inline: 5px;
     box-sizing: border-box;
+    max-height: 999999px; /* Chromium’s Text Autosizer / Booster */
 }
 
 dl {
@@ -260,10 +261,12 @@ main.tags, #natlangs_language, #natlang_browse {
 
 .etymology .lang_list {
     display: inline;
+
 }
 
 .etymology .lang_list li {
     display: inline;
+
 }
 
 .etymology .lang_list span {
@@ -276,6 +279,7 @@ main.tags, #natlangs_language, #natlang_browse {
     margin: 0;
     padding: 0;
     display: inline;
+
 }
 .entry li {
     display:inline-block;
