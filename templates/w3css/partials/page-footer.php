@@ -41,13 +41,13 @@ namespace WorldlangDict;
     </ul></section>
 
     <section><ul>
-            <li><a href="https://github.com/Globasa-Team/globasa-dictionary"><span class="fa fa-github"></span> <?php echo $config->getTrans('github link');?></a></li>
-            <li><a href="<?php echo WorldlangDictUtils::makeUri(
-                        $config,
-                        'am-reporte/?url='.$config->siteUri.substr($request->url, 1),
-                        $request
-                    ); ?>"><span class="fa fa-bug"></span> <?php echo $config->getTrans('report link');?></a></li>
-            <li><a href="https://api.globasa.net/"><span class="fa fa-code"></span> <?php echo $config->getTrans('api link');?></a></li>
+        <li><a href="<?php echo WorldlangDictUtils::makeUri(
+                    $config,
+                    'am-reporte/?url='.$config->siteUri.substr($request->url, 1),
+                    $request
+                ); ?>"><span class="fa fa-bug"></span> <?php echo $config->getTrans('report link');?></a></li>
+        <li><a href="https://github.com/Globasa-Team/globasa-dictionary"><span class="fa fa-github"></span> <?php echo $config->getTrans('github link');?></a></li>
+        <li><a href="https://github.com/Globasa-Team/globasa-docs"><span class="fa fa-code"></span> <?php echo $config->getTrans('api link');?></a></li>
     </ul></section>
 
     <section class="copyright">  
@@ -62,8 +62,3 @@ namespace WorldlangDict;
     </section>
 
 </footer>
-<!-- 
-  <script src="<?php echo $config->templateUri; ?>js/vendor/modernizr-3.7.1.min.js"></script>
-  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-  <script>window.jQuery || document.write('<script src="js/vendor/jquery-3.4.1.min.js"><\/script>')</script>
- -->
