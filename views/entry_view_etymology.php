@@ -20,12 +20,12 @@ if (isset($entry['etymology']['derived trans'])): ?>
     
     <?
 foreach($entry['etymology']['derived trans'] as $data) :
-    if ($data['text'] === '+') :
-        ?> + <?
+    if (isset($data['slug'])) :
+        ?><a href="../lexi/<?= $data['slug']; ?>"><?= $data['text']; ?></a><?
     elseif ($data['text'] === ',') :
         ?>, <?
     else :
-        ?><a href="../lexi/<?= $data['text']; ?>"><?= $data['text']; ?></a><?
+        echo(' '.$data['text'].' ');
     endif;
 endforeach;
 ?>

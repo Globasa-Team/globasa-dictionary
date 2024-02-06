@@ -178,8 +178,8 @@ if (array_key_exists('derived terms', $entry)): ?>
         <summary class="hide">
             <h2><?=sprintf($config->getTrans('derived word list'), '');?></h2>
             <?
-            foreach(array_keys($entry['derived terms']) as $term) :
-                ?><a href="<?= WorldlangDictUtils::makeUri($config, 'lexi/'.$term, $request); ?>" class="hl encap" lang="<?=GLB_CODE;?>"><?=$term;?></a> <?
+            foreach($entry['derived terms'] as $slug=>$data) :
+                ?><a href="<?= WorldlangDictUtils::makeUri($config, 'lexi/'.$slug, $request); ?>" class="hl encap" lang="<?=GLB_CODE;?>"><?=$data['term'];?></a> <?
             endforeach;
 
             ?> <span class="hl green">[+]</span>
@@ -193,7 +193,7 @@ if (array_key_exists('derived terms', $entry)): ?>
                     $config,
                     'lexi/'.urlencode($a_term),
                     $request,
-                    $a_term
+                    $data['term']
                 );?></dt>
                 <dd>
                 <? if (isset($data['class'])) : ?>
@@ -216,13 +216,23 @@ if (array_key_exists('derived terms', $entry)): ?>
 /**
  * Rhyming
  */
-if (array_key_exists('rhyme trans', $entry)): ?>
+if (array_key_exists('rhyme', $entry)): 
+    if (isset($entry['rhyme exclusions'])) {
+        foreach($entry['rhyme exclusions'] as $key=>$ex) {
+            $entry['rhyme exclusions'][$key] = '<a href='.WorldlangDictUtils::makeUri($config, 'lexi/'.$ex, $request).' class="hl encap" lang="'.GLB_CODE.'">'.$ex.'</a>';
+        }
+        $exclusions = implode('/', $entry['rhyme exclusions']);
+    } else {
+        $exclusions = "";
+    }
+
+?>
 <section class="rhymes">
     <details>
         <summary class="hide">
-            <h2><?=sprintf($config->getTrans('entry rhyming words'), '');?></h2>
+            <h2><?=sprintf($config->getTrans('entry rhymes header'), $exclusions);?></h2>:
             <?
-            foreach(array_keys($entry['rhyme trans']) as $term) :
+            foreach(array_keys($entry['rhyme']) as $term) :
                 ?><a href="<?= WorldlangDictUtils::makeUri($config, 'lexi/'.$term, $request); ?>" class="hl encap" lang="<?=GLB_CODE;?>"><?=$term;?></a> <?
             endforeach;
 
@@ -231,7 +241,7 @@ if (array_key_exists('rhyme trans', $entry)): ?>
         <h2><?=sprintf($config->getTrans('entry rhyming words'), '');?></h2>
         <dl>
 <?
-        foreach($entry['rhyme trans'] as $a_term=>$data) : ?>
+        foreach($entry['rhyme'] as $a_term=>$data) : ?>
             <div>
                 <dt><?=WorldlangDictUtils::makeLink(
                         $config,
