@@ -238,7 +238,7 @@ if (array_key_exists('rhyme', $entry)):
 
             ?> <span class="hl green">[+]</span>
         </summary>
-        <h2><?=sprintf($config->getTrans('entry rhyming words'), '');?></h2>
+        <h2><?=sprintf($config->getTrans('entry rhymes header'), $exclusions);?></h2>:
         <dl>
 <?
         foreach($entry['rhyme'] as $a_term=>$data) : ?>
