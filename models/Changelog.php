@@ -11,7 +11,7 @@ class Changelog {
         $db = new \PDO($config->db_dsn, $config->db_user, $config->db_pass);
             // $config->db_prefix = $c['db_prefix'];
     
-        $q = $db->query("SELECT * FROM `{$config->db_prefix}term_log` ORDER BY `timestamp` DESC LIMIT 100;");
+        $q = $db->query("SELECT * FROM `{$config->db_prefix}term_log` ORDER BY `timestamp` DESC LIMIT 300;");
     
         $result = $q->fetchAll(); // this takes an array!
                 
