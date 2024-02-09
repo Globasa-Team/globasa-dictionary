@@ -14,7 +14,8 @@ class Reports_controller
 
         switch($arg) {
             case 'parse':
-                $data = yaml_parse_file($config->api2Path.'reports/parse_report.yaml');
+            case 'import':
+                    $data = yaml_parse_file($config->api2Path.'reports/import_report.yaml');
                 require_once('views/reports_parse_view.php');
                 break;
             case 'changelog':

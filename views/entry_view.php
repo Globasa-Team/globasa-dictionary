@@ -32,42 +32,14 @@ $page->description = $entry['term'] . ': ' . htmlspecialchars($trans);
 <?
 /**
  * Translation
- */ ?>
-<section class="translation">
-    <p><?
+ */
+require_once('views/entry_view_translations.php');
 
-if (!empty($entry['trans'][$request->lang])):
-    $gstart = true;
-    
-    foreach($entry['trans'][$request->lang] as $group):
-        if (!$gstart) :
-            ?>; <?
-        endif;
-        $gstart = false;
-        $tstart = true;
-        
-        
-        foreach($group as $translation):
-            if (!$tstart) :
-                ?>, <?
-            endif;
-            $tstart = false;
 
-            if (!str_contains($translation, '<a')) :
-                ?><a href="<?= WorldlangDictUtils::makeUri($config, 'cel-ruke/'.$translation, $request) ?>" class="hl green"><?=$translation?></a><?
-            else:
-                ?><span class="hl"><?=$translation?></span><?
-        endif;
-        endforeach;
-    endforeach;
-else:
-    echo(sprintf($config->getTrans("Missing Word Translation")));
-endif;
+/**
+ * Examples
+ */
 
-?></p>
-</section>
-
-<?
 // if (!empty($entry['examples']))
 //     require_once('views/entry_view_examples.php');
 ?>
