@@ -34,7 +34,7 @@ if (!empty($entry['trans'][$request->lang])):
             
             $slug = trim(strtolower(preg_replace('/\((.+)\)/U', '', strip_tags($translation))));  // regex removes parentheticals (...)
 
-
+            // TODO: link this!
             if (!str_contains($translation, '<a')) :
                 echo($trans_note_preceeding.' ');
                 ?><a href="<?= WorldlangDictUtils::makeUri($config, 'cel-ruke/'.$slug, $request) ?>" class="hl green"><?=$translation?></a><?
@@ -44,7 +44,7 @@ if (!empty($entry['trans'][$request->lang])):
         endif;
         endforeach;
     endforeach;
-elseif (!isset($entry['entry note'])):
+elseif (!isset($entry['entry note beta'])):
     echo(sprintf($config->getTrans("Missing Word Translation")));
 endif;
 
@@ -52,8 +52,8 @@ endif;
 
 
 <?
-if (isset($entry['entry note'])) : ?>
-    <p><?= $entry['entry note']; ?></p>
+if (isset($entry['entry note beta'])) : ?>
+    <p><?= $entry['entry note beta']; ?></p>
 <? endif; ?>
 
 </section>
