@@ -44,9 +44,16 @@ if (!empty($entry['trans'][$request->lang])):
         endif;
         endforeach;
     endforeach;
-else:
+elseif (!isset($entry['entry note'])):
     echo(sprintf($config->getTrans("Missing Word Translation")));
 endif;
 
 ?></p>
+
+
+<?
+if (isset($entry['entry note'])) : ?>
+    <p><?= $entry['entry note']; ?></p>
+<? endif; ?>
+
 </section>
