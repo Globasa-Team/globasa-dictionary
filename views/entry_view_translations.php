@@ -27,10 +27,10 @@ if (!empty($entry['trans'][$request->lang])):
 
             // var_dump($translation);
             // Check for preceeding translation note using colon
-            // if ($pos = strpos($translation, ':') !== false) {
-            //     $trans_note_preceeding = trim(substr($translation, 0, $pos));
-            //     $translation = trim(substr($translation, $pos));
-            // }
+            if (($pos = strpos($translation, ':')) !== false) {
+                $trans_note_preceeding = trim(substr($translation, 0, $pos+1));
+                $translation = trim(substr($translation, $pos+1));
+            }
             
             $slug = trim(strtolower(preg_replace('/\((.+)\)/U', '', strip_tags($translation))));  // regex removes parentheticals (...)
 
