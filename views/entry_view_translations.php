@@ -32,21 +32,7 @@ if (!empty($entry['trans'][$request->lang])):
             //     $translation = trim(substr($translation, $pos));
             // }
             
-            // Check for parenthetical translation note
-            if ($pos = strpos($translation, '(') === 0) {
-                // note at start
-                $pos_end = strpos($translation, ')');
-                $trans_note_preceeding = trim(substr($translation, 0, $pos_end+1));
-                $translation = trim(substr($translation, $pos_end+1));
-
-            } elseif ($pos > 0) {
-                // note at end
-                $trans_note_following = trim(substr($translation, 0, $pos));
-                $translation = trim(substr($translation, $pos));
-            }
-
-            $slug = strip_tags($translation);
-
+            $slug = trim(strtolower(preg_replace('/\((.+)\)/U', '', strip_tags($translation))));  // regex removes parentheticals (...)
 
 
             if (!str_contains($translation, '<a')) :
