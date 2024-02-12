@@ -106,14 +106,13 @@
                 $config,
                 'lexi/'.urlencode($term),
                 $request,
-                $term
+                $data['term']
             );?>
-<? if (isset($data['class']) && !empty($data['class'])) : ?>
-            
-<? endif; ?>
         </dt>
         <dd <?=$attributes;?>>
+<? if (isset($data['class']) && !empty($data['class'])) : ?>
             <span class="wordClass">(<a href="https://xwexi.globasa.net/<?=$config->lang;?>/gramati/lexiklase"><?=$data['class'];?></a>)</span>
+<? endif; ?>
             <?=$data['translation']?>
         </dd>
     </div>
