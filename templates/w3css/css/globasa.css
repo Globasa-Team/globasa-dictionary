@@ -260,13 +260,8 @@ main.tags, #natlangs_language, #natlang_browse {
     display: inline;
 }
 
-.etymology .lang_list {
-    display: inline;
-
-}
-
 .etymology .lang_list li {
-    display: inline;
+    display: block;
 
 }
 
