@@ -51,7 +51,8 @@
 }
 
 body {
-    font-family: 'Merriweather', 'Literata', serif;
+    font-family: 'Merriweather', 'Literata', Charter, 'Bitstream Charter', 'Sitka Text', Cambria, serif;
+
     font-weight: 500;
     min-height: 100vh;
     margin: 0;
@@ -124,8 +125,8 @@ main.tags, #natlangs_language, #natlang_browse {
 .hl {
     display: inline-block;
     border-radius: 4px;
-    margin-left: 0px;
-    margin-top: 2px;
+    margin-inline: 2px;
+    margin-block: 3px;
     padding: 0px 4px;
 }
 
@@ -287,7 +288,7 @@ main.tags, #natlangs_language, #natlang_browse {
 }
 
 
-.entry details, .entry summary {
+.entry details, .entry details h2, .entry summary {
     display: inline;
 }
 
@@ -308,13 +309,10 @@ main.tags, #natlangs_language, #natlang_browse {
 }
 
 .entry dl {
-    display: block;
     margin-left: 1em;
 }
 
 /*#endregion*/
-
-
 
 
 /*#region   Reports                             */
@@ -343,7 +341,8 @@ main.tags, #natlangs_language, #natlang_browse {
 /********  ------------------------------------ */
 
 #natlangs {
-    line-height: 2;
+    /* line-height: 2; */
+
 }
 
 /*#endregion*/
