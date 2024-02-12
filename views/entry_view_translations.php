@@ -40,8 +40,8 @@ if (!empty($entry['trans'][$request->lang])):
                 ?><a href="<?= WorldlangDictUtils::makeUri($config, 'cel-ruke/'.$slug, $request) ?>" class="hl green"><?=$translation?></a><?
                 echo(' '.$trans_note_following);
             else:
-                ?><span class="hl"><?=$translation?></span><?
-        endif;
+                ?><span class="hl green"><?=$translation?></span><?
+            endif;
         endforeach;
     endforeach;
 elseif (!isset($entry['entry note beta'])):
