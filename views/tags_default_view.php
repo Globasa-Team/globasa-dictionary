@@ -24,7 +24,7 @@ foreach ($tags as $tag=>$words):
           <em>(<a href="https://xwexi.globasa.net/<?=$request->lang;?>/gramati/lexiklase"><?=$defs[$tag]['class'];?></a>)</em>&nbsp;
           <?=$defs[$tag]['translation'];?>
         <? endif; ?>
-        <span class="hl"><?=count($words) ?></span>
+        <span class="hl green"><?=count($words) ?></span>
     </dd>
   </div>
 <?php endforeach; ?>
