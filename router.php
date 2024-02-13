@@ -84,7 +84,7 @@ function router($config)
  * Logs details about what's happening if the request is a string rather than an array.
  * Not sure why this happens periodically.
  */
-function log_weird_error():void {
+function log_weird_error($request):void {
     if (is_string($request)) {
         @error_log("\n-----".date(DATE_ATOM)."\n", 3, "debug.log");
         @error_log("\nrouter has a request as string.\n", 3, "debug.log");

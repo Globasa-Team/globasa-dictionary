@@ -5,10 +5,8 @@ class Test_controller
 {
     public static function helloWorld($config, $request, &$page)
     {
-        // IndexView::home($config, $page);
-        // WordController::randomWord($config, $request, $page);
-        $page->setTitle("Globasa translation dictionary");
+        $page->setTitle("dict test");
         $page->content = "Hello, world!";
-        include_once('views/default_view.php');
+        include_once('views/dev_dashboard_view.php');
     }
 }
