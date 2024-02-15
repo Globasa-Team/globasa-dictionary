@@ -15,26 +15,36 @@ namespace WorldlangDict;
 <section>
     <h2>Website Features</h2>
     <ul>
-        <li><?= WorldlangDictUtils::makeLink($config, 'lexi', $request); ?></li>
-        <li><?= WorldlangDictUtils::makeLink($config, 'abeceli-menalari', $request); ?>
-            <br/>Browse / </li>
-        <li><?= WorldlangDictUtils::makeLink($config, 'lexilari', $request, 'Tags'); ?>
+        <li><?= WorldlangDictUtils::makeLink($config, 'lexi', $request, "Random Word"); ?></li>
+        <li><?= WorldlangDictUtils::makeLink($config, 'abeceli-menalari', $request, 'Alphabetical Dictioary'); ?></li>
+        <li><?= WorldlangDictUtils::makeLink($config, 'natlang-abeceli', $request, 'Natlang Alphabetical'); ?></li>
+
+        <li><?= WorldlangDictUtils::makeLink($config, 'lexilari', $request); ?>
             <br/>Vocab List / lexilari</li>
         <li><?= WorldlangDictUtils::makeLink($config, 'tul', $request); ?><ul>
-            <li><?= WorldlangDictUtils::makeLink($config, 'tul/basatayti', $request); ?></li>
-            <li><?= WorldlangDictUtils::makeLink($config, 'tul/ifa-trasharufitul', $request); ?></li>
+            <li><?= WorldlangDictUtils::makeLink($config, 'tul/basatayti', $request); ?>
+                <br/>Translation Aid</li>
+            <li><?= WorldlangDictUtils::makeLink($config, 'tul/ifa-trasharufitul', $request); ?>
+                <br/>IPA Converter</li>
             </ul></li>
-        <li><?= WorldlangDictUtils::makeLink($config, 'samaeskri-lexi', $request); ?></li>
-        <li><?= WorldlangDictUtils::makeLink($config, 'minimum-duaxey', $request); ?></li>
-        <li><?= WorldlangDictUtils::makeLink($config, 'kandidato-lexi?candidate=', $request); ?></li>
-        <li><?= WorldlangDictUtils::makeLink($config, 'estatisti-fe-lexiasel', $request); ?></li>
-        <li><?= WorldlangDictUtils::makeLink($config, 'reports/changelog', $request); ?></li>
-        <li><?= WorldlangDictUtils::makeLink($config, 'reports/parse', $request); ?></li>
-        <li><?= WorldlangDictUtils::makeLink($config, 'am-reporte', $request); ?></li>
-        <li><?= WorldlangDictUtils::makeLink($config, 'natlang-abeceli', $request); ?></li>
-        <li><?= WorldlangDictUtils::makeLink($config, 'estatisti', $request); ?></li>
-        <li><?= WorldlangDictUtils::makeLink($config, 'reports', $request); ?></li>
-        <li><?= WorldlangDictUtils::makeLink($config, 'test', $request); ?></li>
+        <li><?= WorldlangDictUtils::makeLink($config, 'kandidato-lexi?candidate=', $request); ?>
+            <br/>Candidate Word Check
+            <ul>
+                <li><?= WorldlangDictUtils::makeLink($config, 'samaeskri-lexi', $request); ?>
+                    </br>Homonyms</li>
+                <li><?= WorldlangDictUtils::makeLink($config, 'minimum-duaxey', $request); ?>
+                    <br/>Minimum Pairs</li>
+            </ul>
+            </li>
+        <li><?= WorldlangDictUtils::makeLink($config, 'estatisti-fe-lexiasel', $request); ?>
+            <br/>Etymology Stats</li>
+        <li><?= WorldlangDictUtils::makeLink($config, 'reports', $request, 'Reports'); ?></li>
+        <li><?= WorldlangDictUtils::makeLink($config, 'reports/changelog', $request, 'Changelog Report'); ?></li>
+        <li><?= WorldlangDictUtils::makeLink($config, 'reports/parse', $request, 'Parse Report'); ?></li>
+        <li><?= WorldlangDictUtils::makeLink($config, 'am-reporte', $request, '??? am-reporte'); ?></li>
+        
+        <li><?= WorldlangDictUtils::makeLink($config, 'estatisti', $request, 'Stats'); ?></li>
+        <li><?= WorldlangDictUtils::makeLink($config, 'test', $request, 'Test Dashboard'); ?></li>
     </ul>
 </section>
 
@@ -50,12 +60,14 @@ namespace WorldlangDict;
         <li><?= WorldlangDictUtils::makeLink($config, 'lexi/ku', $request, 'ku'); ?></li>
         <li><?= WorldlangDictUtils::makeLink($config, 'lexi/murto', $request, 'murto'); ?></li>
         <li><?= WorldlangDictUtils::makeLink($config, 'lexi/basatayti', $request, 'basatayti'); ?></li>
+        <!--
         <li><?= WorldlangDictUtils::makeLink($config, 'lexi/', $request, ''); ?></li>
         <li><?= WorldlangDictUtils::makeLink($config, 'lexi/', $request, ''); ?></li>
         <li><?= WorldlangDictUtils::makeLink($config, 'lexi/', $request, ''); ?></li>
         <li><?= WorldlangDictUtils::makeLink($config, 'lexi/', $request, ''); ?></li>
         <li><?= WorldlangDictUtils::makeLink($config, 'lexi/', $request, ''); ?></li>
         <li><?= WorldlangDictUtils::makeLink($config, 'lexi/', $request, ''); ?></li>
+        -->
     </ul>
 </section>
 
