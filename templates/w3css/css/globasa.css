@@ -1177,9 +1177,37 @@ textarea {
 
 
 details.debug {
-    max-width: 50ch; margin: auto;
+    max-width: 50ch;
+    margin: auto;
 }
 
-details.debug summary {
+details.debug > details > summary {
     text-align: center;
+}
+
+.print_array {
+
+    background-color: #f7f6fa;
+}
+
+.print_array details {
+    padding-left: 0.5em;
+    background-color: #e8e4f2;
+}
+
+.print_array > details {
+    background-color: #d9d3ea;
+}
+
+.print_array > details > details {
+    background-color: #cac1e2;
+}
+
+.print_array > details > details > details {
+    background-color: #c3b8de;
+}
+
+.empty > summary {
+    list-style: disc;
+    margin-left: 1em;
 }

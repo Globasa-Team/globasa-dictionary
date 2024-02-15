@@ -249,16 +249,13 @@ if (array_key_exists('rhyme', $entry)):
 
 </main>
 
-<? if (isset($config->debugging) && $config->debugging) : ?>
-<details class="debug">
-    <summary>🔍 Entry Inspector</summary>
-    <pre>
-        <?=yaml_emit($entry);?>
-    </pre>
-</details>
-<? endif; ?>
 
-<? require_once($config->templatePath . "partials/page-footer.php"); ?>
+
+<? 
+
+require_once('views/entry_view_debug.php');
+
+require_once($config->templatePath . "partials/page-footer.php"); ?>
 
 </body>
 
