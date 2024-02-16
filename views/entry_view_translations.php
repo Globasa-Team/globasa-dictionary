@@ -59,7 +59,7 @@ if (isset($entry['entry notes'])) :
     foreach ($entry['entry notes'] as $type=>$data) :
         switch ($type) :
             case 'Am oko tabellexi':
-                ?>  <p><?= $config->getTrans('entry nota Am oko tabellexi'); ?></p><?
+                ?>  <p><?= $config->getTrans('entry note Am oko tabellexi'); ?></p><?
                 break;
             case 'Am oko':
             case 'Kurto lexi cel':
@@ -69,6 +69,7 @@ if (isset($entry['entry notes'])) :
                 ?>  <p><?= $config->getTrans('entry note '.$type); ?>: <?
                 $nfirst = true;
                 foreach ($entry['entry notes'][$type] as $slug) :
+                    $slug=trim($slug);
                     if (!$nfirst) {
                         echo(", ");
                     } else {
