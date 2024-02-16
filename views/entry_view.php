@@ -126,15 +126,12 @@ require_once('views/entry_view_etymology.php');
  * Natlang similar words
  */
 if (isset($entry['etymology']['natlang similar'])): ?>
-<section>
+<section class="natlang_similar">
     <h2><?= $config->getTrans('entry natlang similar header'); ?>:</h2>
     <?
-        
-        
-        $list = &$entry['etymology']['natlang similar'];
-        include($config->templatePath . "partials/entry_language_list.php");
+    $list = &$entry['etymology']['natlang similar'];
+    include($config->templatePath . "partials/entry_language_list.php");
     ?>
-    <ul>
 </section>
 <? endif; ?>
 
