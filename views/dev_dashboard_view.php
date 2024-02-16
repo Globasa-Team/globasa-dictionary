@@ -75,6 +75,10 @@ namespace WorldlangDict;
 <section>
     <h2>Dev Report</h2>
     <pre>
+<? include_once($config->api2Path.'reports/dev_report.yaml'); ?>
+    </pre>
+</hr>
+    <pre>
 <? include_once($config->api2Path.'reports/import_report.yaml'); ?>
     </pre>
 </section>
