@@ -51,10 +51,7 @@ endif;
 ?></p>
 
 
-<?
-if (isset($entry['entry note beta'])) : ?>
-    <p><?= $entry['entry note beta']; ?></p>
-<? endif; ?>
+
 
 
 <?
@@ -68,7 +65,7 @@ if (isset($entry['entry notes'])) :
             case 'Kurto lexi cel':
             case 'Am kompara fe':
             case 'Yongudo sol ton':
-                ?>  <p><?= $config->getTrans('entry nota '.$type); ?>: <?
+                ?>  <p><?= $config->getTrans('entry note '.$type); ?>: <?
                 $nfirst = true;
                 foreach ($entry['entry notes'][$type] as $slug) :
                     if (!$nfirst) {
@@ -85,9 +82,12 @@ if (isset($entry['entry notes'])) :
                 break;
         endswitch;
     endforeach;
+
+
+elseif (isset($entry['entry note beta'])) : ?>
+    <p><?= $entry['entry note beta']; ?></p>
+<?
 endif;
-
-
 ?>
 
 
