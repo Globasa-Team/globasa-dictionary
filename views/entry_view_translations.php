@@ -62,7 +62,6 @@ if (isset($entry['entry notes'])) :
                 ?>  <p><?= $config->getTrans('entry nota Am oko tabellexi'); ?></p><?
                 break;
             case 'Am oko':
-                ?><p><?= $entry['entry note beta']; ?></p><?
             case 'Kurto lexi cel':
             case 'Am kompara fe':
             case 'Yongudo sol ton':

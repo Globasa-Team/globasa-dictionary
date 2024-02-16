@@ -37,14 +37,14 @@ namespace WorldlangDict;
             </ul>
             </li>
         <li><?= WorldlangDictUtils::makeLink($config, 'estatisti-fe-lexiasel', $request); ?>
-            <br/>Etymology Stats</li>
+            <br/>Etymology Stats -- and unliked terms</li>
         <li><?= WorldlangDictUtils::makeLink($config, 'reports', $request, 'Reports'); ?></li>
         <li><?= WorldlangDictUtils::makeLink($config, 'reports/changelog', $request, 'Changelog Report'); ?></li>
         <li><?= WorldlangDictUtils::makeLink($config, 'reports/parse', $request, 'Parse Report'); ?></li>
         <li><?= WorldlangDictUtils::makeLink($config, 'am-reporte', $request, '??? am-reporte'); ?></li>
         
         <li><?= WorldlangDictUtils::makeLink($config, 'estatisti', $request, 'Stats'); ?></li>
-        <li><?= WorldlangDictUtils::makeLink($config, 'test', $request, 'Test Dashboard'); ?></li>
+        <li><?= WorldlangDictUtils::makeLink($config, 'test', $request, 'Dev Dashboard'); ?></li>
     </ul>
 </section>
 
@@ -70,6 +70,15 @@ namespace WorldlangDict;
         -->
     </ul>
 </section>
+
+
+<section>
+    <h2>Dev Report</h2>
+    <pre>
+<? include_once($config->api2Path.'reports/import_report.yaml'); ?>
+    </pre>
+</section>
+
 
 </div><!--div.dashboard-->
 </main>
