@@ -63,7 +63,8 @@ if (isset($entry['entry notes'])) :
                 break;
             case 'Am oko':
             case 'Kurto lexi cel':
-            case 'Am kompara fe':
+            case 'Am kompara fe': // was this chagned to:
+            case 'Am kompara lexiforma fe':
             case 'Yongudo sol ton':
                 ?>  <p><?= $config->getTrans('entry note '.$type); ?>: <?
                 $nfirst = true;
