@@ -44,8 +44,6 @@ if (!empty($entry['trans'][$request->lang])):
             endif;
         endforeach;
     endforeach;
-elseif (!isset($entry['entry note beta'])):
-    echo(sprintf($config->getTrans("Missing Word Translation")));
 endif;
 
 ?></p>
@@ -77,6 +75,9 @@ if (isset($entry['entry notes'])) :
                     ?>  <a href="<?= WorldlangDictUtils::makeUri($config, 'lexi/'.$slug, $request); ?>" lang="<?= GLB_CODE; ?>"><?= $slug; ?></a><?
                 endforeach;
                 ?>.</p><?
+                break;
+            case 'gramati':
+                ?>  <p>gramati: <a href="https://xwexi.globasa.net/<?= $request->lang; ?>/gramati/<?= $entry['entry notes'][$type]; ?>">https://xwexi.globasa.net/<?= $request->lang; ?>/gramati/<?= $entry['entry notes'][$type];?></a></p>   <?
                 break;
             case 'Nota':
                 ?>  <p><?= $entry['entry notes'][$type]; ?></p>  <?
