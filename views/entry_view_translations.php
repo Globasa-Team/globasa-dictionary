@@ -56,13 +56,13 @@ endif;
 if (isset($entry['entry notes'])) :
     foreach ($entry['entry notes'] as $type=>$data) :
         switch ($type) :
-            case 'Am oko tabellexi':
+            case 'Am oko tabellexi': // depracated
                 ?>  <p><?= $config->getTrans('entry note Am oko tabellexi'); ?></p><?
                 break;
             case 'Am oko':
             case 'Kurto lexi cel':
             case 'Am kompara mena fe':
-            case 'Yongudo sol ton':
+            case 'Yongudo sol ton': // maybe not used?
                 ?>  <p><?= $config->getTrans('entry note '.$type); ?>: <?
                 $nfirst = true;
                 foreach ($entry['entry notes'][$type] as $slug) :
