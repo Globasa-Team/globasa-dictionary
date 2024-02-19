@@ -56,7 +56,7 @@ endif;
 if (isset($entry['entry notes'])) :
     foreach ($entry['entry notes'] as $type=>$data) :
         switch ($type) :
-            TODO: delete depracated on/after 2024-02-19
+            // TODO: delete depracated on/after 2024-02-19
             case 'Am oko tabellexi': // depracated
                 ?>  <p><?= $config->getTrans('entry note Am oko tabellexi'); ?></p><?
                 break;
