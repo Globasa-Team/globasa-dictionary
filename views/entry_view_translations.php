@@ -56,17 +56,9 @@ endif;
 if (isset($entry['entry notes'])) :
     foreach ($entry['entry notes'] as $type=>$data) :
         switch ($type) :
-            // TODO: delete depracated on/after 2024-02-19
-            case 'Am oko tabellexi': // depracated
-                ?>  <p><?= $config->getTrans('entry note Am oko tabellexi'); ?></p><?
-                break;
-            case 'Am oko': // depracated
             case 'am oko':
-            case 'Kurto lexi cel':  // depracated
             case 'kurto lexi':
-            case 'Am kompara mena fe': // depracated
             case 'kompara':
-            case 'Yongudo sol ton': // depracated
                 ?>  <p><?= $config->getTrans('entry note '.$type); ?>: <?
                 $nfirst = true;
                 foreach ($entry['entry notes'][$type] as $slug) :
@@ -81,7 +73,8 @@ if (isset($entry['entry notes'])) :
                 ?>.</p><?
                 break;
             case 'gramati':
-                ?>  <p>gramati: <a href="https://xwexi.globasa.net/<?= $request->lang; ?>/gramati/<?= $entry['entry notes'][$type]; ?>">https://xwexi.globasa.net/<?= $request->lang; ?>/gramati/<?= $entry['entry notes'][$type];?></a></p>   <?
+                $page = explode("#", $data)[0];
+                ?>  <p><?= $config->getTrans('entry note gramati'); ?> <a href="https://xwexi.globasa.net/<?= $request->lang; ?>/gramati/<?= $data; ?>"><?= $config->getTrans('entry note gramati '.$page); ?></a>.</p>   <?
                 break;
             case 'Nota':
                 ?>  <p><?= $entry['entry notes'][$type]; ?></p>  <?
