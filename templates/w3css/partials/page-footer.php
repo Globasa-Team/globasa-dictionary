@@ -16,9 +16,10 @@ namespace WorldlangDict;
     </section>
 
     <section class="about">
-            <img src="https://cdn.globasa.net/graphics/flower/globasa-flower.svg" height="64" width="64" alt="Globasa Logo" />
-            <p>Menalari fe Globasa<br/>
-            <em>Basa de Globayen</em></p>
+        <!-- TODO: add alt text to i18n -->
+            <img src="<?= $config->site_logo_url; ?>" height="64" width="64" alt="<?= $config->site_name_short; ?> Logo" />
+            <p><?= $config->site_name_full; ?><br/>
+            <em><?= $config->site_slogan; ?></em></p>
     </section>
 
     <section><ul>
