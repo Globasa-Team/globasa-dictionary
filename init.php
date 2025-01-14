@@ -1,11 +1,6 @@
 <?php
 namespace WorldlangDict;
 
-/* TODO: remove instance-specific constants */
-define("GLB_CODE", "art-x-globasa");
-define("GLB_ATTR", "lang=\"art-x-globasa\"");
-define('OFFICIAL_SOURCE_NATLANGS', array('Doycisa','Englisa','Espanisa','Fransesa','Rusisa','Arabisa','Parsisa','Swahilisa','Turkisa','Hindi','Telugusa','Indonesisa','Pilipinasa','Putunhwa','Hangusa','Niponsa','Vyetnamsa'));
-
 /* Source files */
 require_once 'router.php';
 require_once 'resources/downloadFile.php';
