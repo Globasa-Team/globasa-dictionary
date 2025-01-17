@@ -17,9 +17,9 @@ namespace WorldlangDict;
 
     <section class="about">
         <!-- TODO: add alt text to i18n -->
-            <img src="<?= $config->site_logo_url; ?>" height="64" width="64" alt="<?= $config->site_name_short; ?> Logo" />
-            <p><?= $config->site_name_full; ?><br/>
-            <em><?= $config->site_slogan; ?></em></p>
+            <img src="<?= $config->site_logo_url; ?>" height="64" width="64" alt="<?= $config->getTrans('site_name_short'); ?> Logo" />
+            <p><?= $config->getTrans('site_name_full'); ?><br/>
+            <em><?= $config->getTrans('site_slogan'); ?></em></p>
     </section>
 
     <section><ul>
@@ -50,7 +50,7 @@ namespace WorldlangDict;
             <img src="https://cdn.globasa.net/graphics/site_graphics/cc_zero_blue_x2.png" alt="CC0" class="cc_license"/>
         </a>
         <p xmlns:dct="http://purl.org/dc/terms/" class="cc_license">
-            To the extent possible under law, <a rel="dct:publisher" href="https://globasa.net/"><span property="dct:title">the Globasa Team</span></a> has waived all copyright and related or neighboring rights to this site content. Built on a <a href="https://partialsolution.ca">Partial Solution</a>.
+            To the extent possible under law, <a rel="dct:publisher" href="https://globasa.net/"><span property="dct:title"><?= $config->getTrans('site_owner'); ?></span></a> has waived all copyright and related or neighboring rights to this site content. Built on a <a href="https://partialsolution.ca" rel="nofollow">Partial Solution</a>.
         </p>
     </section>
 

@@ -5,7 +5,7 @@ namespace WorldlangDict;
 <div id="siteHeader">
     <p id="appTitle">
         <a href="<?php echo WorldlangDictUtils::makeUri($config, '', $request); ?>">
-            <?php echo $config->siteName; /* TODO removed fontawesome icon */?>
+        <?php echo $config->getTrans('site_name_short');  /* TODO removed fontawesome icon */?>
         </a>
     </p>
     <nav>
