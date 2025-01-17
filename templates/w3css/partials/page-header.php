@@ -5,7 +5,7 @@ namespace WorldlangDict;
 <div id="siteHeader">
     <p id="appTitle">
         <a href="<?php echo WorldlangDictUtils::makeUri($config, '', $request); ?>">
-            <span class="fa fa-book fa-lg"></span> <?php echo $config->siteName; ?>
+            <span class="fa fa-book fa-lg"></span> <?php echo $config->getTrans('site_name_short'); ?>
         </a>
     </p>
     <nav>
