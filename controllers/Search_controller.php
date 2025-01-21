@@ -6,18 +6,19 @@ class Search_controller
 
     /**
      * If exact match is found, redirect. Otherwise show partial matches.
+     * $results is used by view
      */
     public static function search(object $config, object $request, Page &$page)
     {
         $results = null;
         $term = "";
-        if (!empty($request->options['glb'])) {
-            $lang = "glb";
-            $term = trim($request->options['glb']);
-            $results = self::globasa_term_search(config:$config, term:$term, page:$page, request:$request);
+        if (!empty($request->options[WL_CODE_SHORT])) {
+            $lang = WL_CODE_SHORT;
+            $term = trim($request->options[WL_CODE_SHORT]);
+            $results = self::globasa_term_search(config:$config, query:$term, page:$page, request:$request);
         } else {
             $lang = array_key_first($request->options);
-            if (strcmp($lang, "glb")===0) {
+            if (strcmp($lang, WL_CODE_SHORT)===0) {
                 $lang = array_key_last($request->options);
             }
             if (empty($request->options[$lang])) {
@@ -59,18 +60,19 @@ class Search_controller
     /**
      * Search Globasa index for term.
      */
-    private static function globasa_term_search(object $config, string $term, object $request, Page &$page):array {
-        // $terms = yaml_parse_file($config->search_terms_location."glb.yaml");
-        $index = yaml_parse_file($config->index_location);
-
-        if (array_key_exists($term, $index)) {
-            if (empty($index[$term])) {
-                WorldlangDictUtils::redirect($config, $request, 'lexi/'.urlencode($term));
-            } elseif (is_string($index[$term])) {
-                WorldlangDictUtils::redirect($config, $request, 'lexi/'.urlencode($index[$term]));
+    private static function globasa_term_search(object $config, string $query, object $request, Page &$page):array {
+        $terms = yaml_parse_file($config->search_terms_location.WL_CODE_SHORT.'.yaml');
+        
+        if (array_key_exists($query, $terms) && count($terms[$query])==1) {
+            WorldlangDictUtils::redirect($config, $request, 'lexi/'.urlencode($terms[$query][0]));
+        } else {
+            if (array_key_exists($query, $terms)) {
+                return $terms[$query];
+            } else {
+                $index = yaml_parse_file($config->index_location);
+                return self::globasa_levenshtein_search($query, $index);
             }
         }
-        return self::globasa_levenshtein_search($term, $index);
     }
 
 
