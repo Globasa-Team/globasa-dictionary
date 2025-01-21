@@ -21,7 +21,7 @@ namespace WorldlangDict;
     </nav>
     <section class="search">
         <form action="<?php echo WorldlangDictUtils::makeUri($config, "xerca", $request); ?>" method="get">
-            <input type="text" name="glb" placeholder="<?php echo $config->getTrans('search worldlang placeholder');?>" value="" />
+            <input type="text" name="<?= WL_CODE_SHORT; ?>" placeholder="<?php echo $config->getTrans('search worldlang placeholder');?>" value="" />
             <input type="text" name="<?=$request->lang; ?>" placeholder="<?php echo $config->getTrans('search natlang placeholder');?>" value="" />
             <input type="submit" value="<?php echo $config->getTrans('search button');?>" />
         </form>
