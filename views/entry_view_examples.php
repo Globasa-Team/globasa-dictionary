@@ -2,19 +2,23 @@
 /**
   * Examples
   */
+
+if (file_exists($config->examples_location.$entry['slug'].'.yaml')) : 
+    $examples = yaml_parse_file($config->examples_location.$entry['slug'].'.yaml');
 ?>
+</pre>
 
 <section class="examples">
 <h2><?=sprintf($config->getTrans('Example'), "")?></h2>
 <!-- <details> -->
     <!-- <summary> -->
-<? for($i = 0; $i < min(2, count($entry['examples'])); $i++) : ?>
+<? for($i = 0; $i < min(2, count($examples)); $i++) : ?>
 <blockquote>
-<? if (is_array($entry['examples'][$i])) :?>
+<? if (is_array($examples[$i])) :?>
     <p><?=$entry['examples'][$i]['text']?></p>
     <? if(isset($entry['examples'][$i]['citation'])): ?><cite>&mdash; <?= $entry['examples'][$i]['citation']; ?></cite><? endif; ?>
 <? else: // TODO: Remove  ?>
-    <p><?= $entry['examples'][$i]; ?></p>
+    <p><?= $examples[$i]; ?></p>
 <? endif; ?>
 </blockquote>
 <? endfor; ?>
@@ -33,3 +37,6 @@
 <? endif; // DEBUG ?>
 <!-- </details> -->
 </section>
+
+<?
+endif;

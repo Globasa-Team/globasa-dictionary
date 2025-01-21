@@ -40,12 +40,9 @@ require_once('views/entry_view_translations.php');
  * Examples
  */
 
-// if (!empty($entry['examples']))
-//     require_once('views/entry_view_examples.php');
-?>
+require_once('views/entry_view_examples.php');
 
 
-<?
 /**
  * Synonyms
  */
