@@ -15,7 +15,7 @@ namespace WorldlangDict;
 <h1><?= $config->getTrans('single tag view') ?>: <?= $tag; ?></h1>
   <? if ($exists) : ?>
   <p>
-    <em>(<a href="https://xwexi.globasa.net/<?=$request->lang;?>/gramati/lexiklase"><?= $defs[$tag]['class'];?></a>)</em>&nbsp;
+    <em>(<?= $defs[$tag]['class'];?>)</em>&nbsp;
     <?= $defs[$tag]['translation'] ?>
   </p>
   <? endif; ?>
@@ -37,7 +37,7 @@ namespace WorldlangDict;
                 $word
             ); ?></dt>
         <dd>
-        <em>(<a href="https://xwexi.globasa.net/<?=$request->lang;?>/gramati/lexiklase"><?=$defs[$word]['class'];?></a>)</em>&nbsp;
+        <em>(<?=$defs[$word]['class'];?>)</em>&nbsp;
         <?=$defs[$word]['translation'];?>
         </dd>
       </div>
