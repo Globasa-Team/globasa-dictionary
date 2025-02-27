@@ -198,8 +198,8 @@ if (array_key_exists('rhyme', $entry)):
         <summary class="hide">
             <h2><?=sprintf($config->getTrans('entry rhymes header'), $exclusions);?></h2>:
             <?
-            foreach(array_keys($entry['rhyme']) as $term) :
-                ?><a href="<?= WorldlangDictUtils::makeUri($config, 'lexi/'.$term, $request); ?>" class="hl encap" lang="<?=GLB_CODE;?>"><?=$term;?></a> <?
+            foreach(array_keys($entry['rhyme']) as $slug) :
+                ?><a href="<?= WorldlangDictUtils::makeUri($config, 'lexi/'.$slug, $request); ?>" class="hl encap" lang="<?=GLB_CODE;?>"><?=$entry['rhyme'][$slug]['term'];?></a> <?
             endforeach;
 
             ?> <span class="hl green">[+]</span>
@@ -213,7 +213,7 @@ if (array_key_exists('rhyme', $entry)):
                         $config,
                         'lexi/'.urlencode($a_term),
                         $request,
-                        $a_term
+                        $data['term']
                     );?></dt>
                 <dd>
                 <? if (isset($data['word class'])) : ?>
