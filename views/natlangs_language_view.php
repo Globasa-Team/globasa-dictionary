@@ -33,7 +33,7 @@ namespace WorldlangDict;
 <? endif; ?>
         </dt>
         <dd>
-            <span class="wordClass">(<a href="https://xwexi.globasa.net/<?=$config->lang;?>/gramati/lexiklase"><?=$dict[$term]['class'];?></a>)</span>
+            <span class="wordClass">(<?=$dict[$term]['class'];?>)</span>
             <?=$dict[$term]['translation']?>
         </dd>
     </div>
