@@ -1,24 +1,50 @@
 <?php
 namespace WorldlangDict;
 
+define('WL_CODE_SHORT', 'wld');
+define('WL_CODE_FULL', 'art-x-worldlang');
+define('LANG_HTML_ATTR', 'lang="art-x-worldlang"');
+define('OFFICIAL_SOURCE_NATLANGS', array('English', 'Elvish', 'Klingon'));
+
 /* App config */
 $config->siteUri = 'http://test.globasa.net/';
-$config->siteName = 'Example Menalar';
-$config->setWorldlang('glb');
+$config->siteName = 'Worldlang Dictionary';
+$config->setWorldlang('wld');
 $config->setLang('eng', 'eng');
-$config->setTemplate('menalar', 'templates');
+$config->worldlang_name = 'Worldlang';
+$config->site_logo_url = 'https://cdn.globasa.net/graphics/flower/globasa-flower.svg';
+$config->setWorldlang('wld');
+$config->setUserLangs(['eng'=>'English','spa'=>'español','epo'=>'Esperanto']);
+$config->setTemplate('w3css', 'templates');
 
 /* API Config */
-$config->remoteCsvLocation = 'https://location/words.csv';
-$config->remoteI18nCsvLocation = 'https://location/lang.csv'
+$config->api2Path =       '/home/user/path/data/';
+$config->i18nFile =       $config->api2Path.'i18n.yaml';
+$config->stats_location = $config->api2Path.'stats.yaml';
+$config->tag_location =   $config->api2Path.'tags.yaml';
+$config->basic_location = $config->api2Path.'basic_';
+$config->index_location = $config->api2Path.'index.yaml';
+$config->min_location =   $config->api2Path.'min_';
+$config->search_terms_location = $config->api2Path.'search_terms_';
+$config->examples_location = $config->api2Path.'examples/';
 
-$config->csvLocation = '/home/user/api/globasa-basili-menalar-1.csv';
-$config->YamlLocation = '/home/use/api/globasa-menalar-1.yaml';
-$config->JsonLocation = '/home/user/api/globasa-menalar-1.json';
-$config->JsLocation = '/home/user/api/globasa-menalar-1.js';
-$config->dictionaryFile = '/home/user/api/globasa-menalar-1.dat';
-$config->dictionaryFile = '/home/user/api/globasa-menalar-1.dat';
-$config->i18nFile = '/home/user/api/internationalization.yaml';
+/* DB Config */
+$config->db_user = 'user';
+$config->db_pass = 'password';
+$config->db_database = 'db';
+$config->db_dsn = 'mysql:host=localhost;dbname=db';
+$config->db_prefix = '';
 
 /* Load app data */
 $config->trans = yaml_parse_file($config->i18nFile);
+
+$config->maintenance_message = false;
+$config->maintenance_message = "Data file update in progress. There may be some glitches over the next 10 minutes.";
+
+// Debug mode
+if (false) {
+    $config->debugging = true;
+    ini_set('display_errors', '1');
+    ini_set('display_startup_errors', '1');
+    error_reporting(E_ALL);
+}
