@@ -19,36 +19,46 @@ function router($config)
 
     try {
         switch ($request->controller) {
-            case 'tul':
+            case 'tools':
+            case 'tul': // Globasa
                 Tool_controller::run($config, $request, $page);
                 break;
-            case 'lexi':
+            case 'words':
+            case 'lexi': // Globasa
                 Word_controller::output_entry($config, $request, $page);
                 break;
-            case 'cel-ruke':
+            case 'natlang-search':
+            case 'cel-ruke': // Globasa
                 Word_controller::addNatWord($config, $request, $config->lang, $page);
                 break;
-            case 'xerca':
+            case 'search':
+            case 'xerca': // Globasa
                 Search_controller::search($config, $request, $page);
                 break;
-            case 'am-reporte':
+            case 'feedback':
+            case 'am-reporte': // Globasa
                 Feedback_controller::feedback($config, $request, $page);
                 break;
-            case 'lexilari':
+            case 'tags':
+            case 'lexilari': // Globasa
                 Tags_controller::addTags($config, $request, $page);
                 break;
-            case 'abeceli-menalari':
+            case 'browse':
+            case 'abeceli-menalari': // Globasa
                 Browse_controller::default($config, $request, $page);
                 break;
-            case 'estatisti-fe-lexiasel':
+            case 'natlangs':
+            case 'estatisti-fe-lexiasel': // Globasa
                 require_once('controllers/Natlangs_controller.php');
                 Natlangs_controller::run($config, $request, $page);
                 break;
-            case 'natlang-abeceli':
+            case 'natlang-browse':
+            case 'natlang-abeceli': // Globasa
                 require_once('controllers/Natlang_browse_controller.php');
                 Natlang_browse_controller::default($config, $request, $page);
                 break;
-            case 'estatisti':
+            case 'stats':
+            case 'estatisti': // Globasa
                 require_once('controllers/Statistics_controller.php');
                 Statistics_controller::default($config, $request, $page);
                 break;
