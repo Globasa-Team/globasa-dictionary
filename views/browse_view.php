@@ -111,7 +111,7 @@
         </dt>
         <dd <?=$attributes;?>>
 <? if (isset($data['class']) && !empty($data['class'])) : ?>
-            <span class="wordClass">(<a href="https://xwexi.globasa.net/<?=$config->lang;?>/gramati/lexiklase"><?=$data['class'];?></a>)</span>
+            <span class="wordClass">(<?=$data['class'];?>)</span>
 <? endif; ?>
             <?=$data['translation']?>
         </dd>

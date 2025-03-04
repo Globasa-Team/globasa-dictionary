@@ -3,50 +3,50 @@
 
 :root {
     /* Globasa flag colours */
-    --glbBlue: #0040a9;
-    --glbGreen: #008113;
+    --glbBlue: #c79b36;
+    --glbGreen: #3662c7;
 
-    --glbBlueShade1: #003998;
-    --glbBlueShade2: #003387;
-    --glbBlueShade3: #002c76;
-    --glbBlueShade4: #002665;
-    --glbBlueShade5: #002054;
-    --glbBlueShade6: #001943;
-    --glbBlueShade7: #001332;
-    --glbBlueShade8: #000c21;
-    --glbBlueShade9: #000610;
+    --glbBlueShade1: #b38c31;
+    --glbBlueShade2: #9f7c2b;
+    --glbBlueShade3: #8b6d26;
+    --glbBlueShade4: #775d20;
+    --glbBlueShade5: #644e1b;
+    --glbBlueShade6: #503e16;
+    --glbBlueShade7: #3c2e10;
+    --glbBlueShade8: #281f0b;
+    --glbBlueShade9: #140f05;
     
-    --glbBlueTint1: #1953b1;
-    --glbBlueTint2: #3266ba;
-    --glbBlueTint3: #4c79c2;
-    --glbBlueTint4: #668ccb;
-    --glbBlueTint5: #7f9fd4;
-    --glbBlueTint6: #99b2dc;
-    --glbBlueTint7: #b2c5e5;
-    --glbBlueTint8: #ccd8ed;
-    --glbBlueTint9: #e5ebf6;
+    --glbBlueTint1: #cda54a;
+    --glbBlueTint2: #d2af5e;
+    --glbBlueTint3: #d8b972;
+    --glbBlueTint4: #ddc386;
+    --glbBlueTint5: #e3cd9b;
+    --glbBlueTint6: #e9d7af;
+    --glbBlueTint7: #eee1c3;
+    --glbBlueTint8: #f4ebd7;
+    --glbBlueTint9: #f9f5eb;
 
-    --glbGreenShade1: #007411;
-    --glbGreenShade2: #00670f;
-    --glbGreenShade3: #005a0d;
-    --glbGreenShade4: #004d0b;
-    --glbGreenShade5: #004009;
-    --glbGreenShade6: #003307;
-    --glbGreenShade7: #002605;
-    --glbGreenShade8: #001903;
-    --glbGreenShade9: #000c01;
+    --glbGreenShade1: #3158b3;
+    --glbGreenShade2: #2b4e9f;
+    --glbGreenShade3: #26458b;
+    --glbGreenShade4: #203b77;
+    --glbGreenShade5: #1b3164;
+    --glbGreenShade6: #162750;
+    --glbGreenShade7: #101d3c;
+    --glbGreenShade8: #0b1428;
+    --glbGreenShade9: #050a14;
 
-    --glbGreenTint1: #198d2a;
-    --glbGreenTint2: #329a42;
-    --glbGreenTint3: #4ca659;
-    --glbGreenTint4: #66b371;
-    --glbGreenTint5: #7fc089;
-    --glbGreenTint6: #99cca0;
-    --glbGreenTint7: #b2d9b8;
-    --glbGreenTint8: #cce5cf;
-    --glbGreenTint9: #e5f2e7;
+    --glbGreenTint1: #4a72cd;
+    --glbGreenTint2: #5e81d2;
+    --glbGreenTint3: #7291d8;
+    --glbGreenTint4: #86a1dd;
+    --glbGreenTint5: #9bb1e3;
+    --glbGreenTint6: #afc0e9;
+    --glbGreenTint7: #c3d0ee;
+    --glbGreenTint8: #d7e0f4;
+    --glbGreenTint9: #ebeff9;
 
-    --flowerSVG: url(https://cdn.globasa.net/graphics/flower/globasa-flower.svg);
+    --flowerSVG: url(/assets/speaking-head/favicon-192x192.png);
     --flagSVG: url(https://cdn.globasa.net/graphics/flag/glb_flag.svg);
 }
 

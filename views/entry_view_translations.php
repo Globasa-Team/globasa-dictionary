@@ -74,7 +74,7 @@ if (isset($entry['entry notes'])) :
                 break;
             case 'gramati':
                 $page = explode("#", $data)[0];
-                ?>  <p><?= $config->getTrans('entry note gramati'); ?> <a href="https://xwexi.globasa.net/<?= $request->lang; ?>/gramati/<?= $data; ?>"><?= $config->getTrans('entry note gramati '.$page); ?></a>.</p>   <?
+                ?>  <p><?= $config->getTrans('entry note gramati'); ?> <?= $config->getTrans('entry note gramati '.$page); ?>.</p>   <?
                 break;
             case 'Nota':
                 ?>  <p><?= $entry['entry notes'][$type]; ?></p>  <?

@@ -41,7 +41,7 @@ endforeach;
                 );?></dt>
         <dd>
         <? if (isset($data['word class'])) : ?>
-            <em>(<a href="https://xwexi.globasa.net/<?=$request->lang;?>/gramati/lexiklase"><?=$data['word class'];?></a>)</em>&nbsp;
+            <em>(<?=$data['word class'];?>)</em>&nbsp;
         <? endif; ?>
             <?=$data['trans'][$request->lang];?>
         </dd>
