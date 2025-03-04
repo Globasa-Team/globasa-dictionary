@@ -7,8 +7,8 @@ namespace WorldlangDict;
   <meta name="description" content="<?php echo $page->description; ?>">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
-  <link rel="apple-touch-icon" href="https://cdn.globasa.net/graphics/flower/globasa-flower.svg">
-  <link rel="icon" type="image/png" href="https://cdn.globasa.net/graphics/flower/globasa-flower.svg">
+  <link rel="apple-touch-icon" href="<?=$config->site_logo_url;?>">
+  <link rel="icon" type="image/png" href="<?=$config->site_logo_url;?>">
   <link rel="stylesheet" href="<?php echo $config->templateUri; ?>css/normalize.css">
   <link rel="stylesheet" href="<?php echo $config->templateUri; ?>css/main.css">
   <link rel="stylesheet" href="<?php echo $config->templateUri; ?>css/default.css?03o">

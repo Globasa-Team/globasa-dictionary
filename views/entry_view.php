@@ -23,7 +23,7 @@ $page->description = $entry['term'] . ': ' . htmlspecialchars($trans);
     <header>
         <h1><?=$entry['term']?></h1>
 <? if (!empty($entry['word class'])): ?>
-        <div class="wordClass">(<?=$entry['word class']?>)</div>
+        <div class="wordClass">(<a href="<?=$config->grammar_url;?>"><?=$entry['word class']?></a>)</div>
 <? endif; ?>
         &nbsp; <a href="<?=$entry['ipa link']?>"><span class="fa fa-volume-up"></span></a>
     </header>
@@ -163,7 +163,7 @@ if (array_key_exists('derived terms', $entry)): ?>
                 );?></dt>
                 <dd>
                 <? if (isset($data['class'])) : ?>
-                    <em>(<?=$data['class'];?>)</em>&nbsp;
+                    <em>(<a href="<?=$config->grammar_url;?>"><?=$data['class'];?></a>)</em>&nbsp;
                 <? endif; ?>
                     <?=$data['trans'][$request->lang];?>
                 </dd>
@@ -217,7 +217,7 @@ if (array_key_exists('rhyme', $entry)):
                     );?></dt>
                 <dd>
                 <? if (isset($data['word class'])) : ?>
-                    <em>(<?=$data['word class'];?>)</em>&nbsp;
+                    <em>(<a href="<?=$config->grammar_url;?>"><?=$data['word class'];?></a>)</em>&nbsp;
                 <? endif; ?>
                     <?=$data[$request->lang];?> 
                 </dd>

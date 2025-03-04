@@ -41,7 +41,7 @@ endforeach;
                 );?></dt>
         <dd>
         <? if (isset($data['word class'])) : ?>
-            <em>(<?=$data['word class'];?>)</em>&nbsp;
+            <em>(<a href="<?=$config->grammar_url;?>"><?=$data['word class'];?></a>)</em>&nbsp;
         <? endif; ?>
             <?=$data['trans'][$request->lang];?>
         </dd>

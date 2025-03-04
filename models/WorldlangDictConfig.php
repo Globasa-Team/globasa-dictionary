@@ -24,6 +24,8 @@ class WorldlangDictConfig
     public $trans;
     public $startTime;
     public $debugging;
+    public $grammar_url_template;
+    public $grammar_url;
 
     public function __construct()
     {
@@ -38,6 +40,7 @@ class WorldlangDictConfig
             $this->auxLang = strtolower($aux);
             $this->auxLangCap = ucfirst($aux);
         }
+        $this->grammar_url = sprintf($this->grammar_url_template, $this->lang);
     }
 
     public function setWorldlang($lang)
