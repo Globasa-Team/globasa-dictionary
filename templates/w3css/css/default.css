@@ -26,9 +26,9 @@
     --h1_bg_strong: oklch(90% 0.07 var(--hue1));
 
     --h2_fg:        oklch(30% 0.1 var(--hue2));
-    --h2_bg:        oklch(88% 0.032 var(--hue2));
-    --h2_fg_strong: oklch(93.8% 0.016 var(--hue2));
-    --h2_bg_strong: oklch(41.22% 0.1781 var(--hue2));
+    --h2_bg:        oklch(90% 0.032 var(--hue2));
+    --h2_fg_strong: oklch(94% 0.016 var(--hue2));
+    --h2_bg_strong: oklch(41% 0.1781 var(--hue2));
 
     --fg: black;
     --bg: #fafafa;
