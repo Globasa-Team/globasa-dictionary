@@ -68,7 +68,7 @@ if (isset($entry['entry notes'])) :
                     } else {
                         $nfirst = false;
                     }
-                    ?>  <a href="<?= WorldlangDictUtils::makeUri($config, 'lexi/'.$slug, $request); ?>" lang="<?= GLB_CODE; ?>"><?= $slug; ?></a><?
+                    ?>  <a href="<?= WorldlangDictUtils::makeUri($config, 'lexi/'.$slug, $request); ?>" lang="<?= WL_CODE_FULL; ?>"><?= $slug; ?></a><?
                 endforeach;
                 ?>.</p><?
                 break;

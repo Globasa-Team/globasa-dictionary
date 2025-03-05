@@ -3,7 +3,6 @@ namespace WorldlangDict;
 
 define('WL_CODE_SHORT', 'wld');
 define('WL_CODE_FULL', 'art-x-worldlang');
-define('LANG_HTML_ATTR', 'lang="art-x-worldlang"');
 define('OFFICIAL_SOURCE_NATLANGS', array('English', 'Elvish', 'Klingon'));
 
 /* App config */
