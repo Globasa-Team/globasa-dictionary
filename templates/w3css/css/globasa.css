@@ -1,0 +1,26 @@
+/*
+
+    Globasa flag colours
+    --glbBlue: #0040a9;
+        oklch(41.22% 0.178065 260.9935)
+
+    --glbGreen: #008113;
+        oklch(52.34% 0.171878 143.5896)
+    
+
+*/
+
+
+
+/*#region   Root                                */
+/********  ------------------------------------ */
+
+:root {
+    --hue1: 143.5896;
+    --hue2: 260.9935;
+
+    --app_logo: url(https://cdn.globasa.net/graphics/flower/globasa-flower.svg);
+    /* --app_logo: url(https://cdn.globasa.net/graphics/flag/glb_flag.svg); */
+}
+
+
