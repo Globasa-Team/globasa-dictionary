@@ -20,12 +20,12 @@
 /*#region   Colors (Light mode & dark mode)     */
 /********  ------------------------------------ */
 @media (prefers-color-scheme: light) {:root {
+    --h1_fg:        oklch(30% 0.05 var(--hue1));
     --h1_bg:        oklch(95% 0.02 var(--hue1));
-    --h1_bg_strong: oklch(80% 0.07 var(--hue1));
-    --h1_fg:        oklch(40% 0.05 var(--hue1));
-    --h1_fg_strong: oklch(50% 0.07 var(--hue1));
+    --h1_fg_strong: oklch(30% 0.07 var(--hue1));
+    --h1_bg_strong: oklch(90% 0.07 var(--hue1));
 
-    --h2_fg:        oklch(40% 0.1 var(--hue2));
+    --h2_fg:        oklch(30% 0.1 var(--hue2));
     --h2_bg:        oklch(88% 0.032 var(--hue2));
     --h2_fg_strong: oklch(93.8% 0.016 var(--hue2));
     --h2_bg_strong: oklch(41.22% 0.1781 var(--hue2));
@@ -158,7 +158,7 @@ main.tags, #natlangs_language, #natlang_browse {
 
 .hl.blue, .hl.blue:any-link,
 .hl.h2, .hl.h2:any-link {
-        background-color: var(--h2_bg_strong);
+    background-color: var(--h2_bg_strong);
     color: var(--h2_fg_strong);
 }
 
@@ -593,19 +593,9 @@ textarea {
 /*#region   Welcome View                        */
 /*******  ------------------------------------- */
 
-.welcome {
-    background-position: center;
-    background-repeat: no-repeat;
-    background-image: attr(data-logo);
-}
-
 .welcome main {
-    background-image: attr(data-logo);
-    background-repeat: no-repeat;
-    background-position: center;
     min-height: max(30svh, 250px);
     width: 100%;
-    text-align: center;
 }
 
 /*#endregion*/
