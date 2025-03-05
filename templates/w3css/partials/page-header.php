@@ -5,7 +5,8 @@ namespace WorldlangDict;
 <div id="siteHeader">
     <p id="appTitle">
         <a href="<?php echo WorldlangDictUtils::makeUri($config, '', $request); ?>">
-            <span class="fa fa-book fa-lg"></span> <?php echo $config->getTrans('site_name_short'); ?>
+        <img src="<?= $config->site_logo_url; ?>" height="28" width="28" alt="<?= $config->getTrans('site_name_short'); ?> Logo" />
+        <?php echo $config->getTrans('site_name_short'); ?>
         </a>
     </p>
     <nav>

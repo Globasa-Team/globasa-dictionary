@@ -596,14 +596,16 @@ textarea {
 .welcome {
     background-position: center;
     background-repeat: no-repeat;
+    background-image: attr(data-logo);
 }
 
 .welcome main {
-    background-image: var(--app_logo);
+    background-image: attr(data-logo);
     background-repeat: no-repeat;
     background-position: center;
     min-height: max(30svh, 250px);
     width: 100%;
+    text-align: center;
 }
 
 /*#endregion*/
@@ -662,9 +664,12 @@ textarea {
     #appTitle a, #appTitle a:any-link {
         font-size: 36px;
     }
-
+    
     #appTitle {
         margin: 0;
+    }
+    #appTitle img {
+        vertical-align:baseline;
     }
 
     a:any-link {

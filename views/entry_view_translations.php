@@ -74,7 +74,7 @@ if (isset($entry['entry notes'])) :
                 break;
             case 'gramati':
                 $page = explode("#", $data)[0];
-                ?>  <p><?= $config->getTrans('entry note gramati'); ?> <a href="<?=$config->grammar_url;?><?= $data; ?>"><?= $config->getTrans('entry note gramati '.$page); ?></a>.</p>   <?
+                ?>  <p><?= $config->getTrans('entry note gramati'); ?> <a href="<?=$config->grammar_note_url;?><?= $data; ?>"><?= $config->getTrans('entry note gramati '.$page); ?></a>.</p>   <?
                 break;
             case 'Nota':
                 ?>  <p><?= $entry['entry notes'][$type]; ?></p>  <?
