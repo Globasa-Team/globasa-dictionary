@@ -3,6 +3,7 @@ namespace WorldlangDict;
 
 class WorldlangDictConfig
 {
+    public string $api2Path;
     public string $i18nFile;
     public string $auxLang;
     public string $auxLangCap;
@@ -12,6 +13,7 @@ class WorldlangDictConfig
     public string $db_dsn;
     public string $db_pass;
     public string $db_prefix;
+    public string $db_user;
     public string $debugging;
     public string $defaultLang;
     public array $dictionary;
