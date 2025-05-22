@@ -13,7 +13,8 @@ class WorldlangDictConfig
     public string $db_pass;
     public string $db_prefix;
     public string $debugging;
-    public string $dictionary;
+    public string $defaultLang;
+    public array $dictionary;
     public string $dictionaryFile;
     public string $examples_location;
     public string $grammar_note_url_template;
@@ -28,6 +29,7 @@ class WorldlangDictConfig
     public string $languagesFile;
     public string $maintenance_message;
     public string $min_location ;
+    public Page $page;
     public string $search_terms_location ;
     public string $site_logo_url;
     public string $siteName;
@@ -36,11 +38,11 @@ class WorldlangDictConfig
     public string $stats_location;
     public string $tag_location;
     public string $template;
-    public string $templateFolder;
+    public string $templatesFolder;
     public string $templatePath;
     public string $templateUri;
-    public string $trans;
-    public string $userLangs;
+    public array $trans;
+    public array $userLangs;
     public string $worldlang_name;
     public string $worldlang;
     public string $worldlangCap;
@@ -50,7 +52,7 @@ class WorldlangDictConfig
         $this->startTime = microtime(true);
     }
 
-    public function setLang($lang, $aux=null)
+    public function setLang(string $lang, string|null $aux=null): void
     {
         $this->lang = strtolower($lang);
         $this->langCap = ucfirst($lang);
@@ -62,28 +64,30 @@ class WorldlangDictConfig
         $this->grammar_note_url = sprintf($this->grammar_note_url_template, $this->lang);
     }
 
-    public function setWorldlang($lang)
+    public function setWorldlang(string $lang): void
     {
         $this->worldlang = strtolower($lang);
         $this->worldlangCap = ucfirst($lang);
     }
 
-    public function setUserLangs($langs) {
+    public function setUserLangs(array $langs): void {
         $this->userLangs = $langs;
     }
 
-    public function setTemplate($name, $folder=null)
+    public function setTemplate(string $name, string|null $folder=null): void
     {
         $this->template = $name;
         if (!is_null($folder)) {
             $this->templatesFolder = $folder;
+        } else {
+            $this->templatesFolder = $name;
         }
 
         $this->templatePath = "./".$this->templatesFolder.'/'.$this->template.'/';
         $this->templateUri = $this->siteUri.$this->templatesFolder.'/'.$this->template.'/';
     }
 
-    public function getTrans($textId)
+    public function getTrans(string $textId): string
     {
         $missingTranslation = "";
         if (!empty($this->trans[$this->lang][$textId])) {
@@ -113,20 +117,8 @@ class WorldlangDictConfig
         }
     }
 
-    public function getWord($word)
+    public function getWord(string $word): array
     {
         return $this->dictionary[$this->defaultLang][$word];
-    }
-
-
-    public function makeLink($request, $text=null, $lang=null)
-    {
-        if ($lang == null) {
-            $lang = $this->lang;
-        }
-        if ($text == null) {
-            $text = $request;
-        }
-        return '<a href="'.$this->siteUri.$lang.'/'.$request.$this->page->linkQuery.'">'.$text.'</a>';
     }
 }
