@@ -45,9 +45,8 @@ namespace WorldlangDict;
     <!-- Software links -->
     <section><ul>
         <li><a href="<?php echo WorldlangDictUtils::makeUri(
-                    $config,
-                    'am-reporte/?url='.$config->siteUri.substr($request->url, 1),
-                    $request
+            config:$config, request:$request,
+            controller:'am-reporte', arg:'?url='.$config->siteUri.substr($request->url, 1),
                 ); ?>"><span class="fa fa-bug"></span> <?php echo $config->getTrans('report link');?></a></li>
         <li><a href="https://github.com/PartialShawn/worldlang-dictionary"><span class="fa fa-github"></span> <?php echo $config->getTrans('github link');?></a></li>
         <li><a href="https://github.com/Globasa-Team/globasa-docs"><span class="fa fa-code"></span> <?php echo $config->getTrans('api link');?></a></li>
