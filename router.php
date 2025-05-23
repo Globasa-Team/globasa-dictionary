@@ -70,9 +70,6 @@ function router(WorldlangDictConfig $config)
     } catch (Error_invalid_request_exception $e) {
         Error_controller::invalid_request($config, $request, $page);
     } catch(\Throwable $t) {
-        if ($config->debugging) {
-            Error_controller::debug($config, $request, $page, $t);
-        }
-        Error_controller::wtf($config, $request, $page);
+        Error_controller::wtf(config:$config, request:$request, page:$page, error:$t);
     }
 }
