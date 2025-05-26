@@ -244,25 +244,8 @@ main input[type="submit"]:hover {
         margin-bottom: .5em;
     }
     
-    .examples blockquote {
-        position: relative;
-        z-index: 1;
-    }
-    
     .examples p {
         margin-bottom: 0;
-    }
-    
-    .examples blockquote::before {
-        color: var(--h1_bg_strong);
-        position: absolute;
-        z-index: -1;
-        display: block;
-        font-size: 8rem;
-        font-family: Georgia, Times, Garamond, serif;
-        top: -3rem;
-        left: -1rem;
-        content: open-quote;
     }
     
     .examples blockquote footer {
@@ -581,7 +564,7 @@ textarea {
 /*******  ------------------------------------- */
 
 .welcome main {
-    max-height:30dvh;
+    max-height:40dvh;
     width: 100%;
 }
 .welcome main img {
