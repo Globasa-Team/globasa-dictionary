@@ -18,7 +18,7 @@ require_once 'controllers/Word_controller.php';
 require_once 'controllers/Search_controller.php';
 require_once 'controllers/Feedback_controller.php';
 require_once 'controllers/Browse_controller.php';
-require_once 'controllers/Test_controller.php';
+require_once 'controllers/Dev_controller.php';
 require_once 'controllers/Error_controller.php';
 require_once 'controllers/Homonym_controller.php';
 require_once 'controllers/Minimal_pair_controller.php';
