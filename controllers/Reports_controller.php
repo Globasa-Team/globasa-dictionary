@@ -37,7 +37,6 @@ class Reports_controller
             case 'removed-terms':
                 require_once('models/Changelog.php');
                 $data = Changelog::removed_terms($config);
-                $defs = yaml_parse_file($config->basic_location . "{$config->lang}.yaml");
                 $title = "Removed terms";
                 $page->setTitle($title);
                 $headline = "Entries that have been removed.";

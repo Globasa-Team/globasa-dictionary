@@ -25,8 +25,6 @@ $cur_date = "";
 <? if (!empty($data)): ?>
   <dl>
   <? foreach($data as $datum):
-      if (!isset($defs[$datum['term']])) continue;
-
 
       if ($cur_date !== substr($datum['timestamp'], 0, 10)) :
         $cur_date = substr($datum['timestamp'], 0, 10);
@@ -35,15 +33,22 @@ $cur_date = "";
         <h2><?= substr($datum['timestamp'], 0, 10); ?></h2>
       <?    
       endif;
+      ?>
 
-
-      $def = $defs[$datum['term']]; ?>
       <div>
-        <dt><?= WorldlangDictUtils::makeLink(
+        <dt>
+        <? if (isset($defs)):
+            $def = $defs[$datum['term']];
+            echo(WorldlangDictUtils::makeLink(
                 config:$config, request:$request,
                 controller:'word', arg:urlencode($datum['term']),
-                text:$defs[$datum['term']]['term']
-            ); ?></dt>
+                text:$defs[$datum['term']]['term'])
+            );
+          else:
+            echo("<strong>{$datum['term']}</strong>");
+          endif;
+          ?>
+        </dt>
         <dd>
         <? if (isset($datum['message'])) : echo $datum['message'];
         else: ?>
