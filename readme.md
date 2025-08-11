@@ -28,4 +28,4 @@ It's currently set to auto-update the CSV if you setup a cron job for it.
 
 ## Demo
 
-To see this app in action, check out http://menalar.globasa.net/eng/
+To see this app in action, check out http://menalari.globasa.net/eng/
