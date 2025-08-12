@@ -25,12 +25,12 @@ $cur_date = "";
 <? if (!empty($data)): ?>
   <dl>
   <? foreach($data as $datum):
-
-      if ($cur_date !== substr($datum['timestamp'], 0, 10)) :
-        $cur_date = substr($datum['timestamp'], 0, 10);
+      $last_update = mb_substr($datum['timestamp'], 0, 10, encoding:"UTF-8");
+      if ($cur_date !== $last_update) :
+        $cur_date = $last_update;
       ?>
         <hr/>
-        <h2><?= substr($datum['timestamp'], 0, 10); ?></h2>
+        <h2><?= $cur_date ?></h2>
       <?    
       endif;
       ?>
