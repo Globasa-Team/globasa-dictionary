@@ -33,12 +33,11 @@ class Word_controller
         $term = isset($request->arguments[0]) ? $request->arguments[0] : null;
 
         // Check for translator note, and remove
+        if (is_null($term) || empty($term)) {
+            WorldlangDictUtils::redirect(config:$config, request:$request);
+        }
         if (str_contains($term, '(')) {
             $term = mb_trim(mb_substr($term, 0, mb_strpos($term, '(', encoding:"UTF-8"), encoding:"UTF-8"), encoding:"UTF-8");
-        }
-
-        if (is_null($term)) {
-            WorldlangDictUtils::redirect(config:$config, request:$request);
         }
         if (!isset($search_terms[$term])) {
             throw new Error_404_Exception("Word not found");
