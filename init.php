@@ -1,6 +1,11 @@
 <?php
 namespace WorldlangDict;
 
+header('Content-Type: text/html; charset=utf-8');
+mb_internal_encoding('UTF-8');
+mb_http_output('UTF-8');
+mb_regex_encoding('UTF-8');
+
 /* Source files */
 require_once 'router.php';
 require_once 'resources/downloadFile.php';
