@@ -1,5 +1,3 @@
 <?php
 namespace WorldlangDict;
-
-include_once 'init.php';
-router($config);
+require_once('init.php');
