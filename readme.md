@@ -1,3 +1,6 @@
+Updates to app should be made to https://github.com/PartialShawn/worldlang-dictionary
+except CSS or other custom Globasa code (eg. custom footers).
+
 # Worldlang Dict
 
 An open source translation dictionary designed for worldlangs, written in PHP.
