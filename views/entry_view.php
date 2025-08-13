@@ -170,7 +170,8 @@ if (array_key_exists('derived terms', $entry)): ?>
                 <dd>
                 <? if (isset($data['class'])) : ?>
                     <em>(<a href="<?=$config->grammar_url;?>"><?=$data['class'];?></a>)</em>&nbsp;
-                <? elseif (isset($data['trans'][$request->lang])) : ?>
+                <? endif ?>
+                <? if (isset($data['trans'][$request->lang])) : ?>
                     <?=$data['trans'][$request->lang];?>
                 <? endif; ?>
                 </dd>
