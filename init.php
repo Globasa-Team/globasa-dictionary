@@ -1,5 +1,5 @@
 <?php
-// declare(strict_types=1);
+declare(strict_types=1);
 namespace WorldlangDict;
 header('Content-Type: text/html; charset=utf-8');
 mb_internal_encoding('UTF-8');
@@ -41,7 +41,7 @@ set_error_handler(function ($level, $message, $file = '', $line = 0) {
 
 /* Handle exceptions */
 set_exception_handler(function ($e) {
-    error_log($e);
+    error_log("PHP Worldlang Dict: ".$e->__toString()."\n  thrown in ".$e->getFile()." on line ".$e->getLine());
     http_response_code(500);
     if (ini_get('display_errors')) {
         echo(
@@ -59,7 +59,6 @@ $config = new WorldlangDictConfig();
 require_once('config.php');
 // Debug mode
 if ($config->debugging) {
-    $config->debugging = true;
     ini_set('display_errors', '1');
     ini_set('display_startup_errors', '1');
     error_reporting(E_ALL);
