@@ -31,7 +31,7 @@ $page->description = $entry['term'] . ': ' . htmlspecialchars($trans);
 <? if (!empty($entry['word class'])): ?>
         <div class="wordClass">(<a href="<?=$config->grammar_url;?>"><?=$entry['word class']?></a>)</div>
 <? endif; ?>
-        &nbsp; <a href="<?=$entry['ipa link']?>"><span class="fa fa-volume-up"></span></a>
+        &nbsp; <a href="https://ipa-reader.com/?voice=Ewa&text=<?=$entry['ipa']?>"><span class="fa fa-volume-up"></span></a>
     </header>
 
 
