@@ -35,13 +35,12 @@ namespace WorldlangDict;
             <li>
                 <header><?=$word;?></header>
                 <section>
-                    <?=$config->getTrans('homonym terminator conflicting msg');?>
                     <? foreach($generated_words as $data): ?>
-                        <span class="hl"><?
-                        if (isset($data['pre'])) echo $data['pre'];
-                        echo " <strong>".$data['root']."</strong> ";
-                        if (isset($data['suf'])) echo $data['suf'];
-                        ?></span>
+                        <span class="hl h2"><?
+                        if (isset($data['pre'])) echo($data['pre'].' + ');
+                        echo(" <strong>".$data['root']."</strong> ");
+                        if (isset($data['suf'])) echo(' + '.$data['suf']);
+                        ?></span>,
                     <? endforeach; ?>
                     <? if (isset($dict[$word])): ?>
                     <blockquote><?=$dict[$word]['translation'];?></blockquote>
