@@ -21,9 +21,9 @@ class Word_controller
             $examples = array();
             $count = 0;
             
-            foreach($example_data as $priority_level=>$example_data) {
+            foreach($example_data as $priority_level=>$priority_data) {
                 if (count($examples) > ENTRY_EXAMPLES_MAX) break;
-                foreach($example_data as $example) {
+                foreach($priority_data as $example) {
                     if (count($examples) > ENTRY_EXAMPLES_MAX) break;
 
                     $cite = null;
