@@ -210,7 +210,7 @@ if (array_key_exists('rhyme', $entry)):
                 ?><a href="<?= WorldlangDictUtils::makeUri(config:$config, controller:'word', arg:$slug, request:$request); ?>" class="hl encap" lang="<?=WL_CODE_FULL;?>"><?=$entry['rhyme'][$slug]['term'];?></a> <?
             endforeach;
 
-            ?> <span class="hl ">[+]</span>
+            ?> <span class="hl h1">[+]</span>
         </summary>
         <h2><?=sprintf($config->getTrans('entry rhymes header'), $exclusions);?></h2>:
         <dl>

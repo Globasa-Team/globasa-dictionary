@@ -244,8 +244,15 @@ main input[type="submit"]:hover {
         margin-bottom: .5em;
     }
     
+    .examples h2 {
+        display: block;
+    }
     .examples p {
         margin-bottom: 0;
+    }
+
+    .examples details {
+        display: block;
     }
     
     .examples blockquote footer {
@@ -294,6 +301,7 @@ main input[type="submit"]:hover {
     details[open] summary.hide  {
         display: none;
     }
+
     div:not(.derived) details[open] {
         display: inline;
     }
@@ -304,6 +312,14 @@ main input[type="submit"]:hover {
     
     details[open] h2 {
         padding-top: 3px; /* Needed to keep alignment with hl terms */
+    }
+
+    div.expand_icon {
+        text-align: center;
+    }
+    
+    details[open] .expand_icon {
+        display: none;
     }
     
     dl {

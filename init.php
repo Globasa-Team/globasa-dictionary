@@ -32,6 +32,7 @@ require_once('controllers/Translation_aide_controller.php');
 require_once('controllers/Welcome_controller.php');
 require_once('controllers/Tags_controller.php');
 require_once('controllers/Tool_controller.php');
+require_once('resources/polyfill.php');
 
 
 /* Throw exception on error */

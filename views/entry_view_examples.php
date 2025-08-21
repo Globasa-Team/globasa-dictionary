@@ -1,42 +1,48 @@
-<?
+<?php
 /**
   * Examples
   */
 
-if (!empty($config->examples_location) and file_exists($config->examples_location.$entry['slug'].'.yaml')) : 
-    $examples = yaml_parse_file($config->examples_location.$entry['slug'].'.yaml');
+if ($examples) :
 ?>
-</pre>
+    <section class="examples">
+    <h2><?=sprintf($config->getTrans('Example'), "")?></h2>
+    <details><summary>
+<?php
+    for($i=0; $i<ENTRY_EXAMPLES_SHOW; $i++) :
+        $example = array_shift($examples);
+        if ($example === null) break;
+?>
+        <blockquote>
+            <p><?=$example['text']?></p>
+            <?php if(isset($example['link'])) : ?><cite>&mdash; <a href="<?= $example['link']; ?>"><?= $example['cite']; ?></a></cite>
+            <?php elseif(isset($example['cite'])) : ?><cite>&mdash; <?= $example['cite']; ?></cite><? endif; ?>
+        </blockquote>
+<?php
+    endfor;
+    if (count($examples) > 0) :
+?>
+        <div class="expand_icon"><span class="hl h1 expand_icon">[+]</span></div>
+<?php
+    endif;
+?>
+    </summary>
+    
+<?php
+    for($i=ENTRY_EXAMPLES_SHOW; $i<ENTRY_EXAMPLES_MAX; $i++) :
+        $example = array_shift($examples);
+        if ($example === null) break;
+?>
+        <blockquote>
+            <p><?=$example['text']?></p>
+            <?php if(isset($example['link'])) : ?><cite>&mdash; <a href="<?= $example['link']; ?>"><?= $example['cite']; ?></a></cite>
+            <?php elseif(isset($example['cite'])) : ?><cite>&mdash; <?= $example['cite']; ?></cite><? endif; ?>
+        </blockquote>
+<?php
+    endfor;
+?>
 
-<section class="examples">
-<h2><?=sprintf($config->getTrans('Example'), "")?></h2>
-<!-- <details> -->
-    <!-- <summary> -->
-<? for($i = 0; $i < min(2, count($examples)); $i++) : ?>
-<blockquote>
-<? if (is_array($examples[$i])) :?>
-    <p><?=$entry['examples'][$i]['text']?></p>
-    <? if(isset($entry['examples'][$i]['citation'])): ?><cite>&mdash; <?= $entry['examples'][$i]['citation']; ?></cite><? endif; ?>
-<? else: // TODO: Remove  ?>
-    <p><?= $examples[$i]; ?></p>
-<? endif; ?>
-</blockquote>
-<? endfor; ?>
-<!-- </summary> -->
-<? if (false) : // DEBUG ?>
-<? foreach($entry['examples'] as $example): ?>
-<blockquote>
-<? if (is_array($example)) :?>
-    <p><?=$example['text']?></p>
-    <? if(isset($example['citation'])): ?><cite>&mdash; <?= $example['citation']; ?></cite><? endif; ?>
-<? else: // TODO: Remove  ?>
-    <p><?=$example?></p>
-<? endif; ?>
-</blockquote>
-<? endforeach; ?>
-<? endif; // DEBUG ?>
-<!-- </details> -->
+</details>
 </section>
-
-<?
-endif;
+<?php
+endif; /* file exists */
