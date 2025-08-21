@@ -79,6 +79,7 @@ class Search_controller
             $results = self::natlang_term_search(config:$config, lang:$lang, term:$term, request:$request);
         }
         $page->setTitle($config->getTrans('search result title').': '.$term);
+        $page->description = implode(", ", $results); // TODO: Use IntlListFormatter in PHP 8.5
         require_once('views/search_results_view.php');
 
         return;

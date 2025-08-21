@@ -1,12 +1,13 @@
 <?php
+declare(strict_types=1);
 namespace WorldlangDict;
 
 class Minimal_pair
 {
 
-    public static function analyze($config, $request, &$index)
+    public static function analyze($config, $request, array &$dict)
     {
-        $words = array_keys($index);
+        $words = array_keys($dict);
         $numWords = sizeof($words);
         $nearMatches = [];
         $checkWord = isset($request->options['candidate']) ? strtolower($request->options['candidate']) : null;

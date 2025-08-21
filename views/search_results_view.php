@@ -16,7 +16,7 @@
     
     <? foreach ($results as $word) :
         if (!file_exists($config->api2Path."terms/{$word}.yaml")) {
-            // TODO: Error handling by saying or logging the error
+            error_log("PHP Worldlang Dict: Tried to access file `terms/{$word}.yaml`, which didn't exist when showing search results for `{$term}`.\n  Logged in ".__FILE__." on line ".__LINE__);
             continue;
         }
         $entry = yaml_parse_file($config->api2Path."terms/{$word}.yaml");

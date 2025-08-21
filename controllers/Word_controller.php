@@ -1,14 +1,12 @@
 <?php
+// declare(strict_types=1);
 namespace WorldlangDict;
 
 class Word_controller
 {
     public static function output_entry($config, $request, &$page)
     {
-        if (!isset($request->arguments[0])) {
-            self::randomWord($config, $request, $page);
-        }
-        
+        if (!isset($request->arguments[0])) self::randomWord($config, $request, $page);
         $term = mb_strtolower($request->arguments[0], encoding:"UTF-8");
         $file = $config->api2Path.'terms/'.$term.'.yaml';
         if (!file_exists($file)) throw new Error_404_Exception("Entry Not Found");
@@ -16,6 +14,45 @@ class Word_controller
 
         $page->setTitle($entry['term']);
         
+        $examples = null;
+        if (!empty($config->examples_location) and file_exists($config->examples_location.$entry['slug'].'.yaml')) {
+            $example_data = yaml_parse_file($config->examples_location.$entry['slug'].'.yaml');
+
+            $examples = array();
+            $count = 0;
+            
+            foreach($example_data as $priority_level=>$example_data) {
+                if (count($examples) > ENTRY_EXAMPLES_MAX) break;
+                foreach($example_data as $example) {
+                    if (count($examples) > ENTRY_EXAMPLES_MAX) break;
+
+                    $cite = null;
+                    if (isset($example['cite']['text'][$request->lang])) {
+                        $cite = $example['cite']['text'][$request->lang];
+                    } elseif (isset($example['cite']['text'][WL_CODE_SHORT])) {
+                        $cite = $example['cite']['text'][WL_CODE_SHORT];
+                    } elseif (!empty($example['cite']['text'])) {
+                        $cite = array_first($example['cite']['text']);
+                    }
+
+                    $link = null;
+                    if (isset($example['cite']['link'][$request->lang])) {
+                        $link = $example['cite']['link'][$request->lang];
+                    } elseif (isset($example['cite']['link'][WL_CODE_SHORT])) {
+                        $link = $example['cite']['link'][WL_CODE_SHORT];
+                    } elseif (!empty($example['cite']['link'])) {
+                        $link = array_first($example['cite']['link']);
+                    }
+
+                    if ($cite === null && !empty($link)) {
+                        $cite = $link;
+                    }
+                    $examples[] = ['text'=>$example['text'], 'cite'=>$cite, 'link'=>$link];
+
+                }
+            }
+        }
+
         include("views/entry_view.php");
         
     }

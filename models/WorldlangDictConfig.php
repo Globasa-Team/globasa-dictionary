@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 namespace WorldlangDict;
 
 class WorldlangDictConfig
@@ -14,7 +15,7 @@ class WorldlangDictConfig
     public string $db_pass;
     public string $db_prefix;
     public string $db_user;
-    public string $debugging;
+    public bool $debugging;
     public string $defaultLang;
     public array $dictionary;
     public string $dictionaryFile;
@@ -29,6 +30,7 @@ class WorldlangDictConfig
     public string $langCap;
     public string $languages;
     public string $languagesFile;
+    public bool $maintenance_mode;
     public string $maintenance_message;
     public string $min_location ;
     public Page $page;
@@ -37,7 +39,7 @@ class WorldlangDictConfig
     public string $site_logo_url;
     public string $siteName;
     public string $siteUri;
-    public string $startTime;
+    public float $startTime;
     public string $stats_location;
     public string $tag_location;
     public string $template;

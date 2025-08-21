@@ -25,7 +25,8 @@ $d[2] = '';
 
 foreach ($pairs as $word=>$data) {
     foreach ($data as $match=>$distance) {
-        $d[$distance] .= '<li>'.$word.': '. $match.'</li>';
+        $trans = $dict[$match] ?? "[error: word not found]";
+        $d[$distance] .= "<li>{$word} - {$match}: {$trans}</li>";
     }
 }
 

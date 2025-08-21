@@ -8,8 +8,8 @@ $ctime = date("zGi", filemtime($config->templatePath.'css/'.$config->custom_id.'
 ?>
 <head>
   <meta charset="utf-8">
-  <title><?php echo $page->title; ?></title>
-  <meta name="description" content="<?php echo $page->description; ?>">
+  <title><?php echo $page->title ?? "500: Globasa"; ?></title>
+  <meta name="description" content="<?php echo $page->description ?? ""; ?>">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <link rel="apple-touch-icon" href="<?=$config->site_logo_url;?>">
