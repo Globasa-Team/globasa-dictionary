@@ -328,22 +328,29 @@ main input[type="submit"]:hover {
 }
 
 .entry > header {
-    background-color: var(--h2_bg_strong);
+    background-color: inherit; /* var(--h2_bg_strong); */
+    border-bottom: dotted 1px var(--h2_fg);
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
-    color: var(--h2_fg_strong);
-    padding-inline: 1em;
+    color: var(--h2_fg);
+    padding-inline: 5px;
 
     a:any-link {
         background-color: inherit;
-        color: var(--h2_fg_strong);
+        color: inherit;
+    }
+
+    h1 {
+        color: inherit;
+        font-weight: 900;
     }
 }
 
 .entry > footer {
     border-bottom-left-radius: 8px;
     border-bottom-right-radius: 8px;
-    background-color: var(--h1_bg_strong);
+    background-color: inherit; /* var(--h1_bg_strong); */
+    border-top: dotted 1px var(--h1_fg);
     color: var(--h1_fg_strong);
     padding-inline: 5px;
     
