@@ -18,7 +18,7 @@ class Error_controller
     }
 
     public static function wtf(object $config, object $request, object $page, Throwable $error):void {
-        error_log("WTF Error logged:\n".$error."\nRequest URL: ".$request->url."\n");
+        error_log("PHP WorldlangDict error: WTF Error logged:\n".$error."\nRequest URL: ".$request->url."\n");
         if ($config->debugging) {
             echo('<pre style="text-wrap: wrap; background-color: salmon;">');
             echo(nl2br($error));
