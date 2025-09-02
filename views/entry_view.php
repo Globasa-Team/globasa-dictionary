@@ -206,8 +206,8 @@ if (array_key_exists('rhyme', $entry)):
         <summary class="hide">
             <h2><?=sprintf($config->getTrans('entry rhymes header'), $exclusions);?></h2>:
             <?
-            foreach(array_keys($entry['rhyme']) as $slug) :
-                ?><a href="<?= WorldlangDictUtils::makeUri(config:$config, controller:'word', arg:$slug, request:$request); ?>" class="hl encap" lang="<?=WL_CODE_FULL;?>"><?=$entry['rhyme'][$slug]['term'];?></a> <?
+            foreach($entry['rhyme'] as $rhyme_slug=>$rhyme_data) :
+                ?><a href="<?= WorldlangDictUtils::makeUri(config:$config, controller:'word', arg:$rhyme_slug, request:$request); ?>" class="hl encap" lang="<?=WL_CODE_FULL;?>"><?=$entry['rhyme'][$rhyme_slug]['term_spec'];?></a> <?
             endforeach;
 
             ?> <span class="hl h1">[+]</span>
@@ -215,12 +215,12 @@ if (array_key_exists('rhyme', $entry)):
         <h2><?=sprintf($config->getTrans('entry rhymes header'), $exclusions);?></h2>:
         <dl>
 <?
-        foreach($entry['rhyme'] as $a_term=>$data) : ?>
+        foreach($entry['rhyme'] as $rhyme_slug=>$data) : ?>
             <div>
                 <dt><?=WorldlangDictUtils::makeLink(
                         config:$config, request:$request,
-                        controller:'word', arg:urlencode($a_term),
-                        text:$data['term']
+                        controller:'word', arg:urlencode($rhyme_slug),
+                        text:$data['term_spec']
                     );?></dt>
                 <dd>
                 <? if (isset($data['word class'])) : ?>

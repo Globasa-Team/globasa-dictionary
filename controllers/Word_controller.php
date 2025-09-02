@@ -12,7 +12,7 @@ class Word_controller
         if (!file_exists($file)) throw new Error_404_Exception("Entry Not Found");
         $entry = yaml_parse_file($file);
 
-        $page->setTitle($entry['term']);
+        $page->setTitle($entry['term_spec']);
         
         $examples = null;
         if (!empty($config->examples_location) and file_exists($config->examples_location.$entry['slug'].'.yaml')) {
