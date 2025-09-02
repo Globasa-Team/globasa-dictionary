@@ -26,6 +26,7 @@ foreach($entry['etymology']['derived trans'] as $data) :
     elseif ($data['text'] === ',') :
         ?>, <?
     else :
+        // is `+` or term not in dictionary
         echo(' '.$data['text'].' ');
     endif;
 endforeach;
@@ -36,7 +37,7 @@ endforeach;
         <div>
         <dt><?=WorldlangDictUtils::makeLink(text:$data['text'],
                     config:$config, request:$request,
-                    controller:'word', arg:$data['text'],
+                    controller:'word', arg:$data['slug'],
                 );?></dt>
         <dd>
         <? if (isset($data['word class'])) : ?>
@@ -71,8 +72,8 @@ if (isset($entry['etymology']['am oko'])): ?>
 <div class="am_oko">
     <h3><?= $config->getTrans('entry etymology am oko header'); ?></h3>
     <ul>
-    <? foreach($entry['etymology']['am oko'] as $item): ?>
-        <li><a href="../lexi/<?=$item;?>" class="hl encap" lang="<?=WL_CODE_FULL;?>"><?=$item;?></a></li>
+    <? foreach($entry['etymology']['am oko'] as $slug=>$term): ?>
+        <li><a href="../lexi/<?=$slug;?>" class="hl encap" lang="<?=WL_CODE_FULL;?>"><?=$term;?></a></li>
     <? endforeach; ?>
     </ul>.
 </div>
