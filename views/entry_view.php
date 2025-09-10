@@ -152,7 +152,7 @@ if (array_key_exists('derived terms', $entry)): ?>
                     // Debugging for undefined key `term` on $data, using ?? $slug on lines below which may be temp fix.
                     error_log("Index 'term' does not exist on data for derived term '{$slug}' in `entry_view.php`. Serialized data: ".serialize($entry)."\n");
                 }
-                ?><a href="<?= WorldlangDictUtils::makeUri(config:$config, controller:'word', arg:$slug, request:$request); ?>" class="hl encap" lang="<?=WL_CODE_FULL;?>"><?=$data['term'] ?? $slug;?></a> <?
+                ?><a href="<?= WorldlangDictUtils::makeUri(config:$config, controller:'word', arg:$slug, request:$request); ?>" class="hl encap" lang="<?=WL_CODE_FULL;?>"><?=$data['text'] ?? $slug;?></a> <?
             endforeach;
 
             ?> <span class="hl h1">[+]</span>
@@ -165,7 +165,7 @@ if (array_key_exists('derived terms', $entry)): ?>
                 <dt><?=WorldlangDictUtils::makeLink(
                     controller:'word', arg:urlencode($a_term),
                     config:$config, request:$request,
-                    text: $data['term'] ?? $a_term
+                    text: $data['text'] ?? $a_term
                 );?></dt>
                 <dd>
                 <? if (isset($data['class'])) : ?>
