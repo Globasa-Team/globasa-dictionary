@@ -1,4 +1,7 @@
 <?php
+
+declare(strict_types=1);
+
 namespace WorldlangDict;
 
 class Search_controller
@@ -90,16 +93,17 @@ class Search_controller
     /**
      * Do a partial match search through the Globasa index.
      */
-    private static function worldlang_levenshtein_search(string $term, array &$index) {
+    private static function worldlang_levenshtein_search(string $term, array &$index):array {
         // Finally look for a partial match in index
         $partialMatches = [];
         foreach ($index as $key=>$data) {
             if (levenshtein($term, $key, 1, 1, 1)<2) {
                 if (empty($data)) {
                     $partialMatches[$key] = $key;
-                }
-                else {
-                    $partialMatches[$data] = $data;
+                } else {
+                    foreach($data as $match_slug) {
+                        $partialMatches[$match_slug] = $match_slug;
+                    }
                 }
             }
         }
@@ -126,16 +130,16 @@ class Search_controller
             if (count($terms[$query])==1) {
                 WorldlangDictUtils::redirect(config:$config, request:$request, controller:'word', arg:urlencode($terms[$query][0]));
             }
-            elseif (($key = array_search($query, $terms[$query])) !== false) {
-                WorldlangDictUtils::redirect(config:$config, request:$request, controller:'word', arg:urlencode($terms[$query][$key]));
-            }
+            // elseif (($key = array_search($query, $terms[$query])) !== false) {
+            //     WorldlangDictUtils::redirect(config:$config, request:$request, controller:'word', arg:urlencode($terms[$query][$key]));
+            // }
             else {
                 return $terms[$query];
             }
+            return $terms[$query];
 
         } else {
-            $index = yaml_parse_file($config->index_location);
-            return self::worldlang_levenshtein_search($query, $index);
+            return self::worldlang_levenshtein_search($query, $terms);
         }
     }
 
