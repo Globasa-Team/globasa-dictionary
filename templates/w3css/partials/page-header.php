@@ -9,6 +9,16 @@ namespace WorldlangDict;
         <?php echo $config->getTrans('site_name_short'); ?>
         </a>
     </p>
+<?php if (!empty($config->maintenance_mode)) : ?>
+    <div id="maintenance_message">
+        <p><?=$config->maintenance_message;?></p>
+    </div>
+<? endif; ?>
+
+
+
+
+
     <nav>
         <a href="<?php echo WorldlangDictUtils::makeUri(config:$config, controller:'browse', request:$request); ?>"><?= $config->getTrans('browse title') ?></a> &bull;
         <a href="<?=$config->grammar_url;?>"><?php echo $config->getTrans('word classes link');?></a> &bull;
