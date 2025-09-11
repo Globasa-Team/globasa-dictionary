@@ -19,6 +19,14 @@ class Search_controller
         
         $partialMatches = [];
         foreach ($terms as $key=>$data) {
+            /*
+                PHP seems to take `$a['7']=''` and store the index as a number.
+                `yaml_emit` and `yaml_parse` definately interprets it that way.
+                So I don't think this can be fixed by switch to JSON.
+                So if the numeral '7' is used as a translation it will cause
+                `mb_convert_encoding()` to fail because it expects a string.
+            */
+            if (is_int($key)) $key = strval($key);
             if (levenshtein($term, mb_convert_encoding($key, "ASCII"), 1, 1, 1)<2) {
                 if (empty($data)) {
                     $partialMatches[$key] = $key;
@@ -67,19 +75,17 @@ class Search_controller
         $results = null;
         $term = "";
         if (!empty($request->options[WL_CODE_SHORT])) {
+            // worldlang search
             $lang = WL_CODE_SHORT;
             $term = mb_trim($request->options[WL_CODE_SHORT], encoding:"UTF-8");
             $results = self::worldlang_term_search(config:$config, query:$term, page:$page, request:$request);
         } else {
-            $lang = array_key_first($request->options);
-            if (strcmp($lang, WL_CODE_SHORT)===0) {
-                $lang = array_key_last($request->options);
-            }
-            if (empty($request->options[$lang])) {
+            // natlang search
+            if (empty($request->options[$config->lang])) {
                 WorldlangDictUtils::redirect(config:$config, request:$request);
             }
-            $term = mb_trim($request->options[$lang], encoding:"UTF-8");
-            $results = self::natlang_term_search(config:$config, lang:$lang, term:$term, request:$request);
+            $term = mb_trim($request->options[$config->lang], encoding:"UTF-8");
+            $results = self::natlang_term_search(config:$config, lang:$config->lang, term:$term, request:$request);
         }
         $page->setTitle($config->getTrans('search result title').': '.$term);
         $page->description = implode(", ", $results); // TODO: Use IntlListFormatter in PHP 8.5
