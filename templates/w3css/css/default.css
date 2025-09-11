@@ -688,6 +688,20 @@ textarea {
         opacity: 1; /* Firefox */
         text-align: center;
     }
+
+    #maintenance_message {
+        background-color: white;
+        border: double 5px darkred;
+        margin: 1em;
+        outline: solid 2px white;
+        padding: 2px;
+        p {
+            background-color: var(--bd);
+            color: darkred;
+            margin: 0;
+            padding: 1em;
+        }
+    }
 }
 /*#endregion*/
 
