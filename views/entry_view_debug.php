@@ -1,5 +1,6 @@
-<? if (isset($config->debugging) && $config->debugging) : ?>
-<details class="debug">
+<? if (!empty($config->debugging)) : ?>
+<div class="col_debug">
+<details class="debug" open>
     <summary>🔍 Entry Inspector</summary>
 <?
 
@@ -24,4 +25,5 @@ echo('</div>');
 
 ?>
 </details>
+</div>
 <? endif; ?>

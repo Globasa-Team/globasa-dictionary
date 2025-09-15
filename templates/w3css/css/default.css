@@ -325,6 +325,18 @@ main input[type="submit"]:hover {
     dl {
         margin-left: 1em;
     }
+
+
+    
+    .col1 {
+        grid-area: col1;
+    }
+    .col2 {
+        grid-area: col2;
+    }
+    .col_debug {
+        grid-area: col_debug;
+    }
 }
 
 .entry > header {
@@ -333,6 +345,7 @@ main input[type="submit"]:hover {
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
     color: var(--h2_fg);
+    grid-area: header;
     padding-inline: 5px;
 
     a:any-link {
@@ -352,6 +365,7 @@ main input[type="submit"]:hover {
     background-color: inherit; /* var(--h1_bg_strong); */
     border-top: dotted 1px var(--h1_fg);
     color: var(--h1_fg_strong);
+    grid-area: footer;
     padding-inline: 5px;
     
     :any-link {
@@ -806,6 +820,30 @@ textarea {
         width: 50ch;
     }
 
+    main.entry {
+        display: grid;
+        grid-template-areas: 
+        "header header header"
+        "col1 col2 col_debug"
+        "footer footer footer";
+        margin-inline: 1em;
+        width: auto;
+    }
+    main.entry:has(.col_debug) {
+        grid-template-columns: 1fr 1fr 20ch;
+        grid-template-areas: 
+            "header header header"
+            "col1 col2 col_debug"
+            "footer footer footer";
+    }
+    main.entry:not(:has(.col_debug)) {
+        grid-template-columns: 1fr 1fr;
+        grid-template-areas: 
+            "header header"
+            "col1 col2"
+            "footer footer";
+    }
+
     h1 {
         font-size: x-large;
     }
@@ -934,19 +972,22 @@ textarea {
     }
 }
 
-details.debug {
+main.entry > div.col_debug > details.debug {
+    display: block;
+    font-weight: 100;
+    font-size: small;
+    line-height: 100%;
     max-width: 50ch;
     margin: auto;
-
+    color: var(--bd);
+    
+    details{
+        display: block;
+    }
     .print_array {
-        background-color: #f7f6fa;
         details {
             padding-left: 0.5em;
-            background-color: #e8e4f2;
-
-            > details {                     background-color: #d9d3ea; }
-            > details > details {           background-color: #cac1e2; }
-            > details > details > details { background-color: #c3b8de; }
+            border-left: solid 3px var(--bd);
         }
     }
 }
