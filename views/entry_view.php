@@ -53,6 +53,24 @@ require_once('views/entry_view_examples.php');
 
 
 
+//region Vocabulary Tags
+if (!empty($entry['tags'])):
+    foreach ($entry['tags'] as $i=>$tag) {
+        $entry['tags'][$i] = WorldlangDictUtils::makeLink(
+            config:$config, request:$request,
+            controller:'tag', arg:$tag,
+            text:$tag
+        );
+    } ?>
+<section>
+    <h2><?=sprintf($config->getTrans('tags links'), ""); ?></h2>
+    <?= implode(', ', $entry['tags']); ?>
+</section>
+<?php endif;
+//endregion
+
+
+
 //region Synonyms
 if (!empty($entry['synonyms'])):
     $trans =  (count($entry['synonyms']) == 1) ? 'synonym sentence' : 'synonyms sentence';
@@ -136,12 +154,6 @@ if (array_key_exists('derived terms', $entry)): ?>
 
 
 
-//region Etymology
-require_once('views/entry_view_etymology.php');
-//endregion
-
-
-
 // Start of next column.
 ?>
     </div>
@@ -150,20 +162,8 @@ require_once('views/entry_view_etymology.php');
 
 
 
-//region Tags
-if (!empty($entry['tags'])):
-    foreach ($entry['tags'] as $i=>$tag) {
-        $entry['tags'][$i] = WorldlangDictUtils::makeLink(
-            config:$config, request:$request,
-            controller:'tag', arg:$tag,
-            text:$tag
-        );
-    } ?>
-<section>
-    <h2><?=sprintf($config->getTrans('tags links'), ""); ?></h2>
-    <?= implode(', ', $entry['tags']); ?>
-</section>
-<?php endif;
+//region Etymology
+require_once('views/entry_view_etymology.php');
 //endregion
 
 
@@ -195,11 +195,14 @@ if (array_key_exists('rhyme', $entry)):
 ?>
 <section class="rhymes">
     <details>
-        <summary class="hide">
+        <summary class="hide" style="line-height: 0.9;">
             <h2><?=sprintf($config->getTrans('entry rhymes header'), $exclusions);?></h2>:
             <?php
+            $first = true;
             foreach($entry['rhyme'] as $rhyme_slug=>$rhyme_data) :
-                ?><a href="<?= WorldlangDictUtils::makeUri(config:$config, controller:'word', arg:$rhyme_slug, request:$request); ?>" class="hl encap" lang="<?=WL_CODE_FULL;?>"><?=$entry['rhyme'][$rhyme_slug]['term_spec'];?></a> <?php
+                if (!$first) print(', ');
+                else $first = false;
+                ?><a href="<?= WorldlangDictUtils::makeUri(config:$config, controller:'word', arg:$rhyme_slug, request:$request); ?>" class="" lang="<?=WL_CODE_FULL;?>"><?=$entry['rhyme'][$rhyme_slug]['term_spec'];?></a><?php
             endforeach;
 
             ?> <span class="hl h1">[+]</span>
@@ -227,6 +230,7 @@ if (array_key_exists('rhyme', $entry)):
 </section>
 <?php endif;
 //endregion
+
 
 
 ?>

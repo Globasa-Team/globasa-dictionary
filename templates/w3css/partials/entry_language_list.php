@@ -4,17 +4,14 @@ namespace WorldlangDict;
 
 
 ?>
-<ul class="lang_list">
+<table class="lang_list">
 <?
 $lstart = true;
 foreach($list as $lang=>$example):
-    ?>
-    <li><a href="<?= WorldlangDictUtils::makeUri(config:$config, controller:"natlang-search", arg:$lang, request:$request); ?>" class="hl encap"><?= $lang; ?></a><?
-    if (!empty($example)) :
-        ?> <span><?=$example?></span><?
-    endif;
-    ?></li>
-<?
+?>
+    <tr><th><a href="<?= WorldlangDictUtils::makeUri(config:$config, controller:"natlang-search", arg:$lang, request:$request); ?>" class=""><?= $lang; ?></a></th>
+    <td><span><?=$example?></span></td></tr>
+<?php
 endforeach;
 ?>
-</ul>
+</table>
