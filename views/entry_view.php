@@ -53,6 +53,24 @@ require_once('views/entry_view_examples.php');
 
 
 
+//region Vocabulary Tags
+if (!empty($entry['tags'])):
+    foreach ($entry['tags'] as $i=>$tag) {
+        $entry['tags'][$i] = WorldlangDictUtils::makeLink(
+            config:$config, request:$request,
+            controller:'tag', arg:$tag,
+            text:$tag
+        );
+    } ?>
+<section>
+    <h2><?=sprintf($config->getTrans('tags links'), ""); ?></h2>
+    <?= implode(', ', $entry['tags']); ?>
+</section>
+<?php endif;
+//endregion
+
+
+
 //region Synonyms
 if (!empty($entry['synonyms'])):
     $trans =  (count($entry['synonyms']) == 1) ? 'synonym sentence' : 'synonyms sentence';
@@ -150,24 +168,6 @@ require_once('views/entry_view_etymology.php');
 
 
 
-//region Tags
-if (!empty($entry['tags'])):
-    foreach ($entry['tags'] as $i=>$tag) {
-        $entry['tags'][$i] = WorldlangDictUtils::makeLink(
-            config:$config, request:$request,
-            controller:'tag', arg:$tag,
-            text:$tag
-        );
-    } ?>
-<section>
-    <h2><?=sprintf($config->getTrans('tags links'), ""); ?></h2>
-    <?= implode(', ', $entry['tags']); ?>
-</section>
-<?php endif;
-//endregion
-
-
-
 //region Natlang similar words
 if (isset($entry['etymology']['natlang similar'])): ?>
 <section class="natlang_similar">
@@ -227,6 +227,7 @@ if (array_key_exists('rhyme', $entry)):
 </section>
 <?php endif;
 //endregion
+
 
 
 ?>
