@@ -154,17 +154,17 @@ if (array_key_exists('derived terms', $entry)): ?>
 
 
 
-//region Etymology
-require_once('views/entry_view_etymology.php');
-//endregion
-
-
-
 // Start of next column.
 ?>
     </div>
     <div class="col2">
 <?php
+
+
+
+//region Etymology
+require_once('views/entry_view_etymology.php');
+//endregion
 
 
 
