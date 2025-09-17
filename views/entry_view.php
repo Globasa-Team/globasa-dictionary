@@ -195,14 +195,11 @@ if (array_key_exists('rhyme', $entry)):
 ?>
 <section class="rhymes">
     <details>
-        <summary class="hide" style="line-height: 0.9;">
+        <summary class="hide">
             <h2><?=sprintf($config->getTrans('entry rhymes header'), $exclusions);?></h2>:
             <?php
-            $first = true;
             foreach($entry['rhyme'] as $rhyme_slug=>$rhyme_data) :
-                if (!$first) print(', ');
-                else $first = false;
-                ?><a href="<?= WorldlangDictUtils::makeUri(config:$config, controller:'word', arg:$rhyme_slug, request:$request); ?>" class="" lang="<?=WL_CODE_FULL;?>"><?=$entry['rhyme'][$rhyme_slug]['term_spec'];?></a><?php
+                ?><a href="<?= WorldlangDictUtils::makeUri(config:$config, controller:'word', arg:$rhyme_slug, request:$request); ?>" class="hl encap" lang="<?=WL_CODE_FULL;?>"><?=$entry['rhyme'][$rhyme_slug]['term_spec'];?></a> <?php
             endforeach;
 
             ?> <span class="hl h1">[+]</span>
