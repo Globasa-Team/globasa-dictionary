@@ -1,21 +1,23 @@
 <?php
+
+declare(strict_types=1);
+
 namespace WorldlangDict;
 ?>
 <!doctype html>
 <html class="no-js" lang="<?= $request->lang; ?>">
-<? require_once($config->templatePath . "partials/html-head.php"); ?>
+<?php require_once($config->templatePath . "partials/html-head.php"); ?>
 <body>
 
-<?
-
+<?php
 require_once($config->templatePath . "partials/page-header.php");
 ?>
 
 <main class="homonyms">
-<? require('views/homonym_view_part.php'); ?> 
+<?php require('views/homonym_view_part.php'); ?> 
 </main>
 
-<? require_once($config->templatePath . "partials/page-footer.php"); ?>
+<?php require_once($config->templatePath . "partials/page-footer.php"); ?>
 
 </body>
 

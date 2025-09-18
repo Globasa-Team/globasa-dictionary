@@ -1,10 +1,13 @@
 <?php
+
+declare(strict_types=1);
+
 namespace WorldlangDict;
 
 class Homonym
 {
 
-    public static function analyze($config, $request, &$dict)
+    public static function analyze(Request $request, array &$dict)
     {
 
         // Add the new root candidate
