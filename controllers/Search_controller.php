@@ -72,11 +72,8 @@ class Search_controller
      */
     public static function search(object $config, object $request, Page &$page)
     {
-        $results = null;
-        $term = "";
         if (!empty($request->options[WL_CODE_SHORT])) {
             // worldlang search
-            $lang = WL_CODE_SHORT;
             $term = mb_trim($request->options[WL_CODE_SHORT], encoding:"UTF-8");
             $results = self::worldlang_term_search(config:$config, query:$term, page:$page, request:$request);
         } else {
@@ -86,6 +83,12 @@ class Search_controller
             }
             $term = mb_trim($request->options[$config->lang], encoding:"UTF-8");
             $results = self::natlang_term_search(config:$config, lang:$config->lang, term:$term, request:$request);
+        }
+        $match = array_search($term, $results, true);
+        if ($match !== false) {
+            $data = $results[$match];
+            unset($results[$match]);
+            array_unshift($results, $data);
         }
         $page->setTitle($config->getTrans('search result title').': '.$term);
         $page->description = implode(", ", $results); // TODO: Use IntlListFormatter in PHP 8.5
