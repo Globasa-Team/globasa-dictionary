@@ -9,7 +9,7 @@ namespace WorldlangDict;
 $lstart = true;
 foreach($list as $lang=>$example):
 ?>
-    <tr><th><a href="<?= WorldlangDictUtils::makeUri(config:$config, controller:"natlang-search", arg:$lang, request:$request); ?>" class=""><?= $lang; ?></a></th>
+    <tr><th><a href="<?= WorldlangDictUtils::makeUri(config:$config, controller:"natlang", arg:$lang, request:$request); ?>" class=""><?= $lang; ?></a></th>
     <td><span><?=$example?></span></td></tr>
 <?php
 endforeach;
