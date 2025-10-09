@@ -117,9 +117,9 @@ if (array_key_exists('derived terms', $entry)): ?>
             <h2><?=sprintf($config->getTrans('derived word list'), '');?></h2>
             <?php
             foreach($entry['derived terms'] as $slug=>$data) :
-                if (!isset($data['term'])) {
-                    // Debugging for undefined key `term` on $data, using ?? $slug on lines below which may be temp fix.
-                    error_log("Index 'term' does not exist on data for derived term '{$slug}' in `entry_view.php`. Serialized data: ".serialize($entry)."\n");
+                if (!isset($data['text'])) {
+                    // Debugging for undefined key `text` on $data, using ?? $slug on lines below which may be temp fix.
+                    error_log("Index 'text' does not exist on data for `{$entry[$slug]}`'s derived term '{$slug}' in `entry_view.php`. Serialized data: ".serialize($entry)."\n");
                 }
                 ?><a href="<?= WorldlangDictUtils::makeUri(config:$config, controller:'word', arg:$slug, request:$request); ?>" class="hl encap" lang="<?=WL_CODE_FULL;?>"><?=$data['text'] ?? $slug;?></a> <?php
             endforeach;
@@ -243,7 +243,7 @@ require_once('views/entry_view_debug.php');
  */ 
 ?>
 <footer>
-    <?=WorldlangDictUtils::makeLink(config:$config, controller:'word', arg:$entry['term'], request:$request,
+    <?=WorldlangDictUtils::makeLink(config:$config, controller:'word', arg:$entry['slug'], request:$request,
         text:'<span class="fa fa-link"></span> '.$config->getTrans('Word Link')) ?>
 </footer>
 
