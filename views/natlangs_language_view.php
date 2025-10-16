@@ -18,24 +18,24 @@ namespace WorldlangDict;
 <h1><?= sprintf($config->getTrans('natlangs language view title'), ucwords($arg)); ?></h1>
 
 <dl>
-<? foreach($data as $term) { ?>
+<? foreach($data as $slug) { ?>
     <div>
-    <? if (isset($dict[$term])) : ?>
+    <? if (isset($dict[$slug])) : ?>
         <dt lang="<?= WL_CODE_FULL; ?>"><?=
-            WorldlangDictUtils::makeLink(text:$term,
+            WorldlangDictUtils::makeLink(text:$dict[$slug]['term'],
                 config:$config, request:$request,
-                controller:'word', arg:urlencode($term)
+                controller:'word', arg:urlencode($slug)
             );?>
         </dt>
         <dd>
-        <? if (!empty($dict[$term]['class'])) : ?>
-            <span class="wordClass">(<a href="<?=$config->grammar_url;?>"><?=$dict[$term]['class'];?></a>)</span>
+        <? if (!empty($dict[$slug]['class'])) : ?>
+            <span class="wordClass">(<a href="<?=$config->grammar_url;?>"><?=$dict[$slug]['class'];?></a>)</span>
         <? endif; ?>
-            <?=$dict[$term]['translation']?>
+            <?=$dict[$slug]['translation']?>
         </dd>
     <? else:
-        error_log("Missing `{$term}` from \$dict[] in `natlangs_language_view.php`."); ?>
-        <dt lang="<?= WL_CODE_FULL; ?>"><?=$term?></dt><dd></dd>
+        error_log("Missing `{$slug}` from \$dict[] in `natlangs_language_view.php`."); ?>
+        <dt lang="<?= WL_CODE_FULL; ?>"><?=$slug?></dt><dd></dd>
     <? endif; ?>
 </div>
 
