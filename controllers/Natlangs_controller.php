@@ -28,7 +28,7 @@ class Natlangs_controller
                     $dict = yaml_parse_file($config->basic_location.$request->lang.'.yaml');
                     require_once('views/natlangs_language_view.php');
                 } else {
-                    throw new Error_404_exception("Reports module not found.");
+                    throw new Error_404_exception("Report module language file not found.");
                 }
                 break;
         }
