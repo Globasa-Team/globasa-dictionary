@@ -21,28 +21,45 @@ if (empty($homonyms)) {
 ?>
 <ul>
 <?php
-$searchTerm = isset($request->options['word']) ? $request->options['word'] : "";
+
+$candidate = $request->options['candidate'];
 
 foreach ($homonyms as $word => $generated_words):
 
-    if (sizeof($generated_words) > 1 && (!isset($request->options['candidate']) || isset($generated_words[$request->options['candidate']]))):
+    if (sizeof($generated_words) > 1 && isset($generated_words[$candidate])):
 ?>
     <li>
         <header><?= $word; ?></header>
         <section>
-        <?php foreach ($generated_words as $data): ?>
-            <span class="hl h2"><?
-                if (isset($data['pre'])) {
-                    print(WorldlangDictUtils::makeLink($config, $request, "lexi", $data['pre'], $data['pre']));
+        <?php
+        $first = true;
+        foreach ($generated_words as $data):
+            if ($first) $first = false;
+            else print(', ');
+            
+            if (isset($data['pre'])) {
+                if ($data['pre']!==$candidate) :
+                    print(" <strong>" . WorldlangDictUtils::makeLink($config, $request, "lexi", $data['pre'], $data['pre']) . "</strong>");
+                else :
+                    print($candidate);
+                endif;
+                print(' + ');
+            }
+            if ($data['root']!==$candidate) :
+                print(" <strong>" . WorldlangDictUtils::MakeLink($config, $request, 'lexi', $data['root'], $data['root']) . "</strong>");
+            else:
+                print($candidate);
+            endif;
+            if (isset($data['suf'])) {
+                if ($data['suf']!==$candidate) :
                     print(' + ');
-                }
-                print(" <strong>" . WorldlangDictUtils::MakeLink($config, $request, 'lexi', $data['root'], $data['root']) . "</strong> ");
-                if (isset($data['suf'])) {
-                    print(' + ');
-                    print(WorldlangDictUtils::MakeLink($config, $request, 'lexi', $data['suf'], $data['suf']));
-                }
-                ?></span>,
-        <?php endforeach; ?>
+                    print(" <strong>" . WorldlangDictUtils::MakeLink($config, $request, 'lexi', $data['suf'], $data['suf']) . "</strong>");
+                else:
+                    print($candidate);
+                endif;
+            }
+        endforeach;
+        ?>
         </section>
     </li>
 <?php

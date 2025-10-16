@@ -11,7 +11,7 @@ class Homonym
     {
 
         // Add the new root candidate
-        if (isset($request->options['candidate']) && !empty($request->options['candidate'])) {
+        if (!empty($request->options['candidate'])) {
             $root[] = $newRoot = $request->options['candidate'];
             $genList[$newRoot]['New:'.$newRoot]['root'] = "New:$newRoot";
         }

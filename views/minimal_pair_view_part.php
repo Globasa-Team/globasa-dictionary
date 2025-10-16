@@ -29,9 +29,9 @@ $d[2] = '';
 
 foreach ($pairs as $word => $data) {
     foreach ($data as $match => $distance) {
-        $d[$distance] .= "<li>{$word} - ".
+        $d[$distance] .= "<li>{$word} - <strong>".
             WorldlangDictUtils::makeLink($config, $request, 'lexi', $match, $match).
-            "</li>";
+            "</strong></li>";
     }
 }
 
