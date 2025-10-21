@@ -22,7 +22,7 @@ $ctime = date("zGi", filemtime($config->templatePath.'css/'.$config->custom_id.'
 <? endif; ?>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Baskervville:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <script src="<?php echo $config->siteUri; ?>assets/ipa.js?02-08"></script>
   <script src="<?php echo $config->siteUri; ?>assets/browse.js?2023-12-18"></script>
 
