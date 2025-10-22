@@ -56,7 +56,7 @@ body {
     display: flex;
     flex-direction: column;
     font-family: 'Libre Baskerville', Charter, 'Bitstream Charter', 'Sitka Text', Cambria, serif;
-    font-size: 1.3rem;
+    font-size: 1rem;
     font-weight: 500;
     margin: 0;
     min-height: 100vh;
@@ -115,7 +115,7 @@ dt a {
 }
 
 .tags dl, #natlangs_language dl, #natlang_browse dl {
-    column-width: 30ch;
+    column-width: 20ch;
     column-rule: 3px solid var(--bd);
 }
 
@@ -216,14 +216,14 @@ main input[type="submit"]:hover {
     
     h1 {
         font-weight: normal;
-        font-size: 1.7rem;
+        font-size: x-large;
     }
     h2 {
         display: inline-block;
-        font-size: 1.3rem;
+        font-size: medium;
     }
     h3 {
-        font-weight: normal;
+        font-weight: lighter;
     }
     
     .status {
@@ -337,6 +337,14 @@ main input[type="submit"]:hover {
     }
     .col_debug {
         grid-area: col_debug;
+        font-family: system-ui;
+        font-size: smaller;
+
+        strong {
+            font-weight: 600;
+            color: var(--fg_medium);
+            /* font-style: italic; */
+        }
     }
 }
 
