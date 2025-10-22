@@ -81,19 +81,16 @@ main, article {
     h1 {
         margin-top: 0;
         text-align: center;
+        font-size: 1.6rem;
     }
     
     h2 {
-        font-size: large;
+        font-size: 1.6rem;
     }
     
     h3 {
         font-size: medium;
     }
-}
-
-dl {
-    line-height: 110%;
 }
 
 dt, dd {
@@ -219,11 +216,11 @@ main input[type="submit"]:hover {
     
     h1 {
         font-weight: normal;
-        font-size: x-large;
+        font-size: 1.7rem;
     }
     h2 {
         display: inline-block;
-        font-size: medium
+        font-size: 1.3rem;
     }
     h3 {
         font-weight: normal;
@@ -979,7 +976,6 @@ textarea {
 main.entry > div.col_debug > details.debug {
     display: block;
     font-weight: 100;
-    font-size: small;
     line-height: 100%;
     max-width: 50ch;
     margin: auto;
