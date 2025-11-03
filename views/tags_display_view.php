@@ -14,7 +14,7 @@ namespace WorldlangDict;
 <? $exists = isset($defs[$tag]); ?>
 <? if ($exists) : ?>
   <h1><?= $config->getTrans('single tag view') ?>: <?= $defs[$tag]['term']; ?></h1>
-  <p style="text-align: center;">
+  <p>
     <em>(<a href="<?=$config->grammar_url;?>"><?= $defs[$tag]['class'];?></a>)</em>&nbsp;
     <?= $defs[$tag]['translation'] ?>
   </p>
@@ -23,12 +23,12 @@ namespace WorldlangDict;
   <? endif; ?>
   
   <?php $rand = $tags[$tag][array_rand($tags[$tag])]; ?>
-  <div style="text-align: center;">
-    <a href="" style="background-color: var(--h1_bg_strong); color: var(--h1_fg); padding: .3em; display: inline-block;"><?= $config->getTrans('tag random word') ?></a>
+  <p>
+    <a class="button" href=""><?= $config->getTrans('tag random word') ?></a>
     <?= $defs[$rand]['term']; ?>
     <em>(<a href="<?=$config->grammar_url;?>"><?= $defs[$rand]['class'];?></a>)</em>&nbsp;
     <?= $defs[$rand]['translation'] ?>
-  </div>
+  </p>
   
   <? if (!empty($tags[$tag])): ?>
 
