@@ -1,10 +1,69 @@
-<?;
-
+<?php
+declare(strict_types=1);
 namespace WorldlangDict;
+
+
+
+
+// region function
+function view_translation(WorldlangDictConfig $config, Request $request, string $lang, string $data) {
+    $gstart = true;
+    print('<tr><th>');
+    print($lang);
+    print('</th><td>');
+    print($data);
+    print('</tr>');
+    return;
+    foreach($data as $group):
+        if (!$gstart) print('; ');
+        $gstart = false;
+        $tstart = true;
+        
+        foreach($group as $translation):
+            if (!$tstart) :
+                print(', ');
+            endif;
+            $tstart = false;
+            $trans_note_preceeding = '';
+            $trans_note_following = '';
+
+            // var_dump($translation);
+            // Check for preceeding translation note using colon
+            if (($pos = mb_strpos($translation, ':', encoding:"UTF-8")) !== false) {
+                $trans_note_preceeding = mb_trim(substr($translation, 0, $pos+1), encoding:"UTF-8");
+                $translation = mb_trim(mb_substr($translation, $pos+1, encoding:"UTF-8"), encoding:"UTF-8");
+            }
+            
+            $slug = mb_trim(mb_strtolower(preg_replace('/\((.+)\)/U', '', strip_tags($translation)), encoding:"UTF-8"), encoding:"UTF-8");  // regex removes parentheticals (...)
+
+            // TODO: link this!
+            if (!str_contains($translation, '<a')) :
+                print($trans_note_preceeding);
+                print(' <a href="');
+                print(WorldlangDictUtils::makeUri(config:$config, controller:'natlang-search', arg:$slug, request:$request));
+                print('" class="hl h1">');
+                print($translation);
+                print('</a> ');
+                print($trans_note_following);
+            else:
+                print('<span class="hl h1">');
+                print($translation);
+                print('</span>');
+            endif;
+        endforeach;
+    endforeach;
+    print("</td></tr>");
+}
+// endregion
+
+
+
 
 ?>
 <section class="translation">
-    <p><?
+    <details>
+    <summary>
+    <p><?php
 
 if (!empty($entry['trans'][$request->lang])):
     $gstart = true;
@@ -46,13 +105,27 @@ if (!empty($entry['trans'][$request->lang])):
     endforeach;
 endif;
 
-?></p>
+?>
+<span class="expand_icon">[+]</span>
+<span class="collapse_icon">[-]</span>
+</p>
+</summary>
+
+<table class="lang_list">
+<?php
+
+foreach ($entry['trans html'] as $lang=>$data) {
+    if (empty($data) || $lang === $request->lang) continue;
+    view_translation($config, $request, $lang, $data);
+}
+?>
+</table>
+
+</details>
+<?php
 
 
 
-
-
-<?
 if (isset($entry['entry notes'])) :
     foreach ($entry['entry notes'] as $type=>$data) :
         switch ($type) :
