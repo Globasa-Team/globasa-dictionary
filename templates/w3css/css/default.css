@@ -331,6 +331,11 @@ main input[type="submit"]:hover {
         text-align: center;
     }
     
+
+    .expand_icon, .collapse_icon {
+        font-family: monospace;
+    }
+
     details[open] .expand_icon {
         display: none;
     }
@@ -339,10 +344,6 @@ main input[type="submit"]:hover {
         display: none;
     }
 
-    .expand_icon, .collapse_icon {
-        font-size: x-small;
-    }
-    
     dl {
         margin-left: 1em;
     }
