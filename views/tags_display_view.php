@@ -3,34 +3,37 @@ namespace WorldlangDict;
 ?>
 <!doctype html>
 <html class="no-js" lang="<?= $request->lang; ?>">
-<? require_once($config->templatePath ."partials/html-head.php"); ?>
+<?php require_once($config->templatePath ."partials/html-head.php"); ?>
 <body>
 
 
-<? require_once($config->templatePath . "partials/page-header.php"); ?>
+<?php require_once($config->templatePath . "partials/page-header.php"); ?>
 
 <main class="tags">
 
-<? $exists = isset($defs[$tag]); ?>
-<? if ($exists) : ?>
+<?php $exists = isset($defs[$tag]); ?>
+<?php if ($exists) : ?>
   <h1><?= $config->getTrans('single tag view') ?>: <?= $defs[$tag]['term']; ?></h1>
   <p>
     <em>(<a href="<?=$config->grammar_url;?>"><?= $defs[$tag]['class'];?></a>)</em>&nbsp;
     <?= $defs[$tag]['translation'] ?>
   </p>
-  <? else : ?>
+  <?php else : ?>
     <h1><?= $config->getTrans('single tag view') ?>: <?= $tag; ?></h1>
-  <? endif; ?>
+  <?php endif; ?>
   
   <?php $rand = $tags[$tag][array_rand($tags[$tag])]; ?>
   <p>
-    <a class="button" href=""><?= $config->getTrans('tags random word') ?></a>
-    <?= $defs[$rand]['term']; ?>
+    <a class="button" href=""><?= $config->getTrans('tags random word') ?></a><br/>
+    <a href="<?= WorldlangDictUtils::makeUri(
+                config:$config, request:$request,
+                controller:'word', arg:urlencode($rand)
+            ); ?>"><?= $defs[$rand]['term'] ?></a>
     <em>(<a href="<?=$config->grammar_url;?>"><?= $defs[$rand]['class'];?></a>)</em>&nbsp;
     <?= $defs[$rand]['translation'] ?>
   </p>
   
-  <? if (!empty($tags[$tag])): ?>
+  <?php if (!empty($tags[$tag])): ?>
 
     <dl>
     <?php
@@ -50,13 +53,13 @@ namespace WorldlangDict;
         <?=$defs[$slug]['translation'];?>
         </dd>
       </div>
-    <? endforeach; ?>
+    <?php endforeach; ?>
     </dl>
-  <? endif; ?>
+  <?php endif; ?>
 
 </main>
 
-<? require_once($config->templatePath . "partials/page-footer.php"); ?>
+<?php require_once($config->templatePath . "partials/page-footer.php"); ?>
 
 </body>
 
