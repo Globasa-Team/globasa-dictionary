@@ -21,7 +21,15 @@ namespace WorldlangDict;
   <? else : ?>
     <h1><?= $config->getTrans('single tag view') ?>: <?= $tag; ?></h1>
   <? endif; ?>
-  <hr/>
+  
+  <?php $rand = $tags[$tag][array_rand($tags[$tag])]; ?>
+  <p>
+    <a class="button" href=""><?= $config->getTrans('tag random word') ?></a>
+    <?= $defs[$rand]['term']; ?>
+    <em>(<a href="<?=$config->grammar_url;?>"><?= $defs[$rand]['class'];?></a>)</em>&nbsp;
+    <?= $defs[$rand]['translation'] ?>
+  </p>
+  
   <? if (!empty($tags[$tag])): ?>
 
     <dl>

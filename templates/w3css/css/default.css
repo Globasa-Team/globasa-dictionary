@@ -119,6 +119,17 @@ dt a {
     column-rule: 3px solid var(--bd);
 }
 
+.tags p {
+    text-align: center;
+}
+
+.button {
+    background-color: var(--h1_bg_strong);
+    color: var(--h1_fg);
+    padding: .3em;
+    display: inline-block;
+}
+
 
 main.tags, #natlangs_language, #natlang_browse {
     width: 100%;
@@ -278,8 +289,9 @@ main input[type="submit"]:hover {
             padding: 0;
         }
         tr>th {
-            text-align: right;
             padding-right: .5em;
+            text-align: right;
+            vertical-align: baseline;
         }
     }
     
@@ -321,6 +333,14 @@ main input[type="submit"]:hover {
     
     details[open] .expand_icon {
         display: none;
+    }
+
+    details:not([open]) .collapse_icon {
+        display: none;
+    }
+
+    .expand_icon, .collapse_icon {
+        font-size: x-small;
     }
     
     dl {
@@ -582,8 +602,10 @@ form input[type="text"] {
 }
 
 form input[type="submit"], button {
+    background-color: var(--h1_bg_strong);
     border: none;
     box-sizing: border-box;
+    display: inline-block;
     height: 2.5rem;
     margin: 0;
     cursor: pointer;
