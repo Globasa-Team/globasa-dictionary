@@ -24,7 +24,7 @@ namespace WorldlangDict;
   
   <?php $rand = $tags[$tag][array_rand($tags[$tag])]; ?>
   <p>
-    <a class="button" href=""><?= $config->getTrans('tag random word') ?></a>
+    <a class="button" href=""><?= $config->getTrans('tags random word') ?></a>
     <?= $defs[$rand]['term']; ?>
     <em>(<a href="<?=$config->grammar_url;?>"><?= $defs[$rand]['class'];?></a>)</em>&nbsp;
     <?= $defs[$rand]['translation'] ?>
