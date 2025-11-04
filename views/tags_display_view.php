@@ -1,28 +1,20 @@
 <?php
+declare(strict_types=1);
 namespace WorldlangDict;
+
+$rand = $tags[$tag][array_rand($tags[$tag])];
 ?>
 <!doctype html>
 <html class="no-js" lang="<?= $request->lang; ?>">
 <?php require_once($config->templatePath ."partials/html-head.php"); ?>
 <body>
 
-
 <?php require_once($config->templatePath . "partials/page-header.php"); ?>
 
 <main class="tags">
 
-<?php $exists = isset($defs[$tag]); ?>
-<?php if ($exists) : ?>
-  <h1><?= $config->getTrans('single tag view') ?>: <?= $defs[$tag]['term']; ?></h1>
-  <p>
-    <em>(<a href="<?=$config->grammar_url;?>"><?= $defs[$tag]['class'];?></a>)</em>&nbsp;
-    <?= $defs[$tag]['translation'] ?>
-  </p>
-  <?php else : ?>
-    <h1><?= $config->getTrans('single tag view') ?>: <?= $tag; ?></h1>
-  <?php endif; ?>
+  <h1><?= $config->getTrans('single tag view') ?>: <?= isset($defs[$tag]) ? $defs[$tag]['term'] : $tag; ?></h1>
   
-  <?php $rand = $tags[$tag][array_rand($tags[$tag])]; ?>
   <p>
     <a class="button" href=""><?= $config->getTrans('tags random word') ?></a><br/>
     <a href="<?= WorldlangDictUtils::makeUri(
