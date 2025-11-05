@@ -311,10 +311,7 @@ main input[type="submit"]:hover {
         display: inline;
     }
     
-    details[open] summary.hide  {
-        display: none;
-    }
-
+    
     div:not(.derived) details[open] {
         display: inline;
     }
@@ -323,26 +320,36 @@ main input[type="submit"]:hover {
         display: block;
     }
     
-    details[open] h2 {
-        padding-top: 3px; /* Needed to keep alignment with hl terms */
-    }
 
-    div.expand_icon {
+    .expand_icon {
         text-align: center;
     }
-    
-    details[open] .expand_icon {
-        display: none;
+
+    .expand_icon, .collapse_icon {
+        font-family: monospace;
+        padding-block: 4px;
+        font-size: small;
     }
+
+    details[open] {
+
+        .expand_icon {
+            display: none;
+        }    
+
+        .hide  {
+            display: none;
+        }    
+
+        h2 {
+           padding-top: 3px; /* Needed to keep alignment with hl terms */ 
+       }
+    }       
 
     details:not([open]) .collapse_icon {
         display: none;
     }
 
-    .expand_icon, .collapse_icon {
-        font-size: x-small;
-    }
-    
     dl {
         margin-left: 1em;
     }

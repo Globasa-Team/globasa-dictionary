@@ -113,7 +113,7 @@ if (!empty($entry['antonyms'])):
 if (array_key_exists('derived terms', $entry)): ?>
 <section class="derived_words">
     <details>
-        <summary class="hide">
+        <summary>
             <h2><?=sprintf($config->getTrans('derived word list'), '');?></h2>
             <?php
             foreach($entry['derived terms'] as $slug=>$data) :
@@ -121,12 +121,13 @@ if (array_key_exists('derived terms', $entry)): ?>
                     // Debugging for undefined key `text` on $data, using ?? $slug on lines below which may be temp fix.
                     error_log("Index 'text' does not exist on data for `{$entry[$slug]}`'s derived term '{$slug}' in `entry_view.php`. Serialized data: ".serialize($entry)."\n");
                 }
-                ?><a href="<?= WorldlangDictUtils::makeUri(config:$config, controller:'word', arg:$slug, request:$request); ?>" class="hl encap" lang="<?=WL_CODE_FULL;?>"><?=$data['text'] ?? $slug;?></a> <?php
+                ?><a href="<?= WorldlangDictUtils::makeUri(config:$config, controller:'word', arg:$slug, request:$request); ?>" class="hl encap hide" lang="<?=WL_CODE_FULL;?>"><?=$data['text'] ?? $slug;?></a> <?php
             endforeach;
 
-            ?> <span class="hl h1">[+]</span>
+            ?>
+            <span class="expand_icon">[+]</span>
+            <span class="collapse_icon">[-]</span>
         </summary>
-        <h2><?=sprintf($config->getTrans('derived word list'), '');?></h2>
         <dl>
 <?php
         foreach($entry['derived terms'] as $a_term=>$data) : ?>
@@ -195,16 +196,17 @@ if (array_key_exists('rhyme', $entry)):
 ?>
 <section class="rhymes">
     <details>
-        <summary class="hide">
+        <summary>
             <h2><?=sprintf($config->getTrans('entry rhymes header'), $exclusions);?></h2>:
             <?php
             foreach($entry['rhyme'] as $rhyme_slug=>$rhyme_data) :
-                ?><a href="<?= WorldlangDictUtils::makeUri(config:$config, controller:'word', arg:$rhyme_slug, request:$request); ?>" class="hl encap" lang="<?=WL_CODE_FULL;?>"><?=$entry['rhyme'][$rhyme_slug]['term_spec'];?></a> <?php
+                ?><a href="<?= WorldlangDictUtils::makeUri(config:$config, controller:'word', arg:$rhyme_slug, request:$request); ?>" class="hl encap hide" lang="<?=WL_CODE_FULL;?>"><?=$entry['rhyme'][$rhyme_slug]['term_spec'];?></a> <?php
             endforeach;
+            ?>
+            <span class="expand_icon">[+]</span>
+            <span class="collapse_icon">[-]</span>
 
-            ?> <span class="hl h1">[+]</span>
         </summary>
-        <h2><?=sprintf($config->getTrans('entry rhymes header'), $exclusions);?></h2>:
         <dl>
 <?php
         foreach($entry['rhyme'] as $rhyme_slug=>$data) : ?>
