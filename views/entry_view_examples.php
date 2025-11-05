@@ -22,7 +22,8 @@ if ($examples) :
     endfor;
     if (count($examples) > 0) :
 ?>
-        <div class="expand_icon"><span class="hl h1 expand_icon">[+]</span></div>
+        <span class="expand_icon">[+]</span>
+        <span class="collapse_icon">[-]</span>
 <?php
     endif;
 ?>
