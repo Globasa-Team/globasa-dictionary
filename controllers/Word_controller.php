@@ -17,7 +17,7 @@ class Word_controller
             error_log("Found missing `term_spec` in {$term}. {$request->url}**{$request->controller}**{$request->arguments[0]}");
         }
 
-        $page->setTitle(isset($entry['term_spec']) ? $entry['term_spec'] ? $entry['term']);
+        $page->setTitle(isset($entry['term_spec']) ? $entry['term_spec'] : $entry['term']);
         
         $examples = null;
         if (!empty($config->examples_location) and file_exists($config->examples_location.$entry['slug'].'.yaml')) {
