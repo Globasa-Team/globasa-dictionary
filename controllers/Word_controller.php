@@ -4,7 +4,7 @@ namespace WorldlangDict;
 
 class Word_controller
 {
-    public static function output_entry($config, $request, &$page)
+    public static function output_entry(WorldlangDictConfig $config, Request $request, Page &$page)
     {
         if (!isset($request->arguments[0])) self::randomWord($config, $request, $page);
         $term = mb_strtolower($request->arguments[0], encoding:"UTF-8");
@@ -12,7 +12,12 @@ class Word_controller
         if (!file_exists($file)) throw new Error_404_Exception("Entry Not Found");
         $entry = yaml_parse_file($file);
 
-        $page->setTitle($entry['term_spec']);
+        // Debugging
+        if (empty($entry['term_spec'])) {
+            error_log("Found missing `term_spec` in {$term}. {$request->url}**{$request->controller}**{$request->arguments[0]}");
+        }
+
+        $page->setTitle(isset($entry['term_spec']) ? $entry['term_spec'] ? $entry['term']);
         
         $examples = null;
         if (!empty($config->examples_location) and file_exists($config->examples_location.$entry['slug'].'.yaml')) {
