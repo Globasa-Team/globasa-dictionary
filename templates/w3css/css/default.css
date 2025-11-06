@@ -239,7 +239,6 @@ main input[type="submit"]:hover {
         font-size: x-large;
     }
     h2 {
-        display: inline-block;
         font-size: medium;
     }
     h3 {
@@ -256,9 +255,6 @@ main input[type="submit"]:hover {
         margin-bottom: .5em;
     }
     
-    .examples h2 {
-        display: block;
-    }
     .examples p {
         margin-bottom: 0;
     }
@@ -267,8 +263,12 @@ main input[type="submit"]:hover {
         display: block;
     }
     
-    .examples blockquote footer {
-        color: var(--fg_medium);
+    .examples blockquote {
+        margin-right: 0;
+        margin-left: 1em;
+        footer {
+            color: var(--fg_medium);
+        }
     }
     
     .etymology h2 {
