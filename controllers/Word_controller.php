@@ -1,6 +1,8 @@
 <?php
-// declare(strict_types=1);
+declare(strict_types=1);
 namespace WorldlangDict;
+
+use PSpell\Config;
 
 class Word_controller
 {
@@ -60,33 +62,32 @@ class Word_controller
     /**
      * Show reverse lookup. Eg, searching ENG: child.
      */
-    public static function addNatWord($config, $request, $lang, &$page)
+    public static function addNatWord(WorldlangDictConfig $config, Request $request, string $lang, Page &$page)
     {
-        if (!file_exists($config->search_terms_location.$lang.".yaml")) {
+        if (!file_exists($config->search_terms_location.$lang.".yaml"))
             throw new Error_404_Exception("Language not availble");
-        }
-        $search_terms = yaml_parse_file($config->search_terms_location.$lang.".yaml");
-
-        $term = isset($request->arguments[0]) ? $request->arguments[0] : null;
-
-        // Check for translator note, and remove
-        if (is_null($term) || empty($term)) {
+        
+        if (empty($request->arguments[0]))
             WorldlangDictUtils::redirect(config:$config, request:$request);
-        }
-        if (str_contains($term, '(')) {
-            $term = mb_trim(mb_substr($term, 0, mb_strpos($term, '(', encoding:"UTF-8"), encoding:"UTF-8"), encoding:"UTF-8");
-        }
-        if (!isset($search_terms[$term])) {
+        $slug = $request->arguments[0];
+        
+        // Check for translator note, and remove
+        if (str_contains($slug, '('))
+            $term = mb_trim(mb_substr($slug, 0, mb_strpos($slug, '(')));
+        else
+            $term = mb_trim($slug);
+        
+        $search_terms = yaml_parse_file($config->search_terms_location.$lang.".yaml");
+        if (!isset($search_terms[$term]))
             throw new Error_404_Exception("Word not found");
-        }
+
         $page->setTitle($term.': '.$config->getTrans('natlang search title bar'));
         $results = &$search_terms[$term];
-        // SearchView::results($config, $search_terms[$term], 'glb', $request, $page);
         require_once("views/search_results_view.php");
     }
 
 
-    public static function randomWord($config, $request, &$page)
+    public static function randomWord(WorldlangDictConfig $config, Request $request, Page &$page)
     {
         $index = yaml_parse_file($config->min_location.$config->lang.".yaml");
         $wordIndex = array_rand($index);
