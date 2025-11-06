@@ -1,25 +1,27 @@
-<?;
-
+<?php
+declare(strict_types=1);
 namespace WorldlangDict;
 
 if (!(empty($entry['etymology']))):
 ?>
 <section class="etymology">
 <h2><?= sprintf($config->getTrans('Etymology'), "")?></h2>
-<?
+<?php
 
-// A priori
+
+//region A priori
 if (!empty($entry['etymology']['a priori'])): ?>
     <p class="apriori"><em><?= $config->getTrans('entry etymology a priori text'); ?></em></p>
-<? endif;
+<?php
+endif;
+//endregion
 
 
-
-// Derived
+//region Derived
 if (isset($entry['etymology']['derived trans'])): ?>
 <div class="derived">
     
-    <?
+    <?php
 foreach($entry['etymology']['derived trans'] as $data) :
     if (isset($data['slug'])) :
         ?><a href="../lexi/<?= $data['slug']; ?>"><?= $data['text']; ?></a><?
@@ -32,7 +34,7 @@ foreach($entry['etymology']['derived trans'] as $data) :
 endforeach;
 ?>
     <dl>
-<? foreach($entry['etymology']['derived trans'] as $data) :
+<?php foreach($entry['etymology']['derived trans'] as $data) :
     if (isset($data['trans'])) : ?>
         <div>
         <dt><?=WorldlangDictUtils::makeLink(text:$data['text'],
@@ -40,9 +42,9 @@ endforeach;
                     controller:'word', arg:$data['slug'],
                 );?></dt>
         <dd>
-        <? if (isset($data['word class'])) : ?>
+        <?php if (isset($data['word class'])) : ?>
             <em>(<a href="<?=$config->grammar_url;?>"><?=$data['word class'];?></a>)</em>&nbsp;
-        <? endif; ?>
+        <?php endif; ?>
             <?=$data['trans'][$request->lang];?>
         </dd>
         </div>
@@ -52,65 +54,74 @@ endforeach;
 endforeach; ?>
     </dl>
 </div>
-<? endif;
+<?php
+endif;
+//endregion
 
 
-
-// Natlang
+//region Natlang
 if (isset($entry['etymology']['natlang'])): ?>
 <div class="natlang">
-<?
+<?php
     $list = &$entry['etymology']['natlang'];
     include($config->templatePath . "partials/entry_language_list.php");
 ?>
 </div>
-<? endif; ?>
+<?php endif;
+//endregion
 
-<?
-// am oko
+
+//region am oko
 if (isset($entry['etymology']['am oko'])): ?>
 <div class="am_oko">
     <h3><?= $config->getTrans('entry etymology am oko header'); ?></h3>
     <ul>
-    <? foreach($entry['etymology']['am oko'] as $slug=>$term): ?>
+    <?php foreach($entry['etymology']['am oko'] as $slug=>$term): ?>
         <li><a href="../lexi/<?=$slug;?>" class="hl encap" lang="<?=WL_CODE_FULL;?>"><?=$term;?></a></li>
     <? endforeach; ?>
     </ul>.
 </div>
-<? endif;
+<?php
+endif;
+//endregion
 
 
-
-
-// kwasilexi
+//region kwasilexi
 if (isset($entry['etymology']['kwasilexi'])): ?>
 <div class="kwasilexi">
     <h3><?= $config->getTrans('entry etymology kwasilexi header'); ?></h3>:
-    <? $list = &$entry['etymology']['kwasilexi'];
+    <?php $list = &$entry['etymology']['kwasilexi'];
     include($config->templatePath . "partials/entry_language_list.php"); ?>
 </div>
-<? endif;
+<?php
+endif;
+//endregion
 
 
-// am kompara
+//region am kompara
 if (isset($entry['etymology']['am kompara'])): ?>
 <div>
     <h3><?= $config->getTrans('entry etymology am kompara header'); ?></h3>:
     <ul>
-    <? foreach($entry['etymology']['am kompara'] as $item): ?>
+    <?php foreach($entry['etymology']['am kompara'] as $item): ?>
         <li><a href="../lexi/<?=$item;?>" class="hl encap" lang="<?=WL_CODE_FULL;?>"><?=$item;?></a></li>
     <? endforeach; ?>
     </ul>
 </div>
-<? endif;
+<?php
+endif;
+//endregion
 
-
-// link
+//region link
 if (isset($entry['etymology']['link'])): ?>
 <p><?= $config->getTrans('entry etymology link') ?><br/>
 <a href="<?=$entry['etymology']['link']?>"><?=$entry['etymology']['link']?></a></p>
-<? endif; ?>
+<?php
+endif;
+//endregion
+?>
 
 </section>
 
-<? endif; /* !empty($entry['etymology']) */ ?>
+<?php
+endif;
