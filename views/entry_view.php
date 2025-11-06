@@ -115,6 +115,9 @@ if (array_key_exists('derived terms', $entry)): ?>
     <details>
         <summary>
             <h2><?=sprintf($config->getTrans('derived word list'), '');?></h2>
+            <span class="expand_icon">[+]</span>
+            <span class="collapse_icon">[-]</span>
+
             <?php
             foreach($entry['derived terms'] as $slug=>$data) :
                 if (!isset($data['text'])) {
@@ -125,8 +128,6 @@ if (array_key_exists('derived terms', $entry)): ?>
             endforeach;
 
             ?>
-            <span class="expand_icon">[+]</span>
-            <span class="collapse_icon">[-]</span>
         </summary>
         <dl>
 <?php
@@ -198,13 +199,13 @@ if (array_key_exists('rhyme', $entry)):
     <details>
         <summary>
             <h2><?=sprintf($config->getTrans('entry rhymes header'), $exclusions);?></h2>:
+            <span class="expand_icon">[+]</span>
+            <span class="collapse_icon">[-]</span>
             <?php
             foreach($entry['rhyme'] as $rhyme_slug=>$rhyme_data) :
                 ?><a href="<?= WorldlangDictUtils::makeUri(config:$config, controller:'word', arg:$rhyme_slug, request:$request); ?>" class="hl encap hide" lang="<?=WL_CODE_FULL;?>"><?=$entry['rhyme'][$rhyme_slug]['term'];?></a> <?php
             endforeach;
             ?>
-            <span class="expand_icon">[+]</span>
-            <span class="collapse_icon">[-]</span>
 
         </summary>
         <dl>
