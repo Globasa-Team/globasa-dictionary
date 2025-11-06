@@ -200,7 +200,7 @@ if (array_key_exists('rhyme', $entry)):
             <h2><?=sprintf($config->getTrans('entry rhymes header'), $exclusions);?></h2>:
             <?php
             foreach($entry['rhyme'] as $rhyme_slug=>$rhyme_data) :
-                ?><a href="<?= WorldlangDictUtils::makeUri(config:$config, controller:'word', arg:$rhyme_slug, request:$request); ?>" class="hl encap hide" lang="<?=WL_CODE_FULL;?>"><?=$entry['rhyme'][$rhyme_slug]['term_spec'];?></a> <?php
+                ?><a href="<?= WorldlangDictUtils::makeUri(config:$config, controller:'word', arg:$rhyme_slug, request:$request); ?>" class="hl encap hide" lang="<?=WL_CODE_FULL;?>"><?=$entry['rhyme'][$rhyme_slug]['term'];?></a> <?php
             endforeach;
             ?>
             <span class="expand_icon">[+]</span>
@@ -214,7 +214,7 @@ if (array_key_exists('rhyme', $entry)):
                 <dt><?=WorldlangDictUtils::makeLink(
                         config:$config, request:$request,
                         controller:'word', arg:urlencode($rhyme_slug),
-                        text:$data['term_spec']
+                        text:$data['term']
                     );?></dt>
                 <dd>
                 <?php if (isset($data['word class'])) : ?>
