@@ -98,6 +98,15 @@ dt, dd {
     display: inline;
 }
 
+.term {
+    font-weight: bold;
+}
+
+.wordClass {
+    display: inline;
+    font-style: italic;
+}
+
 .browse dd, .browse dt {
     display: none;
 }
@@ -243,12 +252,6 @@ main input[type="submit"]:hover {
         text-align: right;
     }
     
-    .wordClass {
-        display: inline;
-        font-style: italic;
-    }
-
-
     .translation span {
         margin-bottom: .5em;
     }
@@ -328,7 +331,6 @@ main input[type="submit"]:hover {
     .expand_icon, .collapse_icon {
         font-family: monospace;
         padding-block: 4px;
-        font-size: small;
     }
 
     details[open] {
@@ -343,7 +345,7 @@ main input[type="submit"]:hover {
 
         h2 {
            padding-top: 3px; /* Needed to keep alignment with hl terms */ 
-       }
+        }
     }       
 
     details:not([open]) .collapse_icon {

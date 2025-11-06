@@ -1,21 +1,18 @@
 <?php
-// declare(strict_types=1);
+declare(strict_types=1);
 namespace WorldlangDict;
+
+use PSpell\Config;
 
 class Word_controller
 {
     public static function output_entry(WorldlangDictConfig $config, Request $request, Page &$page)
     {
         if (!isset($request->arguments[0])) self::randomWord($config, $request, $page);
-        $term = mb_strtolower($request->arguments[0], encoding:"UTF-8");
-        $file = $config->api2Path.'terms/'.$term.'.yaml';
+        $slug = mb_strtolower($request->arguments[0], encoding:"UTF-8");
+        $file = $config->api2Path.'terms/'.$slug.'.yaml';
         if (!file_exists($file)) throw new Error_404_Exception("Entry Not Found");
         $entry = yaml_parse_file($file);
-
-        // Debugging
-        if (empty($entry['term_spec'])) {
-            error_log("Found missing `term_spec` in {$term}. {$request->url}**{$request->controller}**{$request->arguments[0]}");
-        }
 
         $page->setTitle(isset($entry['term_spec']) ? $entry['term_spec'] : $entry['term']);
         
@@ -65,59 +62,32 @@ class Word_controller
     /**
      * Show reverse lookup. Eg, searching ENG: child.
      */
-    public static function addNatWord($config, $request, $lang, &$page)
+    public static function addNatWord(WorldlangDictConfig $config, Request $request, string $lang, Page &$page)
     {
-        if (!file_exists($config->search_terms_location.$lang.".yaml")) {
+        if (!file_exists($config->search_terms_location.$lang.".yaml"))
             throw new Error_404_Exception("Language not availble");
-        }
-        $search_terms = yaml_parse_file($config->search_terms_location.$lang.".yaml");
-
-        $term = isset($request->arguments[0]) ? $request->arguments[0] : null;
-
-        // Check for translator note, and remove
-        if (is_null($term) || empty($term)) {
+        
+        if (empty($request->arguments[0]))
             WorldlangDictUtils::redirect(config:$config, request:$request);
-        }
-        if (str_contains($term, '(')) {
-            $term = mb_trim(mb_substr($term, 0, mb_strpos($term, '(', encoding:"UTF-8"), encoding:"UTF-8"), encoding:"UTF-8");
-        }
-        if (!isset($search_terms[$term])) {
+        $slug = $request->arguments[0];
+        
+        // Check for translator note, and remove
+        if (str_contains($slug, '('))
+            $term = mb_trim(mb_substr($slug, 0, mb_strpos($slug, '(')));
+        else
+            $term = mb_trim($slug);
+        
+        $search_terms = yaml_parse_file($config->search_terms_location.$lang.".yaml");
+        if (!isset($search_terms[$term]))
             throw new Error_404_Exception("Word not found");
-        }
+
         $page->setTitle($term.': '.$config->getTrans('natlang search title bar'));
         $results = &$search_terms[$term];
-        // SearchView::results($config, $search_terms[$term], 'glb', $request, $page);
         require_once("views/search_results_view.php");
     }
 
 
-    public static function getWordList($config, $request, $listLang, &$page)
-    {
-        $list = [];
-        if ($listLang == $config->worldlang) {
-            // NOTE Should this be in the Word class?
-            foreach ($config->dictionary->words as $word=>$wordData) {
-                $list[mb_strtolower($word, encoding:"UTF-8")] = new Word($config, $wordData);
-            }
-        } else {
-            // NOTE Should this be in the Word class?
-            foreach ($config->dictionary->index as $word=>$wordData) {
-                $wLWords = explode(',', $wordData);
-                if (sizeof($wLWords)==1) {
-                    $this->list[$word] = new Word($config, $config->dictionary[$config->worldlang][$wLWords[0]]);
-                } else {
-                    foreach ($wLWords as $wLWord) {
-                        $this->list[$word][$glbWord] = new Word($config, $config->dictionary[$config->worldlang][mb_trim($wLWord, encoding:"UTF-8")]);
-                    }
-                }
-            }
-        }
-
-        $page->setTitle($config->getTrans('all words button'));
-        WordListView::addList($config, $request, $list, $page);
-    }
-
-    public static function randomWord($config, $request, &$page)
+    public static function randomWord(WorldlangDictConfig $config, Request $request, Page &$page)
     {
         $index = yaml_parse_file($config->min_location.$config->lang.".yaml");
         $wordIndex = array_rand($index);
