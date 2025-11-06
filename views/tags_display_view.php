@@ -20,8 +20,8 @@ $rand = $tags[$tag][array_rand($tags[$tag])];
     <a href="<?= WorldlangDictUtils::makeUri(
                 config:$config, request:$request,
                 controller:'word', arg:urlencode($rand)
-            ); ?>"><?= $defs[$rand]['term'] ?></a>
-    <em>(<a href="<?=$config->grammar_url;?>"><?= $defs[$rand]['class'];?></a>)</em>&nbsp;
+            ); ?>" class="term"><?= $defs[$rand]['term'] ?></a>
+    (<a href="<?=$config->grammar_url;?>" class="wordClass"><?= $defs[$rand]['class'];?></a>)&nbsp;
     <?= $defs[$rand]['translation'] ?>
   </p>
   

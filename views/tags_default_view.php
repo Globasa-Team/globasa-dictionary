@@ -21,7 +21,7 @@ foreach ($tags as $tag=>$words):
     <dt><?= WorldlangDictUtils::makeLink(config:$config, controller:'tag', arg:$tag, request:$request, text:$tag); ?></dt>
     <dd>
         <? if ($exists) : ?>
-          <em>(<a href="<?=$config->grammar_url;?>"><?=$defs[$tag]['class'];?></a>)</em>&nbsp;
+          (<a href="<?=$config->grammar_url;?>" class="wordClass"><?=$defs[$tag]['class'];?></a>)&nbsp;
           <?=$defs[$tag]['translation'];?>
         <? endif; ?>
         <span class="hl h1"><?=count($words) ?></span>

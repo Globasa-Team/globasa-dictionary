@@ -98,6 +98,15 @@ dt, dd {
     display: inline;
 }
 
+.term {
+    font-weight: bold;
+}
+
+.wordClass {
+    display: inline;
+    font-style: italic;
+}
+
 .browse dd, .browse dt {
     display: none;
 }
@@ -243,12 +252,6 @@ main input[type="submit"]:hover {
         text-align: right;
     }
     
-    .wordClass {
-        display: inline;
-        font-style: italic;
-    }
-
-
     .translation span {
         margin-bottom: .5em;
     }
