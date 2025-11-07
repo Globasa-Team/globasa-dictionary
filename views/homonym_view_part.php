@@ -22,7 +22,8 @@ if (empty($homonyms)) {
 <ul>
 <?php
 
-$candidate = $request->options['candidate'];
+
+$candidate = isset($request->options['candidate']) ? $request->options['candidate'] : "";
 
 foreach ($homonyms as $word => $generated_words):
 
