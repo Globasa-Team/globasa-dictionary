@@ -65,7 +65,7 @@ function view_translation(WorldlangDictConfig $config, Request $request, string 
     <summary>
     <p><?php
 
-if (!empty($entry['trans'][$request->lang])):
+if (!ENTRY_SEPARATE_TRANS_CAT && !empty($entry['trans'][$request->lang])):
     $gstart = true;
     
     foreach($entry['trans'][$request->lang] as $group):
@@ -106,9 +106,63 @@ if (!empty($entry['trans'][$request->lang])):
 endif;
 
 ?>
-<span class="expand_icon">[+]</span>
-<span class="collapse_icon">[-]</span>
-</p>
+    <span class="expand_icon">[+]</span>
+    <span class="collapse_icon">[-]</span>
+    </p>
+
+<?php
+
+if (ENTRY_SEPARATE_TRANS_CAT && !empty($entry['trans_v2'][$request->lang])):
+    $gstart = true;
+    
+    foreach($entry['trans_v2'][$request->lang] as $category => $group):
+
+
+        print("<div><h3>{$category}</h3><div style=\"margin-left: 1em;\">");
+        $tstart = true;
+        
+        
+        foreach($group as $translation):
+            if (!$tstart) :
+                ?>, <?
+            endif;
+            $tstart = false;
+            $trans_note_preceeding = '';
+            $trans_note_following = '';
+
+            // var_dump($translation);
+            // Check for preceeding translation note using colon
+            if (($pos = mb_strpos($translation, ':')) !== false) {
+                $trans_note_preceeding = mb_trim(substr($translation, 0, $pos+1));
+                $translation = mb_trim(mb_substr($translation, $pos+1));
+            }
+            
+            $slug = mb_trim(mb_strtolower(preg_replace('/\((.+)\)/U', '', strip_tags($translation))));  // regex removes parentheticals (...)
+
+            // TODO: link this!
+            if (!str_contains($translation, '<a')) :
+                echo($trans_note_preceeding.' ');
+                ?><a href="<?= WorldlangDictUtils::makeUri(config:$config, controller:'natlang-search', arg:$slug, request:$request) ?>" class="hl h1"><?=$translation?></a><?php
+                if (!empty($trans_note_following)) :
+                    echo(' '.$trans_note_following);
+                endif;
+            else:
+                ?><span class="hl h1"><?=$translation?></span><?
+            endif;
+        endforeach;
+
+        print("</div>");
+    endforeach;
+    ?>
+    <span class="expand_icon">[+]</span>
+    <span class="collapse_icon">[-]</span>
+    </p>
+    <?php
+endif;
+
+?>
+
+
 </summary>
 
 <table class="lang_list">
