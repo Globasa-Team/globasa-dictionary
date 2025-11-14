@@ -6,7 +6,7 @@ namespace WorldlangDict;
 
 class Homonym_controller
 {
-    public static function check($config, $request, &$page)
+    public static function check(WorldlangDictConfig $config, Request $request, Page &$page)
     {
         $dict = yaml_parse_file($config->basic_location . $request->lang . '.yaml');
         $homonyms = Homonym::analyze($request, $dict);
