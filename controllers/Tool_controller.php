@@ -1,9 +1,12 @@
 <?php
+
+declare(strict_types=1);
+
 namespace WorldlangDict;
 
 class Tool_controller
 {
-    public static function run($config, $request, &$page)
+    public static function run(WorldlangDictConfig $config, Request $request, Page &$page)
     {
         $arg = isset($request->arguments[0]) ? $request->arguments[0] : '';
         switch ($arg) {
