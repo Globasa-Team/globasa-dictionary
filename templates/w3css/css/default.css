@@ -255,21 +255,25 @@ main input[type="submit"]:hover {
         margin-bottom: .5em;
     }
     
-    .examples p {
-        margin-bottom: 0;
-    }
 
-    .examples details {
-        display: block;
-    }
+    .examples {
+        p {
+            margin-bottom: 0;
+        }
     
-    .examples blockquote {
-        margin-right: 0;
-        margin-left: 1em;
-        footer {
-            color: var(--fg_medium);
+        details {
+            display: block;
+        }
+        
+        blockquote {
+            margin-right: 0;
+            margin-left: 1em;
+            footer {
+                color: var(--fg_medium);
+            }
         }
     }
+
     
     .etymology h2 {
         padding-top: 3px; /* Needed to keep alignment with hl expander */
@@ -1028,5 +1032,24 @@ main.entry > div.col_debug > details.debug {
             padding-left: 0.5em;
             border-left: solid 3px var(--bd);
         }
+    }
+}
+
+@media (pointer: coarse), (hover: none) {
+    .examples [title] {
+        position: relative;
+        display: inline-flex;
+        justify-content: center;
+    }
+    .examples [title]:focus::after {
+        content: attr(title);
+        position: absolute;
+        top: 90%;
+        color: #000;
+        background-color: #fff;
+        border: 1px solid;
+        width: fit-content;
+        padding: 3px;
+        z-index: 100;
     }
 }
