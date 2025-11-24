@@ -89,7 +89,7 @@ main, article {
     }
     
     h3 {
-        font-size: medium;
+        font-size: 1.1;
     }
 }
 
@@ -236,10 +236,9 @@ main input[type="submit"]:hover {
     
     h1 {
         font-weight: normal;
-        font-size: x-large;
     }
     h2 {
-        font-size: medium;
+        font-size: 1.1rem;
     }
     h3 {
         font-weight: lighter;
@@ -296,7 +295,7 @@ main input[type="submit"]:hover {
             padding: 0;
         }
         tr>th {
-            padding-right: .5em;
+            padding-inline: .75em;
             text-align: right;
             vertical-align: baseline;
         }
@@ -327,14 +326,16 @@ main input[type="submit"]:hover {
         display: block;
     }
     
-
+    
     .expand_icon {
         text-align: center;
     }
-
+    
     .expand_icon, .collapse_icon {
-        font-family: monospace;
+        /* font-family: monospace; */
         padding-block: 4px;
+        letter-spacing: -1px;
+        font-size: .85em;
     }
 
     details[open] {
@@ -428,7 +429,7 @@ main input[type="submit"]:hover {
 #parse_report ol {
     /* font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
     font-family: monospace;
-    font-size: large;
+    font-size: 1.4rem;
 }
 
 #parse_report li + li {
@@ -534,7 +535,7 @@ main input[type="submit"]:hover {
 }
 
 .filter .alphabet label {
-    font-size: larger;
+    font-size: 1.2rem;
     text-align: center;
 }
 
@@ -585,7 +586,7 @@ main input[type="submit"]:hover {
 
 .homonyms header {
     font-weight: bold;
-    font-size: larger;
+    font-size: 1.3rem;
     padding: 3px;
     color: var(--h1_fg);
     background-color: var(--h1_bg);
@@ -608,7 +609,7 @@ form input[type="text"] {
     display: inline-block;
     width: 100%;
     padding: 3px;
-    font-size: large;
+    font-size: 1.3rem;
     box-sizing: border-box;
     height: 2.5rem;
     margin: 0;
@@ -889,7 +890,7 @@ textarea {
     }
 
     h1 {
-        font-size: x-large;
+        font-size: 1.5rem;
     }
     
     form.tool {
@@ -947,7 +948,7 @@ textarea {
     }
     
     h1 {
-        font-size: x-large;
+        font-size: 1.6rem;
     }
 
     form.tool {
@@ -972,7 +973,7 @@ textarea {
 /* Narrow Screen */
 @media (max-width: 51ch) {
     h1 {
-        font-size: x-large;
+        font-size: 1.6rem;
         margin: 0 0 1em 0;
     }
 
