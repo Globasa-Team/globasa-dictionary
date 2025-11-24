@@ -74,10 +74,6 @@ main, article {
         text-decoration: none;
     }
     
-    h1, h2, h3, h4, h5, h6 {
-        font-family: inherit;
-    }
-    
     h1 {
         margin-top: 0;
         text-align: center;
@@ -91,6 +87,10 @@ main, article {
     h3 {
         font-size: 1.1;
     }
+}
+
+input::placeholder {
+    font-family: 'Libre Baskerville', Charter, 'Bitstream Charter', 'Sitka Text', Cambria, serif;
 }
 
 dt, dd {
@@ -332,7 +332,6 @@ main input[type="submit"]:hover {
     }
     
     .expand_icon, .collapse_icon {
-        /* font-family: monospace; */
         padding-block: 4px;
         letter-spacing: -1px;
         font-size: .85em;
@@ -424,12 +423,6 @@ main input[type="submit"]:hover {
 
 #parse_report {
     max-width: 100ch;
-}
-
-#parse_report ol {
-    /* font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; */
-    font-family: monospace;
-    font-size: 1.4rem;
 }
 
 #parse_report li + li {
