@@ -89,8 +89,8 @@ main, article {
     }
 }
 
-input::placeholder {
-    font-family: 'Libre Baskerville', Charter, 'Bitstream Charter', 'Sitka Text', Cambria, serif;
+input {
+    font-family: inherit;
 }
 
 dt, dd {
