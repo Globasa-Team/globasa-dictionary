@@ -1035,16 +1035,23 @@ main.entry > div.col_debug > details.debug {
         position: relative;
         display: inline-flex;
         justify-content: center;
+        text-decoration: underline;
+        text-decoration-style: dotted;
     }
     .examples [title]:focus::after {
+        background-color: var(--h2_bg);
+        border: 1px solid var(--h2_fg_strong);
+        bottom: 4em;
+        box-sizing: border-box;
+        color: var(--h2_fg);
         content: attr(title);
-        position: absolute;
-        top: 90%;
-        color: #000;
-        background-color: #fff;
-        border: 1px solid;
-        width: fit-content;
-        padding: 3px;
+        display: block;
+        left: 2em;
+        min-height: 3em;
+        padding: .4em;
+        position: fixed;
+        outline: solid 2px black;
+        width: calc(100dvw - 4em);
         z-index: 100;
     }
 }
