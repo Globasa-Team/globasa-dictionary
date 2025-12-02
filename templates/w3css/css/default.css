@@ -1035,8 +1035,6 @@ main.entry > div.col_debug > details.debug {
         position: relative;
         display: inline-flex;
         justify-content: center;
-        text-decoration: underline;
-        text-decoration-style: dotted;
     }
     .examples [title]:focus::after {
         background-color: var(--h2_bg);
