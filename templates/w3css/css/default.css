@@ -126,6 +126,10 @@ dt a {
 .tags dl, #natlangs_language dl, #natlang_browse dl {
     column-width: 20ch;
     column-rule: 3px solid var(--bd);
+
+    div {
+        break-inside: avoid;
+    }
 }
 
 .tags p {
