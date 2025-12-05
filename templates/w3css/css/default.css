@@ -1041,14 +1041,14 @@ main.entry > div.col_debug > details.debug {
         border: 1px solid var(--h2_fg_strong);
         bottom: 4em;
         box-sizing: border-box;
-        color: var(--h2_fg);
+        color: var(--fg);
         content: attr(title);
         display: block;
         left: 2em;
         min-height: 3em;
         padding: .4em;
         position: fixed;
-        outline: solid 2px black;
+        outline: solid 2px var(--fg);
         width: calc(100dvw - 4em);
         z-index: 100;
     }
