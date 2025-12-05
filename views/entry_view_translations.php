@@ -112,8 +112,9 @@ if (ENTRY_SEPARATE_TRANS_CAT && !empty($entry['trans_v2'][$request->lang])):
     foreach($entry['trans_v2'][$request->lang] as $category => $group):
 
         if (!empty($category)) {
-            print("\t\t<h3>{$category}</h3>\n\t\t<div style=\"margin-left: 1em;\">");
+            print("\t\t<h3>{$category}</h3>\n");
         }
+        print("\t\t<div>");
         $tstart = true;
         
         
