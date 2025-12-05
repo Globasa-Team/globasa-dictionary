@@ -8,11 +8,7 @@ namespace WorldlangDict;
 // region function
 function view_translation(WorldlangDictConfig $config, Request $request, string $lang, string $data) {
     $gstart = true;
-    print('<tr><th>');
-    print($lang);
-    print('</th><td>');
-    print($data);
-    print('</tr>');
+    print("\t\t<tr><th>{$lang}</th><td>{$data}</tr>\n");
     return;
     foreach($data as $group):
         if (!$gstart) print('; ');
@@ -60,10 +56,13 @@ function view_translation(WorldlangDictConfig $config, Request $request, string 
 
 
 ?>
+
+<!-- ------------------ -->
+<!-- Entry: Translation -->
+<!-- ------------------ -->
 <section class="translation">
     <details>
-    <summary>
-    <p><?php
+    <summary><?php
 
 if (!ENTRY_SEPARATE_TRANS_CAT && !empty($entry['trans'][$request->lang])):
     $gstart = true;
@@ -95,9 +94,9 @@ if (!ENTRY_SEPARATE_TRANS_CAT && !empty($entry['trans'][$request->lang])):
 
             // TODO: link this!
             if (!str_contains($translation, '<a')) :
-                echo($trans_note_preceeding.' ');
+                print($trans_note_preceeding.' ');
                 ?><a href="<?= WorldlangDictUtils::makeUri(config:$config, controller:'natlang-search', arg:$slug, request:$request) ?>" class="hl h1"><?=$translation?></a><?
-                echo(' '.$trans_note_following);
+                print(' '.$trans_note_following);
             else:
                 ?><span class="hl h1"><?=$translation?></span><?
             endif;
@@ -105,20 +104,16 @@ if (!ENTRY_SEPARATE_TRANS_CAT && !empty($entry['trans'][$request->lang])):
     endforeach;
 endif;
 
-?>
-    <span class="expand_icon">[+]</span>
-    <span class="collapse_icon">[-]</span>
-    </p>
-
-<?php
+print(PHP_EOL);
 
 if (ENTRY_SEPARATE_TRANS_CAT && !empty($entry['trans_v2'][$request->lang])):
     $gstart = true;
     
     foreach($entry['trans_v2'][$request->lang] as $category => $group):
 
-
-        print("<div><h3>{$category}</h3><div style=\"margin-left: 1em;\">");
+        if (!empty($category)) {
+            print("\t\t<h3>{$category}</h3>\n\t\t<div style=\"margin-left: 1em;\">");
+        }
         $tstart = true;
         
         
@@ -151,31 +146,24 @@ if (ENTRY_SEPARATE_TRANS_CAT && !empty($entry['trans_v2'][$request->lang])):
             endif;
         endforeach;
 
-        print("</div>");
+        print("</div>\n");
     endforeach;
-    ?>
-    <span class="expand_icon">[+]</span>
-    <span class="collapse_icon">[-]</span>
-    </p>
-    <?php
 endif;
-
 ?>
+        <span class="expand_icon">[+]</span>
+        <span class="collapse_icon">[-]</span>
+    </summary>
 
-
-</summary>
-
-<table class="lang_list">
+    <table class="lang_list">
 <?php
-
 foreach ($entry['trans html'] as $lang=>$data) {
     if (empty($data) || $lang === $request->lang) continue;
     view_translation($config, $request, $lang, $data);
 }
 ?>
-</table>
+    </table>
 
-</details>
+    </details>
 <?php
 
 
